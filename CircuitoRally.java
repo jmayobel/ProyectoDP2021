@@ -28,21 +28,15 @@ public class CircuitoRally implements Circuito
         return complejidad;   
         
     }   
-
-    public double getValorComplejidad () {
+       public Distancia getDistancia () {
         
-        return complejidad.getValor();
+        return distancia;   
         
-    }    
-        
-    
-      public double getValorDistancia () {
-        
+    }   
+    public double getValorComplejidad ()  {
+     return complejidad.getValor();
+    }      
+    public double getValorDistancia () {
         return distancia.getValor();
-        
-    }    
-        
-        
-        
-    
+     }       
 }
