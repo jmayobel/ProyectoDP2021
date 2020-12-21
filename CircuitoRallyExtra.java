@@ -32,5 +32,17 @@ public abstract class CircuitoRallyExtra extends CircuitoRally
      return decoratedCircuitoRally.getValorDistancia ();
     }      
     
+     @Override
+    public String toString ()  
+    {
+        // put your code here
+        return decoratedCircuitoRally.toString()+
+        "\n + extra:" + getClass().getSimpleName() +
+        " -> nueva complejidad: " + getValorComplejidad() + 
+        "\n"+ getValorDistancia ();
+        
+    }
+    
+    
     
 }

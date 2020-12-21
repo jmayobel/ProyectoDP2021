@@ -39,4 +39,12 @@ public class CircuitoRally implements Circuito
     public double getValorDistancia () {
         return distancia.getValor();
      }       
+     @Override
+    public String toString() {
+        return getClass().getSimpleName() + 
+        "\n complejidad: " + getValorComplejidad() + 
+        "\n distancia: " + getValorDistancia();
+    }
+ 
+     
 }
