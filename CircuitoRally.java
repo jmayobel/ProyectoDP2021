@@ -1,8 +1,8 @@
 /**
- * class CircuitoRally - write a description of the class here
  * 
- * @author: 
- * Date: 
+ *
+ * @author (Miguel)
+ * @version (1.0)
  */
 public class CircuitoRally implements Circuito
 {

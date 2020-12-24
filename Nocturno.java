@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class Nocturno here.
+ * 
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Miguel)
+ * @version (1.0)
  */
 public class Nocturno extends CircuitoRallyExtra
 {
@@ -19,12 +19,18 @@ public class Nocturno extends CircuitoRallyExtra
         super (circuitorally);
     }
 
+    /**
+     * @return devuelve la complejidad añadida del circuito Nocturno.
+     */
     @Override
     public double getValorComplejidad ()  {
-     return decoratedCircuitoRally.getValorComplejidad ()+decoratedCircuitoRally.getValorComplejidad ()*1.2;
+     return decoratedCircuitoRally.getValorComplejidad () + decoratedCircuitoRally.getValorComplejidad ()*1.2;
     }
     
-     @Override
+     /**
+     * @return devuelve la distancia reducida del circuito Nocturno.
+     */
+    @Override
     public double getValorDistancia ()  {
      return decoratedCircuitoRally.getValorDistancia () - decoratedCircuitoRally.getValorComplejidad ()*0.8;
     }      

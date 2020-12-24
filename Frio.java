@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class Frio here.
+ * 
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Miguel)
+ * @version (1.0)
  */
 public class Frio extends CircuitoRallyExtra
 {
@@ -17,12 +17,20 @@ public class Frio extends CircuitoRallyExtra
         super (circuitorally);
     }
 
+    
+     
+    /**
+     * @return devuelve la complejidad añadida del circuito Frio.
+     */
     @Override
     public double getValorComplejidad ()  {
-     return decoratedCircuitoRally.getValorComplejidad ()+decoratedCircuitoRally.getValorComplejidad ()*1.1;
+     return decoratedCircuitoRally.getValorComplejidad () + decoratedCircuitoRally.getValorComplejidad ()*1.1;
     }
     
-     @Override
+    /**
+     * @return devuelve la distancia reducida del circuito Frio.
+     */
+    @Override
     public double getValorDistancia ()  {
      return decoratedCircuitoRally.getValorDistancia () - decoratedCircuitoRally.getValorComplejidad ()*0.9;
     }      

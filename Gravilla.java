@@ -1,16 +1,16 @@
 
 /**
- * Write a description of class Gravilla here.
+ * 
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Miguel)
+ * @version (1.0)
  */
 public class Gravilla extends CircuitoRallyExtra
 {
     // instance variables - replace the example below with your own
 
     /**
-     * Constructor for objects of class Gravilla
+     * Constructor for objects of class Gravilla.
      */
     public Gravilla (CircuitoRally circuitorally)
     {
@@ -18,11 +18,17 @@ public class Gravilla extends CircuitoRallyExtra
         super (circuitorally);
     }
 
-     @Override
+     /**
+     * @return devuelve la complejidad añadida del circuito Gravilla.
+     */
+    @Override
     public double getValorComplejidad ()  {
-     return decoratedCircuitoRally.getValorComplejidad ()+decoratedCircuitoRally.getValorComplejidad ()*1.05;
+     return decoratedCircuitoRally.getValorComplejidad () + decoratedCircuitoRally.getValorComplejidad ()*1.05;
     } 
-       @Override
+      /**
+     * @return devuelve la distancia reducida del circuito Gravilla.
+     */
+    @Override
     public double getValorDistancia ()  {
      return decoratedCircuitoRally.getValorDistancia () - decoratedCircuitoRally.getValorComplejidad ()*0.95;
     }     

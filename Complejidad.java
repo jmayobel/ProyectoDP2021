@@ -1,9 +1,9 @@
 
 /**
- * Enumeration class Complejidad - write a description of the enum class here
  * 
- * @author (your name here)
- * @version (version number or date here)
+ *
+ * @author (Miguel)
+ * @version (1.0)
  */
 public enum Complejidad
 {      BAJA ("baja",1.0), MEDIA ("media",1.25), ALTA ("alta",1.5);

@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class Mojado here.
+ * 
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Miguel)
+ * @version (1.0)
  */
 public class Mojado extends CircuitoRallyExtra
 {
@@ -18,12 +18,20 @@ public class Mojado extends CircuitoRallyExtra
         super (circuitorally);
     }
 
-     @Override
+     
+    /**
+     * @return devuelve la complejidad añadida del circuito Mojado.
+     */
+    @Override
     public double getValorComplejidad ()  {
-     return decoratedCircuitoRally.getValorComplejidad ()+decoratedCircuitoRally.getValorComplejidad ()*1.15;
+     return decoratedCircuitoRally.getValorComplejidad () + decoratedCircuitoRally.getValorComplejidad ()*1.15;
     }      
     
-     @Override
+     
+    /**
+     * @return devuelve la distancia reducida del circuito Mojado.
+     */
+    @Override
     public double getValorDistancia ()  {
      return decoratedCircuitoRally.getValorDistancia () - decoratedCircuitoRally.getValorComplejidad ()*0.85;
     }      
