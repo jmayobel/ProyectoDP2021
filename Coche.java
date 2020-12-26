@@ -8,9 +8,9 @@
 public class Coche
 {
     // instance variables - replace the example below with your own
-    private String nombre;
-    private int velocidad;
-    private int combustible;
+    private String nombreCoche;
+    private float velocidad;
+    private float combustible;
 
     /**
      * Constructor for objects of class Coche
@@ -18,14 +18,25 @@ public class Coche
     public Coche()
     {
         // initialise instance variables
-        nombre = "";
+        nombreCoche = "";
         velocidad = 0;
         combustible = 0;
     }
     public Coche(String nombre, int velocidad, int combustible){
-       this.nombre = nombre;
+       this.nombreCoche = nombre;
        this.velocidad = velocidad;
        this.combustible = combustible;
+    }
+    public String getNombreCoche() {
+    	return nombreCoche;
+    }
+    
+    public float getvelocidad() {
+    	return velocidad;
+    }
+    
+    public float getcombustible()  {
+    	return combustible;
     }
 
 }
