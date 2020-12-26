@@ -11,7 +11,7 @@ public enum Combustible {
 		this.combustible = combustible;
 	}
 	
-	public double getcombustible() {
+	public double getCombustible() {
 		return combustible;
 	}
 	
