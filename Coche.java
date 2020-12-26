@@ -9,7 +9,7 @@ public class Coche
 {
     // instance variables - replace the example below with your own
     private String nombreCoche;
-    private float velocidad;
+    private Velocidad velocidad;
     private float combustible;
 
     /**
@@ -19,10 +19,10 @@ public class Coche
     {
         // initialise instance variables
         nombreCoche = "";
-        velocidad = 0;
-        combustible = 0;
+       // velocidad = 0;
+       // combustible = 0;
     }
-    public Coche(String nombre, int velocidad, int combustible){
+    public Coche(String nombre, Velocidad velocidad, int combustible){
        this.nombreCoche = nombre;
        this.velocidad = velocidad;
        this.combustible = combustible;
@@ -31,7 +31,7 @@ public class Coche
     	return nombreCoche;
     }
     
-    public float getvelocidad() {
+    public Velocidad getvelocidad() {
     	return velocidad;
     }
     
