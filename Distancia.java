@@ -21,10 +21,14 @@ public enum Distancia
         
         return nombre;
     }
-      public double getValor () {
+    public double getValor () {
         
         return valor;
-    } 
+    }
+    @Override
+    public String toString(){
+        return getNombre() + " (valor original: " + getValor() + ").";
+    }
     
 }
  

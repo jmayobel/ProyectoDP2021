@@ -17,14 +17,16 @@ public enum Complejidad
      this.valor=valor;
     }     
     public String getNombre () {
-        
         return nombre;
     }
       public double getValor () {
         
         return valor;
     }  
-
+     @Override
+    public String toString(){
+        return getNombre() + " (valor original: " + getValor() + ").";
+    }
        
 
 }
