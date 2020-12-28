@@ -2,7 +2,7 @@
 /**
  * Write a description of class Coche here.
  * 
- * @author (your name) 
+ * @author Juanma
  * @version (a version number or a date)
  */
 public class Coche
