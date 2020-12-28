@@ -10,7 +10,7 @@ public class Coche
     // instance variables - replace the example below with your own
     private String nombreCoche;
     private Velocidad velocidad;
-    private float combustible;
+    private Combustible combustible;
 
     /**
      * Constructor for objects of class Coche
@@ -22,7 +22,7 @@ public class Coche
        // velocidad = 0;
        // combustible = 0;
     }
-    public Coche(String nombre, Velocidad velocidad, int combustible){
+    public Coche(String nombre, Velocidad velocidad, Combustible combustible){
        this.nombreCoche = nombre;
        this.velocidad = velocidad;
        this.combustible = combustible;
@@ -35,7 +35,7 @@ public class Coche
     	return velocidad;
     }
     
-    public float getcombustible()  {
+    public Combustible getcombustible()  {
     	return combustible;
     }
 
