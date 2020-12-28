@@ -23,13 +23,13 @@ public class Gravilla extends CircuitoRallyExtra
      */
     @Override
     public double getValorComplejidad ()  {
-     return decoratedCircuitoRally.getValorComplejidad () + decoratedCircuitoRally.getValorComplejidad ()*1.05;
+     return decoratedCircuitoRally.getValorComplejidad ()*1.05;
     } 
       /**
      * @return devuelve la distancia reducida del circuito Gravilla.
      */
     @Override
     public double getValorDistancia ()  {
-     return decoratedCircuitoRally.getValorDistancia () - decoratedCircuitoRally.getValorComplejidad ()*0.95;
+     return  decoratedCircuitoRally.getValorDistancia ()*0.95;
     }     
 }

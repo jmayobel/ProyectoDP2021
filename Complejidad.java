@@ -17,7 +17,6 @@ public enum Complejidad
      this.valor=valor;
     }     
     public String getNombre () {
-        
         return nombre;
     }
       public double getValor () {

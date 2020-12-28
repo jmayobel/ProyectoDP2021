@@ -24,7 +24,7 @@ public class Mojado extends CircuitoRallyExtra
      */
     @Override
     public double getValorComplejidad ()  {
-     return decoratedCircuitoRally.getValorComplejidad () + decoratedCircuitoRally.getValorComplejidad ()*1.15;
+     return decoratedCircuitoRally.getValorComplejidad ()*1.15;
     }      
     
      
@@ -33,7 +33,7 @@ public class Mojado extends CircuitoRallyExtra
      */
     @Override
     public double getValorDistancia ()  {
-     return decoratedCircuitoRally.getValorDistancia () - decoratedCircuitoRally.getValorComplejidad ()*0.85;
+     return decoratedCircuitoRally.getValorDistancia ()*0.85;
     }      
     
 }

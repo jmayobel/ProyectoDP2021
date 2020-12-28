@@ -24,7 +24,7 @@ public class Frio extends CircuitoRallyExtra
      */
     @Override
     public double getValorComplejidad ()  {
-     return decoratedCircuitoRally.getValorComplejidad () + decoratedCircuitoRally.getValorComplejidad ()*1.1;
+     return decoratedCircuitoRally.getValorComplejidad ()*1.1;
     }
     
     /**
@@ -32,6 +32,6 @@ public class Frio extends CircuitoRallyExtra
      */
     @Override
     public double getValorDistancia ()  {
-     return decoratedCircuitoRally.getValorDistancia () - decoratedCircuitoRally.getValorComplejidad ()*0.9;
+     return decoratedCircuitoRally.getValorDistancia ()*0.9;
     }      
 }
