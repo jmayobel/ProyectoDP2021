@@ -23,7 +23,10 @@ public enum Complejidad
         
         return valor;
     }  
-
+     @Override
+    public String toString(){
+        return getNombre() + " (valor original: " + getValor() + ").";
+    }
        
 
 }
