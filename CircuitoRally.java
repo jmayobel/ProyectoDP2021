@@ -6,11 +6,9 @@
  */
 public class CircuitoRally implements Circuito
 {
-    // instance variables - replace the example below with your own
-    private String nombreCircuito;
-    private Complejidad complejidad;
-    
-    private Distancia distancia;
+    private String nombreCircuito; //nombre del circuito. 
+    private Complejidad complejidad; //complejidad original del circuito.
+    private Distancia distancia; //distancia original del circuito.
     
     public CircuitoRally (String nombreCircuito,Complejidad complejidad,Distancia distancia) {
         this.nombreCircuito=nombreCircuito;                             
@@ -19,19 +17,13 @@ public class CircuitoRally implements Circuito
         
       }    
     public String getNombreCircuito () {
-        
-       return nombreCircuito;
-        
-    }    
-        public Complejidad getComplejidad () {
-        
-        return complejidad;   
-        
+         return nombreCircuito;
+     }    
+    public Complejidad getComplejidad () {
+         return complejidad;       
     }   
-       public Distancia getDistancia () {
-        
-        return distancia;   
-        
+    public Distancia getDistancia () {
+         return distancia;   
     }   
     public double getValorComplejidad ()  {
      return complejidad.getValor();
@@ -39,7 +31,7 @@ public class CircuitoRally implements Circuito
     public double getValorDistancia () {
         return distancia.getValor();
      }       
-     @Override
+    @Override
     public String toString() {
         return getClass().getSimpleName() + 
         "\n complejidad: " + getValorComplejidad() + 

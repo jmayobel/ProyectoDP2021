@@ -7,11 +7,10 @@
  */
 public class Nocturno extends CircuitoRallyExtra
 {
-    // instance variables - replace the example below with your own
-    private int x;
 
     /**
-     * Constructor for objects of class Nocturno
+     * @param circuitorally,el circuito al cual se le va añadir el extra.
+     * Constructor de los objetos de la clase Nocturno
      */
     public Nocturno(CircuitoRally circuitorally)
     {
@@ -27,7 +26,7 @@ public class Nocturno extends CircuitoRallyExtra
      return decoratedCircuitoRally.getValorComplejidad ()*1.2;
     }
     
-     /**
+    /**
      * @return devuelve la distancia reducida del circuito Nocturno.
      */
     @Override

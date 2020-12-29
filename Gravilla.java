@@ -10,7 +10,8 @@ public class Gravilla extends CircuitoRallyExtra
     // instance variables - replace the example below with your own
 
     /**
-     * Constructor for objects of class Gravilla.
+     * @param circuitorally,el circuito al cual se le va añadir el extra.
+     * Constructor de los objetos de la clase Gravilla.
      */
     public Gravilla (CircuitoRally circuitorally)
     {
