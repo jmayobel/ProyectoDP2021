@@ -4,7 +4,7 @@ public class CocheResistente extends Coche {
 		//super();
 	}
 	@Override
-	public double CalculateCombustible(Combustible combustible, int tiempo) {
+	public double CalculateCombustible() {
 		return 0;
 	}
 
