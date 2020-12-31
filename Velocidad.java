@@ -14,7 +14,7 @@ public enum Velocidad
 	}     
 
 	public double getVelocidad () {
-
+		
 		return velocidad;
 	}  
 

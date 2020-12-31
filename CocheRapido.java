@@ -5,13 +5,26 @@ public class CocheRapido extends Coche {
 	
 	public CocheRapido() {
 		//super();
+		this.nitro = 80;
 	}
 	
 	public double getNitro() {
 		return nitro;
 	}
 	
-	public double CalculateCombustible() {
-		return 0;
+	public double getVelocidadReal() {
+		double nitroRestante = getNitro();
+				
+				if(nitroRestante > 0) {
+					 
+				}
+				else {
+					
+				}
+				return 0;
+		
+	
 	}
+	
+
 }

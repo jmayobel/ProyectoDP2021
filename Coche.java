@@ -20,7 +20,6 @@ public abstract class Coche implements CocheInterface
     {
         // initialise instance variables
         nombreCoche = "";
-        tiempoCarrera = 0;
        // velocidad = 0;
        // combustible = 0;
     }
@@ -28,7 +27,7 @@ public abstract class Coche implements CocheInterface
        this.nombreCoche = nombre;
        this.velocidad = velocidad;
        this.combustible = combustible;
-       this.tiempoCarrera = tiempoCarrera;
+   
     }
     public String getNombreCoche() {
     	return nombreCoche;
@@ -38,22 +37,30 @@ public abstract class Coche implements CocheInterface
     	return velocidad;
     }
     
+    public double getValorVelocidad() {
+    	return velocidad.getVelocidad();
+    }
+    
     public Combustible getcombustible()  {
     	return combustible;
     }
-    public double tiempoCarrera()  {
-    	return tiempoCarrera;
+    
+    public double getValorcombustible()  {
+    	return combustible.getcombustible();
     }
     
-    public double CalculateTiempo(double tiempoCarrera) {
-    	return 0;
-    }
+
     
-	public double CalculateVelocidad() {
-		return 0 /*velocidad*Destreza/Circuito.Complejidad();*/   ;
+	public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito) {
+		return getValorVelocidad() * piloto.getDestreza() / circuito.getValorComplejidad();
 	}
-	public double CalculateCombustible() {
-		return 0 /*combustible-CalculateTiempo();*/;
+	
+    public double getTiempo(PilotoInterfaz piloto, Circuito circuito) {
+    	return (circuito.getValorDistancia()/getVelocidadReal(piloto, circuito))*60;
+    }
+    
+	public double getCombustible(PilotoInterfaz piloto, Circuito circuito) {
+		return getValorcombustible() - getTiempo(piloto, circuito);
 	}
 
 }
