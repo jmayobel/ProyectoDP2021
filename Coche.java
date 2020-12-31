@@ -5,7 +5,7 @@
  * @author Juanma
  * @version (a version number or a date)
  */
-public class Coche
+public abstract class Coche implements CocheInterface
 {
     // instance variables - replace the example below with your own
     private String nombreCoche;
@@ -38,5 +38,12 @@ public class Coche
     public Combustible getcombustible()  {
     	return combustible;
     }
+    
+	public double CalculateVelocidad(Velocidad velocidad, int destreza) {
+		return 0;
+	}
+	public double CalculateCombustible(Combustible combustible, int tiempo) {
+		return 0;
+	}
 
 }
