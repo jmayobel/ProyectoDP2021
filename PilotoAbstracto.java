@@ -74,9 +74,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         Iterator<RegistroPiloto> it = this.registro.iterator(); //Inicializamos el Iterator        
         while(it.hasNext()){
             RegistroPiloto buscar = it.next();
-            System.out.println("CIRCUITO: " + buscar.getCircuito());
-            System.out.println("TIEMPO: " + buscar.getTiempoRegistro());
-            System.out.println("PUNTOS: " + buscar.getPuntos());
+            System.out.println(buscar);
         }
         System.out.println("PUNTOS TOTALES: " + getPuntosTotales());
     }    
@@ -112,4 +110,4 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         builder.append('\n');
         return builder.toString();
     }
-} 
+}
