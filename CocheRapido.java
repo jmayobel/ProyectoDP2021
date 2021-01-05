@@ -3,8 +3,8 @@ public class CocheRapido extends Coche {
 
     private double nitro;
 
-    public CocheRapido() {
-        super();
+    public CocheRapido(String nombre, Velocidad velocidad, Combustible combustible) {
+        super(nombre, velocidad, combustible);
         this.nitro = 80;
     }
 

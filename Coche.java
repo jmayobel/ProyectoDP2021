@@ -59,7 +59,7 @@ public abstract class Coche implements CocheInterface
     public double getTiempo(PilotoInterfaz piloto, Circuito circuito) {
         return (circuito.getValorDistancia()/getVelocidadReal(piloto, circuito))*60;
     }
-    public double getCombustible(PilotoInterfaz piloto, Circuito circuito) {
+    public double getCombustibleUsado(PilotoInterfaz piloto, Circuito circuito) {
         return getValorcombustible() - getTiempo(piloto, circuito);
     }
 }
