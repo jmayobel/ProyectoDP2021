@@ -2,7 +2,7 @@
 /**
  * Write a description of class Coche here.
  * 
- * @author Juanma
+ * @author Juan Manuel Mayo Beltrán
  * @version (a version number or a date)
  */
 public class Coche implements CocheInterfaz

@@ -1,4 +1,9 @@
-
+/**
+ * Write a description of class Coche here.
+ * 
+ * @author Juan Manuel Mayo Beltrán
+ * @version (a version number or a date)
+ */
 public class CocheRapido extends Coche {
 
     private double nitro;
