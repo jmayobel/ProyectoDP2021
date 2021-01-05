@@ -1,5 +1,5 @@
 
-public interface CocheInterface {
+public interface CocheInterfaz {
 	public String getNombreCoche();
 	public Velocidad getvelocidad();
 	public double getValorVelocidad();
