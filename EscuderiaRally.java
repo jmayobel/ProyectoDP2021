@@ -10,7 +10,10 @@ public class EscuderiaRally implements Escuderia
     private String nomEscuderia;
     private ArrayList <PilotoInterfaz> ListaPilotos;
     private ArrayList <CocheInterfaz> ListaCoches;
-
+    private Comparator<PilotoInterfaz> compPilotos;
+    private Comparator<CocheInterfaz> compCoches;
+   
+    
     
     /**
      * Constructor for objects of class EscuderiaRally
@@ -54,6 +57,14 @@ public class EscuderiaRally implements Escuderia
     
     }
         
-
+    public Comparator<PilotoInterfaz> getComparadorPilotos () {
+        
+     return  compPilotos;  
+        
+        
+    }     
+    
+    
+    
   
 }
