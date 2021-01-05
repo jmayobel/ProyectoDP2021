@@ -5,7 +5,7 @@
  * @author Juanma
  * @version (a version number or a date)
  */
-public abstract class Coche implements CocheInterface
+public abstract class Coche implements CocheInterfaz
 {
     // instance variables - replace the example below with your own
     private String nombreCoche;
