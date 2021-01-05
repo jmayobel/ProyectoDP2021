@@ -5,7 +5,4 @@ public interface CocheInterface {
 	public double getValorVelocidad();
 	public Combustible getcombustible(); 
 	public double getValorcombustible() ;
-	
-	
-	
 }

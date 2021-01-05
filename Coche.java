@@ -18,49 +18,44 @@ public abstract class Coche implements CocheInterface
      */
     public Coche()
     {
-        // initialise instance variables
+        //initialise instance variables
         nombreCoche = "";
-       // velocidad = 0;
-       // combustible = 0;
+        //velocidad = 0;
+        //combustible = 0;
     }
+
     public Coche(String nombre, Velocidad velocidad, Combustible combustible, double tiempoCarrera){
-       this.nombreCoche = nombre;
-       this.velocidad = velocidad;
-       this.combustible = combustible;
-   
+        this.nombreCoche = nombre;
+        this.velocidad = velocidad;
+        this.combustible = combustible;
     }
+
     public String getNombreCoche() {
-    	return nombreCoche;
+        return nombreCoche;
     }
-    
+
     public Velocidad getvelocidad() {
-    	return velocidad;
+        return velocidad;
     }
-    
     public double getValorVelocidad() {
-    	return velocidad.getVelocidad();
+        return velocidad.getVelocidad();
     }
-    
     public Combustible getcombustible()  {
-    	return combustible;
+        return combustible;
     }
-    
+
     public double getValorcombustible()  {
-    	return combustible.getcombustible();
+        return combustible.getcombustible();
     }
-    
 
-    
-	public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito) {
-		return getValorVelocidad() * piloto.getDestreza() / circuito.getValorComplejidad();
-	}
-	
+    public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito) {
+        return getValorVelocidad() * piloto.getDestreza() / circuito.getValorComplejidad();
+    }
+
     public double getTiempo(PilotoInterfaz piloto, Circuito circuito) {
-    	return (circuito.getValorDistancia()/getVelocidadReal(piloto, circuito))*60;
+        return (circuito.getValorDistancia()/getVelocidadReal(piloto, circuito))*60;
     }
-    
-	public double getCombustible(PilotoInterfaz piloto, Circuito circuito) {
-		return getValorcombustible() - getTiempo(piloto, circuito);
-	}
-
+    public double getCombustible(PilotoInterfaz piloto, Circuito circuito) {
+        return getValorcombustible() - getTiempo(piloto, circuito);
+    }
 }
