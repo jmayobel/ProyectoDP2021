@@ -12,6 +12,7 @@ public interface Circuito
     public Distancia getDistancia ();
     public double getValorComplejidad ();
     public double getValorDistancia ();
+    public String toString();
     
     
     
