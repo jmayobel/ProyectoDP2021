@@ -16,19 +16,23 @@ public abstract class Coche implements CocheInterfaz
     /**
      * Constructor for objects of class Coche
      */
-    public Coche()
-    {
-        //initialise instance variables
-        nombreCoche = "";
-        //velocidad = 0;
-        //combustible = 0;
-    }
 
-    public Coche(String nombre, Velocidad velocidad, Combustible combustible, double tiempoCarrera){
+    public Coche(String nombre, Velocidad velocidad, Combustible combustible){
         this.nombreCoche = nombre;
         this.velocidad = velocidad;
         this.combustible = combustible;
     }
+    
+    public void setnombreCoche(String nombre){
+        this.nombreCoche = nombre;
+    }
+    
+    public void setvelocidad(Velocidad velocidad){
+         this.velocidad = velocidad;
+    }
+    public void setcombustible(Combustible combustible){
+        this.combustible = combustible;
+    }  
 
     public String getNombreCoche() {
         return nombreCoche;
