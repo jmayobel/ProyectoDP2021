@@ -13,6 +13,7 @@ public class CocheResistente extends Coche {
             super.setcombustible(super.getcombustible());
         }
         
+        return 0;
     }
 
 }
