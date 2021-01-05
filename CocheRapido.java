@@ -12,15 +12,19 @@ public class CocheRapido extends Coche {
         return nitro;
     }
 
+    @Override
     public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito) {
         double nitroRestante = getNitro();
-        if(nitroRestante > 0) {
-                   
+        double velocidadNitro = super.getVelocidadReal(piloto, circuito);
+        if(nitroRestante >= super.getVelocidadReal(piloto, circuito)*0.2) {
+            velocidadNitro = super.getVelocidadReal(piloto, circuito) + super.getVelocidadReal(piloto, circuito)*0.2;
+            nitroRestante = super.getVelocidadReal(piloto, circuito)*0.2 - nitroRestante;
         }
         else {
-
+            velocidadNitro = super.getVelocidadReal(piloto, circuito) + nitroRestante;
+            nitroRestante = 0;
         }
-        return 0;
+        return velocidadNitro;
     }
 
 }
