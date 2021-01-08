@@ -1,6 +1,5 @@
-
 /**
- * Write a description of class Coche here.
+ * Clase Coche, que contiene su nombre,velocidad y combustible.
  * 
  * @author Juan Manuel Mayo Beltrán
  * @version (a version number or a date)
@@ -16,13 +15,16 @@ public class Coche implements CocheInterfaz
     /**
      * Constructor for objects of class Coche
      */
-
     public Coche(String nombre, Velocidad velocidad, Combustible combustible){
         this.nombreCoche = nombre;
         this.velocidad = velocidad;
         this.combustible = combustible;
     }
     
+    /**
+     * Set del nombre del coche
+     * @param String nombre - nombre del coche
+     */
     public void setnombreCoche(String nombre){
         this.nombreCoche = nombre;
     }
@@ -51,11 +53,19 @@ public class Coche implements CocheInterfaz
     public double getValorcombustible() {
         return combustible.getcombustible();
     }
-
+    
+    /**
+     * 
+     */
     public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito) {
         return getValorVelocidad() * piloto.getDestreza() / circuito.getValorComplejidad();
     }
 
+    /**
+     * @param piloto - un piloto de la carrera
+     * @param circuito - Un circuito
+     * @return Devuelve el tiempo de la carrera
+     */
     public double getTiempo(PilotoInterfaz piloto, Circuito circuito) {
         return (circuito.getValorDistancia()/getVelocidadReal(piloto, circuito))*60;
     }

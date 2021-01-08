@@ -13,7 +13,7 @@ public class Organizacion
     private final int nPilotos;
     private TreeSet <Circuito> CircuitoSet;
     private TreeSet <EscuderiaInterfaz> EscuderiaSet;
-    private ArrayList <PilotoInterfaz> ListaPilotos;
+    private HashMap <PilotoInterfaz,EscuderiaInterfaz> PilotosCarrera;   
 
     /**
      * Constructor for objects of class Organizacion
@@ -24,12 +24,9 @@ public class Organizacion
         nPilotos=20;
         CircuitoSet= new TreeSet <Circuito> ();
         EscuderiaSet=new TreeSet <EscuderiaInterfaz> (); 
-        ListaPilotos=new ArrayList <PilotoInterfaz> ();
+        PilotosCarrera = new HashMap <PilotoInterfaz, EscuderiaInterfaz> ();
     }
 
-
-    
-    
     
     public synchronized static
     Organizacion getInstance () 
