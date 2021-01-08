@@ -5,13 +5,13 @@ import java.util.*;
  * @author (your name)
  * @version (a version number or a date)
  */
-public interface Escuderia
+public interface EscuderiaInterfaz
 {
     public ArrayList getListaPilotos ();
     public ArrayList getListaCoches ();
-    public String    getNombre ();
-    public void  addListaPilotos (PilotoInterfaz piloto);
-    public void  addListaCoches (CocheInterfaz coche);
+    public String getNombre ();
+    public void addListaPilotos (PilotoInterfaz piloto);
+    public void addListaCoches (CocheInterfaz coche);
     
     
 }
