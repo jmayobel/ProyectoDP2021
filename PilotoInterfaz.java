@@ -13,10 +13,11 @@ public interface PilotoInterfaz{
     public abstract double getDestreza();
     public void setCoche(Coche coche);
     public void descalificar();
-    public void añadirInfoRegistro(Circuito circuito, double tiempo, int puntos);
-    public int getTamañoRegistro();
+    public void añadirResultados(Circuito circuito, double tiempo, int puntos);
+    public int getTamañoResultados();
     public int getPuntosTotales();
-    public void mostrarRegistro();
-    public void eliminarInfoRegistro(Circuito buscado);
+    public void mostrarResultados();
+    public void eliminarResultado(Circuito buscado);
+    public void limpiarResultados();
     public String toString();
 }

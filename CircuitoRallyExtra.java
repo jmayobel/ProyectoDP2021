@@ -1,20 +1,20 @@
 
 /**
- * Abstract class CircuitoRallyExtra - write a description of the class here
+ * CircuitoRallyExtra 
+ * Clase padre del patron decorator
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author (Miguel)
+ * @version (1.0)
  */
 public abstract class CircuitoRallyExtra extends CircuitoRally
 {
-    // instance variables - replace the example below with your own
     protected CircuitoRally decoratedCircuitoRally;
 
     /**
-     * An example of a method - replace this comment with your own
+     * 
      *
-     * @param  a circuit
-     * @return the new decorated circuit 
+     * @param  un circuito
+     * @return  devuelve decoratedCircuitoRally
      */
     public CircuitoRallyExtra (CircuitoRally circuitorally)
     {
@@ -22,11 +22,20 @@ public abstract class CircuitoRallyExtra extends CircuitoRally
         decoratedCircuitoRally=circuitorally;
     }
      
+     
+    
+    /**
+     * 
+     * @return devuelve el valor de la complejidad de decoratedCircuitoRally
+     */
     @Override
     public double getValorComplejidad ()  {
      return decoratedCircuitoRally.getValorComplejidad ();
     }      
      
+    /**
+     * @return  devuelve el valor de la complejidad de decoratedCircuitoRally
+     */
     @Override
     public double getValorDistancia ()  {
      return decoratedCircuitoRally.getValorDistancia ();

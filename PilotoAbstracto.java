@@ -14,7 +14,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     private String nombre;                                  //Nombre completo del Piloto
     private Coche coche;                                    //Coche con el que correrá (Asignado por la Escudería)
     private Concentracion concentracion;                    //Minutos que aguanta el piloto de carrera antes de abandonar 
-    private ArrayList<RegistroPiloto> registro;             //Registro con el tiempo y puntos conseguidos en cada carrera
+    private ArrayList<Resultados> resultados;             //Registro con el tiempo y puntos conseguidos en cada carrera
     private boolean descalificado;                          //"false" si NO ha sido descalificado, "true" en caso contrario
 
     //Constructor parametrizado
@@ -22,7 +22,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         this.nombre = nombre;
         this.coche = null;
         this.concentracion = concentracion;
-        this.registro = new ArrayList<RegistroPiloto>();
+        this.resultados = new ArrayList<Resultados>();
         this.descalificado = false;
     }
     
@@ -39,8 +39,8 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     public double getTiempoConcentracion(){     //USAD ESTE SI LO QUE NECESITAIS ES EL NUMERO
         return this.concentracion.getTiempo();
     }
-    public ArrayList<RegistroPiloto> getRegistro(){
-        return this.registro;
+    public ArrayList<Resultados> getResultados(){
+        return this.resultados;
     }
     public boolean getDescalificado(){
         return this.descalificado;
@@ -55,44 +55,44 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     }
         
     //Métodos ArrayList
-    public void añadirInfoRegistro(Circuito circuito, double tiempo, int puntos){
-        this.registro.add(new RegistroPiloto(circuito, tiempo, puntos));
+    public void añadirResultados(Circuito circuito, double tiempo, int puntos){
+        this.resultados.add(new Resultados(circuito, tiempo, puntos));
     }
-    public int getTamañoRegistro(){
-        return this.registro.size();
+    public int getTamañoResultados(){
+        return this.resultados.size();
     }
     public int getPuntosTotales(){
-        Iterator<RegistroPiloto> it = this.registro.iterator(); //Inicializamos el Iterator
+        Iterator<Resultados> it = this.resultados.iterator(); //Inicializamos el Iterator
         int puntostotales = 0;
         while(it.hasNext()){
-            RegistroPiloto buscar = it.next();
+            Resultados buscar = it.next();
             puntostotales += buscar.getPuntos();   
         }
         return puntostotales;
     }
-    public void mostrarRegistro(){
-        Iterator<RegistroPiloto> it = this.registro.iterator(); //Inicializamos el Iterator        
+    public void mostrarResultados(){
+        Iterator<Resultados> it = this.resultados.iterator(); //Inicializamos el Iterator        
         while(it.hasNext()){
-            RegistroPiloto buscar = it.next();
+            Resultados buscar = it.next();
             System.out.println(buscar);
         }
         System.out.println("PUNTOS TOTALES: " + getPuntosTotales());
     }    
-    public void eliminarInfoRegistro(Circuito buscado){
-        Iterator<RegistroPiloto> it = this.registro.iterator(); //Inicializamos el Iterator
+    public void eliminarResultado(Circuito buscado){
+        Iterator<Resultados> it = this.resultados.iterator(); //Inicializamos el Iterator
         boolean enc = false;
         while(it.hasNext() && !enc){
-            RegistroPiloto buscar = it.next();
+            Resultados buscar = it.next();
             if(buscar.getCircuito().equals(buscado)){
                 enc = true;
                 it.remove();
             }     
         }
     }
-    public void eliminarRegistro(){
-        Iterator<RegistroPiloto> it = this.registro.iterator(); //Inicializamos el Iterator
+    public void limpiarResultados(){
+        Iterator<Resultados> it = this.resultados.iterator(); //Inicializamos el Iterator
         while(it.hasNext()){
-            RegistroPiloto eliminar = it.next();
+            Resultados eliminar = it.next();
             it.remove();     
         }
     }

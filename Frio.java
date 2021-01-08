@@ -7,14 +7,13 @@
  */
 public class Frio extends CircuitoRallyExtra
 {
-    // instance variables - replace the example below with your own
    /**
     *  @param circuitorally,el circuito al cual se le va añadir el extra.
-     * Constructor de los objetos de la clase Nocturno
+     * Constructor de los objetos de la clase Nocturno.
+     * @return devuelve un objeto de tipo Frio.
      */
     public Frio (CircuitoRally circuitorally)
     {
-        // initialise instance variables
         super (circuitorally);
     }
 

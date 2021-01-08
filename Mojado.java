@@ -9,7 +9,9 @@ public class Mojado extends CircuitoRallyExtra
 {
     /**
      * @param circuitorally,el circuito al cual se le va añadir el extra.
-     * Constructor de los objetos de la clase Mojado
+     * Constructor de los objetos de la clase Mojado.
+     * 
+     * @return devuelve un objeto de tipo Mojado.
      */
     public Mojado(CircuitoRally circuitorally)
     {

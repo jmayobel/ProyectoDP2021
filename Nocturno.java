@@ -10,11 +10,12 @@ public class Nocturno extends CircuitoRallyExtra
 
     /**
      * @param circuitorally,el circuito al cual se le va añadir el extra.
-     * Constructor de los objetos de la clase Nocturno
+     * Constructor de los objetos de la clase Nocturno.
+     * @return devuelve un objeto de tipo Nocturno.
+     * 
      */
     public Nocturno(CircuitoRally circuitorally)
     {
-        // initialise instance variables
         super (circuitorally);
     }
 

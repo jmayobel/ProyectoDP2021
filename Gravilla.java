@@ -12,6 +12,7 @@ public class Gravilla extends CircuitoRallyExtra
     /**
      * @param circuitorally,el circuito al cual se le va añadir el extra.
      * Constructor de los objetos de la clase Gravilla.
+     * @return devuelve un objeto de tipo Gravilla.
      */
     public Gravilla (CircuitoRally circuitorally)
     {
