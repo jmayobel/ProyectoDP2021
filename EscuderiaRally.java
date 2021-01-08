@@ -93,5 +93,14 @@ public class EscuderiaRally implements EscuderiaInterfaz
             CocheInterfaz eliminar = it.next();
             it.remove();     
         }
-    }   
+    }
+    public int getPuntosTotalesEscuderia(){
+        Iterator<PilotoInterfaz> it = this.ListaPilotos.iterator(); //Inicializamos el Iterator
+        int puntostotales = 0;
+        while(it.hasNext()){
+            PilotoInterfaz buscar = it.next();
+            puntostotales += buscar.getPuntosTotales();   
+        }
+        return puntostotales;   
+    }
 }

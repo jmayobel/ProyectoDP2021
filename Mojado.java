@@ -34,4 +34,12 @@ public class Mojado extends CircuitoRallyExtra
      return decoratedCircuitoRally.getValorDistancia ()*0.85;
     }      
     
+    
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + 
+        "\n nueva complejidad: " + getValorComplejidad() + 
+        "\n nueva distancia: " + getValorDistancia();
+    }
+    
 }

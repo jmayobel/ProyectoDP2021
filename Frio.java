@@ -34,4 +34,11 @@ public class Frio extends CircuitoRallyExtra
     public double getValorDistancia ()  {
      return decoratedCircuitoRally.getValorDistancia ()*0.9;
     }      
+    
+   @Override
+    public String toString() {
+        return getClass().getSimpleName() + 
+        "\n nueva complejidad: " + getValorComplejidad() + 
+        "\n nueva distancia: " + getValorDistancia();
+    } 
 }
