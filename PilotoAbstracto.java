@@ -88,7 +88,15 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
                 it.remove();
             }     
         }
-    }    
+    }
+    public void eliminarRegistro(){
+        Iterator<RegistroPiloto> it = this.registro.iterator(); //Inicializamos el Iterator
+        while(it.hasNext()){
+            RegistroPiloto eliminar = it.next();
+            it.remove();     
+        }
+    }
+    
    
     //toString()
     @Override
