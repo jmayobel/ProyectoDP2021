@@ -3,8 +3,8 @@ import java.util.Comparator;
 /**
  * Write a description of class ComparadorConcentracion here.
  *
- * @author MIGUEL MEDINA
- * @version 0.0
+ * @author (Miguel)
+ * @version (a version number or a date)
  */
 public class ComparadorConcentracion extends ComparadorPiloto
 {
