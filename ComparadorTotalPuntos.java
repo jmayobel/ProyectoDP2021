@@ -1,4 +1,3 @@
-
 import java.util.Comparator;
 /**
  * Write a description of class ComparadorTotalPuntos here.
