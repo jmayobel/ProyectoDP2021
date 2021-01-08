@@ -1,7 +1,7 @@
 
 import java.util.Comparator;
 /**
- * Write a description of class ComparatorTotalPuntos here.
+ * Write a description of class ComparadorTotalPuntos here.
  * 
  * @author CESAR VAZQUEZ LAZARO 
  * @version 0.0
