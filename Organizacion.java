@@ -76,6 +76,33 @@ public class Organizacion
         return aux; 
     }    
 
+    public synchronized void DejarVacioTreeSetCircuitos () {
+        Iterator<Circuito> it = this.CircuitoSet.iterator(); //Inicializamos el Iterator
+        
+
+        while(it.hasNext()){
+            Circuito buscar = it.next();
+            it.remove();
+        
+        }        
+        
+        
+        
+    }    
+        public synchronized void DejarVacioListadeEscuderias() {
+        Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator(); //Inicializamos el Iterator
+        while(it.hasNext()){
+            EscuderiaInterfaz buscar = it.next();
+            it.remove();
+        }
+
+    }    
+    
+    
+    
+    
+    
+    
     
     public synchronized static
     Organizacion getInstance () 
