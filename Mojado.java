@@ -8,7 +8,7 @@
 public class Mojado extends CircuitoRallyExtra
 {
     /**
-     * Constructor de los objetos de la clase Mojado.
+     * Constructor parametrizado de la clase Mojado.
      * @param circuitorally,el circuito al cual se le va añadir el extra.
      * @return devuelve un objeto de tipo Mojado.
      */
@@ -19,6 +19,7 @@ public class Mojado extends CircuitoRallyExtra
 
      
     /**
+     * devuelve la complejidad añadida del circuito multiplicada por 1.15
      * @return devuelve la complejidad añadida del circuito Mojado.
      */
     @Override
@@ -28,6 +29,7 @@ public class Mojado extends CircuitoRallyExtra
     
      
     /**
+     * devuelve la distancia reducida del circuito multiplicada por 0.85
      * @return devuelve la distancia reducida del circuito Mojado.
      */
     @Override
@@ -37,7 +39,9 @@ public class Mojado extends CircuitoRallyExtra
     
     
      /**
-     * @return devuelve un string con la informacion de la clase.
+      * 
+      * devuelvela informacion de la clase
+     * @return un string con la informacion de la clase.
      */
     @Override
     public String toString() {

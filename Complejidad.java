@@ -1,38 +1,37 @@
 
 /**
- * 
+ * enum Complejidad que va a usar Circuitos.
  *
  * @author Miguel Medina Cantos
  * @version (1.0)
  */
 public enum Complejidad 
-{      BAJA ("baja",1.0), MEDIA ("media",1.25), ALTA ("alta",1.5);
+{      BAJA ("BAJA",1.0), MEDIA ("MEDIA",1.25), ALTA ("ALTA",1.5);
      
      
-    private final String nombre;
-    private final double valor;
+    private final String nombre; //nombre de la complejidad.
+    private final double valor; // valor de la complejidad.
     
     /**
-     * Constructor de la clase 
-     * @param nombre -nombre de la complejidad
+     * Constructor parametrizado del enum. 
+     * @param nombre -nombre de la complejidad.
      * @param valor  -valor de la complejidad. 
-     * @return devuelve un objeto de tipo Complejidad.
      */
     Complejidad  (String nombre, double valor) {
      this.nombre=nombre;
      this.valor=valor;
     }     
     /**
-     * 
-     * @return devuelve el nombre de la complejidad.
+     * devuelve el nombre el nombre de la complejidad.
+     * @return nombre.
      * 
      */
     public String getNombre () {
         return nombre;
     }
     /**
-     * 
-     * @return devuelve el valor de la complejidad.
+     * devuelve el valor de la complejidad.
+     * @return valor.
      */
     public double getValor () {
         
@@ -40,7 +39,8 @@ public enum Complejidad
     }  
     
     /**
-     * @return devuelve la información de la clase.
+     * devuelve la informacion de la clase.
+     * @return un string con la información de la clase.
      * 
      */
     @Override

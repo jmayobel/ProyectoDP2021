@@ -10,14 +10,13 @@ public class CircuitoRally implements Circuito
     private Complejidad complejidad; //complejidad original del circuito.
     private Distancia distancia; //distancia original del circuito.
     
-    /** 
-     * Constructor de los objetos de la clase CircuitoRally.
+    /**
+     * Constructor parametrizado de la clase CircuitoRally.
      * 
-     * @param nombreCircuito el nombre del circuito
-     * @param complejidad complejidad del circuito
+     * @param nombreCircuito el nombre del circuito.
+     * @param complejidad complejidad del circuito.
      * @param distancia ditancia del circuito.
      * 
-     * @return devuelve un objeto de tipo CircuitoRally.
      */
     public CircuitoRally (String nombreCircuito,Complejidad complejidad,Distancia distancia) {
         this.nombreCircuito=nombreCircuito;                             
@@ -26,38 +25,44 @@ public class CircuitoRally implements Circuito
         
       }    
     /** 
-      * @return devuelve nombreCircuito
+     *  devuelve el nombre del circuito.
+      * @return  nombreCircuito.
      */
     public String getNombreCircuito () {
          return nombreCircuito;
      }    
      /** 
-      * @return devuelve complejidad
+      * devuelve la complejidad del circuito.
+      * @return complejidad.
      */
     public Complejidad getComplejidad () {
          return complejidad;       
     }   
     /** 
-     * @return devuelve distancia
+     * devuelve la distancia.
+     * @return  distancia.
      */
     public Distancia getDistancia () {
          return distancia;   
     }   
     /** 
+     * devuelve el valor de la complejidad.
      * 
-     * @return devuelve el valor de la complejidad
+     * @return  el valor de la complejidad.
      */
     public double getValorComplejidad ()  {
      return complejidad.getValor();
     }      
-    /** 
-      * @return devuelve el valor de la distancia
+    /** devuelve el valor de la distancia.
+     * 
+      * @return devuelve el valor de la distancia.
      */
     public double getValorDistancia () {
         return distancia.getValor();
     }       
     /** 
-      * @return devuelve un string con la informacion de la clase
+     * devuelve  la informacion de una clase.
+      * @return  un string con la informacion de la clase.
      */
     @Override
     public String toString() {

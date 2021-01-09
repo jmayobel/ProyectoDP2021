@@ -11,7 +11,7 @@ public abstract class CircuitoRallyExtra extends CircuitoRally
     protected CircuitoRally decoratedCircuitoRally;
 
     /**
-     * 
+     * Constructor parametrizado de la clase CircuitoRallyExtra.
      *
      * @param circuitorally -un circuito
      * @return  devuelve decoratedCircuitoRally
@@ -25,7 +25,7 @@ public abstract class CircuitoRallyExtra extends CircuitoRally
      
     
     /**
-     * 
+     * devuelve el valor de la complejidad.
      * @return devuelve el valor de la complejidad de decoratedCircuitoRally
      */
     @Override
@@ -34,7 +34,8 @@ public abstract class CircuitoRallyExtra extends CircuitoRally
     }      
      
     /**
-     * @return  devuelve el valor de la complejidad de decoratedCircuitoRally
+     * devuelve el valor de la distancia.
+     * @return  devuelve el valor de la distancia de decoratedCircuitoRally
      */
     @Override
     public double getValorDistancia ()  {
@@ -42,7 +43,8 @@ public abstract class CircuitoRallyExtra extends CircuitoRally
     }      
     
     /**
-     * @return devuelve un string con la informacion de la clase.
+     * devuelve la informacion de la clase.
+     * @return un string con la informacion de la clase.
      */
     @Override
     public String toString ()  
