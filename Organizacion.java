@@ -27,7 +27,47 @@ public class Organizacion
         ListaPilotos=new ArrayList <PilotoInterfaz> ();
     }
 
+    public synchronized void setEsuderia (EscuderiaInterfaz nuevaEscuderia) {
+        
+             
+        EscuderiaSet.add(nuevaEscuderia);
+        
+    }    
+    
+    public synchronized void deleteEscuderia (EscuderiaInterfaz escuderia) {
+        
+             
+        EscuderiaSet.remove(escuderia);
+        
+    }    
+       public synchronized void setCircuito (Circuito nuevoCircuito) {
+        
+             
+        CircuitoSet.add(nuevoCircuito);
+        
+    }    
+    public synchronized void deleteCircuito (Circuito circuito) {
+        
+         CircuitoSet.remove(circuito);
+        
+    }  
+    public synchronized Circuito buscarCircuito (Circuito circuito) {
+       Iterator<Circuito> it = this.CircuitoSet.iterator(); //Inicializamos el Iterator
+       boolean enc = false;
+       Circuito buscar = it.next();
 
+        while(it.hasNext() && !enc){
+            if(buscar.equals(circuito)){
+                enc = true;
+                return buscar; 
+            }     
+        }
+        
+        
+     
+        
+      return null;
+    }    
     
     
     
