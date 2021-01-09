@@ -36,7 +36,6 @@ public class Frio extends CircuitoRallyExtra
     
    @Override
     public String toString() {
-
           return decoratedCircuitoRally.toString() + "\n" +
          "extra:" + getClass().getSimpleName() + "\n" +
         " -> nueva complejidad: " + getValorComplejidad() + 
