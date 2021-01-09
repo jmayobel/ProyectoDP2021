@@ -27,14 +27,18 @@ public class Organizacion
         PilotosCarrera = new HashMap <PilotoInterfaz, EscuderiaInterfaz> ();
     }
 
-    
     public synchronized static
     Organizacion getInstance () 
     {
         if (instance==null) {
-           instance= new Organizacion();
-           
+            instance= new Organizacion();
+
         } 
-       return instance;
+        return instance;
+    }
+
+    public void setCircuito (Circuito nuevoCircuito) {
+
+        CircuitoSet.add(nuevoCircuito);
     }
 }

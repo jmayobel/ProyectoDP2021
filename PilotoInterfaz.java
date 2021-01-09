@@ -20,4 +20,6 @@ public interface PilotoInterfaz{
     public void eliminarResultado(Circuito buscado);
     public void limpiarResultados();
     public String toString();
+    public Coche getCoche();
+
 }
