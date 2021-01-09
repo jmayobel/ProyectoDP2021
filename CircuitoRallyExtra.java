@@ -25,7 +25,7 @@ public abstract class CircuitoRallyExtra extends CircuitoRally
     
     /**
      * devuelve el valor de la complejidad.
-     * @return  el valor de la complejidad de decoratedCircuitoRally
+     * @return  el valor de la complejidad de decoratedCircuitoRally.
      */
     @Override
     public double getValorComplejidad ()  {
@@ -34,7 +34,7 @@ public abstract class CircuitoRallyExtra extends CircuitoRally
      
     /**
      * devuelve el valor de la distancia.
-     * @return  el valor de la distancia de decoratedCircuitoRally
+     * @return  el valor de la distancia de decoratedCircuitoRally.
      */
     @Override
     public double getValorDistancia ()  {
