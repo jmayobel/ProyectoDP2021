@@ -13,12 +13,12 @@ public interface EscuderiaInterfaz{
     public Comparator<CocheInterfaz> getComparadorCoches();       
     public void setComparadorPilotos(Comparator<PilotoInterfaz> comparador);
     public void setComparadorCoches(Comparator<CocheInterfaz> comparador);
-    public void addListaPilotos (PilotoInterfaz piloto);
-    public void addListaCoches (CocheInterfaz coche);
-    public void eliminarPiloto(PilotoAbstracto buscado);
-    public void eliminarCoche(Coche buscado);
-    public void eliminarListaPilotos();
-    public void eliminarListaCoches();
+    public void addListaPilotos(PilotoInterfaz piloto);
+    public void addListaCoches(CocheInterfaz coche);
+    public void eliminarPiloto(PilotoInterfaz buscado);
+    public void eliminarCoche(CocheInterfaz buscado);
+    public void limpiarListaPilotos();
+    public void limpiarListaCoches();
     public int getPuntosTotalesEscuderia();
     public int hashCode();    
 }
