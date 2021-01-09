@@ -54,7 +54,6 @@ public abstract class CircuitoRallyExtra extends CircuitoRally
         "\n + extra:" + getClass().getSimpleName() +
         " -> nueva complejidad: " + getValorComplejidad() + 
         "\n"+ getValorDistancia ();
-        
     }
     
     

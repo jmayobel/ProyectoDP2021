@@ -60,7 +60,6 @@ public class Organizacion
                 aux=buscar;
             }     
         }
-
         return aux;
     }    
 
@@ -116,7 +115,6 @@ public class Organizacion
             EscuderiaInterfaz buscar = it.next();
             System.out.println (buscar.toString());
         }
-
     }
     public synchronized void MostrarCircuitos(){
         Iterator<Circuito> it = this.CircuitoSet.iterator();

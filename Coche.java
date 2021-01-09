@@ -111,4 +111,18 @@ public class Coche implements CocheInterfaz
     public double getCombustibleUsado(PilotoInterfaz piloto, Circuito circuito) {
         return getValorcombustible() - getTiempo(piloto, circuito);
     }
+    
+      /**
+     * devuelve la informacion de la clase.
+     * @return un string con la informacion de la clase.
+     */
+    @Override
+    public String toString ()  
+    {
+        // put your code here
+        return
+        "Nombre del coche" + getNombreCoche() + "\n" +
+        "Combustible: " + getValorcombustible() + 
+        "\n"+ "Velocidad:" + getValorVelocidad ();
+    }
 }
