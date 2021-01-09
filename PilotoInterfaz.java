@@ -2,11 +2,12 @@
  * PilotoInterfaz declara los métodos que se usarán en la clase PilotoAbstracto 
  * 
  * @author CESAR VAZQUEZ LAZARO 
- * @version 0.1
+ * @version 0.2
  */
 
 public interface PilotoInterfaz{
     public String getNombre();
+    public Coche getCoche();
     public Concentracion getConcentracion();
     public double getTiempoConcentracion();
     public boolean getDescalificado();
@@ -20,6 +21,5 @@ public interface PilotoInterfaz{
     public void eliminarResultado(Circuito buscado);
     public void limpiarResultados();
     public String toString();
-    public Coche getCoche();
-
+    public int hashCode();
 }
