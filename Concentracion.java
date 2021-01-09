@@ -7,7 +7,7 @@
  * @version 0.2
  */
 public enum Concentracion{
-    //Los posibles tipos de concentración del piloto (Con su tiempo de concentración en minutos)
+    //Variables del ENUM Concentracion:   
     DESPISTADO("DESPISTADO", 90.0),
     NORMAL("NORMAL", 100.0),
     CONCENTRADO("CONCENTRADO", 110.0),
@@ -16,16 +16,31 @@ public enum Concentracion{
     private final String nombre;    //Tipo de concentración
     private final double tiempo;    //Tiempo de concentración en minutos
     
-    //Constructor parametrizado
+    /**
+    * Constructor parametrizado de la clase Concentracion.
+    *
+    * @param nombre Tipo de Concentracion (DESPISTADO, NORMAL, CONCENTRADO, ZEN)
+    * @param tiempo Tiempo (en minutos) que durará corriendo el piloto antes de abandonar la carrera
+    */
     Concentracion(String nombre, double tiempo){
         this.nombre = nombre;
         this.tiempo = tiempo;
     }
     
     //Métodos get()
+    /**
+    * Devuelve el tipo de concentración.
+    *
+    * @return Tipo de Concentracion (DESPISTADO, NORMAL, CONCENTRADO, ZEN)
+    */
     public String getNombre(){
        return this.nombre; 
-    }    
+    }
+    /**
+    * Devuelve el tiempo de concentración.
+    *
+    * @return Tiempo (en minutos) que durará corriendo el piloto antes de abandonar la carrera
+    */
     public double getTiempo(){
         return this.tiempo;
     }

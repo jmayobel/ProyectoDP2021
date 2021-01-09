@@ -1,16 +1,18 @@
-
 /**
- * Write a description of class PilotoEstrella here.
- * 
+ * La clase PilotoEstrella calcula la destreza del piloto. 
  * @author CESAR VAZQUEZ LAZARO
- * @version 0.0
+ * @version 0.1
  */
 public class PilotoEstrella extends PilotoAbstracto
 {    
+    //Variables de la clase PilototEstrella:
     private double destreza;  
 
     /**
-     * Constructor for objects of class PilotoEstrella
+     * Constructor parametrizado de la clase PilotoEstrella.
+     * 
+     * @param nombre Nombre de pila del piloto
+     * @param concentracion Concentración del piloto
      */
     public PilotoEstrella(String nombre, Concentracion concentracion)
     {
