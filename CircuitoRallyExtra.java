@@ -3,7 +3,7 @@
  * CircuitoRallyExtra 
  * Clase padre del patron decorator
  *
- * @author (Miguel)
+ * @author Miguel Medina Cantos
  * @version (1.0)
  */
 public abstract class CircuitoRallyExtra extends CircuitoRally
@@ -13,7 +13,7 @@ public abstract class CircuitoRallyExtra extends CircuitoRally
     /**
      * 
      *
-     * @param  un circuito
+     * @param circuitorally -un circuito
      * @return  devuelve decoratedCircuitoRally
      */
     public CircuitoRallyExtra (CircuitoRally circuitorally)
@@ -41,7 +41,10 @@ public abstract class CircuitoRallyExtra extends CircuitoRally
      return decoratedCircuitoRally.getValorDistancia ();
     }      
     
-     @Override
+    /**
+     * @return devuelve un string con la informacion de la clase.
+     */
+    @Override
     public String toString ()  
     {
         // put your code here

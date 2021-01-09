@@ -1,17 +1,17 @@
    
 /**
  * 
- *
- * @author (Miguel)
+ * Circuito con extra frio.
+ * @author Miguel Medina Cantos
  * @version (1.0)
  */
 public class Frio extends CircuitoRallyExtra
 {
    /**
-    *  @param circuitorally,el circuito al cual se le va añadir el extra.
-     * Constructor de los objetos de la clase Nocturno.
-     * @return devuelve un objeto de tipo Frio.
-     */
+    * Constructor de los objetos de la clase Nocturno.
+    * @param circuitorally,el circuito al cual se le va añadir el extra.
+    * @return devuelve un objeto de tipo Frio.
+    */
     public Frio (CircuitoRally circuitorally)
     {
         super (circuitorally);
@@ -34,7 +34,10 @@ public class Frio extends CircuitoRallyExtra
      return decoratedCircuitoRally.getValorDistancia ()*0.9;
     }      
     
-   @Override
+    /**
+     * @return devuelve un string con la informacion de la clase.
+     */
+    @Override
     public String toString() {
           return decoratedCircuitoRally.toString() + "\n" +
          "extra:" + getClass().getSimpleName() + "\n" +

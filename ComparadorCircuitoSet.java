@@ -1,14 +1,13 @@
 import java.util.*;
 /**
- * Write a description of class ComparadorCircuitoSet here.
+ * Encapsulacion de comparadores
  *
- * @author (your name)
+ * @author Miguel Medina Cantos
  * @version (a version number or a date)
  */
 public abstract class ComparadorCircuitoSet implements Comparator<Circuito>  
 {
-    // instance variables - replace the example below with your own
-
+    public abstract int compare(Circuito c1, Circuito c2);
     
 
 }

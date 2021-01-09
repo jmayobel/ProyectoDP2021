@@ -1,16 +1,15 @@
 
 /**
  * 
- *
- * @author (Miguel)
+ * Circuito con extra mojado.
+ * @author Miguel Medina Cantos
  * @version (1.0)
  */
 public class Mojado extends CircuitoRallyExtra
 {
     /**
-     * @param circuitorally,el circuito al cual se le va añadir el extra.
      * Constructor de los objetos de la clase Mojado.
-     * 
+     * @param circuitorally,el circuito al cual se le va añadir el extra.
      * @return devuelve un objeto de tipo Mojado.
      */
     public Mojado(CircuitoRally circuitorally)
@@ -37,6 +36,9 @@ public class Mojado extends CircuitoRallyExtra
     }      
     
     
+     /**
+     * @return devuelve un string con la informacion de la clase.
+     */
     @Override
     public String toString() {
 

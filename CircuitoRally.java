@@ -1,7 +1,7 @@
 /**
  *  Clase que gestiona un circuito.
  *
- * @author (Miguel)
+ * @author Miguel Medina Cantos
  * @version (1.0)
  */
 public class CircuitoRally implements Circuito
@@ -13,7 +13,9 @@ public class CircuitoRally implements Circuito
     /** 
      * Constructor de los objetos de la clase CircuitoRally.
      * 
-     * @param nombreCircuito el nombre del circuito,complejidad complejidad del circuito, distancia ditancia del circuito.
+     * @param nombreCircuito el nombre del circuito
+     * @param complejidad complejidad del circuito
+     * @param distancia ditancia del circuito.
      * 
      * @return devuelve un objeto de tipo CircuitoRally.
      */

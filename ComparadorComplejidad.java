@@ -1,9 +1,8 @@
 
 /**
- * Write a description of class ComparadorComplejidad here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Comparador de complejidad de circuitos.
+ * @author (Miguel)
+ * @version (1.0)
  */
 public class ComparadorComplejidad extends ComparadorCircuitoSet
 {

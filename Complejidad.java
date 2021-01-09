@@ -2,10 +2,10 @@
 /**
  * 
  *
- * @author (Miguel)
+ * @author Miguel Medina Cantos
  * @version (1.0)
  */
-public enum Complejidad
+public enum Complejidad 
 {      BAJA ("baja",1.0), MEDIA ("media",1.25), ALTA ("alta",1.5);
      
      
@@ -14,7 +14,8 @@ public enum Complejidad
     
     /**
      * Constructor de la clase 
-     * @param nombre de la complejidad, valor valor de la complejidad. 
+     * @param nombre -nombre de la complejidad
+     * @param valor  -valor de la complejidad. 
      * @return devuelve un objeto de tipo Complejidad.
      */
     Complejidad  (String nombre, double valor) {
