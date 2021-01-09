@@ -12,7 +12,7 @@ public class Organizacion
     private final int nAbandonos;
     private final int nPilotos;
     private TreeSet <Circuito> CircuitoSet;
-    private TreeSet <EscuderiaInterfaz> EscuderiaSet;
+    private ArrayList <EscuderiaInterfaz> ListadeEscuderias;
     private HashMap <PilotoInterfaz,EscuderiaInterfaz> PilotosCarrera;   
 
     /**
@@ -22,50 +22,62 @@ public class Organizacion
     {
         nAbandonos=2;
         nPilotos=20;
-        CircuitoSet= new TreeSet <Circuito> ();
-        EscuderiaSet=new TreeSet <EscuderiaInterfaz> (); 
+        CircuitoSet= new TreeSet <Circuito> (new ComparadorComplejidad ());
+        ListadeEscuderias=new ArrayList <EscuderiaInterfaz> () ; 
         PilotosCarrera = new HashMap <PilotoInterfaz, EscuderiaInterfaz> ();
     }
 
-    public synchronized void setEsuderia (EscuderiaInterfaz nuevaEscuderia) {
-        
-             
-        EscuderiaSet.add(nuevaEscuderia);
-        
+    public synchronized void setEscuderia (EscuderiaInterfaz nuevaEscuderia) {
+
+        ListadeEscuderias.add(nuevaEscuderia);
     }    
-    
     public synchronized void deleteEscuderia (EscuderiaInterfaz escuderia) {
-        
              
-        EscuderiaSet.remove(escuderia);
-        
+        ListadeEscuderias.remove(escuderia);
+
     }    
-       public synchronized void setCircuito (Circuito nuevoCircuito) {
-        
-             
+
+    public synchronized void setCircuito (Circuito nuevoCircuito) {
+
         CircuitoSet.add(nuevoCircuito);
-        
     }    
     public synchronized void deleteCircuito (Circuito circuito) {
-        
-         CircuitoSet.remove(circuito);
-        
+        CircuitoSet.remove(circuito);
     }  
     public synchronized Circuito buscarCircuito (Circuito circuito) {
-       Iterator<Circuito> it = this.CircuitoSet.iterator(); //Inicializamos el Iterator
-       boolean enc = false;
-       Circuito buscar = it.next();
+        Iterator<Circuito> it = this.CircuitoSet.iterator(); //Inicializamos el Iterator
+        boolean enc = false;
+        Circuito aux=null;
 
         while(it.hasNext() && !enc){
+            Circuito buscar = it.next();
+
             if(buscar.equals(circuito)){
                 enc = true;
-                return buscar; 
+                aux=buscar;
             }     
         }
 
-      return null;
+        return aux;
     }    
-      public synchronized static
+
+    public synchronized EscuderiaInterfaz buscarEscuderia (EscuderiaInterfaz escuderia) {
+        Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator(); //Inicializamos el Iterator
+        boolean enc = false;
+        EscuderiaInterfaz aux=null;
+        while(it.hasNext() && !enc){
+            EscuderiaInterfaz buscar = it.next();
+            if(buscar.equals(escuderia)){
+                enc = true;
+                aux=buscar;
+            }     
+        }
+
+        return aux; 
+    }    
+
+    
+    public synchronized static
     Organizacion getInstance () 
     {
         if (instance==null) {
