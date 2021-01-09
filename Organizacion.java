@@ -16,7 +16,7 @@ public class Organizacion
     private HashMap <PilotoInterfaz,EscuderiaInterfaz> PilotosCarrera;   
 
     /**
-     * Constructor for objects of class Organizacion
+     * Constructor parametrizado de Organizacion
      */
     private  Organizacion()
     {
@@ -27,22 +27,40 @@ public class Organizacion
         PilotosCarrera = new HashMap <PilotoInterfaz, EscuderiaInterfaz> ();
     }
 
+    /**
+     * inserta una nueva escuderia en la lista de escuderias.
+     * 
+     * @param nuevaEscuderia -escuderia a insertar en la lista.
+     * 
+     */
     public synchronized void setEscuderia (EscuderiaInterfaz nuevaEscuderia) {
 
         ListadeEscuderias.add(nuevaEscuderia);
     }    
 
+    /**
+     * borra una escuderia de la lista.
+     * @param escuderia - escuderia a borra en la lista.
+     */
     public synchronized void deleteEscuderia (EscuderiaInterfaz escuderia) {
 
         ListadeEscuderias.remove(escuderia);
 
     }    
 
+    /**
+     * inserta un nuevo circuito en el set.
+     * @param nuevoCircuito el nuevo circuito a insertar.
+     */
     public synchronized void setCircuito (Circuito nuevoCircuito) {
 
         CircuitoSet.add(nuevoCircuito);
     }    
 
+    /**
+     * borra un circuito del set.
+     * @param circuito -circuito a borrar.
+     */
     public synchronized void deleteCircuito (Circuito circuito) {
         CircuitoSet.remove(circuito);
     }  
@@ -64,6 +82,11 @@ public class Organizacion
         return aux;
     }    
 
+    /**
+     * busca una escuderia en la lista de escuderias.
+     * @param escuderia- escuderia a buscar en la lista.
+     * @return la escuderia buscada.
+     */
     public synchronized EscuderiaInterfaz buscarEscuderia (EscuderiaInterfaz escuderia) {
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator(); //Inicializamos el Iterator
         boolean enc = false;
@@ -91,6 +114,9 @@ public class Organizacion
         
     }    
 
+    /**
+     *  deja vacia la lista de escuderias.
+     */
     public synchronized void DejarVacioListadeEscuderias() {
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator(); //Inicializamos el Iterator
         while(it.hasNext()){
@@ -109,6 +135,9 @@ public class Organizacion
         return instance;
     }
 
+    /**
+     * muestra las escuderias de la lista de escuderias.
+     */
     public synchronized void MostrarEscuderias(){
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
 
@@ -118,6 +147,9 @@ public class Organizacion
         }
 
     }
+    /**
+     * muestra los circuitos del set de circuitos.
+     */
     public synchronized void MostrarCircuitos(){
         Iterator<Circuito> it = this.CircuitoSet.iterator();
 
