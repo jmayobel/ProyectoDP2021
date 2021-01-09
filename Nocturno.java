@@ -37,10 +37,11 @@ public class Nocturno extends CircuitoRallyExtra
     
     @Override
     public String toString() {
-               return decoratedCircuitoRally.toString()+
-        "\n + extra:" + getClass().getSimpleName() +
-        " -> nueva complejidad: " + getValorComplejidad() + 
+         return decoratedCircuitoRally.toString() + "\n" +
+         "extra:" + getClass().getSimpleName() + "\n" +
+        " -> nueva complejidad: " + "\n" + getValorComplejidad() + 
         "\n"+ getValorDistancia ();
+        
     }
  
 }

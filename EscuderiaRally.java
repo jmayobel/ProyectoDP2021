@@ -105,7 +105,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
     }
      @Override
     public String toString(){
-        return getClass().getSimpleName();
+        return getNombre();
     }
     
 }

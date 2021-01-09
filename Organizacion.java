@@ -31,8 +31,9 @@ public class Organizacion
 
         ListadeEscuderias.add(nuevaEscuderia);
     }    
+
     public synchronized void deleteEscuderia (EscuderiaInterfaz escuderia) {
-             
+
         ListadeEscuderias.remove(escuderia);
 
     }    
@@ -41,9 +42,11 @@ public class Organizacion
 
         CircuitoSet.add(nuevoCircuito);
     }    
+
     public synchronized void deleteCircuito (Circuito circuito) {
         CircuitoSet.remove(circuito);
     }  
+
     public synchronized Circuito buscarCircuito (Circuito circuito) {
         Iterator<Circuito> it = this.CircuitoSet.iterator(); //Inicializamos el Iterator
         boolean enc = false;
@@ -78,25 +81,24 @@ public class Organizacion
 
     public synchronized void DejarVacioTreeSetCircuitos () {
         Iterator<Circuito> it = this.CircuitoSet.iterator(); //Inicializamos el Iterator
-        
 
         while(it.hasNext()){
             Circuito buscar = it.next();
             it.remove();
-        
+
         }        
-        
-        
+
         
     }    
-        public synchronized void DejarVacioListadeEscuderias() {
+
+    public synchronized void DejarVacioListadeEscuderias() {
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator(); //Inicializamos el Iterator
         while(it.hasNext()){
             EscuderiaInterfaz buscar = it.next();
             it.remove();
         }
     }  
-    
+
     public synchronized static
     Organizacion getInstance () 
     {
@@ -106,17 +108,15 @@ public class Organizacion
         } 
         return instance;
     }
-    
-    @Override
-    public synchronized String toString(){
+
+    public synchronized void MostrarEscuderias(){
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
-        String StringOut = "";
-     
+
         while(it.hasNext()){
             EscuderiaInterfaz buscar = it.next();
-            StringOut = buscar.toString();
+            System.out.println (buscar.toString());
+        }
+
     }
-    
-    return StringOut;
-}
+
 }
