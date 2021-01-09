@@ -118,5 +118,15 @@ public class Organizacion
         }
 
     }
+    public synchronized void MostrarCircuitos(){
+        Iterator<Circuito> it = this.CircuitoSet.iterator();
+
+        while(it.hasNext()){
+            Circuito buscar = it.next();
+            System.out.println (buscar.toString());
+        }
+
+    }
+
 
 }
