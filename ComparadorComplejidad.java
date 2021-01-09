@@ -1,7 +1,7 @@
 
 /**
  * Comparador de complejidad de circuitos.
- * @author (Miguel)
+ * @author Miguel Medina Cantos
  * @version (1.0)
  */
 public class ComparadorComplejidad extends ComparadorCircuitoSet
