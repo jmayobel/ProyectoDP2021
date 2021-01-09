@@ -105,9 +105,9 @@ public class Organizacion
         return aux; 
     }    
 
-     /**
-     *  deja vacio CircuitoSet.
-     */
+    /**
+    *  deja vacio CircuitoSet.
+    */
     public synchronized void DejarVacioTreeSetCircuitos () {
         Iterator<Circuito> it = this.CircuitoSet.iterator(); //Inicializamos el Iterator
 
@@ -157,13 +157,13 @@ public class Organizacion
      */
     public synchronized void MostrarCircuitos(){
         Iterator<Circuito> it = this.CircuitoSet.iterator();
-
         while(it.hasNext()){
             Circuito buscar = it.next();
             System.out.println (buscar.toString());
         }
 
     }
-
-
+    
+    public synchronized void PilotosCalificados(){
+    
 }

@@ -9,6 +9,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
 {
     private String nomEscuderia;
     private ArrayList <PilotoInterfaz> ListaPilotos;
+    
     private ArrayList <CocheInterfaz> ListaCoches;
     private Comparator<PilotoInterfaz> compPilotos;
     private Comparator<CocheInterfaz> compCoches;
@@ -103,6 +104,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
         }
         return puntostotales;   
     }
+
      @Override
     public String toString(){
         return getNombre();
