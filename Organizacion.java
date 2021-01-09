@@ -95,14 +95,7 @@ public class Organizacion
             EscuderiaInterfaz buscar = it.next();
             it.remove();
         }
-
-    }    
-    
-    
-    
-    
-    
-    
+    }  
     
     public synchronized static
     Organizacion getInstance () 
@@ -113,4 +106,17 @@ public class Organizacion
         } 
         return instance;
     }
+    
+    @Override
+    public String toString(){
+        Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
+        String StringOut = "";
+     
+        while(it.hasNext()){
+            EscuderiaInterfaz buscar = it.next();
+            StringOut = buscar.toString();
+    }
+    
+    return StringOut;
+}
 }

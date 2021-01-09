@@ -103,8 +103,9 @@ public class EscuderiaRally implements EscuderiaInterfaz
         }
         return puntostotales;   
     }
-    
-    
-    
+     @Override
+    public String toString(){
+        return getClass().getSimpleName();
+    }
     
 }
