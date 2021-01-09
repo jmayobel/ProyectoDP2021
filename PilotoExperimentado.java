@@ -1,15 +1,18 @@
-
 /**
- * Write a description of class PilotoExperimentado here.
- * 
+ * La clase PilotoExperimentado calcula la destreza del piloto. 
  * @author CESAR VAZQUEZ LAZARO
- * @version 0.0
+ * @version 0.1
  */
 public class PilotoExperimentado extends PilotoAbstracto
 {    
-    private double destreza; 
+    //Variables de la clase PilotoExperimentado:
+    private double destreza;
+    
     /**
-     * Constructor for objects of class PilotoExperimentado
+     * Constructor parametrizado de la clase PilotoExperimentado.
+     * 
+     * @param nombre Nombre de pila del piloto
+     * @param concentracion Concentración del piloto
      */
     public PilotoExperimentado(String nombre, Concentracion concentracion)
     {
