@@ -10,7 +10,7 @@ public class Gravilla extends CircuitoRallyExtra
     // instance variables - replace the example below with your own
 
     /**
-     * Constructor de los objetos de la clase Gravilla.
+     * Constructor parametrizado de la clase Gravilla.
      * @param circuitorally,el circuito al cual se le va añadir el extra.
      * @return devuelve un objeto de tipo Gravilla.
      */
@@ -21,14 +21,16 @@ public class Gravilla extends CircuitoRallyExtra
     }
 
      /**
-     * @return devuelve la complejidad añadida del circuito Gravilla.
+      * devuelve la complejidad añadida del circuito multiplicada por 1.05
+     * @return la complejidad añadida del circuito Gravilla.
      */
     @Override
     public double getValorComplejidad ()  {
      return decoratedCircuitoRally.getValorComplejidad ()*1.05;
     } 
     /**
-     * @return devuelve la distancia reducida del circuito Gravilla.
+     * devuelve la distancia reducida del circuito multiplicada por 0.95
+     * @return la distancia reducida del circuito Gravilla.
      */
     @Override
     public double getValorDistancia ()  {
@@ -36,7 +38,8 @@ public class Gravilla extends CircuitoRallyExtra
     }     
      
     /**
-     * @return devuelve un string con la informacion de la clase.
+     * devuelvela informacion de la clase
+     * @return un string con la informacion de la clase.
      */
     @Override
     public String toString() {   

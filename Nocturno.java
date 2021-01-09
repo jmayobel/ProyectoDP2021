@@ -9,7 +9,7 @@ public class Nocturno extends CircuitoRallyExtra
 {
 
     /** 
-     * Constructor de los objetos de la clase Nocturno.
+     * Constructor parametrizado de la clase Nocturno.
      * @param circuitorally,el circuito al cual se le va añadir el extra.
      * @return devuelve un objeto de tipo Nocturno.
      * 
@@ -20,6 +20,7 @@ public class Nocturno extends CircuitoRallyExtra
     }
 
     /**
+     * devuelve la complejidad añadida del circuito multiplicada por 1.2
      * @return devuelve la complejidad añadida del circuito Nocturno.
      */
     @Override
@@ -28,6 +29,7 @@ public class Nocturno extends CircuitoRallyExtra
     }
 
     /**
+     * devuelve la distancia reducida del circuito multiplicada por 0.8
      * @return devuelve la distancia reducida del circuito Nocturno.
      */
     @Override
@@ -36,7 +38,8 @@ public class Nocturno extends CircuitoRallyExtra
     }      
 
     /**
-     * @return devuelve un string con la informacion de la clase.
+     * devuelvela informacion de la clase
+     * @return un string con la informacion de la clase.
      */
     @Override
     public String toString() {
