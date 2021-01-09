@@ -14,7 +14,6 @@ public class EscuderiaRally implements EscuderiaInterfaz
     private ArrayList <CocheInterfaz> ListaCoches;          //Lista de los coches de la escudería
     private Comparator<PilotoInterfaz> compPilotos;         //Comparador que ordenará la lista de pilotos
     private Comparator<CocheInterfaz> compCoches;           //Comparador que ordenará la lista de coches
-
        
     /**
      * Constructor parametrizado de la clase EscuderiaRally.
@@ -176,7 +175,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
     public String toString(){
         return getNombre();
     }
-    
+
     //hashCode()
     @Override
     public int hashCode(){  //No estoy seguro de que así
