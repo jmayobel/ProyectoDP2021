@@ -65,7 +65,11 @@ public class Organizacion
         CircuitoSet.remove(circuito);
     }  
 
-    public synchronized Circuito buscarCircuito (Circuito circuito) {
+    /**
+     * busca un circuito en CircuitoSet.
+     * @param circuito- circuito a buscar en CircuitoSet.
+     * @return el circuito buscada.
+     */public synchronized Circuito buscarCircuito (Circuito circuito) {
         Iterator<Circuito> it = this.CircuitoSet.iterator(); //Inicializamos el Iterator
         boolean enc = false;
         Circuito aux=null;
@@ -102,6 +106,9 @@ public class Organizacion
         return aux; 
     }    
 
+     /**
+     *  deja vacio CircuitoSet.
+     */
     public synchronized void DejarVacioTreeSetCircuitos () {
         Iterator<Circuito> it = this.CircuitoSet.iterator(); //Inicializamos el Iterator
 
@@ -148,7 +155,7 @@ public class Organizacion
 
     }
     /**
-     * muestra los circuitos del set de circuitos.
+     * muestra los circuitos del TreeSet de circuitos.
      */
     public synchronized void MostrarCircuitos(){
         Iterator<Circuito> it = this.CircuitoSet.iterator();
