@@ -13,7 +13,10 @@ public class Coche implements CocheInterfaz
     private double tiempoCarrera;
 
     /**
-     * Constructor for objects of class Coche
+     * Constructor del coche
+     * @param nombre
+     * @param velocidad
+     * @param combustible
      */
     public Coche(String nombre, Velocidad velocidad, Combustible combustible){
         this.nombreCoche = nombre;
@@ -29,39 +32,68 @@ public class Coche implements CocheInterfaz
         this.nombreCoche = nombre;
     }
     
+    /**
+     * Set del nombre del coche
+     * @param  nombre - nombre del coche
+     */
     public void setvelocidad(Velocidad velocidad){
          this.velocidad = velocidad;
     }
+    /**
+     * Set del combustible disponible
+     * @param  nombre - nombre del coche
+     */
     public void setcombustible(Combustible combustible){
         this.combustible = combustible;
-    }  
-
+    } 
+    /**
+     * Obtiene el nombre del coche
+     * @return nombre - Tipo String
+     */
     public String getNombreCoche() {
         return nombreCoche;
     }
-
+    /**
+     * Obtiene el enum de la velocidad del coche
+     * @return velocidad - Tipo Velocidad
+     */
     public Velocidad getvelocidad() {
         return velocidad;
     }
+    /**
+     * Devuelve el valor de la velocidad del coche
+     * @return velocidad.getVelocidad() - Tipo double
+     */
     public double getValorVelocidad() {
         return velocidad.getVelocidad();
     }
+     /**
+     * Obtiene el enum del combustible del coche
+     * @return combustible - Tipo Combustible
+     */
     public Combustible getcombustible()  {
         return combustible;
     }
-
+    /**
+     * Devuelve el valor del combustible del coche
+     * @return combustible.getcombustible() - Tipo double
+     */
     public double getValorcombustible() {
         return combustible.getcombustible();
     }
     
     /**
-     * 
+     * Devuelve la velocidad real del coche
+     * @param piloto - Tipo PilotoInterfaz (El piloto de la carrera)
+     * @param circuito - Tipo Circuito (El circuito de la carrera)
+     * @return VelocidadReal - Tipo Double
      */
     public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito) {
         return getValorVelocidad() * piloto.getDestreza() / circuito.getValorComplejidad();
     }
 
     /**
+     * Retorna el tiempo que dura la carrera para el piloto en el circuito
      * @param piloto - un piloto de la carrera
      * @param circuito - Un circuito
      * @return Devuelve el tiempo de la carrera
@@ -69,6 +101,13 @@ public class Coche implements CocheInterfaz
     public double getTiempo(PilotoInterfaz piloto, Circuito circuito) {
         return (circuito.getValorDistancia()/getVelocidadReal(piloto, circuito))*60;
     }
+    
+     /**
+     * Retorna el tiempo que dura la carrera para el piloto en el circuito
+     * @param piloto - un piloto de la carrera
+     * @param circuito - Un circuito
+     * @return Combustible - Tipo Double
+     */
     public double getCombustibleUsado(PilotoInterfaz piloto, Circuito circuito) {
         return getValorcombustible() - getTiempo(piloto, circuito);
     }

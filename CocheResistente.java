@@ -8,12 +8,24 @@ public class CocheResistente extends Coche {
     private double depositoExtra;
     private double combustibleExtra;
     private double combustibleRestante;
+    /**
+     * Constructor parametrizado de CocheResistente
+     * @param nombre - tipo String
+     * @param velocidad - tipo velocidad
+     * @param combustible - tipo Combustible
+     */
     public CocheResistente(String nombre, Velocidad velocidad, Combustible combustible) {
         super(nombre, velocidad, combustible);
         depositoExtra = 100;
         combustibleExtra = super.getValorcombustible();
         combustibleRestante = 0;        
     }
+    /**
+     * Devuelve el combustible usado por el CocheResistente
+     * @param piloto - tipo String
+     * @param circuito - tipo Circuito
+     * @return combustibleRestante - tipo double
+     */
     @Override
     public double getCombustibleUsado(PilotoInterfaz piloto, Circuito circuito) {
        
