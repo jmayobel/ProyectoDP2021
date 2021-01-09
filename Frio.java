@@ -10,7 +10,6 @@ public class Frio extends CircuitoRallyExtra
    /**
     * Constructor parametrizado de la clase Frio.
     * @param circuitorally,el circuito al cual se le va añadir el extra.
-    * @return devuelve un objeto de tipo Frio.
     */
     public Frio (CircuitoRally circuitorally)
     {
@@ -19,8 +18,8 @@ public class Frio extends CircuitoRallyExtra
 
     
    /**
-    * devuelve la complejidad añadida del circuito multiplicada por 1.1.
-     * @return devuelve la complejidad añadida del circuito Frio.
+    * devuelve la complejidad añadida del circuito multiplicada por 1.1 .
+     * @return  la complejidad añadida del circuito Frio.
      */
     @Override
     public double getValorComplejidad ()  {
@@ -28,8 +27,8 @@ public class Frio extends CircuitoRallyExtra
     }
    
    /**
-    * devuelve la distancia reducida del circuito multiplicada por 0.9.
-     * @return devuelve la distancia reducida del circuito Frio.
+    * devuelve la distancia reducida del circuito multiplicada por 0.9 .
+     * @return  la distancia reducida del circuito Frio.
      */
     @Override
     public double getValorDistancia ()  {
@@ -38,7 +37,7 @@ public class Frio extends CircuitoRallyExtra
     
     /**
      * devuelvela informacion de la clase.
-     * @return devuelve un string con la informacion de la clase.
+     * @return  un string con la informacion de la clase.
      */
     @Override
     public String toString() {
