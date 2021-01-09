@@ -26,7 +26,7 @@ public enum Distancia
     }     
     /**
      * devuelve el nombre de la complejidad.
-     * @return nombre;
+     * @return nombre.
      * 
      */
     public String getNombre () {

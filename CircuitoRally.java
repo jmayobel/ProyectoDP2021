@@ -13,9 +13,9 @@ public class CircuitoRally implements Circuito
     /**
      * Constructor parametrizado de la clase CircuitoRally.
      * 
-     * @param nombreCircuito el nombre del circuito.
-     * @param complejidad complejidad del circuito.
-     * @param distancia ditancia del circuito.
+     * @param nombreCircuito - el nombre del circuito.
+     * @param complejidad - complejidad del circuito.
+     * @param distancia -distancia del circuito.
      * 
      */
     public CircuitoRally (String nombreCircuito,Complejidad complejidad,Distancia distancia) {
