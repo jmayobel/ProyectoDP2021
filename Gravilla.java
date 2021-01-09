@@ -35,11 +35,10 @@ public class Gravilla extends CircuitoRallyExtra
      return  decoratedCircuitoRally.getValorDistancia ()*0.95;
     }     
      @Override
-    public String toString() {  
-        return decoratedCircuitoRally.toString() + "\n" +
+    public String toString() {   
+         return decoratedCircuitoRally.toString() + "\n" +
          "extra:" + getClass().getSimpleName() + "\n" +
-        " -> nueva complejidad: " + "\n" + getValorComplejidad() + 
-        "\n"+ getValorDistancia ();
-        
+        " -> nueva complejidad: " + getValorComplejidad() + 
+        "\n"+ " -> nueva distancia: " + getValorDistancia ();
     }
 }
