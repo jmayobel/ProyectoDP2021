@@ -1,13 +1,20 @@
 import java.util.Comparator;
 /**
- * Write a description of class ComparadorDestreza here.
+ * Comparador de Pilotos que permite la ordenación según la destreza del mismo. 
  *
  * @author (Miguel)
- * @version (a version number or a date)
+ * @version 0.1
  */
 public class ComparadorDestreza extends ComparadorPiloto
 {
-     public int compare(PilotoInterfaz p1, PilotoInterfaz p2){
+    /**
+     * Comparador de Pilotos en función de la destreza.
+     * En caso de empate, comparará por el total de puntos del piloto.
+     * 
+     * @param p1 Piloto a comparar
+     * @param p2 Piloto a ser comparado
+     */
+    public int compare(PilotoInterfaz p1, PilotoInterfaz p2){
         if(p1.getDestreza()==p2.getDestreza())
             return new ComparadorTotalPuntos().compare(p1, p2);
         else if(p1.getDestreza()>p2.getDestreza())
