@@ -108,7 +108,7 @@ public class Organizacion
     }
     
     @Override
-    public String toString(){
+    public synchronized String toString(){
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
         String StringOut = "";
      
