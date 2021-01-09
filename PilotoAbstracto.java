@@ -17,14 +17,14 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     private boolean descalificado;                          //"false" si NO ha sido descalificado, "true" en caso contrario
 
     /**
-    * Constructor parametrizado de la clase Piloto.
-    *
-    * @param nombre Nombre de pila del piloto
-    * @param concentracion Tipo de Concentración (DESPISTADO, NORMAL, CONCENTRADO, ZEN) del piloto. 
-    *                      Será el tiempo en minutos que el piloto mantiene la concentración 
-    *                      antes de abandonar la carrera
-    *     
-    */
+     * Constructor parametrizado de la clase Piloto.
+     *
+     * @param nombre Nombre de pila del piloto
+     * @param concentracion Tipo de Concentración (DESPISTADO, NORMAL, CONCENTRADO, ZEN) del piloto. 
+     *                      Será el tiempo en minutos que el piloto mantiene la concentración 
+     *                      antes de abandonar la carrera
+     *     
+     */
     public PilotoAbstracto(String nombre, Concentracion concentracion){ //Añadir el coche y el registro
         this.nombre = nombre;
         this.coche = null;
