@@ -4,7 +4,7 @@
  * y el circuito en cuestión donde se ha corrido.
  * 
  * @author CESAR VAZQUEZ LAZARO 
- * @version 0.2
+ * @version 0.1
  */
 public class Resultados{
     //Variables de la clase Resultados:
@@ -56,7 +56,7 @@ public class Resultados{
      * 
      * @param tiempo Tiempo en el que acabó la carrera   
      */
-    public void setTiempoResultado(double tiempo){
+    public void setTiempoResultados(double tiempo){
         this.tiempo = tiempo;
     }
     /**
