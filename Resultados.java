@@ -4,11 +4,10 @@
  * y el circuito en cuestión donde se ha corrido.
  * 
  * @author CESAR VAZQUEZ LAZARO 
- * @version 0.0
+ * @version 0.1
  */
 public class Resultados{
     //Variables de la clase Resultados:
-    private Circuito circuito;  //Circuito en el que el piloto correrá la carrera
     private double tiempo;      //Tiempo que se ha mantenido el piloto en una carrera
     private int puntos;         //Puntos ganados en una carrera 
     
@@ -17,33 +16,22 @@ public class Resultados{
     * Constructor estándar de la clase Resultados.
     */
     public Resultados(){
-        this.circuito = null;
         this.tiempo = 0;
         this.puntos = 0;
     }
     /**
     * Constructor parametrizado de la clase Resultados.
     *
-    * @param circuito Circuito en el que se realizó la carrera
     * @param tiempo Tiempo en el que el piloto ha terminado la carrera. 
     *               Si el tiempo es negativo, indica los minutos que le han faltado para terminarlo
     * @param puntos Puntos obtenidos en la carrera por el piloto
     */    
-    public Resultados(Circuito circuito, double tiempo, int puntos){
-        this.circuito = circuito;
+    public Resultados(double tiempo, int puntos){
         this.tiempo = tiempo;
         this.puntos = puntos;
     }
     
     //Métodos get()/ set()
-    /**
-     * Devuelve el circuito en el que se ha corrido.
-     * 
-     * @return Circuito en el que se ha corrido.
-     */
-    public Circuito getCircuito(){
-        return this.circuito;
-    }
     /**
      * Devuelve el tiempo en el que el piloto ha terminado la carrera. Si el tiempo es negativo, 
      * indica los minutos que le han faltado para terminarlo.
@@ -62,14 +50,6 @@ public class Resultados{
         return this.puntos;
     }
     
-    /**
-     * Establece el circuito en el que se corrió la carrera.
-     * 
-     * @param circuito Circuito en el que se corrió    
-     */
-    public void setCircuito(Circuito circuito){
-        this.circuito = circuito ;
-    }
     /**
      * Establece el tiempo en el que el piloto acabó la carrera. Si el tiempo es negativo, 
      * indica los minutos que le han faltado para terminarlo. 
@@ -92,7 +72,6 @@ public class Resultados{
     @Override
     public String toString(){
        return getClass().getSimpleName() + 
-        "\n Circuito: " + getCircuito() + 
         "\n Tiempo Recorrido: " + getTiempoRegistro() +
         "\n Puntos; " + getPuntos();
 

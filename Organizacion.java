@@ -13,8 +13,8 @@ public class Organizacion
     private final int nPilotos;
     private TreeSet <Circuito> CircuitoSet;
     private ArrayList <EscuderiaInterfaz> ListadeEscuderias;
-    private ArrayList <PilotoInterfaz> PilotosCarrera;  
-    
+    private ArrayList <PilotoInterfaz> PilotosCarrera;   
+
     /**
      * Constructor parametrizado de Organizacion
      */
@@ -47,7 +47,7 @@ public class Organizacion
         ListadeEscuderias.remove(escuderia);
 
     }    
-   
+
     /**
      * inserta un nuevo circuito en el set.
      * @param nuevoCircuito el nuevo circuito a insertar.
@@ -105,9 +105,9 @@ public class Organizacion
         return aux; 
     }    
 
-     /**
-     *  deja vacio CircuitoSet.
-     */
+    /**
+    *  deja vacio CircuitoSet.
+    */
     public synchronized void DejarVacioTreeSetCircuitos () {
         Iterator<Circuito> it = this.CircuitoSet.iterator(); //Inicializamos el Iterator
 
@@ -152,38 +152,34 @@ public class Organizacion
             System.out.println (buscar.toString());
         }
     }
+    
+    public synchronized void GuardarPilotos(){
+     Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
+     while(it.hasNext()){
+         EscuderiaInterfaz Esc = it.next();
+         PilotosCarrera.addAll(Esc.getPilotosCarrera());
+        } 
+    }
+   
     /**
      * muestra los circuitos del TreeSet de circuitos.
      */
     public synchronized void MostrarCircuitos(){
         Iterator<Circuito> it = this.CircuitoSet.iterator();
-
         while(it.hasNext()){
             Circuito buscar = it.next();
             System.out.println (buscar.toString());
         }
 
     }
-    public synchronized ArrayList ordenaListaPilotos () {
-       ArrayList <PilotoInterfaz> ParillaOrdenada= new ArrayList <PilotoInterfaz> ();
-       
-       Collections.sort()
-         
-        
-        
     
-    
-    
-       return ParrillaOrdenada
+    public synchronized void OrdenarParrilla(){
+       Collections.sort(PilotosCarrera,new ComparadorTotalPuntos()); 
     }
-    
-    public synchronized void Carrera () {
+   
+    public synchronized void Carrera (Circuito circuito){
         
         
-           
         
-    
-    
-    
     }
 }
