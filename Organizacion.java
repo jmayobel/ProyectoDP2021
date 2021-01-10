@@ -13,20 +13,19 @@ public class Organizacion
     private final int nPilotos;
     private TreeSet <Circuito> CircuitoSet;
     private TreeSet <EscuderiaInterfaz> EscuderiaSet;
-    private HashMap <PilotoInterfaz, EscuderiaInterfaz> pilotosCarrera;
+    private HashMap <PilotoInterfaz, EscuderiaInterfaz> PilotosCarrera;
     private ArrayList <EscuderiaInterfaz> ListadeEscuderias;
-    private HashMap <PilotoInterfaz,EscuderiaInterfaz> PilotosCarrera;   
 
     /**
      * Constructor parametrizado de Organizacion
      */
     private Organizacion()
     {
-        nAbandonos = 2;
-        nPilotos = 20;
-        CircuitoSet = new TreeSet <Circuito>();
-        EscuderiaSet = new TreeSet <EscuderiaInterfaz>(); 
-        pilotosCarrera = new HashMap<PilotoInterfaz, EscuderiaInterfaz>();        
+        nAbandonos=2;
+        nPilotos=20;
+        CircuitoSet= new TreeSet <Circuito> (new ComparadorComplejidad ());
+        ListadeEscuderias=new ArrayList <EscuderiaInterfaz> () ; 
+        PilotosCarrera = new HashMap <PilotoInterfaz, EscuderiaInterfaz> ();
     }
    
     //Patrón Singleton
@@ -47,7 +46,6 @@ public class Organizacion
     public synchronized void deleteEscuderia (EscuderiaInterfaz escuderia) {
         ListadeEscuderias.remove(escuderia);
     }    
-
     /**
      * inserta un nuevo circuito en el set.
      * @param nuevoCircuito el nuevo circuito a insertar.
@@ -100,7 +98,6 @@ public class Organizacion
                 aux=buscar;
             }     
         }
-
         return aux; 
     }    
 
@@ -114,7 +111,7 @@ public class Organizacion
             Circuito buscar = it.next();
             it.remove();
         }                
-    }    
+    }           
 
     /**
      *  deja vacia la lista de escuderias.
@@ -135,35 +132,12 @@ public class Organizacion
         } 
         return instance;
     }    
+    
     //Métodos HashMap
     public void añadirPilotoCarrera(PilotoInterfaz piloto, EscuderiaInterfaz escuderia){
-        this.pilotosCarrera.put(piloto, escuderia);
+        this.PilotosCarrera.put(piloto, escuderia);
     }
-    
-    //Este método elimina el piloto y lo mete en su respectiva escuderia
-    public void eliminarPilotoCarrera(PilotoInterfaz piloto){
-        Iterator<PilotoInterfaz> it = this.pilotosCarrera.keySet().iterator();
-        boolean enc = false;
-        while (it.hasNext() && !enc){
-            PilotoInterfaz key = it.next();
-            EscuderiaInterfaz valor = pilotosCarrera.get(key);
-            if(key.equals(piloto)){
-                enc = true;
-                valor.addListaPilotos(key);             //Añade el piloto a ListaPilotos de su escudería
-                valor.addListaCoches(key.getCoche());   //Añade el coche a ListaCoches de su escudería
-                this.pilotosCarrera.remove(key);
-            }
-        }
-    }
-    
-    public void limpiarPilotoCarrera(){
-        Iterator<PilotoInterfaz> it = this.pilotosCarrera.keySet().iterator();
-        while (it.hasNext()){
-            PilotoInterfaz key = it.next();
-            eliminarPilotoCarrera(key);
-        }
-    }
-    
+
     /**
      * muestra las escuderias de la lista de escuderias.
      */
@@ -180,10 +154,37 @@ public class Organizacion
      */
     public synchronized void MostrarCircuitos(){
         Iterator<Circuito> it = this.CircuitoSet.iterator();
-
         while(it.hasNext()){
             Circuito buscar = it.next();
             System.out.println (buscar.toString());
+        }
+
+    }
+    
+    public synchronized void PilotosCalificados(){
+    }
+    
+    //Este método elimina el piloto y lo mete en su respectiva escuderia
+    public void eliminarPilotoCarrera(PilotoInterfaz piloto){
+        Iterator<PilotoInterfaz> it = this.PilotosCarrera.keySet().iterator();
+        boolean enc = false;
+        while (it.hasNext() && !enc){
+            PilotoInterfaz key = it.next();
+            EscuderiaInterfaz valor = PilotosCarrera.get(key);
+            if(key.equals(piloto)){
+                enc = true;
+                valor.addListaPilotos(key);             //Añade el piloto a ListaPilotos de su escudería
+                valor.addListaCoches(key.getCoche());   //Añade el coche a ListaCoches de su escudería
+                this.PilotosCarrera.remove(key);
+            }
+        }
+    }
+    
+    public void limpiarPilotoCarrera(){
+        Iterator<PilotoInterfaz> it = this.PilotosCarrera.keySet().iterator();
+        while (it.hasNext()){
+            PilotoInterfaz key = it.next();
+            eliminarPilotoCarrera(key);
         }
     }
 }

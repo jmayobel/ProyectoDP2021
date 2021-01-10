@@ -1,5 +1,9 @@
 /**
+<<<<<<< HEAD
  * La clase PilotoNovato calcula la destreza del piloto. 
+=======
+ * La clase PilotoNovato calcula la destreza del piloto.
+>>>>>>> 6026d10d39905b494dc4805ab62cc7d1bfe67ccb
  * 
  * @author CESAR VAZQUEZ LAZARO 
  * @version 0.1

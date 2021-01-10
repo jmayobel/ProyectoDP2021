@@ -1,19 +1,19 @@
 import java.util.Iterator;
-import java.util.ArrayList;
+import java.util.HashMap;
 /**
  * La clase Piloto representa a aquellos que competirán con un coche en los circuitos de la competición.
  * La diferencia entre cada Piloto viene marcada por la concentración del mismo, 
  * característica que marcará el rendimiento del Piloto y el Coche en el Circuito.
  * 
  * @author CESAR VAZQUEZ LAZARO 
- * @version 0.3
+ * @version 0.4
  */
 public abstract class PilotoAbstracto implements PilotoInterfaz{
     //Variables de la clase Piloto:    
     private String nombre;                                  //Nombre completo del Piloto
     private Coche coche;                                    //Coche con el que correrá (Asignado por la Escudería)
     private Concentracion concentracion;                    //Minutos que aguanta el piloto de carrera antes de abandonar 
-    private ArrayList<Resultados> resultados;               //Registro con el tiempo y puntos conseguidos en cada carrera
+    private HashMap<Circuito,Resultados> resultados;        //Registro con el tiempo y puntos conseguidos en cada carrera
     private boolean descalificado;                          //"false" si NO ha sido descalificado, "true" en caso contrario
 
     /**
@@ -29,7 +29,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         this.nombre = nombre;
         this.coche = null;
         this.concentracion = concentracion;
-        this.resultados = new ArrayList<Resultados>();
+        this.resultados = new HashMap<Circuito,Resultados>();
         this.descalificado = false;
     }
     
@@ -71,7 +71,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      * 
      * @return Lista con los resultados de cada carrera     
      */
-    public ArrayList<Resultados> getResultados(){
+    public HashMap<Circuito,Resultados> getResultados(){
         return this.resultados;
     }
     /**
@@ -100,11 +100,11 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     /**
      * Descalifica al piloto, negándole a seguir participando en la competición.  
      */
-    public void descalificar(){ //Tambien llamado setDescalificado()
+    public void descalificar(){ //También llamado setDescalificado()
         this.descalificado = true;
     }
         
-    //Métodos ArrayList
+    //Métodos HashMap
     /**
      * Añade nueva información al registro de resultados.
      * 
@@ -114,7 +114,23 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      * @param puntos Puntuación que ha obtenido el piloto en esa carrera.            
      */
     public void añadirResultados(Circuito circuito, double tiempo, int puntos){
-        this.resultados.add(new Resultados(circuito, tiempo, puntos));
+        this.resultados.put(circuito, new Resultados(tiempo, puntos));
+    }
+    /**
+     * Elimina la información del registro dado un circuito en específico.
+     * 
+     * @param buscado Circuito del que se desea borrar la información     
+     */
+    public void eliminarResultado(Circuito buscado){
+        Iterator<Circuito> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
+        boolean enc = false;
+        while(it.hasNext()){
+            Circuito buscar = it.next();
+            if(buscar.equals(buscado)){
+                enc = true;
+                it.remove();
+            }     
+        }
     }
     /**
      * Devuelve el tamaño de la lista del registro del piloto.
@@ -130,11 +146,12 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      * @return Puntos totales del piloto   
      */
     public int getPuntosTotales(){
-        Iterator<Resultados> it = this.resultados.iterator(); //Inicializamos el Iterator
+        Iterator<Circuito> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
         int puntostotales = 0;
         while(it.hasNext()){
-            Resultados buscar = it.next();
-            puntostotales += buscar.getPuntos();   
+            Circuito key = it.next();
+            Resultados valor = this.resultados.get(key);
+            puntostotales += valor.getPuntos();   
         }
         return puntostotales;
     }
@@ -142,40 +159,20 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      * Imprime por pantalla los resultados del piloto en toda la competición.     
      */
     public void mostrarResultados(){
-        Iterator<Resultados> it = this.resultados.iterator(); //Inicializamos el Iterator        
+        Iterator<Circuito> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator        
         while(it.hasNext()){
-            Resultados buscar = it.next();
-            System.out.println(buscar);
+            Circuito key = it.next();
+            Resultados valor = this.resultados.get(key);
+            System.out.println(key);    //SEGURO QUE ES ASI??
         }
         System.out.println("PUNTOS TOTALES: " + getPuntosTotales());
     }    
     /**
-     * Elimina la información del registro dado un circuito en específico.
-     * 
-     * @param buscado Circuito del que se desea borrar la información     
-     */
-    public void eliminarResultado(Circuito buscado){        //No necesario
-        Iterator<Resultados> it = this.resultados.iterator(); //Inicializamos el Iterator
-        boolean enc = false;
-        while(it.hasNext() && !enc){
-            Resultados buscar = it.next();
-            if(buscar.getCircuito().equals(buscado)){
-                enc = true;
-                it.remove();
-            }     
-        }
-    }
-    /**
      * Vacía el registro de resultados.
      */
     public void limpiarResultados(){
-        Iterator<Resultados> it = this.resultados.iterator(); //Inicializamos el Iterator
-        while(it.hasNext()){
-            Resultados eliminar = it.next();
-            it.remove();     
-        }
-    }
-    
+        this.resultados.clear();
+    }   
    
     //toString()    
     @Override
@@ -185,7 +182,11 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         builder.append('\n');
         builder.append("Coche: " + getCoche());
         builder.append('\n');
-        builder.append(this.concentracion.toString());
+        builder.append(this.concentracion.toString());  //NO MUY SEGURO DE ESTO
+        builder.append('\n');
+        builder.append("RESULTADOS: ");  //NO MUY SEGURO DE ESTO
+        builder.append('\n');
+        mostrarResultados();
         builder.append('\n');
         builder.append("¿Descalificado?: ");
         if(getDescalificado() == false){

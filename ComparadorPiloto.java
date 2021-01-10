@@ -15,5 +15,5 @@ public abstract class ComparadorPiloto implements Comparator<PilotoInterfaz>{
     * @param p1 Piloto a comparar
     * @param p2 Piloto a ser comparado
     */
-    public abstract int compare(PilotoInterfaz p1, PilotoInterfaz p2);
+   public abstract int compare(PilotoInterfaz p1, PilotoInterfaz p2);
 }
