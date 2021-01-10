@@ -4,7 +4,7 @@
  * y el circuito en cuestión donde se ha corrido.
  * 
  * @author CESAR VAZQUEZ LAZARO 
- * @version 0.1
+ * @version 0.2
  */
 public class Resultados{
     //Variables de la clase Resultados:
