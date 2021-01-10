@@ -14,7 +14,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
     private ArrayList <CocheInterfaz> ListaCoches;          //Lista de los coches de la escudería
     private Comparator<PilotoInterfaz> compPilotos;         //Comparador que ordenará la lista de pilotos
     private Comparator<CocheInterfaz> compCoches;           //Comparador que ordenará la lista de coches
-       
+
     /**
      * Constructor parametrizado de la clase EscuderiaRally.
      *
@@ -40,6 +40,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
     public String getNombre(){        
         return this.nomEscuderia;        
     }
+
     /**
      * Devuelve la lista de pilotos preparados para la carrera.
      * 
@@ -48,6 +49,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
     public ArrayList getPilotosCarrera(){ 
         return this.pilotosCarrera;     
     }
+
     /**
      * Devuelve la lista de pilotos
      * 
@@ -56,6 +58,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
     public ArrayList getListaPilotos(){ 
         return this.ListaPilotos;     
     }    
+
     /**
      * Devuelve la lista de coches
      * 
@@ -64,6 +67,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
     public ArrayList getListaCoches(){       
         return this.ListaCoches;    
     }
+
     /**
      * Devuelve el comparador usado para la lista de pilotos
      * 
@@ -72,6 +76,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
     public Comparator<PilotoInterfaz> getComparadorPilotos(){        
         return this.compPilotos;        
     }
+
     /**
      * Devuelve el comparador usado para la lista de coches
      * 
@@ -80,6 +85,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
     public Comparator<CocheInterfaz> getComparadorCoches() {        
         return this.compCoches;        
     }
+
     /**
      * Establece el comparador usado para la lista de pilotos
      * 
@@ -88,6 +94,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
     public void setComparadorPilotos(Comparator<PilotoInterfaz> comparador){
         this.compPilotos = comparador;
     }
+
     /**
      * Establece el comparador usado para la lista de coches
      * 
@@ -96,6 +103,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
     public void setComparadorCoches(Comparator<CocheInterfaz> comparador){
         this.compCoches = comparador;
     }
+
     /**
      * Añade un piloto a la lista de pilotos que irán a la carrera
      * 
@@ -104,6 +112,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
     public void addPilotosCarrera(PilotoInterfaz piloto){          
         this.pilotosCarrera.add(piloto);        
     }
+
     /**
      * Añade un piloto a la lista de pilotos
      * 
@@ -112,6 +121,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
     public void addListaPilotos(PilotoInterfaz piloto){          
         this.ListaPilotos.add(piloto);        
     }
+
     /**
      * Añade un coche a la lista de coches
      * 
@@ -120,6 +130,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
     public void addListaCoches(CocheInterfaz coche){        
         this.ListaCoches.add(coche);    
     }
+
     /**
      * Elimina un piloto de la lista de pilotos que irán a la carrera
      * 
@@ -136,6 +147,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
             }     
         }
     }
+
     /**
      * Elimina un piloto de la lista de pilotos
      * 
@@ -152,6 +164,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
             }     
         }
     }
+
     /**
      * Elimina un coche de la lista de coches
      * 
@@ -168,6 +181,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
             }     
         }
     }
+
     /**
      * Vacía la lista de pilotos que irán a la carrera.
      */
@@ -178,6 +192,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
             it.remove();     
         }
     }
+
     /**
      * Vacía la lista de pilotos
      */
@@ -188,6 +203,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
             it.remove();     
         }
     }
+
     /**
      * Vacía la lista de coches
      */
@@ -198,6 +214,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
             it.remove();     
         }
     }
+
     /**
      * Devuelve la cantidad de puntos que obtiene la escudería, calculando
      * el total de puntos de cada piloto y sumándolos.
@@ -213,7 +230,26 @@ public class EscuderiaRally implements EscuderiaInterfaz
         }
         return puntostotales;   
     }
- 
+
+    public void AsignarCoche () {
+        Iterator<PilotoInterfaz> it = this.ListaPilotos.iterator(); //Inicializamos el Iterator
+        while(it.hasNext()){
+                    PilotoInterfaz piloto= it.next();
+                    if (!piloto.getDescalificado()) { 
+                    Iterator<CocheInterfaz> ti = this.ListaCoches.iterator(); //Inicializamos el Iterator
+                    while (ti.hasNext()) {
+                        CocheInterfaz coche=ti.next();
+                        
+                        if (coche.getValorcombustible()>(0.0)) {
+                             piloto.setCoche(coche);
+                        } 
+                    }
+
+                }
+        }
+
+    }
+  
     //toString()
     @Override
     public String toString(){
