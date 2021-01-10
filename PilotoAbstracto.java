@@ -16,7 +16,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     private HashMap<Circuito,Resultados> resultados;        //Registro con el tiempo y puntos conseguidos en cada carrera
     private boolean descalificado;                          //"false" si NO ha sido descalificado, "true" en caso contrario
     private int nAbandonos;                                 //Número de abandonos que el piloto ha tenido durante la competición
-    
+
     /**
      * Constructor parametrizado de la clase Piloto.
      *
@@ -34,7 +34,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         this.descalificado = false;
         this.nAbandonos = 0;
     }
-    
+
     //Métodos get()/set()
     /**
      * Devuelve el nombre del piloto.
@@ -44,6 +44,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     public String getNombre(){
         return this.nombre;
     }
+
     /**
      * Devuelve el coche que conducirá el piloto.
      * 
@@ -52,6 +53,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     public Coche getCoche(){
         return this.coche;
     }
+
     /**
      * Devuelve el Tipo de Concentración.
      * 
@@ -60,6 +62,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     public Concentracion getConcentracion(){
         return this.concentracion;
     }
+
     /**
      * Devuelve el tiempo de concentración del piloto.
      * 
@@ -68,6 +71,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     public double getTiempoConcentracion(){     //USAD ESTE SI LO QUE NECESITAIS ES EL NUMERO
         return this.concentracion.getTiempo();
     }
+
     /**
      * Devuelve el registro completo con los resultados del piloto en cada carrera.
      * 
@@ -76,6 +80,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     public HashMap<Circuito,Resultados> getResultados(){
         return this.resultados;
     }
+
     /**
      * Devuelve si el piloto ha sido descalificado de la competición.
      * 
@@ -84,6 +89,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     public boolean getDescalificado(){
         return this.descalificado;
     }
+
     /**
      * Devuelve la cantidad de veces que el piloto ha abandonado la carrera.
      * 
@@ -92,34 +98,37 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     public int getAbandonos(){
         return this.nAbandonos;
     }
+
     /**
      * Método que usan los hijos para calcular la destreza del piloto dependiendo del tipo de Piloto. 
      * 
      * @return Destreza del piloto     
      */
     public abstract double getDestreza();
-    
+
     /**
      * Establece el coche con el que correrá el piloto.
      * 
      * @param coche El coche que usará el piloto     
      */
     public void setCoche(Coche coche){
-      this.coche = coche;
+        this.coche = coche;
     }
+
     /**
      * Descalifica al piloto, negándole a seguir participando en la competición.  
      */
     public void descalificar(){ //También llamado setDescalificado()
         this.descalificado = true;
     }
+
     /**
      * Añade un abandono al piloto en cuestión.
      */
     public void abandonar(){
         this.nAbandonos++;
     }
-        
+
     //Métodos HashMap
     /**
      * Añade nueva información al registro de resultados.
@@ -132,6 +141,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     public void añadirResultados(Circuito circuito, double tiempo, int puntos){
         this.resultados.put(circuito, new Resultados(tiempo, puntos));
     }
+
     /**
      * Busca el tiempo que se hizo dado un circuito en específico.
      * 
@@ -147,6 +157,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         }
         return tiempo;
     }
+
     /**
      * Elimina la información del registro dado un circuito en específico.
      * 
@@ -163,6 +174,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
             }     
         }
     }
+
     /**
      * Devuelve el tamaño de la lista del registro del piloto.
      * 
@@ -171,6 +183,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     public int getTamañoResultados(){
         return this.resultados.size();
     }
+
     /**
      * Devuelve el total de puntos que ha conseguido el piloto en toda la competición.
      * 
@@ -186,6 +199,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         }
         return puntostotales;
     }
+
     /**
      * Imprime por pantalla los resultados del piloto en toda la competición.     
      */
@@ -198,13 +212,14 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         }
         System.out.println("PUNTOS TOTALES: " + getPuntosTotales());
     }    
+
     /**
      * Vacía el registro de resultados.
      */
     public void limpiarResultados(){
         this.resultados.clear();
     }
-    
+
     //Otros métodos
     /**
      * Desarrollo de la carrera, en él se calculará si el piloto consigue acabarla o no.
@@ -224,8 +239,8 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
             double resultado = coche.getValorcombustible() - coche.getTiempo(this, circuito); //NO SEGURO
             añadirResultados(circuito, resultado, 0);
             double combustibleactual = coche.getTiempo(this, circuito) + resultado;  //Tiempo que dura la carrera + 
-                                                                                     //(- tiempo que le faltó al piloto
-                                                                                     //para acabar)
+            //(- tiempo que le faltó al piloto
+            //para acabar)
             coche.setCombustibleUsado(combustibleactual);
             abandonar();                       
         }
@@ -236,7 +251,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
             coche.setCombustibleUsado(combustibleactual);
         }
     }
-    
+
     //toString()    
     @Override
     public String toString(){
@@ -261,7 +276,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         builder.append('\n');
         return builder.toString();
     }
-    
+
     //hashCode()
     @Override
     public int hashCode(){
@@ -274,3 +289,4 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         return result;
     }
 }
+
