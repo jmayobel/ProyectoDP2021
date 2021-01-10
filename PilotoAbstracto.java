@@ -186,7 +186,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         if(getTiempoConcentracion() < coche.getTiempo(this, circuito)){ 
             double resultado = getTiempoConcentracion() - coche.getTiempo(this, circuito);
             añadirResultados(circuito, resultado, 0);
-            coche.setcombustible();
+            coche.setCombustible();
         }
         if(getTiempoConcentracion() < coche.getCombustibleUsado(this, circuito)){ 
         

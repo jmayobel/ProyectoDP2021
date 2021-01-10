@@ -1,4 +1,3 @@
-
 public enum Combustible {
 	ESCASO (350.0),
 	NORMAL (440.0),
