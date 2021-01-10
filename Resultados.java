@@ -38,7 +38,7 @@ public class Resultados{
      * 
      * @return Tiempo de carrera
      */
-    public double getTiempoRegistro(){
+    public double getTiempoResultados(){
         return this.tiempo;
     }
     /**
@@ -72,7 +72,7 @@ public class Resultados{
     @Override
     public String toString(){
        return getClass().getSimpleName() + 
-        "\n Tiempo Recorrido: " + getTiempoRegistro() +
+        "\n Tiempo Recorrido: " + getTiempoResultados() +
         "\n Puntos; " + getPuntos();
 
     }
