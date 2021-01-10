@@ -178,14 +178,35 @@ public class Organizacion
     }
    
     public synchronized void Carrera (Circuito circuito){
-        Iterator<PilotoInterfaz> it = this.PilotosCarrera.iterator();
+       Iterator<PilotoInterfaz> it = this.PilotosCarrera.iterator();
         while (it.hasNext()) {
           PilotoInterfaz piloto= it.next();
           piloto.toString();
           CocheInterfaz coche=piloto.getCoche();
           coche.toString();
           double velocidad=coche.getVelocidadReal(piloto,circuito);
-          
-        }            
+          System.out.println(velocidad); 
+          piloto.correrCarrera(circuito);
+          if(piloto.buscarResultado(circuito) > 0)   //Si el tiempo obtenido es positivo, ha acabado la carrera,
+                                                     //si no lo es, no la ha acabado
+          {
+             piloto.buscarResultado(circuito);  
+          }    
+          else{
+            if(piloto.getTiempoConcentracion() < coche.getTiempo(piloto, circuito)){
+                System.out.println("MOTIVO DE ABANDONO: Pérdida de concentración."); 
+            }
+            if(coche.getCombustibleUsado(piloto, circuito) < coche.getTiempo(piloto, circuito)){
+                System.out.println("MOTIVO DE ABANDONO: Falta de combustible."); 
+            }
+            System.out.println(Math.abs(piloto.buscarResultado(circuito)));
+            System.out.println(coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito));
+            if(piloto.getAbandonos() >= this.nAbandonos){
+                piloto.descalificar();
+            }
+            System.out.println(coche.getValorcombustible());            
+          }
+       }
+       
     }
 }

@@ -6,7 +6,7 @@ import java.util.HashMap;
  * característica que marcará el rendimiento del Piloto y el Coche en el Circuito.
  * 
  * @author CESAR VAZQUEZ LAZARO 
- * @version 0.4
+ * @version 0.5
  */
 public abstract class PilotoAbstracto implements PilotoInterfaz{
     //Variables de la clase Piloto:    
@@ -15,7 +15,8 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     private Concentracion concentracion;                    //Minutos que aguanta el piloto de carrera antes de abandonar 
     private HashMap<Circuito,Resultados> resultados;        //Registro con el tiempo y puntos conseguidos en cada carrera
     private boolean descalificado;                          //"false" si NO ha sido descalificado, "true" en caso contrario
-
+    private int nAbandonos;                                 //Número de abandonos que el piloto ha tenido durante la competición
+    
     /**
      * Constructor parametrizado de la clase Piloto.
      *
@@ -31,6 +32,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         this.concentracion = concentracion;
         this.resultados = new HashMap<Circuito,Resultados>();
         this.descalificado = false;
+        this.nAbandonos = 0;
     }
     
     //Métodos get()/set()
@@ -83,6 +85,14 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         return this.descalificado;
     }
     /**
+     * Devuelve la cantidad de veces que el piloto ha abandonado la carrera.
+     * 
+     * @return Número de veces que el piloto ha abandonado 
+     */
+    public int getAbandonos(){
+        return this.nAbandonos;
+    }
+    /**
      * Método que usan los hijos para calcular la destreza del piloto dependiendo del tipo de Piloto. 
      * 
      * @return Destreza del piloto     
@@ -103,6 +113,12 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     public void descalificar(){ //También llamado setDescalificado()
         this.descalificado = true;
     }
+    /**
+     * Añade un abandono al piloto en cuestión.
+     */
+    public void abandonar(){
+        this.nAbandonos++;
+    }
         
     //Métodos HashMap
     /**
@@ -115,6 +131,21 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      */
     public void añadirResultados(Circuito circuito, double tiempo, int puntos){
         this.resultados.put(circuito, new Resultados(tiempo, puntos));
+    }
+    /**
+     * Busca el tiempo que se hizo dado un circuito en específico.
+     * 
+     * @param buscado Circuito del que se desea obtener el tiempo     
+     */
+    public double buscarResultado(Circuito buscado){
+        Iterator<Circuito> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
+        double tiempo = 0;
+        while(it.hasNext()){
+            Circuito key = it.next();
+            Resultados valor = this.resultados.get(key);
+            tiempo = valor.getTiempoResultados();              
+        }
+        return tiempo;
     }
     /**
      * Elimina la información del registro dado un circuito en específico.
@@ -176,25 +207,36 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     
     //Otros métodos
     /**
+     * Desarrollo de la carrera, en él se calculará si el piloto consigue acabarla o no.
      * 
-     * 
-     * @param
-     * @return    
+     * @param circuito Circuito en el que se correrá la carrera
      */
     public void correrCarrera(Circuito circuito){
-        Coche coche = getCoche(); 
+        Coche coche = getCoche();
         if(getTiempoConcentracion() < coche.getTiempo(this, circuito)){ 
             double resultado = getTiempoConcentracion() - coche.getTiempo(this, circuito);
             añadirResultados(circuito, resultado, 0);
-            coche.setCombustible();
+            double combustibleactual = coche.getValorcombustible() - getTiempoConcentracion();
+            coche.setCombustibleUsado(combustibleactual);
+            abandonar();
         }
-        if(getTiempoConcentracion() < coche.getCombustibleUsado(this, circuito)){ 
-        
+        if(coche.getCombustibleUsado(this, circuito) < coche.getTiempo(this, circuito)){ 
+            double resultado = coche.getValorcombustible() - coche.getTiempo(this, circuito); //NO SEGURO
+            añadirResultados(circuito, resultado, 0);
+            double combustibleactual = coche.getTiempo(this, circuito) + resultado;  //Tiempo que dura la carrera + 
+                                                                                     //(- tiempo que le faltó al piloto
+                                                                                     //para acabar)
+            coche.setCombustibleUsado(combustibleactual);
+            abandonar();                       
         }
         else{
-        
-        }    
+            double resultado = coche.getTiempo(this, circuito);
+            añadirResultados(circuito, resultado, 0);
+            double combustibleactual = coche.getValorcombustible() - resultado;
+            coche.setCombustibleUsado(combustibleactual);
+        }
     }
+    
     //toString()    
     @Override
     public String toString(){

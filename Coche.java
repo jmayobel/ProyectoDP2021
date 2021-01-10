@@ -48,13 +48,14 @@ public class Coche implements CocheInterfaz
     public void setCombustible(Combustible combustible){
         this.combustible = combustible;
     }
-    /**
+    
+     /**
      * Set del combustible disponible
-     * @param  nombre - nombre del coche
+     * @param  combustibleU - Combustible que le queda al coche
      */
-    public void setCombustibleUsado(Combustible combustible){
-        this.combustible = combustible;
-    }
+    public void setCombustibleUsado(double combustibleU){
+        this.combustibleUsado = combustibleU;
+    } 
     /**
      * Obtiene el nombre del coche
      * @return nombre - Tipo String
