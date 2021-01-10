@@ -179,7 +179,7 @@ public class Organizacion
     }
 
     public synchronized void Carrera (Circuito circuito){
-       Iterator<PilotoInterfaz> it = this.PilotosCarrera.iterator();
+        Iterator<PilotoInterfaz> it = this.PilotosCarrera.iterator();
         while (it.hasNext()) {
             PilotoInterfaz piloto= it.next();
             piloto.toString();
@@ -207,10 +207,25 @@ public class Organizacion
                 System.out.println(coche.getValorcombustible());            
             }
 
-        }    
+        }
+    }
 
-
+    public synchronized void Podio (Circuito circuito){
+        int podio = 0;
+        //Collections.sort(...,...)
+        Iterator <PilotoInterfaz> it = this.PilotosCarrera.iterator();
+        while(it.hasNext()){
+            PilotoInterfaz piloto = it.next();
+            if(piloto.buscarResultado(circuito) > 0){
+                if(podio < 4){
+                    piloto.añadirPuntos(circuito,10-podio*2);
+                    podio++;
+                }
+                else{
+                    piloto.añadirPuntos(circuito, 2);
+                }
+            }
+        }
     }
 }
-
 

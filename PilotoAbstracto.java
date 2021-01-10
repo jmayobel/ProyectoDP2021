@@ -131,6 +131,21 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      */
     public void añadirTiempo(Circuito circuito, double tiempo){
         this.resultados.put(circuito, new Resultados(tiempo));
+        Resultados nuevo = new Resultados();
+        nuevo.setTiempoResultados(tiempo);
+        this.resultados.put(circuito, nuevo);
+    }
+    /**
+     * Añade los puntos dados dado un circuito concreto
+     * 
+     * @param circuito Circuito en el que el piloto ha corrido
+     * @param puntos Puntos que el piloto ha ganado en esa carrera
+     */
+    public void añadirPuntos(Circuito circuito, int puntos){
+        Resultados resultado = resultados.get(circuito);
+        int puntosAct = resultado.getPuntos() + puntos;
+        resultado.setPuntos(puntosAct);
+        resultados.put(circuito, resultado);
     }
     /**
      * Busca el tiempo que se hizo dado un circuito en específico.
