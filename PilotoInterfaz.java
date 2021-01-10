@@ -16,7 +16,7 @@ public interface PilotoInterfaz{
     public void setCoche(Coche coche);
     public void descalificar();
     public void abandonar();
-    public void añadirResultados(Circuito circuito, double tiempo, int puntos);
+    public void añadirTiempo (Circuito circuito, double tiempo);
     public double buscarResultado(Circuito buscado);
     public int getTamañoResultados();
     public int getPuntosTotales();

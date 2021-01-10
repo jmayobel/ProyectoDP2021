@@ -129,8 +129,8 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      *               Si el tiempo es negativo, indica los minutos que le han faltado para terminarlo.
      * @param puntos Puntuación que ha obtenido el piloto en esa carrera.            
      */
-    public void añadirResultados(Circuito circuito, double tiempo, int puntos){
-        this.resultados.put(circuito, new Resultados(tiempo, puntos));
+    public void añadirTiempo(Circuito circuito, double tiempo){
+        this.resultados.put(circuito, new Resultados(tiempo));
     }
     /**
      * Busca el tiempo que se hizo dado un circuito en específico.
@@ -215,14 +215,14 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         Coche coche = getCoche();
         if(getTiempoConcentracion() < coche.getTiempo(this, circuito)){ 
             double resultado = getTiempoConcentracion() - coche.getTiempo(this, circuito);
-            añadirResultados(circuito, resultado, 0);
+            añadirTiempo(circuito, resultado);
             double combustibleactual = coche.getValorcombustible() - getTiempoConcentracion();
             coche.setCombustibleUsado(combustibleactual);
             abandonar();
         }
         if(coche.getCombustibleUsado(this, circuito) < coche.getTiempo(this, circuito)){ 
             double resultado = coche.getValorcombustible() - coche.getTiempo(this, circuito); //NO SEGURO
-            añadirResultados(circuito, resultado, 0);
+            añadirTiempo(circuito, resultado);
             double combustibleactual = coche.getTiempo(this, circuito) + resultado;  //Tiempo que dura la carrera + 
                                                                                      //(- tiempo que le faltó al piloto
                                                                                      //para acabar)
@@ -231,7 +231,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         }
         else{
             double resultado = coche.getTiempo(this, circuito);
-            añadirResultados(circuito, resultado, 0);
+            añadirTiempo(circuito, resultado);
             double combustibleactual = coche.getValorcombustible() - resultado;
             coche.setCombustibleUsado(combustibleactual);
         }
