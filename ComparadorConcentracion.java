@@ -9,7 +9,6 @@ public class ComparadorConcentracion extends ComparadorPiloto
 {
   /**
     * Comparador de Pilotos en función de la concentración.
-<<<<<<< HEAD
     * En caso de empate, comparará por la destreza del piloto.
     * 
     * @param p1 Piloto a comparar
@@ -17,7 +16,7 @@ public class ComparadorConcentracion extends ComparadorPiloto
     */
     public int compare(PilotoInterfaz p1, PilotoInterfaz p2){
         if(p1.getTiempoConcentracion()==p2.getTiempoConcentracion())
-            return new ComparadorDestreza().compare(p1, p2);
+            return (p1.getNombre().compareTo(p2.getNombre()));        
         else if(p1.getTiempoConcentracion()>p2.getTiempoConcentracion())
             return 1;
         else
