@@ -1,17 +1,15 @@
 
 /**
  * 
- *
- * @author (Miguel)
+ * Circuito con extra mojado.
+ * @author Miguel Medina Cantos
  * @version (1.0)
  */
 public class Mojado extends CircuitoRallyExtra
 {
     /**
+     * Constructor parametrizado de la clase Mojado.
      * @param circuitorally,el circuito al cual se le va añadir el extra.
-     * Constructor de los objetos de la clase Mojado.
-     * 
-     * @return devuelve un objeto de tipo Mojado.
      */
     public Mojado(CircuitoRally circuitorally)
     {
@@ -20,7 +18,8 @@ public class Mojado extends CircuitoRallyExtra
 
      
     /**
-     * @return devuelve la complejidad añadida del circuito Mojado.
+     * devuelve la complejidad añadida del circuito multiplicada por 1.15  .
+     * @return  la complejidad añadida del circuito Mojado.
      */
     @Override
     public double getValorComplejidad ()  {
@@ -29,7 +28,8 @@ public class Mojado extends CircuitoRallyExtra
     
      
     /**
-     * @return devuelve la distancia reducida del circuito Mojado.
+     * devuelve la distancia reducida del circuito multiplicada por 0.85 .
+     * @return  la distancia reducida del circuito Mojado.
      */
     @Override
     public double getValorDistancia ()  {
@@ -37,12 +37,20 @@ public class Mojado extends CircuitoRallyExtra
     }      
     
     
+     /**
+      * 
+      * devuelvela informacion de la clase.
+     * @return un string con la informacion de la clase.
+     */
     @Override
     public String toString() {
-       return decoratedCircuitoRally.toString()+
-        "\n + extra:" + getClass().getSimpleName() +
+
+      return decoratedCircuitoRally.toString() + "\n" +
+         "extra:" + getClass().getSimpleName() + "\n" +
         " -> nueva complejidad: " + getValorComplejidad() + 
-        "\n"+ getValorDistancia ();
+        "\n"+ " -> nueva distancia: " + getValorDistancia ();
+        
+
     }
     
 }

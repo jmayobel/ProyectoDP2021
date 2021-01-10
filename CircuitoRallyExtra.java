@@ -3,18 +3,17 @@
  * CircuitoRallyExtra 
  * Clase padre del patron decorator
  *
- * @author (Miguel)
+ * @author Miguel Medina Cantos
  * @version (1.0)
  */
 public abstract class CircuitoRallyExtra extends CircuitoRally
 {
-    protected CircuitoRally decoratedCircuitoRally;
+    protected CircuitoRally decoratedCircuitoRally; //circuito para el decorator
 
     /**
-     * 
+     * Constructor parametrizado de la clase CircuitoRallyExtra.
      *
-     * @param  un circuito
-     * @return  devuelve decoratedCircuitoRally
+     * @param circuitorally -un circuito.
      */
     public CircuitoRallyExtra (CircuitoRally circuitorally)
     {
@@ -25,8 +24,8 @@ public abstract class CircuitoRallyExtra extends CircuitoRally
      
     
     /**
-     * 
-     * @return devuelve el valor de la complejidad de decoratedCircuitoRally
+     * devuelve el valor de la complejidad.
+     * @return  el valor de la complejidad de decoratedCircuitoRally.
      */
     @Override
     public double getValorComplejidad ()  {
@@ -34,14 +33,19 @@ public abstract class CircuitoRallyExtra extends CircuitoRally
     }      
      
     /**
-     * @return  devuelve el valor de la complejidad de decoratedCircuitoRally
+     * devuelve el valor de la distancia.
+     * @return  el valor de la distancia de decoratedCircuitoRally.
      */
     @Override
     public double getValorDistancia ()  {
      return decoratedCircuitoRally.getValorDistancia ();
     }      
     
-     @Override
+    /**
+     * devuelve la informacion de la clase.
+     * @return un string con la informacion de la clase.
+     */
+    @Override
     public String toString ()  
     {
         // put your code here
@@ -49,7 +53,6 @@ public abstract class CircuitoRallyExtra extends CircuitoRally
         "\n + extra:" + getClass().getSimpleName() +
         " -> nueva complejidad: " + getValorComplejidad() + 
         "\n"+ getValorDistancia ();
-        
     }
     
     

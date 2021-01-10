@@ -1,17 +1,16 @@
 
 /**
- * 
+ * Circuito con extra nocturno.
  *
- * @author (Miguel)
+ * @author Miguel Medina Cantos
  * @version (1.0)
  */
 public class Nocturno extends CircuitoRallyExtra
 {
 
-    /**
+    /** 
+     * Constructor parametrizado de la clase Nocturno.
      * @param circuitorally,el circuito al cual se le va añadir el extra.
-     * Constructor de los objetos de la clase Nocturno.
-     * @return devuelve un objeto de tipo Nocturno.
      * 
      */
     public Nocturno(CircuitoRally circuitorally)
@@ -20,27 +19,35 @@ public class Nocturno extends CircuitoRallyExtra
     }
 
     /**
-     * @return devuelve la complejidad añadida del circuito Nocturno.
+     * devuelve la complejidad añadida del circuito multiplicada por 1.2 .
+     * @return la complejidad añadida del circuito Nocturno.
      */
     @Override
     public double getValorComplejidad ()  {
-     return decoratedCircuitoRally.getValorComplejidad ()*1.2;
+        return decoratedCircuitoRally.getValorComplejidad ()*1.2;
     }
-    
+
     /**
-     * @return devuelve la distancia reducida del circuito Nocturno.
+     * devuelve la distancia reducida del circuito multiplicada por 0.8 . 
+     * @return  la distancia reducida del circuito Nocturno.
      */
     @Override
     public double getValorDistancia ()  {
-     return  decoratedCircuitoRally.getValorDistancia ()*0.8;
+        return  decoratedCircuitoRally.getValorDistancia ()*0.8;
     }      
-    
+
+    /**
+     * devuelvela informacion de la clase . 
+     * @return un string con la informacion de la clase.
+     */
     @Override
     public String toString() {
-               return decoratedCircuitoRally.toString()+
-        "\n + extra:" + getClass().getSimpleName() +
+
+        return decoratedCircuitoRally.toString() + "\n" +
+        "extra:" + getClass().getSimpleName() + "\n" +
         " -> nueva complejidad: " + getValorComplejidad() + 
-        "\n"+ getValorDistancia ();
+        "\n"+ " -> nueva distancia: " + getValorDistancia ();
+
     }
- 
+
 }

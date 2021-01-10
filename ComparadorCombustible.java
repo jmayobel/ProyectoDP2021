@@ -23,4 +23,3 @@ public class ComparadorCombustible extends ComparadorCoche
             return -1;
     }
 }
-

@@ -1,8 +1,8 @@
 
 /**
- * 
+ * Interface de circuito
  *
- * @author (Miguel)
+ * @author Miguel Medina Cantos
  * @version (1.0)
  */
 public interface Circuito

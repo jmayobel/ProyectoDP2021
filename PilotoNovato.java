@@ -1,5 +1,6 @@
 /**
  * La clase PilotoNovato calcula la destreza del piloto. 
+ * 
  * @author CESAR VAZQUEZ LAZARO 
  * @version 0.1
  */

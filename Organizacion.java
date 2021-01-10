@@ -14,9 +14,11 @@ public class Organizacion
     private TreeSet <Circuito> CircuitoSet;
     private TreeSet <EscuderiaInterfaz> EscuderiaSet;
     private HashMap <PilotoInterfaz, EscuderiaInterfaz> pilotosCarrera;
+    private ArrayList <EscuderiaInterfaz> ListadeEscuderias;
+    private HashMap <PilotoInterfaz,EscuderiaInterfaz> PilotosCarrera;   
 
     /**
-     * Constructor for objects of class Organizacion
+     * Constructor parametrizado de Organizacion
      */
     private Organizacion()
     {
@@ -24,10 +26,107 @@ public class Organizacion
         nPilotos = 20;
         CircuitoSet = new TreeSet <Circuito>();
         EscuderiaSet = new TreeSet <EscuderiaInterfaz>(); 
-        pilotosCarrera = new HashMap<PilotoInterfaz, EscuderiaInterfaz>();
+        pilotosCarrera = new HashMap<PilotoInterfaz, EscuderiaInterfaz>();        
     }
    
     //Patrón Singleton
+    /**
+     * inserta una nueva escuderia en la lista de escuderias.
+     * 
+     * @param nuevaEscuderia -escuderia a insertar en la lista.
+     * 
+     */
+    public synchronized void setEscuderia (EscuderiaInterfaz nuevaEscuderia) {
+        ListadeEscuderias.add(nuevaEscuderia);
+    }    
+
+    /**
+     * borra una escuderia de la lista.
+     * @param escuderia - escuderia a borra en la lista.
+     */
+    public synchronized void deleteEscuderia (EscuderiaInterfaz escuderia) {
+        ListadeEscuderias.remove(escuderia);
+    }    
+
+    /**
+     * inserta un nuevo circuito en el set.
+     * @param nuevoCircuito el nuevo circuito a insertar.
+     */
+    public synchronized void setCircuito (Circuito nuevoCircuito) {
+        CircuitoSet.add(nuevoCircuito);
+    }    
+
+    /**
+     * borra un circuito del set.
+     * @param circuito -circuito a borrar.
+     */
+    public synchronized void deleteCircuito (Circuito circuito) {
+        CircuitoSet.remove(circuito);
+    }  
+
+    /**
+     * busca un circuito en CircuitoSet.
+     * @param circuito- circuito a buscar en CircuitoSet.
+     * @return el circuito buscada.
+     */public synchronized Circuito buscarCircuito (Circuito circuito) {
+        Iterator<Circuito> it = this.CircuitoSet.iterator(); //Inicializamos el Iterator
+        boolean enc = false;
+        Circuito aux=null;
+
+        while(it.hasNext() && !enc){
+            Circuito buscar = it.next();
+
+            if(buscar.equals(circuito)){
+                enc = true;
+                aux=buscar;
+            }     
+        }
+        return aux;
+    }    
+
+    /**
+     * busca una escuderia en la lista de escuderias.
+     * @param escuderia- escuderia a buscar en la lista.
+     * @return la escuderia buscada.
+     */
+    public synchronized EscuderiaInterfaz buscarEscuderia (EscuderiaInterfaz escuderia) {
+        Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator(); //Inicializamos el Iterator
+        boolean enc = false;
+        EscuderiaInterfaz aux=null;
+        while(it.hasNext() && !enc){
+            EscuderiaInterfaz buscar = it.next();
+            if(buscar.equals(escuderia)){
+                enc = true;
+                aux=buscar;
+            }     
+        }
+
+        return aux; 
+    }    
+
+    /**
+     *  deja vacio CircuitoSet.
+     */
+    public synchronized void DejarVacioTreeSetCircuitos () {
+        Iterator<Circuito> it = this.CircuitoSet.iterator(); //Inicializamos el Iterator
+
+        while(it.hasNext()){
+            Circuito buscar = it.next();
+            it.remove();
+        }                
+    }    
+
+    /**
+     *  deja vacia la lista de escuderias.
+     */
+    public synchronized void DejarVacioListadeEscuderias() {
+        Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator(); //Inicializamos el Iterator
+        while(it.hasNext()){
+            EscuderiaInterfaz buscar = it.next();
+            it.remove();
+        }
+    }  
+
     public synchronized static
     Organizacion getInstance() 
     {
@@ -35,8 +134,7 @@ public class Organizacion
            instance= new Organizacion();           
         } 
         return instance;
-    }
-    
+    }    
     //Métodos HashMap
     public void añadirPilotoCarrera(PilotoInterfaz piloto, EscuderiaInterfaz escuderia){
         this.pilotosCarrera.put(piloto, escuderia);
@@ -66,5 +164,26 @@ public class Organizacion
         }
     }
     
-    
+    /**
+     * muestra las escuderias de la lista de escuderias.
+     */
+    public synchronized void MostrarEscuderias(){
+        Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
+
+        while(it.hasNext()){
+            EscuderiaInterfaz buscar = it.next();
+            System.out.println (buscar.toString());
+        }
+    }
+    /**
+     * muestra los circuitos del TreeSet de circuitos.
+     */
+    public synchronized void MostrarCircuitos(){
+        Iterator<Circuito> it = this.CircuitoSet.iterator();
+
+        while(it.hasNext()){
+            Circuito buscar = it.next();
+            System.out.println (buscar.toString());
+        }
+    }
 }
