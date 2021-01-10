@@ -10,6 +10,7 @@ public class Coche implements CocheInterfaz
     private String nombreCoche;
     private Velocidad velocidad;
     private Combustible combustible;
+    private double combustibleUsado;
     private double tiempoCarrera;
 
     /**
@@ -22,6 +23,7 @@ public class Coche implements CocheInterfaz
         this.nombreCoche = nombre;
         this.velocidad = velocidad;
         this.combustible = combustible;
+        this.combustibleUsado = combustible.getcombustible();
     }
     
     /**
@@ -79,7 +81,7 @@ public class Coche implements CocheInterfaz
      * @return combustible.getcombustible() - Tipo double
      */
     public double getValorcombustible() {
-        return combustible.getcombustible();
+        return combustibleUsado;
     }
     
     /**
@@ -112,7 +114,7 @@ public class Coche implements CocheInterfaz
         return getValorcombustible() - getTiempo(piloto, circuito);
     }
     
-      /**
+     /**
      * devuelve la informacion de la clase.
      * @return un string con la informacion de la clase.
      */

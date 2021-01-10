@@ -15,4 +15,5 @@ public enum Combustible {
 		return combustible;
 	}
 	
+	
 }
