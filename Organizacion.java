@@ -21,7 +21,7 @@ public class Organizacion
     private  Organizacion()
     {
         nAbandonos=2;
-        nPilotos=20;
+        nPilotos=2;
         CircuitoSet= new TreeSet <Circuito> (new ComparadorComplejidad ());
         ListadeEscuderias=new ArrayList <EscuderiaInterfaz> () ; 
         PilotosCarrera = new ArrayList <PilotoInterfaz> ();
@@ -177,6 +177,9 @@ public class Organizacion
        Collections.sort(PilotosCarrera,new ComparadorTotalPuntos()); 
     }
    
+    
+    
+    
     public synchronized void Carrera (Circuito circuito){
         Iterator<PilotoInterfaz> it = this.PilotosCarrera.iterator();
         while (it.hasNext()) {
@@ -185,6 +188,7 @@ public class Organizacion
           CocheInterfaz coche=piloto.getCoche();
           coche.toString();
           double velocidad=coche.getVelocidadReal(piloto,circuito);
+          
           
         }    
 
