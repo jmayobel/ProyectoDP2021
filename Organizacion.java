@@ -211,7 +211,7 @@ public class Organizacion
     public synchronized void Podio (Circuito circuito){
         int podio = 0;
         //Collections.sort(...,...)
-        Iterator <PilotoInterfaz> it = it.PilotosCarrera.iterator();
+        Iterator <PilotoInterfaz> it = this.PilotosCarrera.iterator();
         while(it.hasNext()){
             PilotoInterfaz piloto = it.next();
             if(piloto.buscarResultado(circuito) > 0){
