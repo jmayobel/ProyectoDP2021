@@ -184,6 +184,10 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         builder.append('\n');
         builder.append(this.concentracion.toString());  //NO MUY SEGURO DE ESTO
         builder.append('\n');
+        builder.append("RESULTADOS: ");  //NO MUY SEGURO DE ESTO
+        builder.append('\n');
+        mostrarResultados();
+        builder.append('\n');
         builder.append("¿Descalificado?: ");
         if(getDescalificado() == false){
             builder.append("NO");
