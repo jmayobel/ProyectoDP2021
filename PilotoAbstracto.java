@@ -1,79 +1,209 @@
+import java.util.Iterator;
+import java.util.HashMap;
 /**
- * La clase Resultados llevará una lista con la información del piloto en cada carrera,
- * entre ellas se encuentra el tiempo corrido en carrera, los puntos obtenidos,
- * y el circuito en cuestión donde se ha corrido.
+ * La clase Piloto representa a aquellos que competirán con un coche en los circuitos de la competición.
+ * La diferencia entre cada Piloto viene marcada por la concentración del mismo, 
+ * característica que marcará el rendimiento del Piloto y el Coche en el Circuito.
  * 
  * @author CESAR VAZQUEZ LAZARO 
- * @version 0.1
+ * @version 0.4
  */
-public class Resultados{
-    //Variables de la clase Resultados:
-    private double tiempo;      //Tiempo que se ha mantenido el piloto en una carrera
-    private int puntos;         //Puntos ganados en una carrera 
-    
-    //Constructores
+public abstract class PilotoAbstracto implements PilotoInterfaz{
+    //Variables de la clase Piloto:    
+    private String nombre;                                  //Nombre completo del Piloto
+    private Coche coche;                                    //Coche con el que correrá (Asignado por la Escudería)
+    private Concentracion concentracion;                    //Minutos que aguanta el piloto de carrera antes de abandonar 
+    private HashMap<Circuito,Resultados> resultados;        //Registro con el tiempo y puntos conseguidos en cada carrera
+    private boolean descalificado;                          //"false" si NO ha sido descalificado, "true" en caso contrario
+
     /**
-    * Constructor estándar de la clase Resultados.
-    */
-    public Resultados(){
-        this.tiempo = 0;
-        this.puntos = 0;
-    }
-    /**
-    * Constructor parametrizado de la clase Resultados.
-    *
-    * @param tiempo Tiempo en el que el piloto ha terminado la carrera. 
-    *               Si el tiempo es negativo, indica los minutos que le han faltado para terminarlo
-    * @param puntos Puntos obtenidos en la carrera por el piloto
-    */    
-    public Resultados(double tiempo, int puntos){
-        this.tiempo = tiempo;
-        this.puntos = puntos;
-    }
-    
-    //Métodos get()/ set()
-    /**
-     * Devuelve el tiempo en el que el piloto ha terminado la carrera. Si el tiempo es negativo, 
-     * indica los minutos que le han faltado para terminarlo.
-     * 
-     * @return Tiempo de carrera
+     * Constructor parametrizado de la clase Piloto.
+     *
+     * @param nombre Nombre de pila del piloto
+     * @param concentracion Tipo de Concentración (DESPISTADO, NORMAL, CONCENTRADO, ZEN) del piloto. 
+     *                      Será el tiempo en minutos que el piloto mantiene la concentración 
+     *                      antes de abandonar la carrera
+     *     
      */
-    public double getTiempoRegistro(){
-        return this.tiempo;
-    }
-    /**
-     * Devuelve los puntos ganados en la carrera. 
-     * 
-     * @return Puntos obtenidos
-     */
-    public int getPuntos(){
-        return this.puntos;
+    public PilotoAbstracto(String nombre, Concentracion concentracion){ //Añadir el coche y el registro
+        this.nombre = nombre;
+        this.coche = null;
+        this.concentracion = concentracion;
+        this.resultados = new HashMap<Circuito,Resultados>();
+        this.descalificado = false;
     }
     
+    //Métodos get()/set()
     /**
-     * Establece el tiempo en el que el piloto acabó la carrera. Si el tiempo es negativo, 
-     * indica los minutos que le han faltado para terminarlo. 
+     * Devuelve el nombre del piloto.
      * 
-     * @param tiempo Tiempo en el que acabó la carrera   
+     * @return Nombre del piloto    
      */
-    public void setTiempoResultado(double tiempo){
-        this.tiempo = tiempo;
+    public String getNombre(){
+        return this.nombre;
     }
     /**
-     * Establece los puntos ganados en esa carrera. 
+     * Devuelve el coche que conducirá el piloto.
      * 
-     * @param puntos Puntos obtenidos en la carrera.   
+     * @return Coche que conduce el piloto    
      */
-    public void setPuntos(int puntos){
-        this.puntos = puntos;
-    }  
+    public Coche getCoche(){
+        return this.coche;
+    }
+    /**
+     * Devuelve el Tipo de Concentración.
+     * 
+     * @return ENUM Concentracion(String nombre, double tiempo)   
+     */
+    public Concentracion getConcentracion(){
+        return this.concentracion;
+    }
+    /**
+     * Devuelve el tiempo de concentración del piloto.
+     * 
+     * @return Tiempo (en minutos) que aguantará el piloto antes de abandonar la carrera     
+     */
+    public double getTiempoConcentracion(){     //USAD ESTE SI LO QUE NECESITAIS ES EL NUMERO
+        return this.concentracion.getTiempo();
+    }
+    /**
+     * Devuelve el registro completo con los resultados del piloto en cada carrera.
+     * 
+     * @return Lista con los resultados de cada carrera     
+     */
+    public HashMap<Circuito,Resultados> getResultados(){
+        return this.resultados;
+    }
+    /**
+     * Devuelve si el piloto ha sido descalificado de la competición.
+     * 
+     * @return boolean "true" en caso de que el piloto esté descalificado, "false" en caso contrario.   
+     */
+    public boolean getDescalificado(){
+        return this.descalificado;
+    }
+    /**
+     * Método que usan los hijos para calcular la destreza del piloto dependiendo del tipo de Piloto. 
+     * 
+     * @return Destreza del piloto     
+     */
+    public abstract double getDestreza();
     
-    //Método toString()
+    /**
+     * Establece el coche con el que correrá el piloto.
+     * 
+     * @param coche El coche que usará el piloto     
+     */
+    public void setCoche(Coche coche){
+      this.coche = coche;
+    }
+    /**
+     * Descalifica al piloto, negándole a seguir participando en la competición.  
+     */
+    public void descalificar(){ //También llamado setDescalificado()
+        this.descalificado = true;
+    }
+        
+    //Métodos HashMap
+    /**
+     * Añade nueva información al registro de resultados.
+     * 
+     * @param circuito Circuito en el que el piloto ha corrido
+     * @param tiempo Tiempo en el que el piloto ha terminado la carrera. 
+     *               Si el tiempo es negativo, indica los minutos que le han faltado para terminarlo.
+     * @param puntos Puntuación que ha obtenido el piloto en esa carrera.            
+     */
+    public void añadirResultados(Circuito circuito, double tiempo, int puntos){
+        this.resultados.put(circuito, new Resultados(tiempo, puntos));
+    }
+    /**
+     * Elimina la información del registro dado un circuito en específico.
+     * 
+     * @param buscado Circuito del que se desea borrar la información     
+     */
+    public void eliminarResultado(Circuito buscado){
+        Iterator<Circuito> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
+        boolean enc = false;
+        while(it.hasNext()){
+            Circuito buscar = it.next();
+            if(buscar.equals(buscado)){
+                enc = true;
+                it.remove();
+            }     
+        }
+    }
+    /**
+     * Devuelve el tamaño de la lista del registro del piloto.
+     * 
+     * @return Tamaño del registro    
+     */
+    public int getTamañoResultados(){
+        return this.resultados.size();
+    }
+    /**
+     * Devuelve el total de puntos que ha conseguido el piloto en toda la competición.
+     * 
+     * @return Puntos totales del piloto   
+     */
+    public int getPuntosTotales(){
+        Iterator<Circuito> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
+        int puntostotales = 0;
+        while(it.hasNext()){
+            Circuito key = it.next();
+            Resultados valor = this.resultados.get(key);
+            puntostotales += valor.getPuntos();   
+        }
+        return puntostotales;
+    }
+    /**
+     * Imprime por pantalla los resultados del piloto en toda la competición.     
+     */
+    public void mostrarResultados(){
+        Iterator<Circuito> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator        
+        while(it.hasNext()){
+            Circuito key = it.next();
+            Resultados valor = this.resultados.get(key);
+            System.out.println(key);    //SEGURO QUE ES ASI??
+        }
+        System.out.println("PUNTOS TOTALES: " + getPuntosTotales());
+    }    
+    /**
+     * Vacía el registro de resultados.
+     */
+    public void limpiarResultados(){
+        this.resultados.clear();
+    }   
+   
+    //toString()    
     @Override
     public String toString(){
-       return getClass().getSimpleName() + 
-        "\n Tiempo Recorrido: " + getTiempoRegistro() +
-        "\n Puntos; " + getPuntos();
+        StringBuilder builder = new StringBuilder();
+        builder.append("PILOTO: " + getNombre());
+        builder.append('\n');
+        builder.append("Coche: " + getCoche());
+        builder.append('\n');
+        builder.append(this.concentracion.toString());  //NO MUY SEGURO DE ESTO
+        builder.append('\n');
+        builder.append("¿Descalificado?: ");
+        if(getDescalificado() == false){
+            builder.append("NO");
+        }
+        else{
+            builder.append("SÍ");
+        }
+        builder.append('\n');
+        return builder.toString();
+    }
+    
+    //hashCode()
+    @Override
+    public int hashCode(){
+        int result = 17;
+        result = 7 * result + getNombre().hashCode();
+        result = 13 * result + getCoche().hashCode();
+        result = 17 * result + getConcentracion().hashCode();
+        result = 19 * result + getResultados().hashCode();
 
+        return result;
     }
 }
