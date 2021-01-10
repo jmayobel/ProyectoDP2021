@@ -9,5 +9,8 @@ public interface CocheInterfaz {
 	public Velocidad getvelocidad();
 	public double getValorVelocidad();
 	public Combustible getcombustible(); 
-	public double getValorcombustible() ;
+	public double getValorcombustible();
+	public double getCombustibleUsado(PilotoInterfaz piloto, Circuito circuito);
+	public double getTiempo(PilotoInterfaz piloto, Circuito circuito);
+	public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito);
 }

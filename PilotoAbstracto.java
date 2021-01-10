@@ -172,8 +172,29 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      */
     public void limpiarResultados(){
         this.resultados.clear();
-    }   
-   
+    }
+    
+    //Otros métodos
+    /**
+     * 
+     * 
+     * @param
+     * @return    
+     */
+    public void correrCarrera(Circuito circuito){
+        Coche coche = getCoche(); 
+        if(getTiempoConcentracion() < coche.getTiempo(this, circuito)){ 
+            double resultado = getTiempoConcentracion() - coche.getTiempo(this, circuito);
+            añadirResultados(circuito, resultado, 0);
+            coche.setcombustible();
+        }
+        if(getTiempoConcentracion() < coche.getCombustibleUsado(this, circuito)){ 
+        
+        }
+        else{
+        
+        }    
+    }
     //toString()    
     @Override
     public String toString(){

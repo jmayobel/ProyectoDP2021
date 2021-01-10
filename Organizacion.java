@@ -178,8 +178,14 @@ public class Organizacion
     }
    
     public synchronized void Carrera (Circuito circuito){
-        
-        
-        
+        Iterator<PilotoInterfaz> it = this.PilotosCarrera.iterator();
+        while (it.hasNext()) {
+          PilotoInterfaz piloto= it.next();
+          piloto.toString();
+          CocheInterfaz coche=piloto.getCoche();
+          coche.toString();
+          double velocidad=coche.getVelocidadReal(piloto,circuito);
+          
+        }            
     }
 }

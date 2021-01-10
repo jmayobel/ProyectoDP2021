@@ -13,6 +13,5 @@ public enum Combustible {
 	
 	public double getcombustible() {
 		return combustible;
-	}
-	
+	}	
 }
