@@ -21,7 +21,7 @@ public class Organizacion
     private  Organizacion()
     {
         nAbandonos=2;
-        nPilotos=20;
+        nPilotos=2;
         CircuitoSet= new TreeSet <Circuito> (new ComparadorComplejidad ());
         ListadeEscuderias=new ArrayList <EscuderiaInterfaz> () ; 
         PilotosCarrera = new ArrayList <PilotoInterfaz> ();
@@ -106,8 +106,8 @@ public class Organizacion
     }    
 
     /**
-    *  deja vacio CircuitoSet.
-    */
+     *  deja vacio CircuitoSet.
+     */
     public synchronized void DejarVacioTreeSetCircuitos () {
         Iterator<Circuito> it = this.CircuitoSet.iterator(); //Inicializamos el Iterator
 
@@ -117,7 +117,6 @@ public class Organizacion
 
         }        
 
-        
     }    
 
     /**
@@ -152,15 +151,15 @@ public class Organizacion
             System.out.println (buscar.toString());
         }
     }
-    
+
     public synchronized void GuardarPilotos(){
-     Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
-     while(it.hasNext()){
-         EscuderiaInterfaz Esc = it.next();
-         PilotosCarrera.addAll(Esc.getPilotosCarrera());
+        Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
+        while(it.hasNext()){
+            EscuderiaInterfaz Esc = it.next();
+            PilotosCarrera.addAll(Esc.getPilotosCarrera());
         } 
     }
-   
+
     /**
      * muestra los circuitos del TreeSet de circuitos.
      */
@@ -172,41 +171,44 @@ public class Organizacion
         }
 
     }
-    
+
     public synchronized void OrdenarParrilla(){
-       Collections.sort(PilotosCarrera,new ComparadorTotalPuntos()); 
+        Collections.sort(PilotosCarrera,new ComparadorTotalPuntos()); 
     }
-   
+
     public synchronized void Carrera (Circuito circuito){
        Iterator<PilotoInterfaz> it = this.PilotosCarrera.iterator();
         while (it.hasNext()) {
-          PilotoInterfaz piloto= it.next();
-          piloto.toString();
-          CocheInterfaz coche=piloto.getCoche();
-          coche.toString();
-          double velocidad=coche.getVelocidadReal(piloto,circuito);
-          System.out.println(velocidad); 
-          piloto.correrCarrera(circuito);
-          if(piloto.buscarResultado(circuito) > 0)   //Si el tiempo obtenido es positivo, ha acabado la carrera,
-                                                     //si no lo es, no la ha acabado
-          {
-             piloto.buscarResultado(circuito);  
-          }    
-          else{
-            if(piloto.getTiempoConcentracion() < coche.getTiempo(piloto, circuito)){
-                System.out.println("MOTIVO DE ABANDONO: Pérdida de concentración."); 
+            PilotoInterfaz piloto= it.next();
+            piloto.toString();
+            CocheInterfaz coche=piloto.getCoche();
+            coche.toString();
+            double velocidad=coche.getVelocidadReal(piloto,circuito);
+            piloto.correrCarrera(circuito);
+            if(piloto.buscarResultado(circuito) > 0)   //Si el tiempo obtenido es positivo, ha acabado la carrera,
+            //si no lo es, no la ha acabado
+            {
+                piloto.buscarResultado(circuito);  
+            }    
+            else{
+                if(piloto.getTiempoConcentracion() < coche.getTiempo(piloto, circuito)){
+                    System.out.println("MOTIVO DE ABANDONO: Pérdida de concentración."); 
+                }
+                if(coche.getCombustibleUsado(piloto, circuito) < coche.getTiempo(piloto, circuito)){
+                    System.out.println("MOTIVO DE ABANDONO: Falta de combustible."); 
+                }
+                System.out.println(Math.abs(piloto.buscarResultado(circuito)));
+                System.out.println(coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito));
+                if(piloto.getAbandonos() >= this.nAbandonos){
+                    piloto.descalificar();
+                }
+                System.out.println(coche.getValorcombustible());            
             }
-            if(coche.getCombustibleUsado(piloto, circuito) < coche.getTiempo(piloto, circuito)){
-                System.out.println("MOTIVO DE ABANDONO: Falta de combustible."); 
-            }
-            System.out.println(Math.abs(piloto.buscarResultado(circuito)));
-            System.out.println(coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito));
-            if(piloto.getAbandonos() >= this.nAbandonos){
-                piloto.descalificar();
-            }
-            System.out.println(coche.getValorcombustible());            
-          }
-       }
-       
+
+        }    
+
+
     }
 }
+
+
