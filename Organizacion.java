@@ -13,7 +13,7 @@ public class Organizacion
     private final int nPilotos;
     private TreeSet <Circuito> CircuitoSet;
     private ArrayList <EscuderiaInterfaz> ListadeEscuderias;
-    private HashMap <PilotoInterfaz,EscuderiaInterfaz> PilotosCarrera;   
+    private ArrayList <PilotoInterfaz> PilotosCarrera;   
 
     /**
      * Constructor parametrizado de Organizacion
@@ -24,7 +24,7 @@ public class Organizacion
         nPilotos=20;
         CircuitoSet= new TreeSet <Circuito> (new ComparadorComplejidad ());
         ListadeEscuderias=new ArrayList <EscuderiaInterfaz> () ; 
-        PilotosCarrera = new HashMap <PilotoInterfaz, EscuderiaInterfaz> ();
+        PilotosCarrera = new ArrayList <PilotoInterfaz> ();
     }
 
     /**
@@ -152,6 +152,15 @@ public class Organizacion
             System.out.println (buscar.toString());
         }
     }
+    
+    public synchronized void GuardarPilotos(){
+     Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
+     while(it.hasNext()){
+         EscuderiaInterfaz Esc = it.next();
+         PilotosCarrera.addAll(Esc.getPilotosCarrera());
+        } 
+    }
+   
     /**
      * muestra los circuitos del TreeSet de circuitos.
      */
@@ -164,6 +173,13 @@ public class Organizacion
 
     }
     
-    public synchronized void PilotosCalificados(){
+    public synchronized void OrdenarParrilla(){
+       Collections.sort(PilotosCarrera,new ComparadorTotalPuntos()); 
+    }
+   
+    public synchronized void Carrera (Circuito circuito){
+        
+        
+        
     }
 }
