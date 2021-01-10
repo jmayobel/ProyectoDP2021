@@ -14,6 +14,8 @@ public class Organizacion
     private TreeSet <Circuito> CircuitoSet;
     private ArrayList <EscuderiaInterfaz> ListadeEscuderias;
     private ArrayList <PilotoInterfaz> PilotosCarrera;   
+   private ArrayList <PilotoInterfaz> Podio;   
+
 
     /**
      * Constructor parametrizado de Organizacion

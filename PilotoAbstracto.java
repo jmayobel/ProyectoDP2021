@@ -130,6 +130,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      * @param puntos Puntuación que ha obtenido el piloto en esa carrera.            
      */
     public void añadirTiempo(Circuito circuito, double tiempo){
+        this.resultados.put(circuito, new Resultados(tiempo));
         Resultados nuevo = new Resultados();
         nuevo.setTiempoResultados(tiempo);
         this.resultados.put(circuito, nuevo);

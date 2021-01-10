@@ -24,11 +24,10 @@ public class Resultados{
     *
     * @param tiempo Tiempo en el que el piloto ha terminado la carrera. 
     *               Si el tiempo es negativo, indica los minutos que le han faltado para terminarlo
-    * @param puntos Puntos obtenidos en la carrera por el piloto
     */    
-    public Resultados(double tiempo, int puntos){
+    public Resultados(double tiempo){
         this.tiempo = tiempo;
-        this.puntos = puntos;
+        this.puntos = 0;
     }
     
     //Métodos get()/ set()
