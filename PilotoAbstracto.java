@@ -157,8 +157,10 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         double tiempo = 0;
         while(it.hasNext()){
             Circuito key = it.next();
-            Resultados valor = this.resultados.get(key);
-            tiempo = valor.getTiempoResultados();              
+            if(key.equals(buscado)){
+                Resultados valor = this.resultados.get(key);
+                tiempo = valor.getTiempoResultados();
+            }                          
         }
         return tiempo;
     }
@@ -204,14 +206,14 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     /**
      * Imprime por pantalla los resultados del piloto en toda la competición.     
      */
-    public void mostrarResultados(){
+    public String mostrarResultados(){
         Iterator<Circuito> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator        
         while(it.hasNext()){
             Circuito key = it.next();
             Resultados valor = this.resultados.get(key);
             System.out.println(key);    //SEGURO QUE ES ASI??
         }
-        System.out.println("PUNTOS TOTALES: " + getPuntosTotales());
+        return("PUNTOS TOTALES: " + getPuntosTotales());       
     }    
     /**
      * Vacía el registro de resultados.
@@ -264,7 +266,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         builder.append('\n');
         builder.append("RESULTADOS: ");  //NO MUY SEGURO DE ESTO
         builder.append('\n');
-        mostrarResultados();
+        builder.append(mostrarResultados());
         builder.append('\n');
         builder.append("¿Descalificado?: ");
         if(getDescalificado() == false){

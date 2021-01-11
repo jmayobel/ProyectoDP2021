@@ -130,6 +130,7 @@ public class Organizacion
         }
     }  
     
+          
     /**
      *  Método del patrón Singleton que permite devolver una instancia del objeto creado.
      *  Si no hay ninguna instancia, se crea.
@@ -158,7 +159,7 @@ public class Organizacion
             System.out.println (buscar.toString());
         }
     }
-
+    
     /**
      *  Inserta los pilotos listos para correr en la lista de pilotosCarrera
      */
@@ -167,7 +168,7 @@ public class Organizacion
         while(it.hasNext()){
             EscuderiaInterfaz Esc = it.next();
             Esc.AsignarCoche();
-            
+   
             PilotosCarrera.addAll(Esc.getPilotosCarrera());
         } 
     }
@@ -195,11 +196,10 @@ public class Organizacion
      */
     public synchronized void campeonato(){
        Iterator<Circuito> it = this.CircuitoSet.iterator();
-       MostrarCircuitos();
        System.out.println("FINALIZADO MOSTRAR CIRCUITOS");
        MostrarEscuderias();
        System.out.println("FINALIZADO MOSTRAR ESCUDERÍAS");
-
+       
        while(it.hasNext()){
            Circuito circuito = it.next();
            Carrera(circuito);
@@ -207,19 +207,20 @@ public class Organizacion
        }    
     }
     
-    /**
+     /**
      * Realiza la carrera en un circuito dado para todos los pilotos que corren en él.
      */
     public synchronized void Carrera(Circuito circuito){
-       GuardarPilotos();
+       GuardarPilotos(); //Guarda en pilotoCarreras los coches para correr
+       OrdenarParrilla(); //Ordena los pilotos
        Iterator<PilotoInterfaz> it = this.PilotosCarrera.iterator();
        while (it.hasNext()) {
           PilotoInterfaz piloto= it.next();
-          piloto.toString();
+          System.out.println(piloto.toString()); //Muestra el piloto que correra
           CocheInterfaz coche=piloto.getCoche();
-          coche.toString();
+          coche.toString(); //Muestra el coche que correra
           double velocidad=coche.getVelocidadReal(piloto,circuito);
-          System.out.println(velocidad); 
+          System.out.println("VELOCIDAD REAL: " + velocidad); 
           piloto.correrCarrera(circuito);
           if(piloto.buscarResultado(circuito) > 0)   //Si el tiempo obtenido es positivo, ha acabado la carrera,
                                                      //si no lo es, no la ha acabado
@@ -233,7 +234,7 @@ public class Organizacion
             if(coche.getCombustibleUsado(piloto, circuito) < coche.getTiempo(piloto, circuito)){
                 System.out.println("MOTIVO DE ABANDONO: Falta de combustible."); 
             }
-            System.out.println(Math.abs(piloto.buscarResultado(circuito)));
+            System.out.println(Math.abs(piloto.buscarResultado(circuito)));                 
             System.out.println(coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito));
             if(piloto.getAbandonos() >= this.nAbandonos){
                 piloto.descalificar();
@@ -243,7 +244,7 @@ public class Organizacion
        }
       }
 
-    /**
+     /**
      * Ordena la lista de pilotos de PilotosCarrera por tiempo y le asigna los puntos correspondientes a sus posición
      */
     public synchronized void Podio (Circuito circuito){
