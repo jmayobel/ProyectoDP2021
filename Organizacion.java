@@ -198,6 +198,7 @@ public class Organizacion
      * Realiza las carreras para cada circuito del campeonato
      */
     public synchronized void campeonato(){
+       int Carrerasact = 0;
        Iterator<Circuito> it = this.CircuitoSet.iterator();
        MostrarCircuitos();
        System.out.println("FINALIZADO MOSTRAR CIRCUITOS");
@@ -206,7 +207,9 @@ public class Organizacion
        GuardarPilotos(); //Guarda en pilotoCarreras los coches para correr
        while(it.hasNext()){
            Circuito circuito = it.next();
+           System.out.println("----------------------CARRERA " + Carrerasact + " DE " + CircuitoSet.size()+"-------------------------------");
            Carrera(circuito);
+           Carrerasact++;
            Podio(circuito);
        }    
     }
@@ -215,17 +218,16 @@ public class Organizacion
      * Realiza la carrera en un circuito dado para todos los pilotos que corren en él.
      */
     public synchronized void Carrera(Circuito circuito){
-       
        OrdenarParrilla(); //Ordena los pilotos
        Iterator<PilotoInterfaz> it = this.PilotosCarrera.iterator();
        while (it.hasNext()) {
           PilotoInterfaz piloto= it.next();
+          if(!piloto.getDescalificado()){
           System.out.println(piloto.toString()); //Muestra el piloto que correra
           CocheInterfaz coche=piloto.getCoche();
-          coche.toString(); //Muestra el coche que correra
+          //coche.toString(); //Muestra el coche que correra
           double velocidad=coche.getVelocidadReal(piloto,circuito);
           System.out.println("VELOCIDAD REAL: " + velocidad);
-          if(!piloto.getDescalificado()){
           piloto.correrCarrera(circuito);
           if(piloto.buscarResultado(circuito) > 0)   //Si el tiempo obtenido es positivo, ha acabado la carrera,
                                                      //si no lo es, no la ha acabado

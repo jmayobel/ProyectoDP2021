@@ -132,8 +132,8 @@ public class Coche implements CocheInterfaz
     {
         // put your code here
         return
-        "Nombre del coche" + getNombreCoche() + "\n" +
+        "Nombre del coche: " + getNombreCoche() + " " +
         "Combustible: " + getValorcombustible() + 
-        "\n"+ "Velocidad:" + getValorVelocidad ();
+        " "+ "Velocidad: " + getValorVelocidad ();
     }
 }

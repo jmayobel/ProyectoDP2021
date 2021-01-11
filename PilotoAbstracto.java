@@ -203,6 +203,9 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         }
         return puntostotales;
     }
+    
+    //ESTE MODULO NO SIRVE PARA NADA
+    //RECORRE RESULTADOS SOLO SACA LA KEY
     /**
      * Imprime por pantalla los resultados del piloto en toda la competición.     
      */
@@ -211,10 +214,11 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         while(it.hasNext()){
             Circuito key = it.next();
             Resultados valor = this.resultados.get(key);
-            System.out.println(key);    //SEGURO QUE ES ASI??
+            //System.out.println(key);    //SEGURO QUE ES ASI??
         }
-        return("PUNTOS TOTALES: " + getPuntosTotales());       
+        return ("PUNTOS TOTALES: " + getPuntosTotales());       
     }    
+    
     /**
      * Vacía el registro de resultados.
      */
@@ -259,13 +263,13 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     public String toString(){
         StringBuilder builder = new StringBuilder();
         builder.append("PILOTO: " + getNombre());
-        builder.append('\n');
+        builder.append(' ');
         builder.append("Coche: " + getCoche());
-        builder.append('\n');
+        builder.append(' ');
         builder.append(this.concentracion.toString());  //NO MUY SEGURO DE ESTO
-        builder.append('\n');
+        builder.append(' ');
         builder.append("RESULTADOS: ");  //NO MUY SEGURO DE ESTO
-        builder.append('\n');
+        builder.append(' ');
         builder.append(mostrarResultados());
         builder.append('\n');
         builder.append("¿Descalificado?: ");

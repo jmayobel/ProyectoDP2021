@@ -43,7 +43,7 @@ public class Gravilla extends CircuitoRallyExtra
     @Override
     public String toString() {   
          return decoratedCircuitoRally.toString() + " " +
-        "extra:" + getClass().getSimpleName() + " " +
+        "extra: " + getClass().getSimpleName() + " " +
         " -> nueva complejidad: " + getValorComplejidad() + 
         " "+ " -> nueva distancia: " + getValorDistancia ();
 
