@@ -1,27 +1,29 @@
 import java.util.*;    
-/**
-     * Clase que inicializa la simulación con datos con los que 
-     * el campeonato termina de forma normal
-     * 
-     * @author profesores DP 
-     * @version 20/21
-     */
 
-    public class DatosCampeonatoCompleto{ 
-        public DatosCampeonatoCompleto(){      
-        System.out.println("*********************************************************************************************************");
-        System.out.println("*****************ESTA SIMULACIÓN CONCLUYE NORMALMENTE COMPLETÁNDOSE TODAS LAS CARRERAS*******************");        
-        System.out.println("*********************************************************************************************************\n");
+/**
+ * Write a description of class PseudocodigoDatosCampeonatoPremioDesierto here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
+public class DatosCampeonatoPremioDesierto
+{
+    public DatosCampeonatoPremioDesierto(){        
+    System.out.println("*********************************************************************************************************");
+    System.out.println("****ESTA SIMULACIÓN CONCLUYE ANTES DE FINALIZAR EL CAMPEONATO CON TODOS LOS PILOTOS DESCALIFICADOS****");        
+    System.out.println("*********************************************************************************************************\n");
         
-        initData();
-     }
-     
-     private void initData(){
-         //organizador debe ser una instancia única con la siguiente configuración:
-        //LimiteAbandonos=3, LimitePilotos=2,
+    initData();
+    }
+    
+     private void initData()
+    {
+        //organizador debe ser una instancia única con la siguiente configuración:
+        //LimiteAbandonos=1, LimitePilotos=3, 
         // Circuitos ordenados de forma descendente de acuerdo a su distancia
+   
         TreeSet CircuitoSet = new TreeSet <Circuito> (new ComparadorComplejidad());
-        Organizacion organizacion = Organizacion.getInstance(3,2,CircuitoSet);
+        Organizacion organizacion = Organizacion.getInstance(1,3,CircuitoSet);
         
         //creamos y añadimos los circuitos del campeonato:
         //Crear circuito portugal con nombre:”Portugal" - complejidad:MEDIA - distancia:INTERMEDIA);
@@ -76,27 +78,19 @@ import java.util.*;
         Mojado mojale= new Mojado (ale);
         //añadir circuito alemania a circuitos de la organización
         organizacion.setCircuito(mojale);
-        
-        //Crear circuito chile con nombre:”Chile" - complejidad:ALTA - distancia:CORTA);
-        CircuitoRally chi = new CircuitoRally("Chile", Complejidad.ALTA, Distancia.CORTA);
-        //además, acciones necesarias para que chile sea un circuito con:
-        //Gravilla
-        Gravilla grachi = new Gravilla (chi);
-        //añadir circuito chile a circuitos de la organización
-        organizacion.setCircuito(grachi);
 
         //creamos e inscribimos a las escuderías que participarán en el campeonato:    
         //Crear escuderia peugeot con nombre:"Peugeot"
-        //ordenaciónPilotos: ASCENDENTE por Puntos del Piloto, en caso de empate por Destreza, en caso de empate por nombre
-        //ordenaciónCoches: ASCENDENTE por Combustible restante del Coche , en caso de empate por nombre);
-        EscuderiaRally peugeot = new EscuderiaRally("Peugeot",new ComparadorTotalPuntos(),new ComparadorCombustible());
+        //ordenaciónPilotos: descendente por Puntos del Piloto, en caso de empate por Destreza, en caso de empate por nombre
+        //ordenaciónCoches: ascendente por Combustible restante del Coche , en caso de empate por nombre);
+        EscuderiaRally peugeot = new EscuderiaRally("Peugeot",Collections.reverseOrder(new ComparadorTotalPuntos()),new ComparadorCombustible());
         //peugeot se inscribe en campeonato
         organizacion.setEscuderia(peugeot);
 
         //escudería citroen 
         //Crear escuderia citroen con nombre:"Citroen"      
-        //ordenaciónPilotos: DESCENDENTE por Puntos del Piloto, en caso de empate por Destreza, en caso de empate por nombre
-        //ordenaciónCoches: DESCENDENTE por Combustible restante del Coche , en caso de empate por nombre);
+        //ordenaciónPilotos: ascendente por Puntos del Piloto, en caso de empate por Destreza, en caso de empate por nombre
+        //ordenaciónCoches: ascendente por Combustible restante del Coche , en caso de empate por nombre);
         EscuderiaRally citroen = new EscuderiaRally ("Citroen",Collections.reverseOrder(new ComparadorTotalPuntos()),
         Collections.reverseOrder(new ComparadorCombustible()));
         //citroen se inscribe en campeonato
@@ -104,33 +98,13 @@ import java.util.*;
 
         //escudería seat       
         //Crear escuderia seat con nombre:"Seat"
-        //ordenaciónPilotos: ASCENDENTE por Puntos del Piloto, en caso de empate por Destreza, en caso de empate por nombre
-        //ordenaciónCoches: ASCENDENTE por Combustible restante del Coche , en caso de empate por nombre);
-        EscuderiaRally seat = new EscuderiaRally ("Seat",new ComparadorTotalPuntos(),new ComparadorCombustible());
+        //ordenaciónPilotos: descendente por Puntos del Piloto, en caso de empate por Destreza, en caso de empate por nombre
+        //ordenaciónCoches: ascendente por Combustible restante del Coche , en caso de empate por nombre);
+        EscuderiaRally seat = new EscuderiaRally ("Seat",Collections.reverseOrder(new ComparadorTotalPuntos()),new ComparadorCombustible());
         //seat se inscribe en campeonato
         organizacion.setEscuderia(seat);
         
-        //creamos los pilotos y los coches de cada escudería 
-        //coches y pilotos de citroen
-        //añadir a citroen un CocheResistente(nombre:"Citröen C5" - velocidad:RAPIDA - combustible:ELEFANTE);
-        CocheResistente coche =  new CocheResistente ("Citroen C5",Velocidad.RAPIDA,Combustible.ELEFANTE);
-        citroen.addListaCoches(coche);
-        //añadir a citroen un CocheRapido(nombre:"Citröen C4" - velocidad:RAPIDA - combustible:ESCASO);
-        CocheRapido c4 = new CocheRapido ("Citröen C4",Velocidad.RAPIDA,Combustible.ESCASO);
-        citroen.addListaCoches(c4);
-        //añadir a citroen un Coche(nombre:"Citröen C3" - velocidad:RAPIDA - combustible:ESCASO);
-        CocheRapido c3 = new CocheRapido ("Citröen C3",Velocidad.RAPIDA,Combustible.ESCASO);
-        citroen.addListaCoches(c3);
-        //añadir a citroen un PilotoExperimentado(nombre:"Loeb" - concentración: NORMAL));
-        PilotoExperimentado loeb = new PilotoExperimentado("Loeb", Concentracion.NORMAL);
-        citroen.addListaPilotos(loeb);
-        //añadir a citroen un PilotoEstrella(nombre:"Makinen" - concentración: ZEN));
-        PilotoEstrella makinen = new PilotoEstrella("Makinen", Concentracion.ZEN);
-        citroen.addListaPilotos(makinen);
-        //añadir a citroen un PilotoNovato(nombre:"Auriol" - concentración: NORMAL));
-        PilotoNovato auriol = new PilotoNovato("Auriol", Concentracion.NORMAL);
-        citroen.addListaPilotos(auriol);
-            
+
         //coches y pilotos de seat
         //añadir a seat un CocheResistente(nombre:"Seat Tarraco" - velocidad:TORTUGA - combustible:GENEROSO);
         CocheResistente tarraco = new CocheResistente ("Seat Tarraco",Velocidad.TORTUGA,Combustible.GENEROSO);
@@ -148,16 +122,14 @@ import java.util.*;
         PilotoEstrella mcrae = new PilotoEstrella  ("McRae",Concentracion.CONCENTRADO);
         seat.addListaPilotos(mcrae);
         //añadir a seat un PilotoNovato(nombre:"Blomquist" - concentración: DESPISTADO));
-                PilotoNovato blomquist = new PilotoNovato("Blomquist",Concentracion.DESPISTADO);
-                seat.addListaPilotos(blomquist);
-
-         
-        //coches y pilotos de peugeot
+        PilotoNovato blomquist = new PilotoNovato("Blomquist",Concentracion.DESPISTADO);
+         seat.addListaPilotos(blomquist);
+          //coches y pilotos de peugeot
         //añadir a peugeot un CocheResistente(nombre:"Peugeot 5008" - velocidad:LENTA - combustible:GENEROSO);
         CocheResistente cincomilocho = new CocheResistente ("Peugeot 5008",Velocidad.LENTA,Combustible.GENEROSO);
         peugeot.addListaCoches(cincomilocho);       
         //añadir a peugeot un CocheRapido(nombre:"Peugeot 3008" - velocidad:GUEPARDO - combustible:NORMAL);
-        CocheRapido tresmilocho = new CocheRapido ("Peugeot 3008",Velocidad.LENTA,Combustible.GENEROSO);
+        CocheRapido tresmilocho = new CocheRapido ("Peugeot 3008",Velocidad.GUEPARDO,Combustible.GENEROSO);
         peugeot.addListaCoches(tresmilocho);       
         //añadir a peugeot un Coche(nombre:"Peugeot 2008" - velocidad:NORMAL - combustible:ESCASO);
         Coche dosmilocho = new Coche("Peugeot 2008",Velocidad.NORMAL,Combustible.ESCASO);
@@ -172,6 +144,8 @@ import java.util.*;
         PilotoNovato sordo = new PilotoNovato ("Sordo", Concentracion.DESPISTADO);
         peugeot.addListaPilotos(sordo);    
         
-        organizacion.campeonato();
+
     }
+
 }
+

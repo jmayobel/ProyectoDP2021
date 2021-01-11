@@ -241,12 +241,12 @@ public class Organizacion
             if(coche.getCombustibleUsado(piloto, circuito) < coche.getTiempo(piloto, circuito)){
                 System.out.println("MOTIVO DE ABANDONO: Falta de combustible."); 
             }
-            System.out.println(Math.abs(piloto.buscarResultado(circuito)));                 
-            System.out.println(coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito));
+            System.out.println("ESTO NO SÉ LO QUE ES: " + Math.abs(piloto.buscarResultado(circuito)));                 
+            System.out.println("ESTO TAMPOCO: " + (coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito)));
             if(piloto.getAbandonos() >= this.nAbandonos){
                 piloto.descalificar();
             }
-            System.out.println(coche.getValorcombustible());
+            System.out.println("COMBUSTIBLE ACTUAL = " + coche.getValorcombustible());
           }
         }
        }
