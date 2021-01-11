@@ -7,13 +7,13 @@
 
 public interface PilotoInterfaz{
     public String getNombre();
-    public Coche getCoche();
+    public CocheInterfaz getCoche();
     public Concentracion getConcentracion();
     public double getTiempoConcentracion();
     public boolean getDescalificado();
     public int getAbandonos();
     public abstract double getDestreza();
-    public void setCoche(Coche coche);
+    public void setCoche(CocheInterfaz coche);
     public void descalificar();
     public void abandonar();
     public void añadirTiempo(Circuito circuito, double tiempo);

@@ -24,5 +24,6 @@ public interface EscuderiaInterfaz{
     public void limpiarListaPilotos();
     public void limpiarListaCoches();
     public int getPuntosTotalesEscuderia();
+    public void AsignarCoche();
     public int hashCode();    
 }

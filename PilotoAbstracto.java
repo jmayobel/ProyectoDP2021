@@ -11,7 +11,7 @@ import java.util.HashMap;
 public abstract class PilotoAbstracto implements PilotoInterfaz{
     //Variables de la clase Piloto:    
     private String nombre;                                  //Nombre completo del Piloto
-    private Coche coche;                                    //Coche con el que correrá (Asignado por la Escudería)
+    private CocheInterfaz coche;                                    //Coche con el que correrá (Asignado por la Escudería)
     private Concentracion concentracion;                    //Minutos que aguanta el piloto de carrera antes de abandonar 
     private HashMap<Circuito,Resultados> resultados;        //Registro con el tiempo y puntos conseguidos en cada carrera
     private boolean descalificado;                          //"false" si NO ha sido descalificado, "true" en caso contrario
@@ -49,7 +49,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      * 
      * @return Coche que conduce el piloto    
      */
-    public Coche getCoche(){
+    public CocheInterfaz getCoche(){
         return this.coche;
     }
     /**
@@ -104,7 +104,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      * 
      * @param coche El coche que usará el piloto     
      */
-    public void setCoche(Coche coche){
+    public void setCoche(CocheInterfaz coche){
       this.coche = coche;
     }
     /**
@@ -130,6 +130,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      * @param puntos Puntuación que ha obtenido el piloto en esa carrera.            
      */
     public void añadirTiempo(Circuito circuito, double tiempo){
+        this.resultados.put(circuito, new Resultados(tiempo));
         Resultados nuevo = new Resultados();
         nuevo.setTiempoResultados(tiempo);
         this.resultados.put(circuito, nuevo);
@@ -226,7 +227,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      * @param circuito Circuito en el que se correrá la carrera
      */
     public void correrCarrera(Circuito circuito){
-        Coche coche = getCoche();
+        CocheInterfaz coche = getCoche();
         if(getTiempoConcentracion() < coche.getTiempo(this, circuito)){ 
             double resultado = getTiempoConcentracion() - coche.getTiempo(this, circuito);
             añadirTiempo(circuito, resultado);

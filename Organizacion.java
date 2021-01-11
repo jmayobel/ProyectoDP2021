@@ -14,16 +14,17 @@ public class Organizacion
     private TreeSet <Circuito> CircuitoSet;
     private ArrayList <EscuderiaInterfaz> ListadeEscuderias;
     private ArrayList <PilotoInterfaz> PilotosCarrera;   
+    
 
     /**
      * Constructor parametrizado de Organizacion
      */
-    private  Organizacion()
+    private  Organizacion(int nAbandonos, int nPilotos, TreeSet<Circuito> circuito)
     {
-        nAbandonos=2;
-        nPilotos=20;
-        CircuitoSet= new TreeSet <Circuito> (new ComparadorComplejidad ());
-        ListadeEscuderias=new ArrayList <EscuderiaInterfaz> () ; 
+        this.nAbandonos=nAbandonos;
+        this.nPilotos=nPilotos;
+        CircuitoSet = circuito;
+        ListadeEscuderias= new ArrayList <EscuderiaInterfaz> () ; 
         PilotosCarrera = new ArrayList <PilotoInterfaz> ();
     }
 
@@ -34,7 +35,6 @@ public class Organizacion
      * 
      */
     public synchronized void setEscuderia (EscuderiaInterfaz nuevaEscuderia) {
-
         ListadeEscuderias.add(nuevaEscuderia);
     }    
 
@@ -106,8 +106,8 @@ public class Organizacion
     }    
 
     /**
-    *  deja vacio CircuitoSet.
-    */
+     *  deja vacio CircuitoSet.
+     */
     public synchronized void DejarVacioTreeSetCircuitos () {
         Iterator<Circuito> it = this.CircuitoSet.iterator(); //Inicializamos el Iterator
 
@@ -117,7 +117,6 @@ public class Organizacion
 
         }        
 
-        
     }    
 
     /**
@@ -132,11 +131,10 @@ public class Organizacion
     }  
 
     public synchronized static
-    Organizacion getInstance () 
+    Organizacion getInstance (int lAbandonos, int lPilotos, TreeSet<Circuito> circuito) 
     {
         if (instance==null) {
-            instance= new Organizacion();
-
+            instance = new Organizacion(lAbandonos, lPilotos, circuito);
         } 
         return instance;
     }
@@ -152,15 +150,17 @@ public class Organizacion
             System.out.println (buscar.toString());
         }
     }
-    
+
     public synchronized void GuardarPilotos(){
-     Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
-     while(it.hasNext()){
-         EscuderiaInterfaz Esc = it.next();
-         PilotosCarrera.addAll(Esc.getPilotosCarrera());
+        Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
+        while(it.hasNext()){
+            EscuderiaInterfaz Esc = it.next();
+            Esc.AsignarCoche();
+            
+            PilotosCarrera.addAll(Esc.getPilotosCarrera());
         } 
     }
-   
+
     /**
      * muestra los circuitos del TreeSet de circuitos.
      */
@@ -170,16 +170,25 @@ public class Organizacion
             Circuito buscar = it.next();
             System.out.println (buscar.toString());
         }
+    }
 
+    public synchronized void OrdenarParrilla(){
+        Collections.sort(PilotosCarrera,new ComparadorTotalPuntos()); 
+    }
+
+    public synchronized void campeonato(){
+       Iterator<Circuito> it = this.CircuitoSet.iterator();
+       while(it.hasNext()){
+           Circuito circuito = it.next();
+           Carrera(circuito);
+           Podio(circuito);
+       }    
     }
     
-    public synchronized void OrdenarParrilla(){
-       Collections.sort(PilotosCarrera,new ComparadorTotalPuntos()); 
-    }
-   
-    public synchronized void Carrera (Circuito circuito){
+    public synchronized void Carrera(Circuito circuito){
+       GuardarPilotos();
        Iterator<PilotoInterfaz> it = this.PilotosCarrera.iterator();
-        while (it.hasNext()) {
+       while (it.hasNext()) {
           PilotoInterfaz piloto= it.next();
           piloto.toString();
           CocheInterfaz coche=piloto.getCoche();
@@ -204,9 +213,26 @@ public class Organizacion
             if(piloto.getAbandonos() >= this.nAbandonos){
                 piloto.descalificar();
             }
-            System.out.println(coche.getValorcombustible());            
+            System.out.println(coche.getValorcombustible());
           }
        }
-       
+      }
+
+    public synchronized void Podio (Circuito circuito){
+        int podio = 0;
+        //Collections.sort(...,...)
+        Iterator <PilotoInterfaz> it = this.PilotosCarrera.iterator();
+        while(it.hasNext()){
+            PilotoInterfaz piloto = it.next();
+            if(piloto.buscarResultado(circuito) > 0){
+                if(podio < 4){
+                    piloto.añadirPuntos(circuito,10-podio*2);
+                    podio++;
+                }
+                else{
+                    piloto.añadirPuntos(circuito, 2);
+                }
+            }
+        }
     }
 }
