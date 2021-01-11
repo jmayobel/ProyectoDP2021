@@ -1,49 +1,43 @@
-import java.util.*;    
-
+import java.util.*;
 /**
- * Write a description of class PseudocodigoDatosCampeonatoPremioDesierto here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Clase que inicializa la simulación con datos con los que 
+ * el campeonato termina antes por tener un solo piloto sin descalificar
+ * 
+ * @author profesores DP 
+ * @version 20/21
  */
-public class DatosCampeonatoPremioDesierto
-{
-    public DatosCampeonatoPremioDesierto(){        
-    System.out.println("*********************************************************************************************************");
-    System.out.println("****ESTA SIMULACIÓN CONCLUYE ANTES DE FINALIZAR EL CAMPEONATO CON TODOS LOS PILOTOS DESCALIFICADOS****");        
-    System.out.println("*********************************************************************************************************\n");
-        
-    initData();
-    }
-    
-     private void initData()
+
+public class DatosCampeonatoFinPrematuro {    
+
+    private void initData()
     {
         //organizador debe ser una instancia única con la siguiente configuración:
         //LimiteAbandonos=1, LimitePilotos=3, 
-        // Circuitos ordenados de forma descendente de acuerdo a su distancia
-   
-        TreeSet CircuitoSet = new TreeSet <Circuito> (new ComparadorComplejidad());
+        TreeSet CircuitoSet = new TreeSet <Circuito> (Collections.reverseOrder(new ComparadorComplejidad()));
         Organizacion organizacion = Organizacion.getInstance(1,3,CircuitoSet);
-        
+
+        // Circuitos ordenados de forma descendente de acuerdo a su complejidad
         //creamos y añadimos los circuitos del campeonato:
         //Crear circuito portugal con nombre:”Portugal" - complejidad:MEDIA - distancia:INTERMEDIA);
         CircuitoRally por = new CircuitoRally("Portugal",Complejidad.MEDIA,Distancia.INTERMEDIA);
-        //además, acciones necesarias para que portugal sea un circuito con:
-        //Gravilla y Nocturno
         Gravilla grapor= new Gravilla (por);
-        Nocturno nocpor= new Nocturno (grapor);
-        //añadir circuito portugal a circuitos de la organización
+        Nocturno nocpor= new Nocturno (grapor); 
         organizacion.setCircuito(nocpor);
 
+        //además, acciones necesarias para que portugal sea un circuito con:
+        //Gravilla y Nocturno
+
+        //añadir circuito portugal a circuitos de la organización
+
         //Crear circuito cerdena con nombre:”Cerdeña" - complejidad:ALTA - distancia:CORTA);
-        CircuitoRally cer= new CircuitoRally ("Cerdeña",Complejidad.ALTA,Distancia.CORTA);
         //además, acciones necesarias para que cerdena sea un circuito con:
         //Gravilla y Mojado
+        //añadir circuito cerdena a circuitos de la organización
+        CircuitoRally cer= new CircuitoRally ("Cerdeña",Complejidad.ALTA,Distancia.CORTA);
         Gravilla gracer= new Gravilla (cer);
         Mojado mojcer= new Mojado (gracer);
-        //añadir circuito cerdena a circuitos de la organización
         organizacion.setCircuito(mojcer);
-   
+
         //Crear circuito australia con nombre:”Australia" - complejidad:BAJA - distancia:LARGA);
         CircuitoRally aus = new CircuitoRally("Australia",Complejidad.BAJA,Distancia.LARGA);
         //además, acciones necesarias para que australia sea un circuito con:
@@ -59,7 +53,7 @@ public class DatosCampeonatoPremioDesierto
         Nocturno norcor = new Nocturno(cor);
         Gravilla gracor = new Gravilla(norcor);
         //añadir circuito corcega a circuitos de la organización        
-        organizacion.setCircuito(gracor);
+        organizacion.setCircuito(gracor);	
 
         //Crear circuito finlandia con nombre:”Finlandia" - complejidad:ALTA - distancia:CORTA);
         CircuitoRally fin = new CircuitoRally("Finlandia", Complejidad.ALTA, Distancia.CORTA);
@@ -79,31 +73,60 @@ public class DatosCampeonatoPremioDesierto
         //añadir circuito alemania a circuitos de la organización
         organizacion.setCircuito(mojale);
 
+        //Crear circuito chile con nombre:”Chile" - complejidad:ALTA - distancia:CORTA);
+        CircuitoRally chi = new CircuitoRally("Chile", Complejidad.ALTA, Distancia.CORTA);
+        //además, acciones necesarias para que chile sea un circuito con:
+        //Gravilla
+        Gravilla grachi = new Gravilla (chi);
+        //añadir circuito chile a circuitos de la organización
+        organizacion.setCircuito(grachi);
+
         //creamos e inscribimos a las escuderías que participarán en el campeonato:    
         //Crear escuderia peugeot con nombre:"Peugeot"
         //ordenaciónPilotos: descendente por Puntos del Piloto, en caso de empate por Destreza, en caso de empate por nombre
-        //ordenaciónCoches: ascendente por Combustible restante del Coche , en caso de empate por nombre);
-        EscuderiaRally peugeot = new EscuderiaRally("Peugeot",Collections.reverseOrder(new ComparadorTotalPuntos()),new ComparadorCombustible());
+        //ordenaciónCoches: descendente por Combustible restante del Coche , en caso de empate por nombre);
         //peugeot se inscribe en campeonato
+        EscuderiaRally peugeot = new EscuderiaRally("Peugeot",Collections.reverseOrder(new ComparadorTotalPuntos()),Collections.reverseOrder(new ComparadorCombustible()));
         organizacion.setEscuderia(peugeot);
 
         //escudería citroen 
-        //Crear escuderia citroen con nombre:"Citroen"      
+        //Crear escuderia citroen con nombre:"Citroen"		
         //ordenaciónPilotos: ascendente por Puntos del Piloto, en caso de empate por Destreza, en caso de empate por nombre
         //ordenaciónCoches: ascendente por Combustible restante del Coche , en caso de empate por nombre);
-        EscuderiaRally citroen = new EscuderiaRally ("Citroen",Collections.reverseOrder(new ComparadorTotalPuntos()),
-        Collections.reverseOrder(new ComparadorCombustible()));
         //citroen se inscribe en campeonato
+        EscuderiaRally citroen = new EscuderiaRally ("Citroen",(new ComparadorTotalPuntos()),
+                (new ComparadorCombustible()));
         organizacion.setEscuderia(citroen);
 
         //escudería seat       
         //Crear escuderia seat con nombre:"Seat"
         //ordenaciónPilotos: descendente por Puntos del Piloto, en caso de empate por Destreza, en caso de empate por nombre
-        //ordenaciónCoches: ascendente por Combustible restante del Coche , en caso de empate por nombre);
-        EscuderiaRally seat = new EscuderiaRally ("Seat",Collections.reverseOrder(new ComparadorTotalPuntos()),new ComparadorCombustible());
+        //ordenaciónCoches: descendente por Combustible restante del Coche , en caso de empate por nombre);
         //seat se inscribe en campeonato
+        EscuderiaRally seat = new EscuderiaRally ("Seat",Collections.reverseOrder(new ComparadorTotalPuntos()),Collections.reverseOrder (new ComparadorCombustible()));
         organizacion.setEscuderia(seat);
-        
+
+        //creamos los pilotos y los coches de cada escudería 
+        //coches y pilotos de citroen
+        //añadir a citroen un CocheResistente(nombre:"Citröen C5" - velocidad:RAPIDA - combustible:ELEFANTE);
+        CocheResistente coche =  new CocheResistente ("Citroen C5",Velocidad.RAPIDA,Combustible.ELEFANTE);
+        citroen.addListaCoches(coche);
+        //añadir a citroen un CocheRapido(nombre:"Citröen C4" - velocidad:RAPIDA - combustible:ESCASO);
+        CocheRapido c4 = new CocheRapido ("Citröen C4",Velocidad.RAPIDA,Combustible.ESCASO);
+        citroen.addListaCoches(c4);
+        //añadir a citroen un Coche(nombre:"Citröen C3" - velocidad:RAPIDA - combustible:ESCASO);
+        CocheRapido c3 = new CocheRapido ("Citröen C3",Velocidad.RAPIDA,Combustible.ESCASO);
+        citroen.addListaCoches(c3);
+        //añadir a citroen un PilotoExperimentado(nombre:"Loeb" - concentración: NORMAL));
+        PilotoExperimentado loeb = new PilotoExperimentado("Loeb", Concentracion.NORMAL);
+        citroen.addListaPilotos(loeb);
+        //añadir a citroen un PilotoEstrella(nombre:"Makinen" - concentración: ZEN));
+        PilotoEstrella makinen = new PilotoEstrella("Makinen", Concentracion.ZEN);
+        citroen.addListaPilotos(makinen);
+        //añadir a citroen un PilotoNovato(nombre:"Auriol" - concentración: NORMAL));
+        PilotoNovato auriol = new PilotoNovato("Auriol", Concentracion.NORMAL);
+        citroen.addListaPilotos(auriol);
+
 
         //coches y pilotos de seat
         //añadir a seat un CocheResistente(nombre:"Seat Tarraco" - velocidad:TORTUGA - combustible:GENEROSO);
@@ -122,9 +145,10 @@ public class DatosCampeonatoPremioDesierto
         PilotoEstrella mcrae = new PilotoEstrella  ("McRae",Concentracion.CONCENTRADO);
         seat.addListaPilotos(mcrae);
         //añadir a seat un PilotoNovato(nombre:"Blomquist" - concentración: DESPISTADO));
-        PilotoNovato blomquist = new PilotoNovato("Blomquist",Concentracion.DESPISTADO);
-         seat.addListaPilotos(blomquist);
-          //coches y pilotos de peugeot
+        PilotoNovato blo = new PilotoNovato  ("Blomquist",Concentracion.DESPISTADO);
+
+
+        //coches y pilotos de peugeot
         //añadir a peugeot un CocheResistente(nombre:"Peugeot 5008" - velocidad:LENTA - combustible:GENEROSO);
         CocheResistente cincomilocho = new CocheResistente ("Peugeot 5008",Velocidad.LENTA,Combustible.GENEROSO);
         peugeot.addListaCoches(cincomilocho);       
@@ -133,8 +157,7 @@ public class DatosCampeonatoPremioDesierto
         peugeot.addListaCoches(tresmilocho);       
         //añadir a peugeot un Coche(nombre:"Peugeot 2008" - velocidad:NORMAL - combustible:ESCASO);
         Coche dosmilocho = new Coche("Peugeot 2008",Velocidad.NORMAL,Combustible.ESCASO);
-        peugeot.addListaCoches(dosmilocho);
-        
+        peugeot.addListaCoches(dosmilocho);       
         //añadir a peugeot un PilotoExperimentado(nombre:"Kankunnen" - concentración: CONCENTRADO));
         PilotoExperimentado kakunnen = new PilotoExperimentado ("Kankunnen", Concentracion.CONCENTRADO);
         peugeot.addListaPilotos(kakunnen);
@@ -144,9 +167,9 @@ public class DatosCampeonatoPremioDesierto
         //añadir a peugeot un PilotoNovato(nombre:"Sordo" - concentración: DESPISTADO));
         PilotoNovato sordo = new PilotoNovato ("Sordo", Concentracion.DESPISTADO);
         peugeot.addListaPilotos(sordo);    
-        
+
+        organizacion.campeonato();
 
     }
 
 }
-

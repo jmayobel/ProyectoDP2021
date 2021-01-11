@@ -211,10 +211,14 @@ public class Organizacion
            Carrera(circuito);
            Carrerasact++;
            Podio(circuito);
-       }    
+       }
+       FinalCampeonato();
     }
     
      /**
+     * Realiza la carrera en un circuito dado para todos los pilotos que corren en él.
+     */
+    /**
      * Realiza la carrera en un circuito dado para todos los pilotos que corren en él.
      */
     public synchronized void Carrera(Circuito circuito){
@@ -225,9 +229,8 @@ public class Organizacion
           if(!piloto.getDescalificado()){
           System.out.println(piloto.toString()); //Muestra el piloto que correra
           CocheInterfaz coche=piloto.getCoche();
-          //coche.toString(); //Muestra el coche que correra
           double velocidad=coche.getVelocidadReal(piloto,circuito);
-          System.out.println("VELOCIDAD REAL: " + velocidad);
+          System.out.println("VELOCIDAD REAL: " + velocidad); 
           piloto.correrCarrera(circuito);
           if(piloto.buscarResultado(circuito) > 0)   //Si el tiempo obtenido es positivo, ha acabado la carrera,
                                                      //si no lo es, no la ha acabado
@@ -241,8 +244,8 @@ public class Organizacion
             if(coche.getCombustibleUsado(piloto, circuito) < coche.getTiempo(piloto, circuito)){
                 System.out.println("MOTIVO DE ABANDONO: Falta de combustible."); 
             }
-            System.out.println("ESTO NO SÉ LO QUE ES: " + Math.abs(piloto.buscarResultado(circuito)));                 
-            System.out.println("ESTO TAMPOCO: " + (coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito)));
+            System.out.println("TIEMPO RESTANTE: " + Math.abs(piloto.buscarResultado(circuito)));                 
+            System.out.println("TIEMPO DE CARRERA: " + (coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito)));
             if(piloto.getAbandonos() >= this.nAbandonos){
                 piloto.descalificar();
             }
@@ -251,13 +254,22 @@ public class Organizacion
         }
        }
       }
-
+      
+      public synchronized void FinalCampeonato(){
+        Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
+        while(it.hasNext()){
+            EscuderiaInterfaz Esc = it.next();
+            System.out.println(Esc.getNombre() + " tiene " + Esc.getPuntosTotalesEscuderia() + " puntos.");
+        } 
+    }
+         
+        
      /**
      * Ordena la lista de pilotos de PilotosCarrera por tiempo y le asigna los puntos correspondientes a sus posición
      */
-    public synchronized void Podio (Circuito circuito){
+       public synchronized void Podio (Circuito circuito){
         int podio = 0;
-        //Collections.sort(...,...)
+        //Collections.sort(...,...) NOS FALTA ESTO PARA ORDENAR POR TIEMPO
         Iterator <PilotoInterfaz> it = this.PilotosCarrera.iterator();
         while(it.hasNext()){
             PilotoInterfaz piloto = it.next();
