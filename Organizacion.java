@@ -128,8 +128,15 @@ public class Organizacion
             EscuderiaInterfaz buscar = it.next();
             it.remove();
         }
-    }  
-
+        }  
+    /**
+     *  Método del patrón Singleton que permite devolver una instancia del objeto creado.
+     *  Si no hay ninguna instancia, se crea.
+     *  
+     *  @param lAbandonos Límite de abandonos que puede tener un piloto antes de ser eliminado del campeonato
+     *  @param lPilotos Límite de pilotos por Escudería que pueden ser enviados a una carrera
+     *  @param circuito Lista de circuitos en los que se correrá durante el campeonato
+     */
     public synchronized static
     Organizacion getInstance (int lAbandonos, int lPilotos, TreeSet<Circuito> circuito) 
     {
@@ -150,13 +157,15 @@ public class Organizacion
             System.out.println (buscar.toString());
         }
     }
-
+    /**
+     *  Inserta los pilotos listos para correr en la lista de pilotosCarrera
+     */
     public synchronized void GuardarPilotos(){
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
         while(it.hasNext()){
             EscuderiaInterfaz Esc = it.next();
             Esc.AsignarCoche();
-            
+   
             PilotosCarrera.addAll(Esc.getPilotosCarrera());
         } 
     }
@@ -171,28 +180,39 @@ public class Organizacion
             System.out.println (buscar.toString());
         }
     }
-
+    /**
+     * Ordena la parrilla de salida (pilotosCarrera) por la cantidad de puntos de los pilotos
+     */
     public synchronized void OrdenarParrilla(){
         Collections.sort(PilotosCarrera,new ComparadorTotalPuntos()); 
     }
-
+    /**
+     * Realiza las carreras para cada circuito del campeonato
+     */
     public synchronized void campeonato(){
        Iterator<Circuito> it = this.CircuitoSet.iterator();
+       MostrarCircuitos();
+       System.out.println ("FINALIZADO MOSTRAR CIRCUITOS");
+       MostrarEscuderias();
+       System.out.println ("FINALIZADO MOSTRAR ESCUDERIAS");
        while(it.hasNext()){
            Circuito circuito = it.next();
            Carrera(circuito);
            Podio(circuito);
        }    
     }
-    
+     /**
+     * Realiza la carrera en un circuito dado para todos los pilotos que corren en él.
+     */
     public synchronized void Carrera(Circuito circuito){
-       GuardarPilotos();
+       GuardarPilotos(); //Guarda en pilotoCarreras los coches para correr
+       OrdenarParrilla(); //Ordena los pilotos
        Iterator<PilotoInterfaz> it = this.PilotosCarrera.iterator();
        while (it.hasNext()) {
           PilotoInterfaz piloto= it.next();
-          piloto.toString();
+          piloto.toString(); //Muestra el piloto que correra
           CocheInterfaz coche=piloto.getCoche();
-          coche.toString();
+          coche.toString(); //Muestra el coche que correra
           double velocidad=coche.getVelocidadReal(piloto,circuito);
           System.out.println(velocidad); 
           piloto.correrCarrera(circuito);
@@ -217,7 +237,9 @@ public class Organizacion
           }
        }
       }
-
+     /**
+     * Ordena la lista de pilotos de PilotosCarrera por tiempo y le asigna los puntos correspondientes a sus posición
+     */
     public synchronized void Podio (Circuito circuito){
         int podio = 0;
         //Collections.sort(...,...)
