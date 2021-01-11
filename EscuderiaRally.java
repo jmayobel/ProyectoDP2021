@@ -230,24 +230,25 @@ public class EscuderiaRally implements EscuderiaInterfaz
         }
         return puntostotales;   
     }
-    
+    /**
+     *  Asigna los coches con combustible a los pilotos que no estén descalificados de la escudería 
+     */
     public void AsignarCoche () {
         Iterator<PilotoInterfaz> it = this.ListaPilotos.iterator(); //Inicializamos el Iterator
         Iterator<CocheInterfaz> ti = this.ListaCoches.iterator(); //Inicializamos el Iterator
-
         while(it.hasNext()){
-                    PilotoInterfaz piloto= it.next();
-                    if (!piloto.getDescalificado()) { 
-                    boolean enc = false;                    
-                    while (ti.hasNext() && !enc) {
-                        CocheInterfaz coche = ti.next();
-                        if (coche.getValorcombustible()>(0.0)) {
-                             piloto.setCoche(coche);
-                             addPilotosCarrera(piloto);          
-                             enc = true;
-                        } 
-                    }
+            PilotoInterfaz piloto= it.next();
+            if (!piloto.getDescalificado()) { 
+                boolean enc = false;                    
+                while (ti.hasNext() && !enc) {
+                    CocheInterfaz coche = ti.next();
+                    if (coche.getValorcombustible()>(0.0)) {
+                        piloto.setCoche(coche);
+                        addPilotosCarrera(piloto);          
+                        enc = true;
+                    } 
                 }
+            }
         }
     }
   

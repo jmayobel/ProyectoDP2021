@@ -69,7 +69,5 @@ public class CircuitoRally implements Circuito
         return getNombreCircuito () + "\n"+
         "complejidad: " + getValorComplejidad() + "\n" +
          "distancia: " + getValorDistancia();
-    }
- 
-     
+    }     
 }
