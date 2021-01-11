@@ -214,6 +214,27 @@ public class EscuderiaRally implements EscuderiaInterfaz
             it.remove();     
         }
     }
+    /**
+     * Muestra la lista de coches
+     */
+    public void MostrarCoches(){
+        Iterator<CocheInterfaz> it = this.ListaCoches.iterator(); //Inicializamos el Iterator
+        while(it.hasNext()){
+            CocheInterfaz coche = it.next();
+            System.out.println(coche.toString());    
+        }
+    }
+    
+    /**
+     * Muestra la lista de pilotos
+     */
+    public void MostrarPilotos(){
+        Iterator<PilotoInterfaz> it = this.ListaPilotos.iterator(); //Inicializamos el Iterator
+        while(it.hasNext()){
+            PilotoInterfaz piloto = it.next();
+            System.out.println(piloto.toString());    
+        }
+    }
 
     /**
      * Devuelve la cantidad de puntos que obtiene la escudería, calculando

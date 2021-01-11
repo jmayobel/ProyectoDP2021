@@ -1,3 +1,4 @@
+import java.lang.Math;
 /**
  * Clase Coche, que contiene su nombre,velocidad y combustible.
  * 
@@ -99,7 +100,7 @@ public class Coche implements CocheInterfaz
      * @return VelocidadReal - Tipo Double
      */
     public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito) {
-        return getValorVelocidad() * piloto.getDestreza() / circuito.getValorComplejidad();
+        return Math.round(getValorVelocidad() * piloto.getDestreza() / circuito.getValorComplejidad());
     }
 
     /**
@@ -119,7 +120,7 @@ public class Coche implements CocheInterfaz
      * @return Combustible - Tipo Double
      */
     public double getCombustibleUsado(PilotoInterfaz piloto, Circuito circuito) {
-        return getValorcombustible() - getTiempo(piloto, circuito);
+        return Math.round(getValorcombustible() - getTiempo(piloto, circuito));
     }
     
      /**

@@ -45,10 +45,11 @@ public class Mojado extends CircuitoRallyExtra
     @Override
     public String toString() {
 
-      return decoratedCircuitoRally.toString() + "\n" +
-         "extra:" + getClass().getSimpleName() + "\n" +
+      return decoratedCircuitoRally.toString() + " " +
+        "extra:" + getClass().getSimpleName() + " " +
         " -> nueva complejidad: " + getValorComplejidad() + 
-        "\n"+ " -> nueva distancia: " + getValorDistancia ();
+        " "+ " -> nueva distancia: " + getValorDistancia ();
+
         
 
     }

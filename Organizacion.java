@@ -1,4 +1,5 @@
 import java.util.*;
+import java.lang.Math;
 /**
  * La clase Organizacion se encargará 
  *
@@ -157,6 +158,8 @@ public class Organizacion
         while(it.hasNext()){
             EscuderiaInterfaz buscar = it.next();
             System.out.println (buscar.toString());
+            buscar.MostrarPilotos();
+            buscar.MostrarCoches();
         }
     }
     
@@ -196,10 +199,11 @@ public class Organizacion
      */
     public synchronized void campeonato(){
        Iterator<Circuito> it = this.CircuitoSet.iterator();
+       MostrarCircuitos();
        System.out.println("FINALIZADO MOSTRAR CIRCUITOS");
        MostrarEscuderias();
        System.out.println("FINALIZADO MOSTRAR ESCUDERÍAS");
-       
+       GuardarPilotos(); //Guarda en pilotoCarreras los coches para correr
        while(it.hasNext()){
            Circuito circuito = it.next();
            Carrera(circuito);
@@ -211,7 +215,7 @@ public class Organizacion
      * Realiza la carrera en un circuito dado para todos los pilotos que corren en él.
      */
     public synchronized void Carrera(Circuito circuito){
-       GuardarPilotos(); //Guarda en pilotoCarreras los coches para correr
+       
        OrdenarParrilla(); //Ordena los pilotos
        Iterator<PilotoInterfaz> it = this.PilotosCarrera.iterator();
        while (it.hasNext()) {
@@ -220,7 +224,8 @@ public class Organizacion
           CocheInterfaz coche=piloto.getCoche();
           coche.toString(); //Muestra el coche que correra
           double velocidad=coche.getVelocidadReal(piloto,circuito);
-          System.out.println("VELOCIDAD REAL: " + velocidad); 
+          System.out.println("VELOCIDAD REAL: " + velocidad);
+          if(!piloto.getDescalificado()){
           piloto.correrCarrera(circuito);
           if(piloto.buscarResultado(circuito) > 0)   //Si el tiempo obtenido es positivo, ha acabado la carrera,
                                                      //si no lo es, no la ha acabado
@@ -241,6 +246,7 @@ public class Organizacion
             }
             System.out.println(coche.getValorcombustible());
           }
+        }
        }
       }
 
