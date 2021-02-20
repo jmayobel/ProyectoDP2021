@@ -24,7 +24,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
      */
     public EscuderiaRally(String nomEscuderia, Comparator<PilotoInterfaz> compPilotos, Comparator<CocheInterfaz> compCoches){
         this.nomEscuderia = nomEscuderia;
-        this.pilotosCarrera = new ArrayList <PilotoInterfaz>();
+        //this.pilotosCarrera = new ArrayList <PilotoInterfaz>();
         this.ListaPilotos = new ArrayList <PilotoInterfaz> ();
         this.ListaCoches = new ArrayList <CocheInterfaz> ();
         this.compPilotos = compPilotos;
@@ -46,8 +46,8 @@ public class EscuderiaRally implements EscuderiaInterfaz
      * 
      * @return Lista de Pilotos que están listos para correr la carrera   
      */
-    public ArrayList getPilotosCarrera(){ 
-        return this.pilotosCarrera;     
+    public PilotoInterfaz getPilotosCarrera(int pos){ 
+        return this.ListaPilotos.get(pos);     
     }
 
     /**
@@ -292,4 +292,13 @@ public class EscuderiaRally implements EscuderiaInterfaz
 
         return result;
     }
+    
+    public int TamanoListaPilotos() {
+     
+        
+        
+        return ListaPilotos.size ();
+        
+        
+    }       
 }

@@ -7,7 +7,7 @@ import java.util.*;
  */
 public interface EscuderiaInterfaz{
     public String getNombre ();
-    public ArrayList getPilotosCarrera();
+    public PilotoInterfaz getPilotosCarrera(int pos);
     public ArrayList getListaPilotos ();
     public ArrayList getListaCoches ();
     public Comparator<PilotoInterfaz> getComparadorPilotos();       
@@ -28,4 +28,5 @@ public interface EscuderiaInterfaz{
     public int getPuntosTotalesEscuderia();
     public void AsignarCoche();
     public int hashCode();    
+    public int TamanoListaPilotos();
 }

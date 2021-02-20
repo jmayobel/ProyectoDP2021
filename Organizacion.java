@@ -14,7 +14,7 @@ public class Organizacion
     private final int nPilotos;
     private TreeSet <Circuito> CircuitoSet;
     private ArrayList <EscuderiaInterfaz> ListadeEscuderias;
-    private ArrayList <PilotoInterfaz> PilotosCarrera;   
+    private HashMap <PilotoInterfaz,EscuderiaInterfaz> PilotosCarrera;   
     
 
     /**
@@ -26,7 +26,7 @@ public class Organizacion
         this.nPilotos=nPilotos;
         CircuitoSet = circuito;
         ListadeEscuderias= new ArrayList <EscuderiaInterfaz> () ; 
-        PilotosCarrera = new ArrayList <PilotoInterfaz> ();
+        PilotosCarrera = new HashMap <PilotoInterfaz,EscuderiaInterfaz> ();
     }
 
     /**
@@ -168,11 +168,15 @@ public class Organizacion
      */
     public synchronized void GuardarPilotos(){
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
+        int pos;
         while(it.hasNext()){
             EscuderiaInterfaz Esc = it.next();
             Esc.AsignarCoche();
-   
-            PilotosCarrera.addAll(Esc.getPilotosCarrera());
+            pos=0;
+            while (pos<Esc.TamanoListaPilotos()){
+            PilotosCarrera.put (Esc.getPilotosCarrera(pos),Esc);  //  PilotosCarrera.put (Esc.getPiloto[i],Piloto.getEscuderia());
+            pos++;
+        }  
         } 
     }
 
@@ -191,7 +195,7 @@ public class Organizacion
      * Ordena la parrilla de salida (pilotosCarrera) por la cantidad de puntos de los pilotos
      */
     public synchronized void OrdenarParrilla(){
-        Collections.sort(PilotosCarrera,new ComparadorTotalPuntos()); 
+        //Collections.sort(PilotosCarrera,new ComparadorTotalPuntos()); 
     }
 
     /**
@@ -222,37 +226,37 @@ public class Organizacion
      * Realiza la carrera en un circuito dado para todos los pilotos que corren en él.
      */
     public synchronized void Carrera(Circuito circuito){
-       OrdenarParrilla(); //Ordena los pilotos
-       Iterator<PilotoInterfaz> it = this.PilotosCarrera.iterator();
-       while (it.hasNext()) {
-          PilotoInterfaz piloto= it.next();
-          if(!piloto.getDescalificado()){
-          System.out.println(piloto.toString()); //Muestra el piloto que correra
-          CocheInterfaz coche=piloto.getCoche();
-          double velocidad=coche.getVelocidadReal(piloto,circuito);
-          System.out.println("VELOCIDAD REAL: " + velocidad); 
-          piloto.correrCarrera(circuito);
-          if(piloto.buscarResultado(circuito) > 0)   //Si el tiempo obtenido es positivo, ha acabado la carrera,
-                                                     //si no lo es, no la ha acabado
-          {
-             piloto.buscarResultado(circuito);  
-          }    
-          else{
-            if(piloto.getTiempoConcentracion() < coche.getTiempo(piloto, circuito)){
-                System.out.println("MOTIVO DE ABANDONO: Pérdida de concentración."); 
-            }
-            if(coche.getCombustibleUsado(piloto, circuito) < coche.getTiempo(piloto, circuito)){
-                System.out.println("MOTIVO DE ABANDONO: Falta de combustible."); 
-            }
-            System.out.println("TIEMPO RESTANTE: " + Math.abs(piloto.buscarResultado(circuito)));                 
-            System.out.println("TIEMPO DE CARRERA: " + (coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito)));
-            if(piloto.getAbandonos() >= this.nAbandonos){
-                piloto.descalificar();
-            }
-            System.out.println("COMBUSTIBLE ACTUAL = " + coche.getValorcombustible());
-          }
-        }
-       }
+       // OrdenarParrilla(); //Ordena los pilotos
+       // Iterator<PilotoInterfaz> it = this.PilotosCarrera.iterator();
+       // while (it.hasNext()) {
+          // PilotoInterfaz piloto= it.next();
+          // if(!piloto.getDescalificado()){
+          // System.out.println(piloto.toString()); //Muestra el piloto que correra
+          // CocheInterfaz coche=piloto.getCoche();
+          // double velocidad=coche.getVelocidadReal(piloto,circuito);
+          // System.out.println("VELOCIDAD REAL: " + velocidad); 
+          // piloto.correrCarrera(circuito);
+          // if(piloto.buscarResultado(circuito) > 0)   //Si el tiempo obtenido es positivo, ha acabado la carrera,
+                                                     // //si no lo es, no la ha acabado
+          // {
+             // piloto.buscarResultado(circuito);  
+          // }    
+          // else{
+            // if(piloto.getTiempoConcentracion() < coche.getTiempo(piloto, circuito)){
+                // System.out.println("MOTIVO DE ABANDONO: Pérdida de concentración."); 
+            // }
+            // if(coche.getCombustibleUsado(piloto, circuito) < coche.getTiempo(piloto, circuito)){
+                // System.out.println("MOTIVO DE ABANDONO: Falta de combustible."); 
+            // }
+            // System.out.println("TIEMPO RESTANTE: " + Math.abs(piloto.buscarResultado(circuito)));                 
+            // System.out.println("TIEMPO DE CARRERA: " + (coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito)));
+            // if(piloto.getAbandonos() >= this.nAbandonos){
+                // piloto.descalificar();
+            // }
+            // System.out.println("COMBUSTIBLE ACTUAL = " + coche.getValorcombustible());
+          // }
+        // }
+       // }
       }
       
       public synchronized void FinalCampeonato(){
@@ -268,20 +272,20 @@ public class Organizacion
      * Ordena la lista de pilotos de PilotosCarrera por tiempo y le asigna los puntos correspondientes a sus posición
      */
        public synchronized void Podio (Circuito circuito){
-        int podio = 0;
-        //Collections.sort(...,...) NOS FALTA ESTO PARA ORDENAR POR TIEMPO
-        Iterator <PilotoInterfaz> it = this.PilotosCarrera.iterator();
-        while(it.hasNext()){
-            PilotoInterfaz piloto = it.next();
-            if(piloto.buscarResultado(circuito) > 0){
-                if(podio < 4){
-                    piloto.añadirPuntos(circuito,10-podio*2);
-                    podio++;
-                }
-                else{
-                    piloto.añadirPuntos(circuito, 2);
-                }
-            }
-        }
+        // int podio = 0;
+        // //Collections.sort(...,...) NOS FALTA ESTO PARA ORDENAR POR TIEMPO
+        // Iterator <PilotoInterfaz> it = this.PilotosCarrera.iterator();
+        // while(it.hasNext()){
+            // PilotoInterfaz piloto = it.next();
+            // if(piloto.buscarResultado(circuito) > 0){
+                // if(podio < 4){
+                    // piloto.añadirPuntos(circuito,10-podio*2);
+                    // podio++;
+                // }
+                // else{
+                    // piloto.añadirPuntos(circuito, 2);
+                // }
+            // }
+        // }
     }
 }
