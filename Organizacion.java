@@ -15,7 +15,6 @@ public class Organizacion
     private TreeSet <Circuito> CircuitoSet;
     private ArrayList <EscuderiaInterfaz> ListadeEscuderias;
     private HashMap <PilotoInterfaz,EscuderiaInterfaz> PilotosCarrera;   
-    
 
     /**
      * Constructor parametrizado de Organizacion
@@ -35,7 +34,7 @@ public class Organizacion
      * @param nuevaEscuderia -escuderia a insertar en la lista.
      * 
      */
-    public synchronized void setEscuderia (EscuderiaInterfaz nuevaEscuderia) {
+    public  void setEscuderia (EscuderiaInterfaz nuevaEscuderia) {
         ListadeEscuderias.add(nuevaEscuderia);
     }    
 
@@ -43,7 +42,7 @@ public class Organizacion
      * borra una escuderia de la lista.
      * @param escuderia - escuderia a borra en la lista.
      */
-    public synchronized void deleteEscuderia (EscuderiaInterfaz escuderia) {
+    public  void deleteEscuderia (EscuderiaInterfaz escuderia) {
 
         ListadeEscuderias.remove(escuderia);
 
@@ -53,7 +52,7 @@ public class Organizacion
      * inserta un nuevo circuito en el set.
      * @param nuevoCircuito el nuevo circuito a insertar.
      */
-    public synchronized void setCircuito (Circuito nuevoCircuito) {
+    public  void setCircuito (Circuito nuevoCircuito) {
 
         CircuitoSet.add(nuevoCircuito);
     }    
@@ -62,7 +61,7 @@ public class Organizacion
      * borra un circuito del set.
      * @param circuito -circuito a borrar.
      */
-    public synchronized void deleteCircuito (Circuito circuito) {
+    public  void deleteCircuito (Circuito circuito) {
         CircuitoSet.remove(circuito);
     }  
 
@@ -70,7 +69,7 @@ public class Organizacion
      * busca un circuito en CircuitoSet.
      * @param circuito- circuito a buscar en CircuitoSet.
      * @return el circuito buscada.
-     */public synchronized Circuito buscarCircuito (Circuito circuito) {
+     */public  Circuito buscarCircuito (Circuito circuito) {
         Iterator<Circuito> it = this.CircuitoSet.iterator(); //Inicializamos el Iterator
         boolean enc = false;
         Circuito aux=null;
@@ -91,7 +90,7 @@ public class Organizacion
      * @param escuderia- escuderia a buscar en la lista.
      * @return la escuderia buscada.
      */
-    public synchronized EscuderiaInterfaz buscarEscuderia (EscuderiaInterfaz escuderia) {
+    public  EscuderiaInterfaz buscarEscuderia (EscuderiaInterfaz escuderia) {
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator(); //Inicializamos el Iterator
         boolean enc = false;
         EscuderiaInterfaz aux=null;
@@ -109,7 +108,7 @@ public class Organizacion
     /**
      *  deja vacio CircuitoSet.
      */
-    public synchronized void DejarVacioTreeSetCircuitos () {
+    public  void DejarVacioTreeSetCircuitos () {
         Iterator<Circuito> it = this.CircuitoSet.iterator(); //Inicializamos el Iterator
 
         while(it.hasNext()){
@@ -123,15 +122,14 @@ public class Organizacion
     /**
      *  deja vacia la lista de escuderias.
      */
-    public synchronized void DejarVacioListadeEscuderias() {
+    public  void DejarVacioListadeEscuderias() {
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator(); //Inicializamos el Iterator
         while(it.hasNext()){
             EscuderiaInterfaz buscar = it.next();
             it.remove();
         }
     }  
-    
-          
+
     /**
      *  Método del patrón Singleton que permite devolver una instancia del objeto creado.
      *  Si no hay ninguna instancia, se crea.
@@ -152,7 +150,7 @@ public class Organizacion
     /**
      * muestra las escuderias de la lista de escuderias.
      */
-    public synchronized void MostrarEscuderias(){
+    public  void MostrarEscuderias(){
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
 
         while(it.hasNext()){
@@ -162,11 +160,11 @@ public class Organizacion
             buscar.MostrarCoches();
         }
     }
-    
+
     /**
      *  Inserta los pilotos listos para correr en la lista de pilotosCarrera
      */
-    public synchronized void GuardarPilotos(){
+    public  void GuardarPilotos(){
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
         int pos;
         while(it.hasNext()){
@@ -174,16 +172,16 @@ public class Organizacion
             Esc.AsignarCoche();
             pos=0;
             while (pos<Esc.TamanoListaPilotos()){
-            PilotosCarrera.put (Esc.getPilotosCarrera(pos),Esc);  //  PilotosCarrera.put (Esc.getPiloto[i],Piloto.getEscuderia());
-            pos++;
-        }  
+                PilotosCarrera.put (Esc.getPilotosCarrera(pos),Esc);  //  PilotosCarrera.put (Esc.getPiloto[i],Piloto.getEscuderia());
+                pos++;
+            }  
         } 
     }
 
     /**
      * muestra los circuitos del TreeSet de circuitos.
      */
-    public synchronized void MostrarCircuitos(){
+    public  void MostrarCircuitos(){
         Iterator<Circuito> it = this.CircuitoSet.iterator();
         while(it.hasNext()){
             Circuito buscar = it.next();
@@ -194,7 +192,7 @@ public class Organizacion
     /**
      * Ordena la parrilla de salida (pilotosCarrera) por la cantidad de puntos de los pilotos
      */
-    public synchronized void OrdenarParrilla(){
+    public  void OrdenarParrilla(){
         ArrayList<PilotoInterfaz> pilotos = new ArrayList<>(PilotosCarrera.keySet());
 
         Collections.sort(pilotos,new ComparadorTotalPuntos()); 
@@ -203,77 +201,92 @@ public class Organizacion
     /**
      * Realiza las carreras para cada circuito del campeonato
      */
-    public synchronized void campeonato(){
-       int Carrerasact = 0;
-       Iterator<Circuito> it = this.CircuitoSet.iterator();
-       MostrarCircuitos();
-       System.out.println("FINALIZADO MOSTRAR CIRCUITOS");
-       MostrarEscuderias();
-       System.out.println("FINALIZADO MOSTRAR ESCUDERÍAS");
-       GuardarPilotos(); //Guarda en pilotoCarreras los coches para correr
-       while(it.hasNext()){
-           Circuito circuito = it.next();
-           System.out.println("----------------------CARRERA " + Carrerasact + " DE " + CircuitoSet.size()+"-------------------------------");
-           Carrera(circuito);
-           Carrerasact++;
-           Podio(circuito);
-       }
-       FinalCampeonato();
+    public  void campeonato(){
+        int Carrerasact = 0;
+        Iterator<Circuito> it = this.CircuitoSet.iterator();
+        MostrarCircuitos();
+        System.out.println("FINALIZADO MOSTRAR CIRCUITOS");
+        MostrarEscuderias();
+        System.out.println("FINALIZADO MOSTRAR ESCUDERÍAS");
+        GuardarPilotos(); //Guarda en pilotoCarreras los coches para correr
+        while(it.hasNext()){
+            Circuito circuito = it.next();
+            System.out.println("----------------------CARRERA " + Carrerasact + " DE " + CircuitoSet.size()+"-------------------------------");
+            Carrera(circuito);
+            Carrerasact++;
+            Podio(circuito);
+        }
+        FinalCampeonato();
     }
-    
-     /**
+
+    /**
      * Realiza la carrera en un circuito dado para todos los pilotos que corren en él.
      */
     /**
      * Realiza la carrera en un circuito dado para todos los pilotos que corren en él.
      */
-    public synchronized void Carrera(Circuito circuito){
+    public  void Carrera(Circuito circuito){
         OrdenarParrilla(); //Ordena los pilotos
-       Iterator<PilotoInterfaz> it = this.PilotosCarrera.keySet().iterator(); 
-       while (it.hasNext()) {
-          PilotoInterfaz piloto= it.next();
-          if(!piloto.getDescalificado()){
-          System.out.println(piloto.toString()); //Muestra el piloto que correra
-          CocheInterfaz coche=piloto.getCoche();
-          double velocidad=coche.getVelocidadReal(piloto,circuito);
-          System.out.println("VELOCIDAD REAL: " + velocidad); 
-          piloto.correrCarrera(circuito);
-          if(piloto.buscarResultado(circuito) > 0)   //Si el tiempo obtenido es positivo, ha acabado la carrera,
-                                                     //si no lo es, no la ha acabado
-          {
-             piloto.buscarResultado(circuito);  
-          }    
-          else{
-            if(piloto.getTiempoConcentracion() < coche.getTiempo(piloto, circuito)){
-                System.out.println("MOTIVO DE ABANDONO: Pérdida de concentración."); 
+        Iterator<PilotoInterfaz> it = this.PilotosCarrera.keySet().iterator(); 
+        while (it.hasNext()) {
+            PilotoInterfaz piloto= it.next();
+            if(!piloto.getDescalificado()){
+                System.out.println(piloto.toString()); //Muestra el piloto que correra
+                CocheInterfaz coche=piloto.getCoche();
+                double velocidad=coche.getVelocidadReal(piloto,circuito);
+                System.out.println("VELOCIDAD REAL: " + velocidad); 
+                piloto.correrCarrera(circuito);
+
+                if(piloto.buscarResultado(circuito) > 0)   //Si el tiempo obtenido es positivo, ha acabado la carrera,
+                //si no lo es, no la ha acabado
+                {
+                    piloto.buscarResultado(circuito);  
+                }    
+                else{
+                    if(piloto.getTiempoConcentracion() < coche.getTiempo(piloto, circuito)){
+                        System.out.println("MOTIVO DE ABANDONO: Pérdida de concentración."); 
+                    }
+                    if(coche.getCombustibleUsado(piloto, circuito) < coche.getTiempo(piloto, circuito)){
+                        System.out.println("MOTIVO DE ABANDONO: Falta de combustible."); 
+                    }
+                    System.out.println("TIEMPO RESTANTE: " + Math.abs(piloto.buscarResultado(circuito)));                 
+                    System.out.println("TIEMPO DE CARRERA: " + (coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito)));
+                    if(piloto.getAbandonos() >= this.nAbandonos){
+                        piloto.descalificar();
+                    }
+                    System.out.println("COMBUSTIBLE ACTUAL = " + coche.getValorcombustible());
+                }
             }
-            if(coche.getCombustibleUsado(piloto, circuito) < coche.getTiempo(piloto, circuito)){
-                System.out.println("MOTIVO DE ABANDONO: Falta de combustible."); 
-            }
-            System.out.println("TIEMPO RESTANTE: " + Math.abs(piloto.buscarResultado(circuito)));                 
-            System.out.println("TIEMPO DE CARRERA: " + (coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito)));
-            if(piloto.getAbandonos() >= this.nAbandonos){
-                piloto.descalificar();
-            }
-            System.out.println("COMBUSTIBLE ACTUAL = " + coche.getValorcombustible());
-          }
         }
-       }
-      }
-      
-      public synchronized void FinalCampeonato(){
+
+        //Iterator<EscuderiaInterfaz> ti = this.ListadeEscuderias.iterator(); 
+
+        // while (ti.hasNext()) {
+        // EscuderiaInterfaz esc = ti.next();
+        // Iterator<PilotoInterfaz> te = this.PilotosCarrera.keySet().iterator(); 
+        // while (te.hasNext()) {
+        // PilotoInterfaz p = te.next();
+        // if (te.)
+
+        // }     
+
+        // }
+
+    }
+
+
+    public  void FinalCampeonato(){
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
         while(it.hasNext()){
             EscuderiaInterfaz Esc = it.next();
             System.out.println(Esc.getNombre() + " tiene " + Esc.getPuntosTotalesEscuderia() + " puntos.");
         } 
     }
-         
-        
-     /**
+
+    /**
      * Ordena la lista de pilotos de PilotosCarrera por tiempo y le asigna los puntos correspondientes a sus posición
      */
-       public synchronized void Podio (Circuito circuito){
+    public  void Podio (Circuito circuito){
         int podio = 0;
         //Collections.sort(...,...) NOS FALTA ESTO PARA ORDENAR POR TIEMPO
         Iterator <PilotoInterfaz> it = this.PilotosCarrera.keySet().iterator(); 
