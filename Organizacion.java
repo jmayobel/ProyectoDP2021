@@ -162,7 +162,7 @@ public class Organizacion
     }
 
     /**
-     *  Inserta los pilotos listos para correr en la lista de pilotosCarrera
+     *  Inserta los pilotos listos para correr en el HashMap de pilotosCarrera
      */
     public  void GuardarPilotos(){
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
@@ -202,7 +202,7 @@ public class Organizacion
      * Realiza las carreras para cada circuito del campeonato
      */
     public  void campeonato(){
-        int Carrerasact = 0;
+        int Carrerasact = 1;
         Iterator<Circuito> it = this.CircuitoSet.iterator();
         MostrarCircuitos();
         System.out.println("FINALIZADO MOSTRAR CIRCUITOS");
