@@ -192,11 +192,14 @@ public class Organizacion
     /**
      * Ordena la parrilla de salida (pilotosCarrera) por la cantidad de puntos de los pilotos
      */
-    public  void OrdenarParrilla(ArrayList<PilotoInterfaz> pilotos){
+    public  void OrdenarParrilla(int tipo, ArrayList<PilotoInterfaz> pilotos){
 
-        Collections.sort(pilotos,new ComparadorTotalPuntos()); 
-        
-        
+        if(tipo == 1){
+            Collections.sort(pilotos, new ComparadorTotalPuntos());
+        }
+        if(tipo == 2){
+            Collections.sort(pilotos, new ComparadorTiempo());
+        }
         
     }
 

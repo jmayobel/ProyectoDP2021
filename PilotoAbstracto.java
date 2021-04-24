@@ -127,7 +127,6 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      * @param circuito Circuito en el que el piloto ha corrido
      * @param tiempo Tiempo en el que el piloto ha terminado la carrera. 
      *               Si el tiempo es negativo, indica los minutos que le han faltado para terminarlo.
-     * @param puntos Puntuación que ha obtenido el piloto en esa carrera.            
      */
     public void añadirTiempo(Circuito circuito, double tiempo){
         this.resultados.put(circuito, new Resultados(tiempo));
@@ -198,6 +197,18 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         }
         return puntostotales;
     }
+
+        public int getTiempoTotal(){
+        Iterator<Circuito> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
+        int tiempototal = 0;
+        while(it.hasNext()){
+            Circuito key = it.next();
+            Resultados valor = this.resultados.get(key);
+            tiempototal += valor.getTiempoResultados();
+        }
+        return tiempototal;
+    }
+
     
     //ESTE MODULO NO SIRVE PARA NADA
     //RECORRE RESULTADOS SOLO SACA LA KEY
