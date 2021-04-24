@@ -255,35 +255,56 @@ public class EscuderiaRally implements EscuderiaInterfaz
      *  Asigna los coches con combustible a los pilotos que no estén descalificados de la escudería 
      */
     public void AsignarCoche () {
-        // Iterator<PilotoInterfaz> it = ListaPilotos.iterator(); //Inicializamos el Iterator
-        // Iterator<CocheInterfaz> ti = this.ListaCoches.iterator(); //Inicializamos el Iterator
-        // while(it.hasNext()){
-            // PilotoInterfaz piloto= it.next();
-            // if (!piloto.getDescalificado()) { 
-                // boolean enc = false;     
-                
-                // while (ti.hasNext() && !enc) {
-                    // CocheInterfaz coche = ti.next();
-                    // if (coche.getValorcombustible()>(0.0)) {
+        //MÉTODO NUEVO
+        int i=0;
+        int j=0;
+        boolean enc;
+        while (i<ListaPilotos.size()) {
+           PilotoInterfaz piloto= ListaPilotos.get(i);
+            if (!piloto.getDescalificado()) {
+                   enc=false;
+                 while (j<ListaCoches.size() && !enc) {
+                     CocheInterfaz coche = ListaCoches.get(j);
+                     if (coche.getValorcombustible()>(0.0)) {
+                         piloto.setCoche(coche);
+                         ListaPilotos.set(i,piloto);
+                         enc=true;
+                         //i=0 cogemos al piloto 0
+                         //remplazaremos en la posicion 0 (que es el piloto 0) el mismo piloto con su coche en esa misma posición
+
+                     }
+                     j++;
+                 }
+
+            }
+           i++;
+        }
+
+        //MÉTODO ANTIGUO
+        /*
+        ArrayList <PilotoInterfaz> Lp = ListaPilotos;
+        Iterator<PilotoInterfaz> it = Lp.iterator(); //Inicializamos el Iterator
+        Iterator<CocheInterfaz> ti = this.ListaCoches.iterator(); //Inicializamos el Iterator
+        while(it.hasNext()){
+            PilotoInterfaz piloto= it.next();
+            if (!piloto.getDescalificado()) { 
+                boolean enc = false;                    
+                while (ti.hasNext() && !enc) {
+                    CocheInterfaz coche = ti.next();
+                    if (coche.getValorcombustible()>(0.0)) {
                         
-                        // piloto.setCoche(coche);
-                        // //addPilotosCarrera(piloto);     //borrarlos 
-                        // enc = true;
+                        piloto.setCoche(coche);
+                        addPilotosCarrera(piloto);          
+                        enc = true;
                         
-                    // } 
-                // }
-            // }
+                    } 
+                }
+            }
          
 
-        // }
-        
-        
-        
-        
-        
-        
+        }
+        *///
     }
-    
   
     //toString()
     @Override
