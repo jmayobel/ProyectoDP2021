@@ -1,4 +1,4 @@
-import java.util.Iterator;
+;import java.util.Iterator;
 import java.util.HashMap;
 /**
  * La clase Piloto representa a aquellos que competirán con un coche en los circuitos de la competición.
@@ -144,24 +144,19 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     public void añadirPuntos(Circuito circuito, int puntos){
         Resultados resultado = resultados.get(circuito);
         int puntosAct = resultado.getPuntos() + puntos;
+        resultados.remove(circuito);
         resultado.setPuntos(puntosAct);
-        resultados.put(circuito, resultado);
+        resultados.put(circuito, resultado);  
     }
     /**
      * Busca el tiempo que se hizo dado un circuito en específico.
      * 
      * @param buscado Circuito del que se desea obtener el tiempo     
      */
-    public double buscarResultado(Circuito buscado){
-        Iterator<Circuito> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
-        double tiempo = 0;
-        while(it.hasNext()){
-            Circuito key = it.next();
-            if(key.equals(buscado)){
-                Resultados valor = this.resultados.get(key);
-                tiempo = valor.getTiempoResultados();
-            }                          
-        }
+    public double buscarResultado (Circuito buscado){ //getTiempoResultado()
+         double tiempo = 0;
+        tiempo=resultados.get(buscado).getTiempoResultados();
+      
         return tiempo;
     }
     /**

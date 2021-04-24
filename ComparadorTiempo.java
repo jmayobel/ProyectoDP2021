@@ -14,11 +14,12 @@ public class ComparadorTiempo
      * @param p2 Piloto a ser comparado
      */
     public int compare(PilotoInterfaz p1, PilotoInterfaz p2){
-        if(p1.getPuntosTotales()==p2.getPuntosTotales())
-            return new ComparadorResultado().compare(p1, p2);
-        else if(p1.getPuntosTotales()>p2.getPuntosTotales())
-            return 1;
-        else
-            return -1;
+        // if(p1.getUltimoTiempo()==p2.getUltimoTiempo())
+            // return (p1.getNombre().compareTo(p2.getNombre()));
+        // else if(p1.getUltimoTiempo()>p2.getUltimoTiempo())
+            // return 1;
+        // else
+            // return -1;
+            return 0;
     }
 }

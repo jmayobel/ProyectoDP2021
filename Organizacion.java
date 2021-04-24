@@ -192,10 +192,12 @@ public class Organizacion
     /**
      * Ordena la parrilla de salida (pilotosCarrera) por la cantidad de puntos de los pilotos
      */
-    public  void OrdenarParrilla(){
-        ArrayList<PilotoInterfaz> pilotos = new ArrayList<>(PilotosCarrera.keySet());
+    public  void OrdenarParrilla(ArrayList<PilotoInterfaz> pilotos){
 
         Collections.sort(pilotos,new ComparadorTotalPuntos()); 
+        
+        
+        
     }
 
     /**
@@ -226,8 +228,9 @@ public class Organizacion
      * Realiza la carrera en un circuito dado para todos los pilotos que corren en él.
      */
     public  void Carrera(Circuito circuito){
-        OrdenarParrilla(); //Ordena los pilotos
-        Iterator<PilotoInterfaz> it = this.PilotosCarrera.keySet().iterator(); 
+        ArrayList<PilotoInterfaz> pilotos = new ArrayList <PilotoInterfaz> (PilotosCarrera.keySet()) ;
+        OrdenarParrilla(pilotos); //Ordena los pilotos
+        Iterator<PilotoInterfaz> it = this.PilotosCarrera.keySet().iterator();  //recorrer el arraylist.
         while (it.hasNext()) {
             PilotoInterfaz piloto= it.next();
             if(!piloto.getDescalificado()){
