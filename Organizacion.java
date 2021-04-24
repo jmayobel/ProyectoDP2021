@@ -14,7 +14,8 @@ public class Organizacion
     private final int nPilotos;
     private TreeSet <Circuito> CircuitoSet;
     private ArrayList <EscuderiaInterfaz> ListadeEscuderias;
-    private HashMap <PilotoInterfaz,EscuderiaInterfaz> PilotosCarrera;   
+    private HashMap <PilotoInterfaz,EscuderiaInterfaz> PilotosCarrera;
+    private HashMap <PilotoInterfaz,EscuderiaInterfaz> PilotosDescalificados;
 
     /**
      * Constructor parametrizado de Organizacion
@@ -31,7 +32,7 @@ public class Organizacion
     /**
      * inserta una nueva escuderia en la lista de escuderias.
      * 
-     * @param nuevaEscuderia -escuderia a insertar en la lista.
+     * @param nuevaEscuderia escuderia a insertar en la lista.
      * 
      */
     public  void setEscuderia (EscuderiaInterfaz nuevaEscuderia) {
@@ -172,10 +173,27 @@ public class Organizacion
             Esc.AsignarCoche();
             pos=0;
             while (pos<Esc.TamanoListaPilotos()){
-                PilotosCarrera.put (Esc.getPilotosCarrera(pos),Esc);  //  PilotosCarrera.put (Esc.getPiloto[i],Piloto.getEscuderia());
+                PilotoInterfaz Piloto = Esc.getPilotosCarrera(pos);
+                PilotosCarrera.put (Piloto,Esc);  //  PilotosCarrera.put (Esc.getPiloto[i],Piloto.getEscuderia());
                 pos++;
+                Esc.eliminarPiloto(Piloto);
             }  
-        } 
+        }
+    }
+
+    public void DevolverEscuderia(HashMap <PilotoInterfaz,EscuderiaInterfaz> Pilotos){
+        Iterator<PilotoInterfaz> it = Pilotos.keySet().iterator();
+        while(it.hasNext()){
+            PilotoInterfaz pi= it.next();
+           Iterator<EscuderiaInterfaz> ti= this.ListadeEscuderias.iterator();
+          while (ti.hasNext()) {
+              EscuderiaInterfaz esc = ti.next();
+              EscuderiaInterfaz esc2= Pilotos.get(pi);
+              if (esc.equals(esc2)) {
+                  esc.addListaPilotos(pi);
+              }
+          }
+        }
     }
 
     /**
@@ -232,7 +250,7 @@ public class Organizacion
      */
     public  void Carrera(Circuito circuito){
         ArrayList<PilotoInterfaz> pilotos = new ArrayList <PilotoInterfaz> (PilotosCarrera.keySet()) ;
-        OrdenarParrilla(pilotos); //Ordena los pilotos
+        OrdenarParrilla(1,pilotos); //Ordena los pilotos
         Iterator<PilotoInterfaz> it = this.PilotosCarrera.keySet().iterator();  //recorrer el arraylist.
         while (it.hasNext()) {
             PilotoInterfaz piloto= it.next();
