@@ -9,8 +9,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
 {
     //Variables de la clase EscuderiaRally:
     private String nomEscuderia;                            //Nombre de la escudería
-    private ArrayList <PilotoInterfaz> pilotosCarrera;      //Lista con los pilotos que se enviarán a la carrera
-    private ArrayList <PilotoInterfaz> ListaPilotos;        //Lista de los pilotos de la escudería        
+    private ArrayList <PilotoInterfaz> ListaPilotos;        //Lista de los pilotos de la escudería
     private ArrayList <CocheInterfaz> ListaCoches;          //Lista de los coches de la escudería
     private Comparator<PilotoInterfaz> compPilotos;         //Comparador que ordenará la lista de pilotos
     private Comparator<CocheInterfaz> compCoches;           //Comparador que ordenará la lista de coches
@@ -24,7 +23,6 @@ public class EscuderiaRally implements EscuderiaInterfaz
      */
     public EscuderiaRally(String nomEscuderia, Comparator<PilotoInterfaz> compPilotos, Comparator<CocheInterfaz> compCoches){
         this.nomEscuderia = nomEscuderia;
-        this.pilotosCarrera = new ArrayList <PilotoInterfaz>();
         this.ListaPilotos = new ArrayList <PilotoInterfaz> ();
         this.ListaCoches = new ArrayList <CocheInterfaz> ();
         this.compPilotos = compPilotos;
@@ -47,7 +45,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
      * @return Lista de Pilotos que están listos para correr la carrera   
      */
     public PilotoInterfaz getPilotosCarrera(int pos){ 
-        return this.pilotosCarrera.get(pos);     
+        return this.ListaPilotos.get(pos);
     }
 
     /**
@@ -104,14 +102,6 @@ public class EscuderiaRally implements EscuderiaInterfaz
         this.compCoches = comparador;
     }
 
-    /**
-     * Añade un piloto a la lista de pilotos que irán a la carrera
-     * 
-     * @param piloto Piloto a insertar   
-     */
-    public void addPilotosCarrera(PilotoInterfaz piloto){          
-        this.pilotosCarrera.add(piloto);        
-    }
 
     /**
      * Añade un piloto a la lista de pilotos
@@ -129,23 +119,6 @@ public class EscuderiaRally implements EscuderiaInterfaz
      */
     public void addListaCoches(CocheInterfaz coche){        
         this.ListaCoches.add(coche);    
-    }
-
-    /**
-     * Elimina un piloto de la lista de pilotos que irán a la carrera
-     * 
-     * @param buscado Piloto a eliminar   
-     */    
-    public void eliminarPilotosCarrera(PilotoInterfaz buscado){
-        Iterator<PilotoInterfaz> it = this.pilotosCarrera.iterator(); //Inicializamos el Iterator
-        boolean enc = false;
-        while(it.hasNext() && !enc){
-            PilotoInterfaz buscar = it.next();
-            if(buscar.getNombre().equals(buscado)){
-                enc = true;
-                it.remove();
-            }     
-        }
     }
 
     /**
@@ -186,23 +159,14 @@ public class EscuderiaRally implements EscuderiaInterfaz
      * Vacía la lista de pilotos que irán a la carrera.
      */
     public void limpiarPilotosCarrera(){
-        Iterator<PilotoInterfaz> it = this.pilotosCarrera.iterator(); //Inicializamos el Iterator
-        while(it.hasNext()){
-            PilotoInterfaz eliminar = it.next();
-            it.remove();     
-        }
-    }
-
-    /**
-     * Vacía la lista de pilotos
-     */
-    public void limpiarListaPilotos(){
         Iterator<PilotoInterfaz> it = this.ListaPilotos.iterator(); //Inicializamos el Iterator
         while(it.hasNext()){
             PilotoInterfaz eliminar = it.next();
             it.remove();     
         }
     }
+
+
 
     /**
      * Vacía la lista de coches
@@ -329,7 +293,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
      
         
         
-        return pilotosCarrera.size ();
+        return ListaPilotos.size ();
         
         
     }       

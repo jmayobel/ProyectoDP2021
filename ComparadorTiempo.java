@@ -4,7 +4,8 @@
  * @author Miguel Medina Cantos, Juan Manuel Mayo, Cesar Vazquez
  * @version (a version number or a date)
  */
-public class ComparadorTiempo
+public class ComparadorTiempo extends ComparadorPiloto
+
 {
     /**
      * Comparador de Pilotos en función del tiempo.

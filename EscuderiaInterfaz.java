@@ -14,14 +14,11 @@ public interface EscuderiaInterfaz{
     public Comparator<CocheInterfaz> getComparadorCoches();       
     public void setComparadorPilotos(Comparator<PilotoInterfaz> comparador);
     public void setComparadorCoches(Comparator<CocheInterfaz> comparador);
-    public void addPilotosCarrera(PilotoInterfaz piloto);
     public void addListaPilotos (PilotoInterfaz piloto);
     public void addListaCoches (CocheInterfaz coche);
-    public void eliminarPilotosCarrera(PilotoInterfaz buscado);
     public void eliminarPiloto(PilotoInterfaz buscado);
     public void eliminarCoche(CocheInterfaz buscado);
     public void limpiarPilotosCarrera();
-    public void limpiarListaPilotos();
     public void limpiarListaCoches();
     public void MostrarCoches();
     public void MostrarPilotos();
