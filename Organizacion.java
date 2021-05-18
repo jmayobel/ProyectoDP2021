@@ -172,7 +172,8 @@ public class Organizacion
             EscuderiaInterfaz Esc = it.next();
             Esc.AsignarCoche();
             pos=0;
-            while (pos<Esc.TamanoListaPilotos()){
+            int tam= Esc.TamanoListaPilotos();
+            while (pos<tam){
                 PilotoInterfaz Piloto = Esc.getPilotosCarrera(pos);
                 PilotosCarrera.put (Piloto,Esc);  //  PilotosCarrera.put (Esc.getPiloto[i],Piloto.getEscuderia());
                 pos++;

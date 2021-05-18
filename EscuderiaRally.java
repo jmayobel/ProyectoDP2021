@@ -241,6 +241,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
                  }
 
             }
+
            i++;
         }
 
