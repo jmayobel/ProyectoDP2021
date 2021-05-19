@@ -7,6 +7,7 @@
 
 public interface PilotoInterfaz{
     public String getNombre();
+    public void mostrarResultadosCarrera(Circuito circuito);
     public CocheInterfaz getCoche();
     public Concentracion getConcentracion();
     public double getTiempoConcentracion();
