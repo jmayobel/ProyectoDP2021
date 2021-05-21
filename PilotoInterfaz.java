@@ -23,7 +23,7 @@ public interface PilotoInterfaz{
     public int getTamañoResultados();
     public int getPuntosTotales();
     public int getTiempoTotal();
-    public String mostrarResultados();
+  //  public String mostrarResultados();
     public void eliminarResultado(Circuito buscado);
     public void limpiarResultados();
     public void correrCarrera(Circuito circuito);

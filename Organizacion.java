@@ -322,6 +322,20 @@ public class Organizacion
     }
 
 
+    public void mostrarResultadosFinales(Circuito circuito){
+        ArrayList<PilotoInterfaz> pilotos = new ArrayList<PilotoInterfaz>(PilotosCarrera.keySet());
+        Iterator<PilotoInterfaz> it = this.PilotosCarrera.keySet().iterator();  //recorrer el arraylist.
+        while (it.hasNext()) {
+            PilotoInterfaz piloto = it.next();
+
+            if(!piloto.getDescalificado())
+                piloto.mostrarResultadosCarrera(circuito);
+            else System.out.println("El piloto: " + piloto.getNombre() + " está descalificado");
+        }
+    }
+
+
+
     public  void FinalCampeonato(){
 
         Iterator<PilotoInterfaz> ti = this.PilotosDescalificados.keySet().iterator();
