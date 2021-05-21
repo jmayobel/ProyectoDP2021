@@ -148,7 +148,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
         boolean enc = false;
         while(it.hasNext() && !enc){
             CocheInterfaz buscar = it.next();
-            if(buscar.equals(buscado)){ //buscarlo por nombre o eliminarlo con equals directamente?
+            if(buscar.getNombreCoche().equals(buscado)){
                 enc = true;
                 it.remove();
             }     

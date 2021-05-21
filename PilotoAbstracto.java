@@ -154,7 +154,6 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      */
     public double buscarResultado (Circuito buscado){ //getTiempoResultado()
          double tiempo = 0;
-        if (!getDescalificado())
         tiempo=resultados.get(buscado).getTiempoResultados();
       
         return tiempo;
@@ -216,30 +215,16 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     /**
      * Imprime por pantalla los resultados del piloto en toda la competición.     
      */
-  /*
-  public String mostrarResultados(){
-
-
-        Iterator<Circuito> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
+    public String mostrarResultados(){
+        Iterator<Circuito> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator        
         while(it.hasNext()){
             Circuito key = it.next();
             Resultados valor = this.resultados.get(key);
             //System.out.println(key);    //SEGURO QUE ES ASI??
         }
-
-        return ("PUNTOS TOTALES: " + getPuntosTotales());
-
-  }*/
-
-   public void mostrarResultadosCarrera(Circuito circuito){
-
-       Resultados ResCarrera = this.resultados.get(circuito);
-       System.out.println("Circuito: " + circuito.getNombreCircuito());
-       System.out.println("Puntos: " + ResCarrera.getPuntos());
-        System.out.println("Tiempo :" + ResCarrera.getTiempoResultados());
-
-
-   }
+        return ("PUNTOS TOTALES: " + getPuntosTotales());       
+    }    
+    
     /**
      * Vacía el registro de resultados.
      */
@@ -291,7 +276,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         builder.append(' ');
         builder.append("RESULTADOS: ");  //NO MUY SEGURO DE ESTO
         builder.append(' ');
-        // builder.append(mostrarResultados());
+        builder.append(mostrarResultados());
         builder.append('\n');
         builder.append("¿Descalificado?: ");
         if(getDescalificado() == false){

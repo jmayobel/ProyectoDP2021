@@ -27,7 +27,6 @@ public class Organizacion
         CircuitoSet = circuito;
         ListadeEscuderias= new ArrayList <EscuderiaInterfaz> () ; 
         PilotosCarrera = new HashMap <PilotoInterfaz,EscuderiaInterfaz> ();
-        PilotosDescalificados =  new HashMap <PilotoInterfaz,EscuderiaInterfaz> ();
     }
 
     /**
@@ -173,14 +172,11 @@ public class Organizacion
             EscuderiaInterfaz Esc = it.next();
             Esc.AsignarCoche();
             pos=0;
-            int tam= Esc.TamanoListaPilotos();
-            while (pos<tam){
+            while (pos<Esc.TamanoListaPilotos()){
                 PilotoInterfaz Piloto = Esc.getPilotosCarrera(pos);
                 PilotosCarrera.put (Piloto,Esc);  //  PilotosCarrera.put (Esc.getPiloto[i],Piloto.getEscuderia());
                 pos++;
-               CocheInterfaz co = Piloto.getCoche(); //HACEMOS UN GETCOCHE
                 Esc.eliminarPiloto(Piloto);
-                Esc.eliminarCoche(co);
             }  
         }
     }
@@ -195,7 +191,6 @@ public class Organizacion
               EscuderiaInterfaz esc2= Pilotos.get(pi);
               if (esc.equals(esc2)) {
                   esc.addListaPilotos(pi);
-                  esc.addListaCoches(pi.getCoche());
               }
           }
         }
@@ -219,11 +214,9 @@ public class Organizacion
 
         if(tipo == 1){
             Collections.sort(pilotos, new ComparadorTotalPuntos());
-
         }
         if(tipo == 2){
             Collections.sort(pilotos, new ComparadorTiempo());
-
         }
         
     }
@@ -255,11 +248,10 @@ public class Organizacion
     /**
      * Realiza la carrera en un circuito dado para todos los pilotos que corren en él.
      */
-    public  void Carrera(Circuito circuito) {
-        ArrayList<PilotoInterfaz> pilotos = new ArrayList<PilotoInterfaz>(PilotosCarrera.keySet());
-        OrdenarParrilla(1, pilotos); //Ordena los pilotos
-
-        Iterator<PilotoInterfaz> it = pilotos.iterator();  //recorrer el arraylist.
+    public  void Carrera(Circuito circuito){
+        ArrayList<PilotoInterfaz> pilotos = new ArrayList <PilotoInterfaz> (PilotosCarrera.keySet()) ;
+        OrdenarParrilla(1,pilotos); //Ordena los pilotos
+        Iterator<PilotoInterfaz> it = this.PilotosCarrera.keySet().iterator();  //recorrer el arraylist.
         while (it.hasNext()) {
             PilotoInterfaz piloto= it.next();
             if(!piloto.getDescalificado()){
@@ -272,87 +264,42 @@ public class Organizacion
                 if(piloto.buscarResultado(circuito) > 0)   //Si el tiempo obtenido es positivo, ha acabado la carrera,
                 //si no lo es, no la ha acabado
                 {
-                    piloto.buscarResultado(circuito);
-
-                } else {
-                    if (piloto.getTiempoConcentracion() < coche.getTiempo(piloto, circuito)) {
-                        System.out.println("MOTIVO DE ABANDONO: Pérdida de concentración.");
+                    piloto.buscarResultado(circuito);  
+                }    
+                else{
+                    if(piloto.getTiempoConcentracion() < coche.getTiempo(piloto, circuito)){
+                        System.out.println("MOTIVO DE ABANDONO: Pérdida de concentración."); 
                     }
                     if(coche.getCombustibleUsado(piloto, circuito) < coche.getTiempo(piloto, circuito)){
                         System.out.println("MOTIVO DE ABANDONO: Falta de combustible."); 
                     }
-                    //FIX: VER COMO CALCULA LOS TIEMPOS:
-
-                    System.out.println("TIEMPO RESTANTE: " + Math.abs(piloto.buscarResultado(circuito)));
+                    System.out.println("TIEMPO RESTANTE: " + Math.abs(piloto.buscarResultado(circuito)));                 
                     System.out.println("TIEMPO DE CARRERA: " + (coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito)));
                     if(piloto.getAbandonos() >= this.nAbandonos){
                         piloto.descalificar();
-                        EscuderiaInterfaz esc = PilotosCarrera.get(piloto);
-                        PilotosDescalificados.put(piloto, esc);
-                        PilotosCarrera.remove(piloto,esc);
-
                     }
                     System.out.println("COMBUSTIBLE ACTUAL = " + coche.getValorcombustible());
-
-
                 }
             }
-
-
-//        int pos=0;
-//        System.out.println("hola");
-//        while (pos<pilotosS.size()) {
-//            PilotoInterfaz p= pilotosS.get(pos);
-//         System.out.println( p.toString());
-//
-//            pos++;
-//        }
-
-//        int pos=0;
-//   for (PilotoInterfaz pi: pilotosS
-//            ) {
-//
-//        if (pi.equals(PilotosCarrera.keySet().)) {
-//
-//      }
-
-
         }
-        mostrarResultadosFinales(circuito);
+
+        //Iterator<EscuderiaInterfaz> ti = this.ListadeEscuderias.iterator(); 
+
+        // while (ti.hasNext()) {
+        // EscuderiaInterfaz esc = ti.next();
+        // Iterator<PilotoInterfaz> te = this.PilotosCarrera.keySet().iterator(); 
+        // while (te.hasNext()) {
+        // PilotoInterfaz p = te.next();
+        // if (te.)
+
+        // }     
+
+        // }
+
     }
-
-
-    public void mostrarResultadosFinales(Circuito circuito){
-        ArrayList<PilotoInterfaz> pilotos = new ArrayList<PilotoInterfaz>(PilotosCarrera.keySet());
-        Iterator<PilotoInterfaz> it = this.PilotosCarrera.keySet().iterator();  //recorrer el arraylist.
-        while (it.hasNext()) {
-            PilotoInterfaz piloto = it.next();
-
-            if(!piloto.getDescalificado())
-                piloto.mostrarResultadosCarrera(circuito);
-            else System.out.println("El piloto: " + piloto.getNombre() + " está descalificado");
-        }
-    }
-
 
 
     public  void FinalCampeonato(){
-
-        Iterator<PilotoInterfaz> ti = this.PilotosDescalificados.keySet().iterator();
-        System.out.println("****************************************************\n" +
-                "************** PILOTOS DESCALIFICADOS **************\n" +
-                "****************************************************\n");
-
-        while (ti.hasNext()) {
-            PilotoInterfaz pi = ti.next();
-
-            System.out.println(pi.toString());
-        }
-
-        this.DevolverEscuderia(PilotosDescalificados);
-
-
-
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
         while(it.hasNext()){
             EscuderiaInterfaz Esc = it.next();
