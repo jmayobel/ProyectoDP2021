@@ -11,9 +11,9 @@ import java.util.HashMap;
 public abstract class PilotoAbstracto implements PilotoInterfaz{
     //Variables de la clase Piloto:    
     private String nombre;                                  //Nombre completo del Piloto
-    private CocheInterfaz coche;                                    //Coche con el que correrá (Asignado por la Escudería)
+    private CocheInterfaz coche;                            //Coche con el que correrá (Asignado por la Escudería)
     private Concentracion concentracion;                    //Minutos que aguanta el piloto de carrera antes de abandonar 
-    private HashMap<Circuito,Resultados> resultados;        //Registro con el tiempo y puntos conseguidos en cada carrera
+    private HashMap<String,Resultados> resultados;          //Registro con el tiempo y puntos conseguidos en cada carrera
     private boolean descalificado;                          //"false" si NO ha sido descalificado, "true" en caso contrario
     private int nAbandonos;                                 //Número de abandonos que el piloto ha tenido durante la competición
     
@@ -30,7 +30,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         this.nombre = nombre;
         this.coche = null;
         this.concentracion = concentracion;
-        this.resultados = new HashMap<Circuito,Resultados>();
+        this.resultados = new HashMap<String,Resultados>(); // la clave será el nombre del circuito
         this.descalificado = false;
         this.nAbandonos = 0;
     }
@@ -73,7 +73,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      * 
      * @return Lista con los resultados de cada carrera     
      */
-    public HashMap<Circuito,Resultados> getResultados(){
+    public HashMap<String,Resultados> getResultados(){
         return this.resultados;
     }
     /**
@@ -129,10 +129,10 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      *               Si el tiempo es negativo, indica los minutos que le han faltado para terminarlo.
      */
     public void añadirTiempo(Circuito circuito, double tiempo){
-        this.resultados.put(circuito, new Resultados(tiempo));
+        this.resultados.put(circuito.getNombreCircuito(), new Resultados(tiempo)); //??? Cesar
         Resultados nuevo = new Resultados();
         nuevo.setTiempoResultados(tiempo);
-        this.resultados.put(circuito, nuevo);
+        this.resultados.put(circuito.getNombreCircuito(), nuevo);
     }
     /**
      * Añade los puntos dados dado un circuito concreto
@@ -141,11 +141,11 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      * @param puntos Puntos que el piloto ha ganado en esa carrera
      */
     public void añadirPuntos(Circuito circuito, int puntos){
-        Resultados resultado = resultados.get(circuito);
+        Resultados resultado = resultados.get(circuito.getNombreCircuito());
         int puntosAct = resultado.getPuntos() + puntos;
-        resultados.remove(circuito);
+        resultados.remove(circuito.getNombreCircuito());
         resultado.setPuntos(puntosAct);
-        resultados.put(circuito, resultado);  
+        resultados.put(circuito.getNombreCircuito(), resultado);
     }
     /**
      * Busca el tiempo que se hizo dado un circuito en específico.
@@ -154,7 +154,8 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      */
     public double buscarResultado (Circuito buscado){ //getTiempoResultado()
          double tiempo = 0;
-        tiempo=resultados.get(buscado).getTiempoResultados();
+        if (!getDescalificado())
+        tiempo=resultados.get(buscado.getNombreCircuito()).getTiempoResultados();
       
         return tiempo;
     }
@@ -164,11 +165,11 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      * @param buscado Circuito del que se desea borrar la información     
      */
     public void eliminarResultado(Circuito buscado){
-        Iterator<Circuito> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
+        Iterator<String> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
         boolean enc = false;
         while(it.hasNext()){
-            Circuito buscar = it.next();
-            if(buscar.equals(buscado)){
+            String buscar = it.next();
+            if(buscar.equals(buscado.getNombreCircuito())){
                 enc = true;
                 it.remove();
             }     
@@ -188,10 +189,10 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      * @return Puntos totales del piloto   
      */
     public int getPuntosTotales(){
-        Iterator<Circuito> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
+        Iterator<String> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
         int puntostotales = 0;
         while(it.hasNext()){
-            Circuito key = it.next();
+            String key = it.next();
             Resultados valor = this.resultados.get(key);
             puntostotales += valor.getPuntos();   
         }
@@ -199,10 +200,10 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     }
 
         public int getTiempoTotal(){
-        Iterator<Circuito> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
+        Iterator<String> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
         int tiempototal = 0;
         while(it.hasNext()){
-            Circuito key = it.next();
+            String key = it.next();
             Resultados valor = this.resultados.get(key);
             tiempototal += valor.getTiempoResultados();
         }
@@ -216,9 +217,9 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      * Imprime por pantalla los resultados del piloto en toda la competición.     
      */
     public String mostrarResultados(){
-        Iterator<Circuito> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator        
+        Iterator<String> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
         while(it.hasNext()){
-            Circuito key = it.next();
+            String key = it.next();
             Resultados valor = this.resultados.get(key);
             //System.out.println(key);    //SEGURO QUE ES ASI??
         }
@@ -288,7 +289,26 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         builder.append('\n');
         return builder.toString();
     }
-    
+
+
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof PilotoInterfaz)) {
+            return false;
+        }
+
+        PilotoInterfaz other = (PilotoInterfaz) obj;
+
+        return super.equals(other);
+
+
+    }
+
+
+
     //hashCode()
     @Override
     public int hashCode(){

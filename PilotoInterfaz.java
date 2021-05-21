@@ -21,6 +21,7 @@ public interface PilotoInterfaz{
     public double buscarResultado(Circuito buscado);
     public int getTamañoResultados();
     public int getPuntosTotales();
+    public boolean equals(Object obj);
     public int getTiempoTotal();
     public String mostrarResultados();
     public void eliminarResultado(Circuito buscado);

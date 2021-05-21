@@ -122,8 +122,31 @@ public class Coche implements CocheInterfaz
     public double getCombustibleUsado(PilotoInterfaz piloto, Circuito circuito) {
         return Math.round(getValorcombustible() - getTiempo(piloto, circuito));
     }
-    
-     /**
+
+
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof CocheInterfaz)) {
+            return false;
+        }
+
+        CocheInterfaz other = (CocheInterfaz) obj;
+
+        return super.equals(other);
+
+
+    }
+
+
+
+
+
+
+
+    /**
      * devuelve la informacion de la clase.
      * @return un string con la informacion de la clase.
      */

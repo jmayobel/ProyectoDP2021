@@ -23,7 +23,7 @@ public interface EscuderiaInterfaz{
     public void MostrarCoches();
     public void MostrarPilotos();
     public int getPuntosTotalesEscuderia();
-    public void AsignarCoche();
+    public void AsignarCoche(int nPilotos);
     public int hashCode();    
     public int TamanoListaPilotos();
 }

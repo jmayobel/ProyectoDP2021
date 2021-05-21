@@ -131,7 +131,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
         boolean enc = false;
         while(it.hasNext() && !enc){
             PilotoInterfaz buscar = it.next();
-            if(buscar.getNombre().equals(buscado)){
+            if(buscar.equals(buscado.getNombre())){
                 enc = true;
                 it.remove();
             }     
@@ -148,7 +148,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
         boolean enc = false;
         while(it.hasNext() && !enc){
             CocheInterfaz buscar = it.next();
-            if(buscar.getNombreCoche().equals(buscado)){
+            if(buscar.equals(buscado)){
                 enc = true;
                 it.remove();
             }     
@@ -196,14 +196,14 @@ public class EscuderiaRally implements EscuderiaInterfaz
         Iterator<PilotoInterfaz> it = this.ListaPilotos.iterator(); //Inicializamos el Iterator
         while(it.hasNext()){
             PilotoInterfaz piloto = it.next();
-            System.out.println(piloto.toString());    
+            System.out.println(piloto.toString());
         }
     }
 
     /**
      * Devuelve la cantidad de puntos que obtiene la escudería, calculando
      * el total de puntos de cada piloto y sumándolos.
-     * 
+     *
      * @return Total de puntos de la escudería
      */
     public int getPuntosTotalesEscuderia(){
@@ -211,19 +211,20 @@ public class EscuderiaRally implements EscuderiaInterfaz
         int puntostotales = 0;
         while(it.hasNext()){
             PilotoInterfaz buscar = it.next();
-            puntostotales += buscar.getPuntosTotales();   
+            if(!buscar.getDescalificado())
+            puntostotales += buscar.getPuntosTotales();
         }
-        return puntostotales;   
+        return puntostotales;
     }
     /**
      *  Asigna los coches con combustible a los pilotos que no estén descalificados de la escudería 
      */
-    public void AsignarCoche () {
+    public void AsignarCoche (int nPilotos) {
         //MÉTODO NUEVO
         int i=0;
         int j=0;
         boolean enc;
-        while (i<ListaPilotos.size()) {
+        while (i<nPilotos) {
            PilotoInterfaz piloto= ListaPilotos.get(i);
             if (!piloto.getDescalificado()) {
                    enc=false;
@@ -231,10 +232,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
                      CocheInterfaz coche = ListaCoches.get(j);
                      if (coche.getValorcombustible()>(0.0)) {
                          piloto.setCoche(coche);
-                         ListaPilotos.set(i,piloto);
                          enc=true;
-                         //i=0 cogemos al piloto 0
-                         //remplazaremos en la posicion 0 (que es el piloto 0) el mismo piloto con su coche en esa misma posición
 
                      }
                      j++;
@@ -245,32 +243,11 @@ public class EscuderiaRally implements EscuderiaInterfaz
            i++;
         }
 
-        //MÉTODO ANTIGUO
-        /*
-        ArrayList <PilotoInterfaz> Lp = ListaPilotos;
-        Iterator<PilotoInterfaz> it = Lp.iterator(); //Inicializamos el Iterator
-        Iterator<CocheInterfaz> ti = this.ListaCoches.iterator(); //Inicializamos el Iterator
-        while(it.hasNext()){
-            PilotoInterfaz piloto= it.next();
-            if (!piloto.getDescalificado()) { 
-                boolean enc = false;                    
-                while (ti.hasNext() && !enc) {
-                    CocheInterfaz coche = ti.next();
-                    if (coche.getValorcombustible()>(0.0)) {
-                        
-                        piloto.setCoche(coche);
-                        addPilotosCarrera(piloto);          
-                        enc = true;
-                        
-                    } 
-                }
-            }
-         
 
-        }
-        *///
     }
-  
+
+    //equals()
+
     //toString()
     @Override
     public String toString(){

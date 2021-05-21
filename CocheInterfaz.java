@@ -16,6 +16,7 @@ public interface CocheInterfaz {
     public String getNombreCoche();
 
     public Velocidad getvelocidad();
+    public boolean equals (Object obj);
 
     public double getValorVelocidad();
 
