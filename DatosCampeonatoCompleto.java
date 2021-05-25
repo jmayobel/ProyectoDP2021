@@ -113,13 +113,13 @@ import java.util.*;
         //creamos los pilotos y los coches de cada escudería 
         //coches y pilotos de citroen
         //añadir a citroen un CocheResistente(nombre:"Citröen C5" - velocidad:RAPIDA - combustible:ELEFANTE);
-        Coche coche =  new CocheResistente ("Citroen C5",Velocidad.RAPIDA,Combustible.ELEFANTE);
+        CocheInterfaz coche =  new CocheResistente ("Citroen C5",Velocidad.RAPIDA,Combustible.ELEFANTE);
         citroen.addListaCoches(coche);
         //añadir a citroen un CocheRapido(nombre:"Citröen C4" - velocidad:RAPIDA - combustible:ESCASO);
-        Coche c4 = new CocheRapido ("Citröen C4",Velocidad.RAPIDA,Combustible.ESCASO);
+        CocheInterfaz c4 = new CocheRapido ("Citröen C4",Velocidad.RAPIDA,Combustible.ESCASO);
         citroen.addListaCoches(c4);
         //añadir a citroen un Coche(nombre:"Citröen C3" - velocidad:RAPIDA - combustible:ESCASO);
-        Coche c3 = new CocheRapido ("Citröen C3",Velocidad.RAPIDA,Combustible.ESCASO);
+        CocheInterfaz c3 = new CocheRapido ("Citröen C3",Velocidad.RAPIDA,Combustible.ESCASO);
         citroen.addListaCoches(c3);
         //añadir a citroen un PilotoExperimentado(nombre:"Loeb" - concentración: NORMAL));
         PilotoInterfaz loeb = new PilotoExperimentado("Loeb", Concentracion.NORMAL);
@@ -133,13 +133,13 @@ import java.util.*;
             
         //coches y pilotos de seat
         //añadir a seat un CocheResistente(nombre:"Seat Tarraco" - velocidad:TORTUGA - combustible:GENEROSO);
-        Coche tarraco = new CocheResistente ("Seat Tarraco",Velocidad.TORTUGA,Combustible.GENEROSO);
+        CocheInterfaz tarraco = new CocheResistente ("Seat Tarraco",Velocidad.TORTUGA,Combustible.GENEROSO);
         seat.addListaCoches(tarraco);
         //añadir a seat un CocheRapido(nombre:"Seat Ateca" - velocidad:GUEPARDO - combustible:GENEROSO);
-        Coche ateca = new CocheRapido ("Seat Ateca",Velocidad.GUEPARDO,Combustible.GENEROSO);
+        CocheInterfaz ateca = new CocheRapido ("Seat Ateca",Velocidad.GUEPARDO,Combustible.GENEROSO);
         seat.addListaCoches(ateca);
         //añadir a seat un Coche(nombre:"Seat Arona" - velocidad:RAPIDA - combustible:ESCASO);
-        Coche arona = new Coche ("Seat Arona",Velocidad.RAPIDA,Combustible.ESCASO);
+        CocheInterfaz arona = new Coche ("Seat Arona",Velocidad.RAPIDA,Combustible.ESCASO);
         seat.addListaCoches(arona);
         //añadir a seat un PilotoExperimentado(nombre:"Ogier" - concentración: NORMAL));
         PilotoInterfaz ogier = new PilotoExperimentado ("Oiger",Concentracion.NORMAL);
@@ -154,13 +154,13 @@ import java.util.*;
          
         //coches y pilotos de peugeot
         //añadir a peugeot un CocheResistente(nombre:"Peugeot 5008" - velocidad:LENTA - combustible:GENEROSO);
-        Coche cincomilocho = new CocheResistente ("Peugeot 5008",Velocidad.LENTA,Combustible.GENEROSO);
+        CocheInterfaz cincomilocho = new CocheResistente ("Peugeot 5008",Velocidad.LENTA,Combustible.GENEROSO);
         peugeot.addListaCoches(cincomilocho);       
         //añadir a peugeot un CocheRapido(nombre:"Peugeot 3008" - velocidad:GUEPARDO - combustible:NORMAL);
-        Coche tresmilocho = new CocheRapido ("Peugeot 3008",Velocidad.LENTA,Combustible.NORMAL);
+        CocheInterfaz tresmilocho = new CocheRapido ("Peugeot 3008",Velocidad.LENTA,Combustible.NORMAL);
         peugeot.addListaCoches(tresmilocho);       
         //añadir a peugeot un Coche(nombre:"Peugeot 2008" - velocidad:NORMAL - combustible:ESCASO);
-        Coche dosmilocho = new Coche("Peugeot 2008",Velocidad.NORMAL,Combustible.ESCASO);
+        CocheInterfaz dosmilocho = new Coche("Peugeot 2008",Velocidad.NORMAL,Combustible.ESCASO);
         peugeot.addListaCoches(dosmilocho);       
         //añadir a peugeot un PilotoExperimentado(nombre:"Kankunnen" - concentración: CONCENTRADO));
         PilotoInterfaz kakunnen = new PilotoExperimentado ("Kankunnen", Concentracion.CONCENTRADO);
