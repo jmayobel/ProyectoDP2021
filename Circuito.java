@@ -13,7 +13,7 @@ public interface Circuito
     public double getValorComplejidad ();
     public double getValorDistancia ();
     public String toString();
-    
+    public boolean equals (Object obj);
     
     
     

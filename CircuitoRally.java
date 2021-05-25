@@ -69,5 +69,24 @@ public class CircuitoRally implements Circuito
         return getNombreCircuito () + "\n"+
         "complejidad: " + getValorComplejidad() + "\n" +
          "distancia: " + getValorDistancia();
-    }     
+    }
+    @Override
+    public boolean equals (Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Circuito)) {
+            return false;
+        }
+
+        Circuito other = (Circuito) obj;
+
+        return super.equals(other);
+
+
+
+
+
+
+    }
 }

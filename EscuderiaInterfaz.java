@@ -24,6 +24,7 @@ public interface EscuderiaInterfaz{
     public void MostrarPilotos();
     public int getPuntosTotalesEscuderia();
     public void AsignarCoche(int nPilotos);
-    public int hashCode();    
+    public int hashCode();
+    public boolean equals (Object obj);
     public int TamanoListaPilotos();
 }

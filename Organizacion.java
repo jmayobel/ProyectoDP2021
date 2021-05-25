@@ -184,12 +184,17 @@ public class Organizacion
             int tam= Esc.TamanoListaPilotos();
             while (pos<getnPilotos()){
                 PilotoInterfaz Piloto = Esc.getPilotosCarrera(0);
-                PilotosCarrera.add(Piloto);
-                DevolverEscuderiaPilotos.put (Piloto,Esc);  //  PilotosCarrera.put (Esc.getPiloto[i],Piloto.getEscuderia());
+                //PilotosCarrera.add(Piloto);
+                DevolverEscuderiaPilotos.put (Piloto,Esc);//  PilotosCarrera.put (Esc.getPiloto[i],Piloto.getEscuderia());
                 pos++;
                 Esc.eliminarPiloto(Piloto);
-            }  
+
+                Esc.eliminarCoche(Piloto.getCoche());
+
+            }
+
         }
+        PilotosCarrera.addAll(DevolverEscuderiaPilotos.keySet());
     }
 
     public void DevolverEscuderia(HashMap <PilotoInterfaz,EscuderiaInterfaz> Pilotos){
@@ -199,9 +204,17 @@ public class Organizacion
            Iterator<EscuderiaInterfaz> ti= this.ListadeEscuderias.iterator();
           while (ti.hasNext()) {
               EscuderiaInterfaz esc = ti.next();
+              System.out.println(pi.hashCode());
+              System.out.println(Pilotos.containsKey(pi));
+              System.out.println("el de la lista" + PilotosCarrera.get(0).hashCode());
+
+              if (pi.equals(PilotosCarrera.get(0))) {
+                  System.out.println("SOY IGUAL");
+              }
               EscuderiaInterfaz esc2= Pilotos.get(pi);
               if (esc.equals(esc2)) {
                   esc.addListaPilotos(pi);
+                  esc.addListaCoches(pi.getCoche());
               }
           }
         }
@@ -259,33 +272,32 @@ public class Organizacion
     /**
      * Realiza la carrera en un circuito dado para todos los pilotos que corren en él.
      */
-    public  void Carrera(Circuito circuito){
-        OrdenarParrilla(1,PilotosCarrera); //Ordena los pilotos
+    public  void Carrera(Circuito circuito) {
+        OrdenarParrilla(1, PilotosCarrera); //Ordena los pilotos
         Iterator<PilotoInterfaz> it = this.PilotosCarrera.iterator();  //recorrer el arraylist.
         while (it.hasNext()) {
-            PilotoInterfaz piloto= it.next();
-            if(!piloto.getDescalificado()){
+            PilotoInterfaz piloto = it.next();
+            if (!piloto.getDescalificado()) {
                 System.out.println(piloto.toString()); //Muestra el piloto que correra
-                CocheInterfaz coche=piloto.getCoche();
-                double velocidad=coche.getVelocidadReal(piloto,circuito);
-                System.out.println("VELOCIDAD REAL: " + velocidad); 
+                CocheInterfaz coche = piloto.getCoche();
+                double velocidad = coche.getVelocidadReal(piloto, circuito);
+                System.out.println("VELOCIDAD REAL: " + velocidad);
                 piloto.correrCarrera(circuito);
 
-                if(piloto.buscarResultado(circuito) > 0)   //Si el tiempo obtenido es positivo, ha acabado la carrera,
+                if (piloto.buscarResultado(circuito) > 0)   //Si el tiempo obtenido es positivo, ha acabado la carrera,
                 //si no lo es, no la ha acabado
                 {
-                    piloto.buscarResultado(circuito);  
-                }    
-                else{
-                    if(piloto.getTiempoConcentracion() < coche.getTiempo(piloto, circuito)){
-                        System.out.println("MOTIVO DE ABANDONO: Pérdida de concentración."); 
+                    piloto.buscarResultado(circuito);
+                } else {
+                    if (piloto.getTiempoConcentracion() < coche.getTiempo(piloto, circuito)) {
+                        System.out.println("MOTIVO DE ABANDONO: Pérdida de concentración.");
                     }
-                    if(coche.getCombustibleUsado(piloto, circuito) < coche.getTiempo(piloto, circuito)){
-                        System.out.println("MOTIVO DE ABANDONO: Falta de combustible."); 
+                    if (coche.getCombustibleUsado(piloto, circuito) < coche.getTiempo(piloto, circuito)) {
+                        System.out.println("MOTIVO DE ABANDONO: Falta de combustible.");
                     }
-                    System.out.println("TIEMPO RESTANTE: " + Math.abs(piloto.buscarResultado(circuito)));                 
+                    System.out.println("TIEMPO RESTANTE: " + Math.abs(piloto.buscarResultado(circuito)));
                     System.out.println("TIEMPO DE CARRERA: " + (coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito)));
-                    if(piloto.getAbandonos() >= this.nAbandonos){
+                    if (piloto.getAbandonos() >= this.nAbandonos) {
                         piloto.descalificar();
 /*
                         PilotosDescalificados.add(piloto);
@@ -293,22 +305,30 @@ public class Organizacion
 */
                     }
                     System.out.println("COMBUSTIBLE ACTUAL = " + coche.getValorcombustible());
+
                 }
             }
+
+
         }
-
-
     }
 
 
+
+
     public  void FinalCampeonato(){
+        DevolverEscuderia(DevolverEscuderiaPilotos);
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
         while(it.hasNext()){
             EscuderiaInterfaz Esc = it.next();
+
+
+
             ArrayList ListaPilotos = Esc.getListaPilotos();
 
+
             System.out.println(Esc.getNombre() + " tiene " + Esc.getPuntosTotalesEscuderia() + " puntos.");
-        } 
+        }
     }
 
     /**
@@ -316,17 +336,28 @@ public class Organizacion
      */
     public  void Podio (Circuito circuito){
         int podio = 0;
-        //Collections.sort(...,...) NOS FALTA ESTO PARA ORDENAR POR TIEMPO
-        Iterator <PilotoInterfaz> it = this.PilotosCarrera.iterator();
+        this.OrdenarParrilla(2,PilotosCarrera);   //ORDENA POR TIEMPO
+        Iterator <PilotoInterfaz> it = PilotosCarrera.iterator();
         while(it.hasNext()){
             PilotoInterfaz piloto = it.next();
             if(piloto.buscarResultado(circuito) > 0){
+                System.out.println(DevolverEscuderiaPilotos.containsKey(piloto));
+                    EscuderiaInterfaz esc= DevolverEscuderiaPilotos.get(piloto);
+
+
+
+
                 if(podio < 4){
+
                     piloto.añadirPuntos(circuito,10-podio*2);
+                    PilotoInterfaz pilotoInterfaz = piloto;
+                    System.out.println(pilotoInterfaz.getPuntosTotales());
                     podio++;
+                    DevolverEscuderiaPilotos.replace(piloto,esc);
                 }
                 else{
                     piloto.añadirPuntos(circuito, 2);
+                    DevolverEscuderiaPilotos.replace(piloto,esc);
                 }
             }
         }

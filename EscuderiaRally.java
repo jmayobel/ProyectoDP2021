@@ -131,7 +131,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
         boolean enc = false;
         while(it.hasNext() && !enc){
             PilotoInterfaz buscar = it.next();
-            if(buscar.equals(buscado.getNombre())){
+            if(buscar.equals(buscado)){
                 enc = true;
                 it.remove();
             }     
@@ -274,5 +274,25 @@ public class EscuderiaRally implements EscuderiaInterfaz
         return ListaPilotos.size ();
         
         
-    }       
+    }
+
+    @Override
+    public boolean equals (Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof EscuderiaInterfaz)) {
+            return false;
+        }
+
+        EscuderiaInterfaz other = (EscuderiaInterfaz) obj;
+
+        return super.equals(other);
+
+
+
+
+
+
+    }
 }

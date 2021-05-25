@@ -140,12 +140,15 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      * @param circuito Circuito en el que el piloto ha corrido
      * @param puntos Puntos que el piloto ha ganado en esa carrera
      */
-    public void añadirPuntos(Circuito circuito, int puntos){
-        Resultados resultado = resultados.get(circuito.getNombreCircuito());
+    public void añadirPuntos(Circuito circuito, int puntos){ //FIXME: VER SI CON EL OTRO O ESTE FUNCIONA
+        String nombre = circuito.getNombreCircuito();
+        Resultados resultado = resultados.get(nombre);
         int puntosAct = resultado.getPuntos() + puntos;
-        resultados.remove(circuito.getNombreCircuito());
         resultado.setPuntos(puntosAct);
-        resultados.put(circuito.getNombreCircuito(), resultado);
+        System.out.println(puntosAct);
+        Resultados resultados1 =resultado;
+        resultados.replace(nombre,resultado,resultados1);
+
     }
     /**
      * Busca el tiempo que se hizo dado un circuito en específico.
@@ -193,9 +196,11 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         int puntostotales = 0;
         while(it.hasNext()){
             String key = it.next();
-            Resultados valor = this.resultados.get(key);
-            puntostotales += valor.getPuntos();   
-        }
+                Resultados valor = this.resultados.get(key);
+                puntostotales += valor.getPuntos();
+
+            }
+
         return puntostotales;
     }
 
@@ -302,7 +307,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
 
         PilotoInterfaz other = (PilotoInterfaz) obj;
 
-        return super.equals(other);
+        return  super.equals(other) && getNombre().equals(other.getNombre());
 
 
     }
