@@ -140,14 +140,13 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      * @param circuito Circuito en el que el piloto ha corrido
      * @param puntos Puntos que el piloto ha ganado en esa carrera
      */
-    public void añadirPuntos(Circuito circuito, int puntos){ //FIXME: VER SI CON EL OTRO O ESTE FUNCIONA
-        String nombre = circuito.getNombreCircuito();
-        Resultados resultado = resultados.get(nombre);
+    public void añadirPuntos(Circuito circuito, int puntos){
+
+        Resultados resultado = resultados.get(circuito.getNombreCircuito());
         int puntosAct = resultado.getPuntos() + puntos;
+        resultados.remove(circuito.getNombreCircuito());
         resultado.setPuntos(puntosAct);
-        System.out.println(puntosAct);
-        Resultados resultados1 =resultado;
-        resultados.replace(nombre,resultado,resultados1);
+        resultados.put(circuito.getNombreCircuito(), resultado);
 
     }
     /**
