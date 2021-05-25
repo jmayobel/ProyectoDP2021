@@ -13,7 +13,7 @@ public class Gravilla extends CircuitoRallyExtra
      * Constructor parametrizado de la clase Gravilla.
      * @param circuitorally,el circuito al cual se le va añadir el extra.
      */
-    public Gravilla (CircuitoRally circuitorally)
+    public Gravilla (Circuito circuitorally)
     {
         // initialise instance variables
         super (circuitorally);

@@ -13,7 +13,7 @@ public class Nocturno extends CircuitoRallyExtra
      * @param circuitorally,el circuito al cual se le va añadir el extra.
      * 
      */
-    public Nocturno(CircuitoRally circuitorally)
+    public Nocturno(Circuito circuitorally)
     {
         super (circuitorally);
     }

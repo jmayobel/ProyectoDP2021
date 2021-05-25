@@ -9,7 +9,7 @@ import java.lang.Math;
 public class Organizacion
 {
     // instance variables - replace the example below with your own
-    private static Organizacion instance;
+    private static Organizacion instance=null;
     private final int nAbandonos;
     private final int nPilotos;
     private TreeSet <Circuito> CircuitoSet;
@@ -44,15 +44,7 @@ public class Organizacion
         ListadeEscuderias.add(nuevaEscuderia);
     }    
 
-    /**
-     * borra una escuderia de la lista.
-     * @param escuderia - escuderia a borra en la lista.
-     */
-    public  void deleteEscuderia (EscuderiaInterfaz escuderia) {
 
-        ListadeEscuderias.remove(escuderia);
-
-    }    
 
     /**
      * inserta un nuevo circuito en el set.
@@ -130,16 +122,7 @@ public class Organizacion
 
     }    
 
-    /**
-     *  deja vacia la lista de escuderias.
-     */
-    public  void DejarVacioListadeEscuderias() {
-        Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator(); //Inicializamos el Iterator
-        while(it.hasNext()){
-            EscuderiaInterfaz buscar = it.next();
-            it.remove();
-        }
-    }  
+
 
     /**
      *  Método del patrón Singleton que permite devolver una instancia del objeto creado.
@@ -178,6 +161,8 @@ public class Organizacion
     public  void GuardarPilotos(){
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
         int pos=0;
+        DevolverEscuderiaPilotos.clear();
+        PilotosCarrera.clear();
         while(it.hasNext() && pos<getnPilotos()){
             EscuderiaInterfaz Esc = it.next();
             Esc.AsignarCoche(getnPilotos());
@@ -197,27 +182,19 @@ public class Organizacion
         PilotosCarrera.addAll(DevolverEscuderiaPilotos.keySet());
     }
 
-    public void DevolverEscuderia(HashMap <PilotoInterfaz,EscuderiaInterfaz> Pilotos){
-        Iterator<PilotoInterfaz> it = Pilotos.keySet().iterator();
-        while(it.hasNext()){
-            PilotoInterfaz pi= it.next();
-           Iterator<EscuderiaInterfaz> ti= this.ListadeEscuderias.iterator();
-          while (ti.hasNext()) {
-              EscuderiaInterfaz esc = ti.next();
-              System.out.println(pi.hashCode());
-              System.out.println(Pilotos.containsKey(pi));
-              System.out.println("el de la lista" + PilotosCarrera.get(0).hashCode());
+    public void DevolverEscuderia(){
+        Iterator<PilotoInterfaz> it = this.PilotosCarrera.iterator();  //recorrer el arraylist.
+        while (it.hasNext()) {
+            PilotoInterfaz piloto = it.next();
+            //piloto = PilotosCarrera.get(0);
+            EscuderiaInterfaz esc= DevolverEscuderiaPilotos.get(piloto);
+            //System.out.println(DevolverEscuderiaPilotos.containsKey(piloto));
+            esc.addListaPilotos(piloto);
+            esc.addListaCoches(piloto.getCoche());
 
-              if (pi.equals(PilotosCarrera.get(0))) {
-                  System.out.println("SOY IGUAL");
-              }
-              EscuderiaInterfaz esc2= Pilotos.get(pi);
-              if (esc.equals(esc2)) {
-                  esc.addListaPilotos(pi);
-                  esc.addListaCoches(pi.getCoche());
-              }
-          }
         }
+
+
     }
 
     /**
@@ -256,10 +233,12 @@ public class Organizacion
         MostrarEscuderias();
         System.out.println("FINALIZADO MOSTRAR ESCUDERÍAS");
         GuardarPilotos(); //Guarda en pilotoCarreras los coches para correr
+
         while(it.hasNext()){
             Circuito circuito = it.next();
             System.out.println("----------------------CARRERA " + Carrerasact + " DE " + CircuitoSet.size()+"-------------------------------");
             Carrera(circuito);
+            //GuardarPilotos();
             Carrerasact++;
             Podio(circuito);
         }
@@ -273,6 +252,7 @@ public class Organizacion
      * Realiza la carrera en un circuito dado para todos los pilotos que corren en él.
      */
     public  void Carrera(Circuito circuito) {
+
         OrdenarParrilla(1, PilotosCarrera); //Ordena los pilotos
         Iterator<PilotoInterfaz> it = this.PilotosCarrera.iterator();  //recorrer el arraylist.
         while (it.hasNext()) {
@@ -317,7 +297,7 @@ public class Organizacion
 
 
     public  void FinalCampeonato(){
-        DevolverEscuderia(DevolverEscuderiaPilotos);
+        DevolverEscuderia();
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
         while(it.hasNext()){
             EscuderiaInterfaz Esc = it.next();
@@ -341,8 +321,6 @@ public class Organizacion
         while(it.hasNext()){
             PilotoInterfaz piloto = it.next();
             if(piloto.buscarResultado(circuito) > 0){
-                System.out.println(DevolverEscuderiaPilotos.containsKey(piloto));
-                    EscuderiaInterfaz esc= DevolverEscuderiaPilotos.get(piloto);
 
 
 
@@ -353,11 +331,10 @@ public class Organizacion
                     PilotoInterfaz pilotoInterfaz = piloto;
                     System.out.println(pilotoInterfaz.getPuntosTotales());
                     podio++;
-                    DevolverEscuderiaPilotos.replace(piloto,esc);
+
                 }
                 else{
                     piloto.añadirPuntos(circuito, 2);
-                    DevolverEscuderiaPilotos.replace(piloto,esc);
                 }
             }
         }

@@ -11,7 +11,7 @@ public class Frio extends CircuitoRallyExtra
     * Constructor parametrizado de la clase Frio.
     * @param circuitorally,el circuito al cual se le va añadir el extra.
     */
-    public Frio (CircuitoRally circuitorally)
+    public Frio (Circuito circuitorally)
     {
         super (circuitorally);
     }

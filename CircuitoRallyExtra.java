@@ -15,10 +15,10 @@ public abstract class CircuitoRallyExtra extends CircuitoRally
      *
      * @param circuitorally -un circuito.
      */
-    public CircuitoRallyExtra (CircuitoRally circuitorally)
+    public CircuitoRallyExtra (Circuito circuitorally)
     {
         super (circuitorally.getNombreCircuito(),circuitorally.getComplejidad (),circuitorally.getDistancia ());
-        decoratedCircuitoRally=circuitorally;
+        decoratedCircuitoRally= (CircuitoRally) circuitorally;
     }
      
      

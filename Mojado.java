@@ -11,7 +11,7 @@ public class Mojado extends CircuitoRallyExtra
      * Constructor parametrizado de la clase Mojado.
      * @param circuitorally,el circuito al cual se le va añadir el extra.
      */
-    public Mojado(CircuitoRally circuitorally)
+    public Mojado(Circuito circuitorally)
     {
         super (circuitorally);
     }
