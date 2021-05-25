@@ -251,12 +251,12 @@ public class Organizacion
     public  void Carrera(Circuito circuito) {
 
         OrdenarParrilla(1, PilotosCarrera); //Ordena los pilotos
-        PilotoInterfaz key=null;
 
         for (PilotoInterfaz piloto: PilotosCarrera) {
             if (!piloto.getDescalificado()) {
                 EscuderiaInterfaz esc= DevolverEscuderiaPilotos.get(piloto);
-                key=piloto;
+
+                DevolverEscuderiaPilotos.remove(piloto);
                 System.out.println(piloto.toString()); //Muestra el piloto que correra
                 CocheInterfaz coche = piloto.getCoche();
                 double velocidad = coche.getVelocidadReal(piloto, circuito);
@@ -287,7 +287,6 @@ public class Organizacion
 
 
                 }
-                DevolverEscuderiaPilotos.remove(key);
                 DevolverEscuderiaPilotos.put(piloto,esc);
 
 
@@ -318,13 +317,14 @@ public class Organizacion
     public  void Podio (Circuito circuito){
         int podio = 0;
         this.OrdenarParrilla(2,PilotosCarrera);   //ORDENA POR TIEMPO
-        PilotoInterfaz key=null;
+
 
         for (PilotoInterfaz piloto:PilotosCarrera) {
             if(piloto.buscarResultado(circuito) > 0){
                 EscuderiaInterfaz esc= DevolverEscuderiaPilotos.get(piloto);
-                key=piloto;
 
+
+                DevolverEscuderiaPilotos.remove(piloto);
 
 
                 if(podio < 4){
@@ -342,7 +342,6 @@ public class Organizacion
 
                 }
 
-                DevolverEscuderiaPilotos.remove(key);
                 DevolverEscuderiaPilotos.put(piloto,esc);
 
             }
