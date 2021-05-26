@@ -16,7 +16,7 @@ public class Organizacion
     private TreeSet <Circuito> CircuitoSet;
     private ArrayList <EscuderiaInterfaz> ListadeEscuderias;
     private ArrayList <PilotoInterfaz> PilotosCarrera;
-    private HashMap <PilotoInterfaz,EscuderiaInterfaz> DevolverEscuderiaPilotos;
+    private HashMap <PilotoInterfaz,EscuderiaInterfaz> DevolverPilotos;
     private ArrayList <PilotoInterfaz> PilotosDescalificados;
 
 
@@ -29,7 +29,7 @@ public class Organizacion
         this.nPilotos=nPilotos;
         CircuitoSet = circuito;
         ListadeEscuderias= new ArrayList <EscuderiaInterfaz> () ; 
-        DevolverEscuderiaPilotos = new HashMap <PilotoInterfaz,EscuderiaInterfaz> (); //lo necesitamos para devolverlos a su escudería.
+        DevolverPilotos = new HashMap <PilotoInterfaz,EscuderiaInterfaz> (); //lo necesitamos para devolverlos a su escudería.
         this.PilotosCarrera= new ArrayList<PilotoInterfaz>();
         this.PilotosDescalificados = new ArrayList<PilotoInterfaz>();
 
@@ -162,7 +162,7 @@ public class Organizacion
     public  void GuardarPilotos(){
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
         int pos=0;
-        DevolverEscuderiaPilotos.clear();
+        DevolverPilotos.clear();
         PilotosCarrera.clear();
         while(it.hasNext() && pos<getnPilotos()){
             EscuderiaInterfaz Esc = it.next();
@@ -170,7 +170,7 @@ public class Organizacion
             int tam= Esc.TamanoListaPilotos();
             while (pos<getnPilotos()){
                 PilotoInterfaz Piloto = Esc.getPilotosCarrera(0);
-                DevolverEscuderiaPilotos.put (Piloto,Esc);//  PilotosCarrera.put (Esc.getPiloto[i],Piloto.getEscuderia());
+                DevolverPilotos.put (Piloto,Esc);//  PilotosCarrera.put (Esc.getPiloto[i],Piloto.getEscuderia());
                 pos++;
                 Esc.eliminarPiloto(Piloto);
 
@@ -180,12 +180,12 @@ public class Organizacion
 
 
         }
-        PilotosCarrera.addAll(DevolverEscuderiaPilotos.keySet());
+        PilotosCarrera.addAll(DevolverPilotos.keySet());
     }
 
     public void DevolverEscuderia(){
         for (PilotoInterfaz piloto :PilotosCarrera) {
-            EscuderiaInterfaz esc= DevolverEscuderiaPilotos.get(piloto);
+            EscuderiaInterfaz esc= DevolverPilotos.get(piloto);
             esc.addListaPilotos(piloto);
             esc.addListaCoches(piloto.getCoche());
 
@@ -254,9 +254,9 @@ public class Organizacion
 
         for (PilotoInterfaz piloto: PilotosCarrera) {
             if (!piloto.getDescalificado()) {
-                EscuderiaInterfaz esc= DevolverEscuderiaPilotos.get(piloto);
+                EscuderiaInterfaz esc= DevolverPilotos.get(piloto);
 
-                DevolverEscuderiaPilotos.remove(piloto);
+                DevolverPilotos.remove(piloto);
                 System.out.println(piloto.toString()); //Muestra el piloto que correra
                 CocheInterfaz coche = piloto.getCoche();
                 double velocidad = coche.getVelocidadReal(piloto, circuito);
@@ -287,7 +287,7 @@ public class Organizacion
 
 
                 }
-                DevolverEscuderiaPilotos.put(piloto,esc);
+                DevolverPilotos.put(piloto,esc);
 
 
 
@@ -321,10 +321,10 @@ public class Organizacion
 
         for (PilotoInterfaz piloto:PilotosCarrera) {
             if(piloto.buscarResultado(circuito) > 0){
-                EscuderiaInterfaz esc= DevolverEscuderiaPilotos.get(piloto);
+                EscuderiaInterfaz esc= DevolverPilotos.get(piloto);
 
 
-                DevolverEscuderiaPilotos.remove(piloto);
+                DevolverPilotos.remove(piloto);
 
 
                 if(podio < 4){
@@ -342,7 +342,7 @@ public class Organizacion
 
                 }
 
-                DevolverEscuderiaPilotos.put(piloto,esc);
+                DevolverPilotos.put(piloto,esc);
 
             }
 
