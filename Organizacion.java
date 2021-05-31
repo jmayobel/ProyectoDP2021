@@ -169,13 +169,9 @@ public class Organizacion
             Esc.AsignarCoche(getnPilotos());
             int tam= Esc.TamanoListaPilotos();
             while (pos<getnPilotos()){
-                PilotoInterfaz Piloto = Esc.getPilotosCarrera(0);
+                PilotoInterfaz Piloto = Esc.getPilotosCarrera(pos);
                 DevolverPilotos.put (Piloto,Esc);
                 pos++;
-                Esc.eliminarPiloto(Piloto);
-
-                Esc.eliminarCoche(Piloto.getCoche());
-
             }
             Esc.getListaPilotos().clear();
             Esc.getListaCoches().clear();
