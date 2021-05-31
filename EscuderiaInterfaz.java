@@ -22,6 +22,7 @@ public interface EscuderiaInterfaz{
     public void limpiarListaCoches();
     public void MostrarCoches();
     public void MostrarPilotos();
+    public boolean EscuderiaDescalificada();
     public int getPuntosTotalesEscuderia();
     public void AsignarCoche(int nPilotos);
     public int hashCode();

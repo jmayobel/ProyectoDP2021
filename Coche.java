@@ -8,11 +8,11 @@ import java.lang.Math;
 public class Coche implements CocheInterfaz
 {
     // instance variables - replace the example below with your own
-    private String nombreCoche;
-    private Velocidad velocidad;
-    private Combustible combustible;
-    private double combustibleUsado;
-    private double tiempoCarrera;
+    private String nombreCoche;             //Nombre completo del Coche
+    private Velocidad velocidad;            //Velocidad (Nombre de la velocidad y tamaño) que posee el coche
+    private Combustible combustible;        //Combustible total del coche
+    private double combustibleRestante;        //Combustible actual del coche
+   // private double tiempoCarrera;
 
     /**
      * Constructor del coche
@@ -87,7 +87,7 @@ public class Coche implements CocheInterfaz
     }
     /**
      * Devuelve el valor del combustible del coche
-     * @return combustible.getcombustible() - Tipo double
+     * @return combustible.getcombustible() - Tipo double    //FIXME:CAMBIAR EL COMENTARIO.
      */
     public double getValorcombustible() {
         return combustibleUsado;

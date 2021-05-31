@@ -91,6 +91,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
      */
     public void setComparadorPilotos(Comparator<PilotoInterfaz> comparador){
         this.compPilotos = comparador;
+        Collections.sort(getListaPilotos(),compPilotos);
     }
 
     /**
@@ -100,6 +101,7 @@ public class EscuderiaRally implements EscuderiaInterfaz
      */
     public void setComparadorCoches(Comparator<CocheInterfaz> comparador){
         this.compCoches = comparador;
+        Collections.sort(getListaCoches(),compCoches);
     }
 
 
@@ -198,6 +200,20 @@ public class EscuderiaRally implements EscuderiaInterfaz
             PilotoInterfaz piloto = it.next();
             System.out.println(piloto.toString());
         }
+    }
+
+    public boolean EscuderiaDescalificada() {
+        int cont=0;
+        boolean desc=false;
+        for (PilotoInterfaz piloto:ListaPilotos) {
+            if (piloto.getDescalificado()) {
+                cont++;
+            }
+        }
+        if (cont==ListaPilotos.size()) {
+            desc=true;
+        }
+        return desc;
     }
 
     /**

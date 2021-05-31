@@ -151,6 +151,7 @@ import java.util.*;
                 PilotoNovato blomquist = new PilotoNovato("Blomquist",Concentracion.DESPISTADO);
                 seat.addListaPilotos(blomquist);
 
+
          
         //coches y pilotos de peugeot
         //añadir a peugeot un CocheResistente(nombre:"Peugeot 5008" - velocidad:LENTA - combustible:GENEROSO);
@@ -171,7 +172,11 @@ import java.util.*;
         //añadir a peugeot un PilotoNovato(nombre:"Sordo" - concentración: DESPISTADO));
         PilotoInterfaz sordo = new PilotoNovato ("Sordo", Concentracion.DESPISTADO);
         peugeot.addListaPilotos(sordo);    
-        
+        seat.setComparadorPilotos(new ComparadorNombrePiloto());
+        peugeot.setComparadorPilotos(new ComparadorNombrePiloto());
+        citroen.setComparadorPilotos(new ComparadorNombrePiloto());
+
+
         organizacion.campeonato();
     }
 }

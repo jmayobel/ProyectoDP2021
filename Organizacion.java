@@ -161,25 +161,28 @@ public class Organizacion
      */
     public  void GuardarPilotos(){
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
-        int pos=0;
         DevolverPilotos.clear();
         PilotosCarrera.clear();
-        while(it.hasNext() && pos<getnPilotos()){
+        while(it.hasNext()){
+            int pos=0;
             EscuderiaInterfaz Esc = it.next();
             Esc.AsignarCoche(getnPilotos());
             int tam= Esc.TamanoListaPilotos();
             while (pos<getnPilotos()){
                 PilotoInterfaz Piloto = Esc.getPilotosCarrera(0);
-                DevolverPilotos.put (Piloto,Esc);//  PilotosCarrera.put (Esc.getPiloto[i],Piloto.getEscuderia());
+                DevolverPilotos.put (Piloto,Esc);
                 pos++;
                 Esc.eliminarPiloto(Piloto);
 
                 Esc.eliminarCoche(Piloto.getCoche());
 
             }
+            Esc.getListaPilotos().clear();
+            Esc.getListaCoches().clear();
 
 
         }
+
         PilotosCarrera.addAll(DevolverPilotos.keySet());
     }
 
@@ -268,6 +271,7 @@ public class Organizacion
                 {
                     piloto.buscarResultado(circuito);
 
+                    System.out.println("TIEMPO DE FINALIZACIÓN: " + (coche.getTiempo(piloto, circuito)) );
 
                 } else {
                     if (piloto.getTiempoConcentracion() < coche.getTiempo(piloto, circuito)) {
@@ -278,6 +282,7 @@ public class Organizacion
                     }
                     System.out.println("TIEMPO RESTANTE: " + Math.abs(piloto.buscarResultado(circuito)));
                     System.out.println("TIEMPO DE CARRERA: " + (coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito)));
+
                     if (piloto.getAbandonos() >= this.nAbandonos) {
                         piloto.descalificar();
 
@@ -305,7 +310,9 @@ public class Organizacion
 
         for (EscuderiaInterfaz Esc:ListadeEscuderias) {
             System.out.println(Esc.getNombre() + " tiene " + Esc.getPuntosTotalesEscuderia() + " puntos.");
-
+            if (Esc.EscuderiaDescalificada()) {
+                System.out.println(Esc.getNombre() + "está descalificada.");
+            }
 
         }
 
