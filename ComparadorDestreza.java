@@ -16,7 +16,7 @@ public class ComparadorDestreza extends ComparadorPiloto
      */
     public int compare(PilotoInterfaz p1, PilotoInterfaz p2){
         if(p1.getDestreza()==p2.getDestreza())
-            return new ComparadorTotalPuntos().compare(p1, p2);
+            return (p1.getNombre().compareTo(p2.getNombre()));
         else if(p1.getDestreza()>p2.getDestreza())
             return 1;
         else

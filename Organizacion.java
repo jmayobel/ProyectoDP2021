@@ -233,7 +233,9 @@ public class Organizacion
 
         while(it.hasNext()){
             Circuito circuito = it.next();
-            System.out.println("----------------------CARRERA " + Carrerasact + " DE " + CircuitoSet.size()+"-------------------------------");
+            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+                   + "+++++++++++++++++++++++++" + "Comienza la carrera en " + circuito.getNombreCircuito() + " ++++++++++++++++++++++++++"
+                    + "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
             Carrera(circuito);
             Carrerasact++;
             Podio(circuito);
@@ -279,7 +281,7 @@ public class Organizacion
                     System.out.println("TIEMPO RESTANTE: " + Math.abs(piloto.buscarResultado(circuito)));
                     System.out.println("TIEMPO DE CARRERA: " + (coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito)));
 
-                    if (piloto.getAbandonos() >= this.nAbandonos) {
+                    if (piloto.getAbandonos() == this.nAbandonos) {  //ARREGLO: funciona mejor con == CAMBIO MIGUEL
                         piloto.descalificar();
 
                     }

@@ -20,7 +20,7 @@ import java.util.*;
          //organizador debe ser una instancia única con la siguiente configuración:
         //LimiteAbandonos=3, LimitePilotos=2,
         // Circuitos ordenados de forma descendente de acuerdo a su distancia
-        TreeSet CircuitoSet = new TreeSet <Circuito> (new ComparadorComplejidad());
+        TreeSet CircuitoSet = new TreeSet <Circuito> (Collections.reverseOrder(new ComparadorDistancia()));
         Organizacion organizacion = Organizacion.getInstance(3,2,CircuitoSet);
         
         //creamos y añadimos los circuitos del campeonato:
@@ -172,9 +172,14 @@ import java.util.*;
         //añadir a peugeot un PilotoNovato(nombre:"Sordo" - concentración: DESPISTADO));
         PilotoInterfaz sordo = new PilotoNovato ("Sordo", Concentracion.DESPISTADO);
         peugeot.addListaPilotos(sordo);    
-        seat.setComparadorPilotos(new ComparadorNombrePiloto());
-        peugeot.setComparadorPilotos(new ComparadorNombrePiloto());
-        citroen.setComparadorPilotos(new ComparadorNombrePiloto());
+        seat.setComparadorPilotos(new ComparadorTotalPuntos());
+        seat.setComparadorCoches(new ComparadorCombustible());
+
+        peugeot.setComparadorPilotos(new ComparadorTotalPuntos());
+        peugeot.setComparadorCoches(new ComparadorCombustible());
+
+        citroen.setComparadorPilotos(Collections.reverseOrder(new ComparadorTotalPuntos()));
+        citroen.setComparadorCoches(Collections.reverseOrder(new ComparadorCombustible()));
 
 
         organizacion.campeonato();
