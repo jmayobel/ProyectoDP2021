@@ -24,12 +24,12 @@ public class Coche implements CocheInterfaz
         this.nombreCoche = nombre;
         this.velocidad = velocidad;
         this.combustible = combustible;
-        this.combustibleUsado = combustible.getcombustible();
+        this.combustibleRestante = combustible.getcombustible();
     }
     
     /**
      * Set del nombre del coche
-     * @param String nombre - nombre del coche
+     * @param  nombre - nombre del coche
      */
     public void setnombreCoche(String nombre){
         this.nombreCoche = nombre;
@@ -37,14 +37,14 @@ public class Coche implements CocheInterfaz
     
     /**
      * Set del nombre del coche
-     * @param  nombre - nombre del coche
+     * @param  velocidad - Velocidad del coche
      */
     public void setvelocidad(Velocidad velocidad){
          this.velocidad = velocidad;
     }
     /**
      * Set del combustible.
-     * @param  nombre - nombre del coche
+     * @param  combustible - combustible del coche
      */
     public void setCombustible(Combustible combustible){
         this.combustible = combustible;
@@ -54,8 +54,8 @@ public class Coche implements CocheInterfaz
      * Set del combustible disponible
      * @param  combustibleU - Combustible que le queda al coche
      */
-    public void setCombustibleUsado(double combustibleU){
-        this.combustibleUsado = combustibleU;
+    public void setCombustibleRestante(double combustibleU){
+        this.combustibleRestante = combustibleU;
     } 
     /**
      * Obtiene el nombre del coche
@@ -90,7 +90,7 @@ public class Coche implements CocheInterfaz
      * @return combustible.getcombustible() - Tipo double    //FIXME:CAMBIAR EL COMENTARIO.
      */
     public double getValorcombustible() {
-        return combustibleUsado;
+        return combustibleRestante;
     }
     
     /**
@@ -119,10 +119,14 @@ public class Coche implements CocheInterfaz
      * @param circuito - Un circuito
      * @return Combustible - Tipo Double
      */
-    public double getCombustibleUsado(PilotoInterfaz piloto, Circuito circuito) {
-        return Math.round(getValorcombustible() - getTiempo(piloto, circuito));
+    public void UsarCombustible(PilotoInterfaz piloto, Circuito circuito) {
+     combustibleRestante = Math.round(getCombustibleRestante() - getTiempo(piloto, circuito));
     }
 
+    public double getCombustibleRestante(){
+        return combustibleRestante;
+
+    }
 
     @Override
     public boolean equals(Object obj){
