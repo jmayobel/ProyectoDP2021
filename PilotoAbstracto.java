@@ -63,7 +63,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
     /**
      * Devuelve el tiempo de concentración del piloto.
      * 
-     * @return Tiempo (en minutos) que aguantará el piloto antes de abandonar la carrera     
+     * @return Tiempo de concentración (en minutos) que aguantará el piloto antes de abandonar la carrera
      */
     public double getTiempoConcentracion(){     //USAD ESTE SI LO QUE NECESITAIS ES EL NUMERO
         return this.concentracion.getTiempo();
@@ -244,28 +244,31 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      * @param circuito Circuito en el que se correrá la carrera
      */
     public void correrCarrera(Circuito circuito){
+
         CocheInterfaz coche = getCoche();
+
         if(getTiempoConcentracion() < coche.getTiempo(this, circuito)){ 
             double resultado = getTiempoConcentracion() - coche.getTiempo(this, circuito);
             añadirTiempo(circuito, resultado);
-            double combustibleactual = coche.getValorcombustible() - getTiempoConcentracion();
-            coche.setCombustibleUsado(combustibleactual);
+            coche.UsarCombustible(this, circuito);
+            //double combustibleactual = coche.getCombustibleRestante() - getTiempoConcentracion(); //FIXME: combustibleActual = combustibleActual - Tiempo de carrera de ese piloto
             abandonar();
         }
-        if(coche.getCombustibleUsado(this, circuito) < coche.getTiempo(this, circuito)){ 
+        if(coche.getCombustibleRestante() < coche.getTiempo(this, circuito)){
             double resultado = coche.getValorcombustible() - coche.getTiempo(this, circuito); //NO SEGURO
             añadirTiempo(circuito, resultado);
-            double combustibleactual = coche.getTiempo(this, circuito) + resultado;  //Tiempo que dura la carrera + 
+            coche.UsarCombustible(this, circuito);
+            // double combustibleactual = coche.getTiempo(this, circuito) + resultado;  //Tiempo que dura la carrera +
                                                                                      //(- tiempo que le faltó al piloto
                                                                                      //para acabar)
-            coche.setCombustibleUsado(combustibleactual);
+
             abandonar();                       
         }
         else{
             double resultado = coche.getTiempo(this, circuito);
             añadirTiempo(circuito, resultado);
-            double combustibleactual = coche.getValorcombustible() - resultado;
-            coche.setCombustibleUsado(combustibleactual);
+            // double combustibleactual = coche.getValorcombustible() - resultado;
+            coche.UsarCombustible(this, circuito);
         }
     }
     
@@ -294,7 +297,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
         return builder.toString();
     }
 
-
+    //equals()
     @Override
     public boolean equals(Object obj){
         if (this == obj) {
@@ -310,8 +313,6 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
 
 
     }
-
-
 
     //hashCode()
     @Override

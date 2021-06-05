@@ -11,7 +11,7 @@ public interface CocheInterfaz {
 
     public void setCombustible(Combustible combustible);
 
-    public void setCombustibleUsado(double combustibleU);
+    public void setCombustibleRestante(double combustibleU);
 
     public String getNombreCoche();
 
@@ -24,9 +24,11 @@ public interface CocheInterfaz {
 
     public double getValorcombustible();
 
-    public double getCombustibleUsado(PilotoInterfaz piloto, Circuito circuito);
+    public void UsarCombustible(PilotoInterfaz piloto, Circuito circuito);
 
     public double getTiempo(PilotoInterfaz piloto, Circuito circuito);
 
     public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito);
+
+    public double getCombustibleRestante();
 }
