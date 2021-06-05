@@ -254,11 +254,10 @@ public class Organizacion
         OrdenarParrilla(1, PilotosCarrera); //Ordena los pilotos
 
         for (PilotoInterfaz piloto: PilotosCarrera) {
-            EscuderiaInterfaz esc= DevolverPilotos.get(piloto);
-            DevolverPilotos.remove(piloto);
-
             if (!piloto.getDescalificado()) {
+                EscuderiaInterfaz esc= DevolverPilotos.get(piloto);
 
+                DevolverPilotos.remove(piloto);
                 System.out.println(piloto.toString()); //Muestra el piloto que correra
                 CocheInterfaz coche = piloto.getCoche();
                 double velocidad = coche.getVelocidadReal(piloto, circuito);
@@ -275,11 +274,9 @@ public class Organizacion
                 } else {
                     if (piloto.getTiempoConcentracion() < coche.getTiempo(piloto, circuito)) {
                         System.out.println("MOTIVO DE ABANDONO: Pérdida de concentración.");
-                        piloto.abandonar();
                     }
-                    if (coche.getCombustibleUsado(piloto, circuito) < coche.getTiempo(piloto, circuito)) {
+                    if (coche.getCombustibleRestante() < coche.getTiempo(piloto, circuito)) {
                         System.out.println("MOTIVO DE ABANDONO: Falta de combustible.");
-                        piloto.abandonar();
                     }
                     System.out.println("TIEMPO RESTANTE: " + Math.abs(piloto.buscarResultado(circuito)));
                     System.out.println("TIEMPO DE CARRERA: " + (coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito)));
@@ -293,12 +290,11 @@ public class Organizacion
 
 
                 }
+                DevolverPilotos.put(piloto,esc);
 
 
 
             }
-
-            DevolverPilotos.put(piloto,esc);
 
 
         }
@@ -339,7 +335,7 @@ public class Organizacion
                 if(podio < 4){
 
                     piloto.añadirPuntos(circuito,10-podio*2);
-                    System.out.println(piloto.getNombre() + " tiene: " + piloto.getPuntosTotales());
+                    System.out.println(piloto.getPuntosTotales());
 
                     podio++;
 
