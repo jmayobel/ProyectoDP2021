@@ -247,8 +247,8 @@ public class Organizacion
             GuardarPilotos();
 
             Circuito circuito = it.next();
-            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-                   + "Comienza la carrera en :" + circuito.getNombreCircuito() + " ++++++++++++++++++++++++++"
+            System.out.println("+++++++++++++++++++++++++++"
+                   + "Comienza la carrera en: " + circuito.getNombreCircuito() + " ++++++++++++++++++++++++++"
             );
             Carrera(circuito);
             Podio(circuito);
