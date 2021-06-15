@@ -1,33 +1,31 @@
 /**
-<<<<<<< HEAD
- * La clase PilotoNovato calcula la destreza del piloto. 
-=======
+ * <<<<<<< HEAD
  * La clase PilotoNovato calcula la destreza del piloto.
->>>>>>> 6026d10d39905b494dc4805ab62cc7d1bfe67ccb
- * 
- * @author CESAR VAZQUEZ LAZARO 
+ * =======
+ * La clase PilotoNovato calcula la destreza del piloto.
+ * >>>>>>> 6026d10d39905b494dc4805ab62cc7d1bfe67ccb
+ *
+ * @author CESAR VAZQUEZ LAZARO
  * @version 0.1
  */
-public class PilotoNovato extends PilotoAbstracto
-{    
+public class PilotoNovato extends PilotoAbstracto {
     //Variables de la clase PilotoNovato:
-    private double destreza; 
+    private double destreza;
 
     /**
      * Constructor parametrizado de la clase PilotoNovato.
-     * 
-     * @param nombre Nombre de pila del piloto
+     *
+     * @param nombre        Nombre de pila del piloto
      * @param concentracion Concentración del piloto
      */
-    public PilotoNovato(String nombre, Concentracion concentracion)
-    {
+    public PilotoNovato(String nombre, Concentracion concentracion) {
         super(nombre, concentracion);
         this.destreza = getDestreza();
     }
 
     @Override
-    public double getDestreza(){
+    public double getDestreza() {
         double Destreza = (((getTiempoConcentracion() * 0.97) / 120) - 0.03);
-        return Math.round(Destreza*100d)/100d;
-    }   
+        return Math.round(Destreza * 100d) / 100d;
+    }
 }

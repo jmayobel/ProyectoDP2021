@@ -1,5 +1,6 @@
 /**
- * La clase PilotoExperimentado calcula la destreza del piloto. 
+ * La clase PilotoExperimentado calcula la destreza del piloto.
+ *
  * @author CESAR VAZQUEZ LAZARO
  * @version 0.1
  */
@@ -21,7 +22,7 @@ public class PilotoExperimentado extends PilotoAbstracto {
     @Override
     public double getDestreza() {
         double Destreza = ((getTiempoConcentracion() + 3) / 130 * 1.03);
-        return Math.round(Destreza*100d)/100d;
+        return Math.round(Destreza * 100d) / 100d;
     }
 
 

@@ -1,28 +1,27 @@
 /**
- * La clase PilotoEstrella calcula la destreza del piloto. 
+ * La clase PilotoEstrella calcula la destreza del piloto.
+ *
  * @author CESAR VAZQUEZ LAZARO
  * @version 0.1
  */
-public class PilotoEstrella extends PilotoAbstracto
-{    
+public class PilotoEstrella extends PilotoAbstracto {
     //Variables de la clase PilototEstrella:
-    private double destreza;  
+    private double destreza;
 
     /**
      * Constructor parametrizado de la clase PilotoEstrella.
-     * 
-     * @param nombre Nombre de pila del piloto
+     *
+     * @param nombre        Nombre de pila del piloto
      * @param concentracion Concentración del piloto
      */
-    public PilotoEstrella(String nombre, Concentracion concentracion)
-    {
+    public PilotoEstrella(String nombre, Concentracion concentracion) {
         super(nombre, concentracion);
         this.destreza = getDestreza();
     }
 
     @Override
-    public double getDestreza(){
+    public double getDestreza() {
         double Destreza = (getTiempoConcentracion() + 6) / 140 * 1.06 + 0.05;
-        return Math.round(Destreza*100d)/100d;
-    }   
+        return Math.round(Destreza * 100d) / 100d;
+    }
 }
