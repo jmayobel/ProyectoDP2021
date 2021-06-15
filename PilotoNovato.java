@@ -27,6 +27,7 @@ public class PilotoNovato extends PilotoAbstracto
 
     @Override
     public double getDestreza(){
-        return (((getTiempoConcentracion() * 0.97) / 120) - 0.03);
+        double Destreza = (((getTiempoConcentracion() * 0.97) / 120) - 0.03);
+        return Math.round(Destreza*100d)/100d;
     }   
 }

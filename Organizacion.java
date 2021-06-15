@@ -159,7 +159,7 @@ public class Organizacion
     /**
      *  Inserta los pilotos listos para correr en el HashMap de pilotosCarrera
      */
-    public  void GuardarPilotos(){
+    public void GuardarPilotos(){
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
         DevolverPilotos.clear();
         PilotosCarrera.clear();
@@ -272,7 +272,7 @@ public class Organizacion
                 DevolverPilotos.remove(piloto);
                 //System.out.println(DevolverPilotos.containsKey(piloto));
                 System.out.println(piloto.toString()); //Muestra el piloto que correra
-                CocheInterfaz coche = piloto.getCoche();
+                CocheInterfaz coche = piloto.getCoche(); //¿CAMBIAR?
                 double velocidad = coche.getVelocidadReal(piloto, circuito);
                 System.out.println("VELOCIDAD REAL: " + velocidad);
                 piloto.correrCarrera(circuito);

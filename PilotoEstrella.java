@@ -22,6 +22,7 @@ public class PilotoEstrella extends PilotoAbstracto
 
     @Override
     public double getDestreza(){
-        return Math.round((((getTiempoConcentracion() + 6) / 140) * 1.06) + 0.05);
+        double Destreza = (getTiempoConcentracion() + 6) / 140 * 1.06 + 0.05;
+        return Math.round(Destreza*100d)/100d;
     }   
 }
