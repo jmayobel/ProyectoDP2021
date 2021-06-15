@@ -15,9 +15,9 @@ public class ComparadorCombustible extends ComparadorCoche
     * @param c2 Coche a ser comparado
     */
     public int compare(CocheInterfaz c1, CocheInterfaz c2){
-        if(c1.getValorcombustible()==c2.getValorcombustible())
+        if(c1.getCombustibleRestante()==c2.getCombustibleRestante())
             return (c1.getNombreCoche().compareTo(c2.getNombreCoche()));
-        else if(c1.getValorcombustible()>c2.getValorcombustible())
+        else if(c1.getCombustibleRestante()>c2.getCombustibleRestante())
             return 1;
         else
             return -1;

@@ -156,7 +156,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz{
      */
     public double buscarResultado (Circuito buscado){ //getTiempoResultado()
          double tiempo = 0;
-        if (!getDescalificado())
+
         tiempo=resultados.get(buscado.getNombreCircuito()).getTiempoResultados();
       
         return tiempo;

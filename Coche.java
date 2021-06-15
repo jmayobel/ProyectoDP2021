@@ -24,7 +24,7 @@ public class Coche implements CocheInterfaz
         this.nombreCoche = nombre;
         this.velocidad = velocidad;
         this.combustible = combustible;
-        this.combustibleRestante = combustible.getcombustible();
+        this.combustibleRestante = Math.round(combustible.getcombustible()*100d)/100d;
     }
     
     /**

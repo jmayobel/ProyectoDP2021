@@ -148,8 +148,8 @@ import java.util.*;
         PilotoInterfaz mcrae = new PilotoEstrella  ("McRae",Concentracion.CONCENTRADO);
         seat.addListaPilotos(mcrae);
         //añadir a seat un PilotoNovato(nombre:"Blomquist" - concentración: DESPISTADO));
-                PilotoNovato blomquist = new PilotoNovato("Blomquist",Concentracion.DESPISTADO);
-                seat.addListaPilotos(blomquist);
+        PilotoInterfaz blomquist = new PilotoNovato("Blomquist",Concentracion.DESPISTADO);
+        seat.addListaPilotos(blomquist);
 
 
          
@@ -171,7 +171,10 @@ import java.util.*;
         peugeot.addListaPilotos(sainz);
         //añadir a peugeot un PilotoNovato(nombre:"Sordo" - concentración: DESPISTADO));
         PilotoInterfaz sordo = new PilotoNovato ("Sordo", Concentracion.DESPISTADO);
-        peugeot.addListaPilotos(sordo);    
+        peugeot.addListaPilotos(sordo);
+
+
+
         seat.setComparadorPilotos(new ComparadorTotalPuntos());
         seat.setComparadorCoches(new ComparadorCombustible());
 
@@ -180,6 +183,7 @@ import java.util.*;
 
         citroen.setComparadorPilotos(Collections.reverseOrder(new ComparadorTotalPuntos()));
         citroen.setComparadorCoches(Collections.reverseOrder(new ComparadorCombustible()));
+
 
 
         organizacion.campeonato();

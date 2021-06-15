@@ -167,14 +167,18 @@ public class Organizacion
             int pos=0;
             EscuderiaInterfaz Esc = it.next();
             Esc.AsignarCoche(getnPilotos());
-            int tam= Esc.TamanoListaPilotos();
+
             while (pos<getnPilotos()){
-                PilotoInterfaz Piloto = Esc.getPilotosCarrera(pos);
+                PilotoInterfaz Piloto = Esc.getPilotosCarrera(0);
+                Esc.getListaPilotos().remove(0);
+                //Esc.getListaCoches().remove(pos);
                 DevolverPilotos.put (Piloto,Esc);
                 pos++;
             }
-            Esc.getListaPilotos().clear();
-            Esc.getListaCoches().clear();
+
+
+            //Esc.getListaPilotos().clear();
+           // Esc.getListaCoches().clear();
 
 
         }
@@ -186,8 +190,15 @@ public class Organizacion
         for (PilotoInterfaz piloto :PilotosCarrera) {
             EscuderiaInterfaz esc= DevolverPilotos.get(piloto);
             esc.addListaPilotos(piloto);
-            esc.addListaCoches(piloto.getCoche());
 
+            //esc.addListaCoches(piloto.getCoche());
+
+
+        }
+
+        for (EscuderiaInterfaz esc : ListadeEscuderias ){
+
+            esc.OrdenarListaPilotos ();
 
         }
 
@@ -211,7 +222,9 @@ public class Organizacion
     public  void OrdenarParrilla(int tipo, ArrayList<PilotoInterfaz> pilotos){
 
         if(tipo == 1){
-            Collections.sort(pilotos, new ComparadorTotalPuntos());
+            Collections.sort(pilotos, new ComparadorParrillaCarreraEntrada());
+
+
         }
         if(tipo == 2){
             Collections.sort(pilotos, new ComparadorTiempo());
@@ -223,22 +236,23 @@ public class Organizacion
      * Realiza las carreras para cada circuito del campeonato
      */
     public  void campeonato(){
-        int Carrerasact = 1;
         Iterator<Circuito> it = this.CircuitoSet.iterator();
         MostrarCircuitos();
         System.out.println("FINALIZADO MOSTRAR CIRCUITOS");
         MostrarEscuderias();
         System.out.println("FINALIZADO MOSTRAR ESCUDERÍAS");
-        GuardarPilotos(); //Guarda en pilotoCarreras los coches para correr
 
         while(it.hasNext()){
+
+            GuardarPilotos();
+
             Circuito circuito = it.next();
             System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-                   + "+++++++++++++++++++++++++" + "Comienza la carrera en " + circuito.getNombreCircuito() + " ++++++++++++++++++++++++++"
-                    + "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                   + "Comienza la carrera en :" + circuito.getNombreCircuito() + " ++++++++++++++++++++++++++"
+            );
             Carrera(circuito);
-            Carrerasact++;
             Podio(circuito);
+            DevolverEscuderia();
         }
         FinalCampeonato();
     }
@@ -254,10 +268,9 @@ public class Organizacion
         OrdenarParrilla(1, PilotosCarrera); //Ordena los pilotos
 
         for (PilotoInterfaz piloto: PilotosCarrera) {
-            if (!piloto.getDescalificado()) {
                 EscuderiaInterfaz esc= DevolverPilotos.get(piloto);
-
                 DevolverPilotos.remove(piloto);
+                //System.out.println(DevolverPilotos.containsKey(piloto));
                 System.out.println(piloto.toString()); //Muestra el piloto que correra
                 CocheInterfaz coche = piloto.getCoche();
                 double velocidad = coche.getVelocidadReal(piloto, circuito);
@@ -267,9 +280,8 @@ public class Organizacion
                 if (piloto.buscarResultado(circuito) > 0)   //Si el tiempo obtenido es positivo, ha acabado la carrera,
                 //si no lo es, no la ha acabado
                 {
-                    piloto.buscarResultado(circuito);
-
-                    System.out.println("TIEMPO DE FINALIZACIÓN: " + (coche.getTiempo(piloto, circuito)) );
+                    System.out.println ("TIEMPO DEL PILOTO EN EL CIRCUITO: " + piloto.buscarResultado(circuito));
+                    System.out.println("TIEMPO DE FINALIZACIÓN: " + Math.round((coche.getTiempo(piloto, circuito))*100d)/100d);
 
                 } else {
                     if (piloto.getTiempoConcentracion() < coche.getTiempo(piloto, circuito)) {
@@ -278,9 +290,9 @@ public class Organizacion
                     if (coche.getCombustibleRestante() < coche.getTiempo(piloto, circuito)) {
                         System.out.println("MOTIVO DE ABANDONO: Falta de combustible.");
                     }
-                    System.out.println("TIEMPO RESTANTE: " + Math.abs(piloto.buscarResultado(circuito)));
-                    System.out.println("TIEMPO DE CARRERA: " + (coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito)));
-
+                    System.out.println("TIEMPO RESTANTE: " + (Math.round(Math.abs(piloto.buscarResultado(circuito))*100d))/100d);
+                    System.out.println("TIEMPO DE CARRERA: " + (Math.round((coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito)))*100d)/100d);
+                    ;
                     if (piloto.getAbandonos() == this.nAbandonos) {  //ARREGLO: funciona mejor con == CAMBIO MIGUEL
                         piloto.descalificar();
 
@@ -290,11 +302,14 @@ public class Organizacion
 
 
                 }
-                DevolverPilotos.put(piloto,esc);
 
 
 
-            }
+
+
+
+            DevolverPilotos.put(piloto,esc);  //PONER ESTO FUERA DEL IF?
+
 
 
         }
@@ -304,7 +319,6 @@ public class Organizacion
 
 
     public  void FinalCampeonato(){
-        DevolverEscuderia();
 
         for (EscuderiaInterfaz Esc:ListadeEscuderias) {
             System.out.println(Esc.getNombre() + " tiene " + Esc.getPuntosTotalesEscuderia() + " puntos.");
@@ -335,7 +349,6 @@ public class Organizacion
                 if(podio < 4){
 
                     piloto.añadirPuntos(circuito,10-podio*2);
-                    System.out.println(piloto.getPuntosTotales());
 
                     podio++;
 

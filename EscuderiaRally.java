@@ -94,6 +94,11 @@ public class EscuderiaRally implements EscuderiaInterfaz
         Collections.sort(getListaPilotos(),compPilotos);
     }
 
+    public void OrdenarListaPilotos () {
+        Collections.sort(getListaPilotos(),compPilotos);
+
+    }
+
     /**
      * Establece el comparador usado para la lista de coches
      * 
