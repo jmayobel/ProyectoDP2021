@@ -261,7 +261,7 @@ public class EscuderiaRally implements EscuderiaInterfaz {
                 enc = false;
                 while (j < ListaCoches.size() && !enc) {
                     CocheInterfaz coche = ListaCoches.get(j);
-                    if (coche.getValorcombustible() > (0.0)) {
+                    if (coche.getValorcombustible() > (0)) {
                         piloto.setCoche(coche);
                         enc = true;
 
