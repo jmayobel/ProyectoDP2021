@@ -25,7 +25,7 @@ public interface CocheInterfaz {
 
     public double getValorcombustible();
 
-    public void UsarCombustible(PilotoInterfaz piloto, Circuito circuito);
+    public void UsarCombustible(double resultado);
 
     public double getTiempo(PilotoInterfaz piloto, Circuito circuito);
 

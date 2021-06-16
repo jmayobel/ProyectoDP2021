@@ -8,6 +8,7 @@
 public interface PilotoInterfaz {
     public String getNombre();
 
+    public int getPuntosActuales(Circuito circuito);
     public CocheInterfaz getCoche();
 
     public void setCoche(CocheInterfaz coche);

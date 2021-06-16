@@ -29,6 +29,7 @@ public interface EscuderiaInterfaz {
 
     public void addListaCoches(CocheInterfaz coche);
 
+    //BORRARLOS DESPUES SI ESO
     public void eliminarPiloto(PilotoInterfaz buscado);
 
     public void eliminarCoche(CocheInterfaz buscado);
@@ -50,6 +51,8 @@ public interface EscuderiaInterfaz {
     public int hashCode();
 
     public void OrdenarListaPilotos();
+
+    public void OrdenarListaCoches ();
 
     public boolean equals(Object obj);
 

@@ -161,10 +161,14 @@ public class Organizacion {
             Esc.AsignarCoche(getnPilotos());
 
             while (pos < getnPilotos()) {
-                PilotoInterfaz Piloto = Esc.getPilotosCarrera(0);
-                Esc.getListaPilotos().remove(0);
-                //Esc.getListaCoches().remove(pos);
-                DevolverPilotos.put(Piloto, Esc);
+
+                PilotoInterfaz Piloto = Esc.getPilotosCarrera(posAux);
+                if (!Piloto.getDescalificado()) {
+                    Esc.getListaPilotos().remove(posAux);
+                    //Esc.getListaCoches().remove(0);
+                    DevolverPilotos.put(Piloto, Esc);
+
+                } else posAux++;
                 pos++;
             }
 
@@ -188,6 +192,7 @@ public class Organizacion {
         for (EscuderiaInterfaz esc : ListadeEscuderias) {
 
             esc.OrdenarListaPilotos();
+            esc.OrdenarListaCoches();
 
         }
 
@@ -290,10 +295,12 @@ public class Organizacion {
     public void FinalCampeonato() {
 
         for (EscuderiaInterfaz Esc : ListadeEscuderias) {
-            System.out.println(Esc.getNombre() + " tiene " + Esc.getPuntosTotalesEscuderia() + " puntos.");
             if (Esc.EscuderiaDescalificada()) {
-                System.out.println(Esc.getNombre() + "está descalificada.");
+                System.out.println(Esc.getNombre() + "está descalificada." + "y tiene 0 puntos.");
             }
+            else
+            System.out.println(Esc.getNombre() + " tiene " + Esc.getPuntosTotalesEscuderia() + " puntos.");
+
 
         }
 
@@ -307,21 +314,15 @@ public class Organizacion {
         this.OrdenarParrilla(2, PilotosCarrera);   //ORDENA POR TIEMPO
         for (PilotoInterfaz piloto : PilotosCarrera) {
             if (piloto.buscarResultado(circuito) > 0) {
-                EscuderiaInterfaz esc = DevolverPilotos.get(piloto);
-
-
-                DevolverPilotos.remove(piloto);
-
-
+                EscuderiaInterfaz esc = DevolverPilotos.get(piloto); //DESCOMENTARLO POR SI DA PROBLEMAS
+                DevolverPilotos.remove(piloto); //DESCOMENTARLO POR SI DA PROBLEMAS
                 if (podio < 4) {
                     piloto.añadirPuntos(circuito, 10 - podio * 2);
                     podio++;
                 } else {
                     piloto.añadirPuntos(circuito, 2);
                 }
-
-                DevolverPilotos.put(piloto, esc);
-
+                DevolverPilotos.put(piloto, esc); //DESCOMENTARLO POR SI DA PROBLEMAS
             }
 
 

@@ -108,9 +108,14 @@ public class EscuderiaRally implements EscuderiaInterfaz {
         this.compCoches = comparador;
         Collections.sort(getListaCoches(), compCoches);
     }
+    public void OrdenarListaCoches () {
+
+        Collections.sort(getListaCoches(),getComparadorCoches());
+
+    }
 
     public void OrdenarListaPilotos() {
-        Collections.sort(getListaPilotos(), compPilotos);
+        Collections.sort(getListaPilotos(), getComparadorPilotos());
 
     }
 

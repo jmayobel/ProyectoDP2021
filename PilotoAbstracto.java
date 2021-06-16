@@ -143,9 +143,9 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
      */
     public void añadirTiempo(Circuito circuito, double tiempo) {
         this.resultados.put(circuito.getNombreCircuito(), new Resultados(tiempo)); //??? Cesar
-        Resultados nuevo = new Resultados();
-        nuevo.setTiempoResultados(tiempo);
-        this.resultados.put(circuito.getNombreCircuito(), nuevo);
+        //Resultados nuevo = new Resultados();
+        //nuevo.setTiempoResultados(tiempo);
+        //this.resultados.put(circuito.getNombreCircuito(), nuevo);
     }
 
     /**
@@ -219,6 +219,15 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
         }
 
         return puntostotales;
+    }
+    /**
+     * Devuelve el total de puntos que ha conseguido el piloto en un circuito concreto.
+     *
+     * @return Puntos totales del piloto
+     */
+    public int getPuntosActuales(Circuito circuito) {
+        int puntos = resultados.get(circuito).getPuntos();
+        return puntos;
     }
 
     public int getTiempoTotal() {
@@ -332,7 +341,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
 
         PilotoInterfaz other = (PilotoInterfaz) obj;
 
-        return super.equals(other) && getNombre().equals(other.getNombre());
+        return super.equals(other) && this.getNombre().equals(other.getNombre());
 
 
     }
