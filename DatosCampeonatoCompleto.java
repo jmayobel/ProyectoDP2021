@@ -175,15 +175,14 @@ public class DatosCampeonatoCompleto {
         peugeot.addListaPilotos(sordo);
 
 
-        seat.setComparadorPilotos(new ComparadorTotalPuntos());
-        seat.setComparadorCoches(new ComparadorCombustible());
+        seat.OrdenarListaPilotos();
+        seat.OrdenarListaCoches();
 
-        peugeot.setComparadorPilotos(new ComparadorTotalPuntos());
-        peugeot.setComparadorCoches(new ComparadorCombustible());
+        peugeot.OrdenarListaPilotos();
+        peugeot.OrdenarListaCoches();
 
-        citroen.setComparadorPilotos(Collections.reverseOrder(new ComparadorTotalPuntos()));
-        citroen.setComparadorCoches(Collections.reverseOrder(new ComparadorCombustible()));
-
+        citroen.OrdenarListaPilotos();
+        citroen.OrdenarListaCoches();
 
         organizacion.campeonato();
     }

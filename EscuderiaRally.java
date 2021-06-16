@@ -31,8 +31,7 @@ public class EscuderiaRally implements EscuderiaInterfaz {
 
         this.compPilotos = compPilotos;
         this.compCoches = compCoches;
-        OrdenarListaPilotos();
-        OrdenarListaCoches();
+
 
     }
 
