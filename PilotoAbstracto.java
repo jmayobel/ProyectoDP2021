@@ -263,33 +263,38 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
      *
      * @param circuito Circuito en el que se correrá la carrera
      */
-    public void correrCarrera(Circuito circuito) {
 
+    public void conducirCoche(Circuito circuito) {
         CocheInterfaz coche = getCoche();
 
-        if (getTiempoConcentracion() < coche.getTiempo(this, circuito)) {
+        if (this.getTiempoConcentracion() < coche.getTiempo(this, circuito)) {
             double resultado = getTiempoConcentracion() - coche.getTiempo(this, circuito);
-            añadirTiempo(circuito, resultado);
-            coche.UsarCombustible(this, circuito);
-            //double combustibleactual = coche.getCombustibleRestante() - getTiempoConcentracion(); //FIXME: combustibleActual = combustibleActual - Tiempo de carrera de ese piloto
+            System.out.println(resultado);
+            this.añadirTiempo(circuito, resultado);
+            coche.UsarCombustible(resultado);
+          //  coche.setCombustibleRestante(coche.getCombustibleRestante() - getTiempoConcentracion()); //FIXME: combustibleActual = combustibleActual - Tiempo de carrera de ese piloto
+            System.out.println("MOTIVO DE ABANDONO: PERDIDA DE CONCENTRACIÓN");
             abandonar();
         }
-        if (coche.getCombustibleRestante() < coche.getTiempo(this, circuito)) {
-            double resultado = coche.getValorcombustible() - coche.getTiempo(this, circuito); //NO SEGURO
-            añadirTiempo(circuito, resultado);
-            coche.UsarCombustible(this, circuito);
-            // double combustibleactual = coche.getTiempo(this, circuito) + resultado;  //Tiempo que dura la carrera +
-            //(- tiempo que le faltó al piloto
-            //para acabar)
+        else {
+            if (coche.getCombustibleRestante() < coche.getTiempo(this, circuito)) {
+                double resultado = coche.getValorcombustible() - coche.getTiempo(this, circuito);
+                coche.UsarCombustible(resultado);
+                if (coche.getCombustibleRestante() > 0) {
+                    this.añadirTiempo(circuito, resultado);
+                } else {
+                    System.out.println("MOTIVO DE ABANDONO: FALTA DE COMBUSTIBLE");
+                    abandonar();
+                }
 
-            abandonar();
-        } else {
-            double resultado = coche.getTiempo(this, circuito);
-            añadirTiempo(circuito, resultado);
-            // double combustibleactual = coche.getValorcombustible() - resultado;
-            coche.UsarCombustible(this, circuito);
+            } else {
+                double resultado = coche.getTiempo(this, circuito);
+                this.añadirTiempo(circuito, resultado);
+                coche.UsarCombustible(resultado);
+            }
         }
     }
+
 
     //toString()    
     @Override

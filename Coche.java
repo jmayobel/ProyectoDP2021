@@ -123,12 +123,10 @@ public class Coche implements CocheInterfaz {
     /**
      * Retorna el tiempo que dura la carrera para el piloto en el circuito
      *
-     * @param piloto   - un piloto de la carrera
-     * @param circuito - Un circuito
      * @return Combustible - Tipo Double
      */
-    public void UsarCombustible(PilotoInterfaz piloto, Circuito circuito) {
-        combustibleRestante = Math.round(getCombustibleRestante() - getTiempo(piloto, circuito));
+    public void UsarCombustible(double resultado) {
+        combustibleRestante = Math.round(getCombustibleRestante() - resultado);
     }
 
     public double getCombustibleRestante() {

@@ -25,19 +25,19 @@ public class CocheResistente extends Coche {
     /**
      * Devuelve el combustible usado por el CocheResistente
      *
-     * @param piloto   - tipo String
-     * @param circuito - tipo Circuito
+
      * @return combustibleRestante - tipo double
      */
     @Override
-    public void UsarCombustible(PilotoInterfaz piloto, Circuito circuito) {
+    public void UsarCombustible(double resultado) {
 
-        if (super.getTiempo(piloto, circuito) > combustibleRestante) {
+        if (resultado > combustibleRestante) {
             combustibleExtra = combustibleExtra + 100;
             depositoExtra = 0;
-            super.setCombustibleRestante(combustibleExtra - getTiempo(piloto, circuito));
+            System.out.println("GASOLINA AÑADIDA");
+            super.setCombustibleRestante(combustibleExtra - resultado);
         } else {
-            super.UsarCombustible(piloto, circuito);
+            super.UsarCombustible(resultado);
         }
 
     }

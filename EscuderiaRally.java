@@ -28,6 +28,7 @@ public class EscuderiaRally implements EscuderiaInterfaz {
         this.nomEscuderia = nomEscuderia;
         this.ListaPilotos = new ArrayList<PilotoInterfaz>();
         this.ListaCoches = new ArrayList<CocheInterfaz>();
+
         this.compPilotos = compPilotos;
         this.compCoches = compCoches;
     }

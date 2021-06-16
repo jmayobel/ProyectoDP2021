@@ -46,7 +46,7 @@ public interface PilotoInterfaz {
 
     public void limpiarResultados();
 
-    public void correrCarrera(Circuito circuito);
+    public void conducirCoche(Circuito circuito);
 
     public String toString();
 
