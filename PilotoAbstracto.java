@@ -122,6 +122,8 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
      * Descalifica al piloto, negándole a seguir participando en la competición.
      */
     public void descalificar() { //También llamado setDescalificado()
+
+        System.out.println(this.getNombre() + "HA SIDO DESCALIFICADO");
         this.descalificado = true;
     }
 
