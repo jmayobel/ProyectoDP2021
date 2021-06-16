@@ -106,7 +106,7 @@ public class Coche implements CocheInterfaz {
      * @return VelocidadReal - Tipo Double
      */
     public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito) {
-        return Math.round(getValorVelocidad() * piloto.getDestreza() / circuito.getValorComplejidad());
+        return Math.round(((getValorVelocidad() * piloto.getDestreza())*100d)/ circuito.getValorComplejidad()) /100d;
     }
 
     /**
@@ -117,7 +117,10 @@ public class Coche implements CocheInterfaz {
      * @return Devuelve el tiempo de la carrera
      */
     public double getTiempo(PilotoInterfaz piloto, Circuito circuito) {
-        return (circuito.getValorDistancia() / getVelocidadReal(piloto, circuito)) * 60;
+        double tiempo = ((circuito.getValorDistancia()) / getVelocidadReal(piloto, circuito)) *60 ;
+        System.out.println("HOLLAA"+ tiempo);
+
+        return tiempo;
     }
 
     /**

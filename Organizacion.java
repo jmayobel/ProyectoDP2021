@@ -165,7 +165,7 @@ public class Organizacion {
                 PilotoInterfaz Piloto = Esc.getPilotosCarrera(posAux);
                 if (!Piloto.getDescalificado()) {
                     Esc.getListaPilotos().remove(posAux);
-                    //Esc.getListaCoches().remove(0);
+                    //Esc.getListaCoches().remove(posAux);
                     DevolverPilotos.put(Piloto, Esc);
 
                 } else posAux++;
@@ -186,7 +186,7 @@ public class Organizacion {
         for (PilotoInterfaz piloto : PilotosCarrera) {
                 EscuderiaInterfaz esc = DevolverPilotos.get(piloto);
                 esc.addListaPilotos(piloto);
-            //esc.addListaCoches(piloto.getCoche());
+                esc.addListaCoches(piloto.getCoche());
         }
 
         for (EscuderiaInterfaz esc : ListadeEscuderias) {
@@ -274,15 +274,20 @@ public class Organizacion {
             //si no lo es, no la ha acabado
             {
                 System.out.println("TIEMPO DEL PILOTO EN EL CIRCUITO: " + piloto.buscarResultado(circuito));
-                System.out.println("TIEMPO DE FINALIZACIÓN: " + Math.round((coche.getTiempo(piloto, circuito)) * 100d) / 100d);
+                System.out.println("TIEMPO DE FINALIZACIÓN: " + coche.getTiempo(piloto, circuito));
+                System.out.println();
+
 
             } else {
                 System.out.println("TIEMPO RESTANTE: " + (Math.round((piloto.buscarResultado(circuito)) * 100d)) / 100d);
                 System.out.println("TIEMPO DE CARRERA: " + (Math.round((coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito))) * 100d) / 100d);
+                System.out.println();
+
                 if (piloto.getAbandonos() == this.nAbandonos) {
-                            //FIXME: AQUI HAY UN IF VACIO ??
                     piloto.descalificar();
                 }
+                System.out.println();
+
                 System.out.println("COMBUSTIBLE ACTUAL = " + coche.getValorcombustible());
 
 
