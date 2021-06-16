@@ -159,7 +159,7 @@ public class DatosCampeonatoCompleto {
         CocheInterfaz cincomilocho = new CocheResistente("Peugeot 5008", Velocidad.LENTA, Combustible.GENEROSO);
         peugeot.addListaCoches(cincomilocho);
         //añadir a peugeot un CocheRapido(nombre:"Peugeot 3008" - velocidad:GUEPARDO - combustible:NORMAL);
-        CocheInterfaz tresmilocho = new CocheRapido("Peugeot 3008", Velocidad.LENTA, Combustible.NORMAL);
+        CocheInterfaz tresmilocho = new CocheRapido("Peugeot 3008", Velocidad.GUEPARDO, Combustible.NORMAL);
         peugeot.addListaCoches(tresmilocho);
         //añadir a peugeot un Coche(nombre:"Peugeot 2008" - velocidad:NORMAL - combustible:ESCASO);
         CocheInterfaz dosmilocho = new Coche("Peugeot 2008", Velocidad.NORMAL, Combustible.ESCASO);
