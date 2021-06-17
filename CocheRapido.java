@@ -37,12 +37,16 @@ public class CocheRapido extends Coche {
      */
     @Override
     public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito) {
+        double velocidadNormal = super.getVelocidadReal(piloto, circuito);
         double velocidadNitro;
-        if (this.getNitro() >= super.getVelocidadReal(piloto, circuito) * 0.2) {
-            velocidadNitro = super.getVelocidadReal(piloto, circuito) + (super.getVelocidadReal(piloto, circuito) * 0.2);
-            this.setNitro(this.getNitro() - super.getVelocidadReal(piloto, circuito) * 0.2);
+        if (this.getNitro() >= velocidadNormal * 0.2) {
+            velocidadNitro = Math.round((velocidadNormal + (velocidadNormal * 0.2))*100d)/100d;
+            double NitroUsado = Math.round(velocidadNormal * 0.2*100d)/100d;
+            this.setNitro(this.getNitro() - velocidadNormal * 0.2);
+            System.out.println("+++ El " +this.getNombreCoche()+  " usa " + NitroUsado + " de nitro para alcanzar " + velocidadNitro +" y el nitro restante es "+ this.getNitro()+ " +++");
         } else {
-            velocidadNitro = super.getVelocidadReal(piloto, circuito) + this.getNitro();
+            velocidadNitro = Math.round(velocidadNormal + this.getNitro())*100d/100d;
+            System.out.println("+++ El " +this.getNombreCoche()+  " usa " + this.getNitro() + " de nitro para alcanzar " + velocidadNitro +" y agota el nitro. +++");
             this.setNitro(0);
         }
         return velocidadNitro;

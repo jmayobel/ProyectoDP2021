@@ -141,10 +141,10 @@ public class Organizacion {
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
 
         while (it.hasNext()) {
-            EscuderiaInterfaz buscar = it.next();
-            System.out.println(buscar.toString());
-            buscar.MostrarPilotos();
-            buscar.MostrarCoches();
+            EscuderiaInterfaz esc = it.next();
+            System.out.println(esc);
+            esc.MostrarPilotos();
+            esc.MostrarCoches();
         }
     }
 
@@ -295,35 +295,15 @@ public class Organizacion {
     public void Carrera (Circuito circuito){
 
         for(PilotoInterfaz piloto: PilotosCarrera){
-
-            System.out.println(piloto.toString());
-            CocheInterfaz coche = piloto.getCoche(); //¿CAMBIAR?
+            CocheInterfaz coche = piloto.getCoche();
+            System.out.println(piloto);
+            System.out.println(coche);
             piloto.conducirCoche(circuito);
-
-            if (piloto.buscarResultado(circuito) > 0)   //Si el tiempo obtenido es positivo, ha acabado la carrera,
-            //si no lo es, no la ha acabado
-            {
-                System.out.println("TIEMPO DEL PILOTO EN EL CIRCUITO: " + piloto.buscarResultado(circuito));
-                //System.out.println("TIEMPO DE FINALIZACIÓN: " + coche.getTiempo(piloto, circuito));
-                System.out.println();
-
-            } else {
-                System.out.println("TIEMPO RESTANTE: " + (Math.round((piloto.buscarResultado(circuito)) * 100d)) / 100d);
-                //System.out.println("TIEMPO DE CARRERA: " + (Math.round((coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito))) * 100d) / 100d);
-                System.out.println();
-
                 if (piloto.getAbandonos() == this.nAbandonos) {
                     piloto.descalificar();
                 }
-                System.out.println();
-
-                System.out.println("COMBUSTIBLE ACTUAL = " + coche.getValorcombustible());
-
-
             }
-
         }
-    }
     public void FinalCampeonato() {
        System.out.println();
         for (EscuderiaInterfaz Esc : ListadeEscuderias) {

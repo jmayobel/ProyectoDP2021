@@ -277,7 +277,7 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     //toString()
     @Override
     public String toString() {
-        return getNombre();
+        return "%%%%%%%%%% " + getNombre() + " %%%%%%%%%%";
     }
 
     //hashCode()

@@ -75,9 +75,9 @@ public class CircuitoRally implements Circuito {
      */
     @Override
     public String toString() {
-        return getNombreCircuito() + "\n" +
-                "complejidad: " + getValorComplejidad() + "\n" +
-                "distancia: " + getValorDistancia();
+        return "<" + getNombreCircuito() + "> " +
+                "<complejidad: " + getValorComplejidad() + " " +
+                "distancia: " + getValorDistancia() + ">";
     }
 
     @Override

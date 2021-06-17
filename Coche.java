@@ -106,7 +106,10 @@ public class Coche implements CocheInterfaz {
      * @return VelocidadReal - Tipo Double
      */
     public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito) {
-        return Math.round(((getValorVelocidad() * piloto.getDestreza())*100d)/ circuito.getValorComplejidad()) /100d;
+        double velocidadReal = Math.round(((getValorVelocidad() * piloto.getDestreza())*100d)/ circuito.getValorComplejidad()) /100d;
+        System.out.println("+++Con estas condiciones es capaz de correr a " + velocidadReal + " km/hora +++");
+        return velocidadReal;
+
     }
 
     /**

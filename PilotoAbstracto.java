@@ -297,8 +297,8 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
             tiempousado = tiempoCarrera + resultado;
             this.añadirTiempo(circuito, resultado);
             coche.UsarCombustible(tiempousado);
-          //  coche.setCombustibleRestante(coche.getCombustibleRestante() - getTiempoConcentracion()); //FIXME: combustibleActual = combustibleActual - Tiempo de carrera de ese piloto
-            System.out.println("MOTIVO DE ABANDONO: PERDIDA DE CONCENTRACIÓN");
+            System.out.println("!!!!!! MOTIVO DE ABANDONO: " + this.getNombre() + " perdió la concentración a " + -resultado + " minutos de acabar la carrera. !!!!!!");
+            System.out.println("!!!!!! Llevaba en la carrera " + tiempousado + " minutos en el momento del despiste. !!!!!!");
             abandonar();
         }
         else {
@@ -325,6 +325,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
                 coche.UsarCombustible(resultado);
             }
         }
+        System.out.println("++++ El combustible que le queda al " + coche.getNombreCoche() + " es de " + coche.getCombustibleRestante() + " ++++");
     }
 
 
@@ -332,21 +333,22 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("PILOTO: " + getNombre());
+        builder.append("<Piloto: " + getNombre() + ">");
         builder.append(' ');
-        builder.append(this.concentracion.toString());  //NO MUY SEGURO DE ESTO
+        builder.append("<Tipo: " + this.getClass().getName() + ">");
         builder.append(' ');
-        builder.append("Destreza "  + this.getDestreza());
+        builder.append("<"+this.concentracion.toString()+">");  //NO MUY SEGURO DE ESTO
         builder.append(' ');
-        builder.append(mostrarResultados());
-        builder.append(" ¿Descalificado?: ");
+        builder.append("<Destreza: "  + this.getDestreza()+">");
+        builder.append(' ');
+        builder.append("<"+mostrarResultados()+">");
+        builder.append(' ');
+        builder.append("<¿Descalificado?: ");
         if (getDescalificado() == false) {
-            builder.append("NO");
+            builder.append("NO>");
         } else {
-            builder.append("SÍ");
+            builder.append("SÍ>");
         }
-        builder.append('\n');
-        builder.append(getCoche());
         return builder.toString();
     }
 
