@@ -243,7 +243,6 @@ public class Organizacion {
             );
             Carrera(circuito);
             Podio(circuito);
-            System.out.println("A");
             DevolverEscuderia();
             cont++;
         }
@@ -297,10 +296,10 @@ public class Organizacion {
         }
     }
     public void FinalCampeonato() {
-
+       System.out.println();
         for (EscuderiaInterfaz Esc : ListadeEscuderias) {
             if (Esc.EscuderiaDescalificada()) {
-                System.out.println(Esc.getNombre() + "está descalificada." + "y tiene 0 puntos.");
+                System.out.println(Esc.getNombre() + " está descalificada" + " y tiene 0 puntos.");
             }
             else
             System.out.println(Esc.getNombre() + " tiene " + Esc.getPuntosTotalesEscuderia() + " puntos.");

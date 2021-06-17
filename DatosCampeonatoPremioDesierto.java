@@ -21,7 +21,7 @@ public class DatosCampeonatoPremioDesierto {
         //LimiteAbandonos=1, LimitePilotos=3, 
         // Circuitos ordenados de forma descendente de acuerdo a su distancia
 
-        TreeSet CircuitoSet = new TreeSet<Circuito>(new ComparadorComplejidad());
+        TreeSet CircuitoSet = new TreeSet<Circuito>(Collections.reverseOrder(new ComparadorDistancia()));
         Organizacion organizacion = Organizacion.getInstance(1, 3, CircuitoSet);
 
         //creamos y añadimos los circuitos del campeonato:
@@ -70,11 +70,13 @@ public class DatosCampeonatoPremioDesierto {
         //añadir circuito finlandia a circuitos de la organización
         organizacion.setCircuito(mojfin);
 
+
+
         //Crear circuito alemania con nombre:”Alemania" - complejidad:MEDIA - distancia:INTERMEDIA);
         CircuitoRally ale = new CircuitoRally("Alemania", Complejidad.MEDIA, Distancia.INTERMEDIA);
         //además, acciones necesarias para que alemania sea un circuito con:
         //Mojado
-        Mojado mojale = new Mojado(ale);
+        CircuitoRally mojale = new Mojado(ale);
         //añadir circuito alemania a circuitos de la organización
         organizacion.setCircuito(mojale);
 
@@ -90,7 +92,7 @@ public class DatosCampeonatoPremioDesierto {
         //Crear escuderia peugeot con nombre:"Peugeot"
         //ordenaciónPilotos: descendente por Puntos del Piloto, en caso de empate por Destreza, en caso de empate por nombre
         //ordenaciónCoches: ascendente por Combustible restante del Coche , en caso de empate por nombre);
-        EscuderiaRally peugeot = new EscuderiaRally("Peugeot", Collections.reverseOrder(new ComparadorTotalPuntos()), new ComparadorCombustible());
+        EscuderiaInterfaz peugeot = new EscuderiaRally("Peugeot", Collections.reverseOrder(new ComparadorTotalPuntos()), new ComparadorCombustible());
         //peugeot se inscribe en campeonato
         organizacion.setEscuderia(peugeot);
 
@@ -98,8 +100,8 @@ public class DatosCampeonatoPremioDesierto {
         //Crear escuderia citroen con nombre:"Citroen"      
         //ordenaciónPilotos: ascendente por Puntos del Piloto, en caso de empate por Destreza, en caso de empate por nombre
         //ordenaciónCoches: ascendente por Combustible restante del Coche , en caso de empate por nombre);
-        EscuderiaRally citroen = new EscuderiaRally("Citroen", Collections.reverseOrder(new ComparadorTotalPuntos()),
-                Collections.reverseOrder(new ComparadorCombustible()));
+        EscuderiaInterfaz citroen = new EscuderiaRally ("Citroen", new ComparadorTotalPuntos(),
+                new ComparadorCombustible());
         //citroen se inscribe en campeonato
         organizacion.setEscuderia(citroen);
 
@@ -107,7 +109,7 @@ public class DatosCampeonatoPremioDesierto {
         //Crear escuderia seat con nombre:"Seat"
         //ordenaciónPilotos: descendente por Puntos del Piloto, en caso de empate por Destreza, en caso de empate por nombre
         //ordenaciónCoches: ascendente por Combustible restante del Coche , en caso de empate por nombre);
-        EscuderiaRally seat = new EscuderiaRally("Seat", Collections.reverseOrder(new ComparadorTotalPuntos()), new ComparadorCombustible());
+        EscuderiaInterfaz seat = new EscuderiaRally("Seat", Collections.reverseOrder(new ComparadorTotalPuntos()), new ComparadorCombustible());
         //seat se inscribe en campeonato
         organizacion.setEscuderia(seat);
 
@@ -172,6 +174,19 @@ public class DatosCampeonatoPremioDesierto {
         //añadir a peugeot un PilotoNovato(nombre:"Sordo" - concentración: DESPISTADO));
         PilotoInterfaz sordo = new PilotoNovato("Sordo", Concentracion.DESPISTADO);
         peugeot.addListaPilotos(sordo);
+
+
+        seat.OrdenarListaPilotos();
+        seat.OrdenarListaCoches();
+
+        peugeot.OrdenarListaPilotos();
+        peugeot.OrdenarListaCoches();
+
+        citroen.OrdenarListaPilotos();
+        citroen.OrdenarListaCoches();
+
+        organizacion.campeonato();
+
 
 
     }
