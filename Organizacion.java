@@ -236,6 +236,7 @@ public class Organizacion {
             System.out.println("+++++++++++++++++++++++++++ "
                     + "Los pilotos de: " + circuito.getNombreCircuito() + " son: " + "+++++++++++++++++++++++++++"
             );
+            OrdenarParrilla(1, PilotosCarrera);
             PilotosCorren();
             System.out.println("+++++++++++++++++++++++++++ "
                     + "Comienza la carrera en: " + circuito.getNombreCircuito() + " (" + cont +" de "+ CircuitoSet.size() + ")" +" +++++++++++++++++++++++++++"
@@ -264,8 +265,6 @@ public class Organizacion {
      */
 
     public void Carrera (Circuito circuito){
-
-        OrdenarParrilla(1, PilotosCarrera);
 
         for(PilotoInterfaz piloto: PilotosCarrera){
             //EscuderiaInterfaz esc = DevolverPilotos.get(piloto);//DESCOMENTARLO POR SI DA PROBLEMAS
@@ -298,8 +297,6 @@ public class Organizacion {
            // DevolverPilotos.put(piloto, esc);
         }
     }
-
-
     public void FinalCampeonato() {
 
         for (EscuderiaInterfaz Esc : ListadeEscuderias) {
