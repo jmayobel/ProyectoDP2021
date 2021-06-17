@@ -9,8 +9,7 @@ public class Coche implements CocheInterfaz {
     private String nombreCoche;             //Nombre completo del Coche
     private Velocidad velocidad;            //Velocidad (Nombre de la velocidad y tamaño) que posee el coche
     private Combustible combustible;        //Combustible total del coche
-    private double combustibleRestante;        //Combustible actual del coche
-    // private double tiempoCarrera;
+    protected double combustibleRestante;   //Combustible actual del coche
 
     /**
      * Constructor del coche

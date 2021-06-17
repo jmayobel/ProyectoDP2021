@@ -35,7 +35,7 @@ public class Frio extends CircuitoRallyExtra
     }
 
     /**
-     * devuelvela informacion de la clase.
+     * Muestra por pantalla la informacion de una clase..
      * @return  un string con la informacion de la clase.
      */
     @Override

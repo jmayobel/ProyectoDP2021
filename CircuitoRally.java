@@ -1,5 +1,5 @@
 /**
- * Clase que gestiona un circuito.
+ * Clase que gestiona un circuito en el que correran los pilotos.
  *
  * @author Miguel Medina Cantos
  * @version (1.0)
@@ -43,7 +43,7 @@ public class CircuitoRally implements Circuito {
     }
 
     /**
-     * devuelve la distancia.
+     * Devuelve la distancia.
      *
      * @return Distancia distancia Distancia del circuito del punto inicial al final.
      */

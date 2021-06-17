@@ -43,7 +43,7 @@ public interface PilotoInterfaz {
 
     public double getTiempoUltimoCircuito();
 
-    public String mostrarResultados();
+    public void mostrarResultados();
 
     public void eliminarResultado(Circuito buscado);
 

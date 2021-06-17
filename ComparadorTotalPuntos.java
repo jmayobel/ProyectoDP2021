@@ -7,7 +7,7 @@
 public class ComparadorTotalPuntos extends ComparadorPiloto {
     /**
      * Comparador de Pilotos en función del total de puntos.
-     * En caso de empate, comparará por el nombre del piloto.
+     * En caso de empate, comparará por destreza.
      *
      * @param p1 Piloto a comparar
      * @param p2 Piloto a ser comparado

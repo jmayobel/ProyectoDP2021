@@ -41,8 +41,9 @@ public abstract class CircuitoRallyExtra extends CircuitoRally
     }
 
     /**
-     * devuelve la informacion de la clase.
-     * @return un string con la informacion de la clase.
+     * Muestra por pantalla la información de la clase.
+     *
+     * @return String Concatenación con la información de la clase.
      */
     @Override
     public String toString ()

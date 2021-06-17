@@ -220,7 +220,6 @@ public class EscuderiaRally implements EscuderiaInterfaz {
      * @return true si la escudería esta descalificada, false en caso contrario.
      */
     public boolean EscuderiaDescalificada() {
-        int cont = 0;
         boolean desc = true;
         for (PilotoInterfaz piloto : ListaPilotos) {
             if (!piloto.getDescalificado()) {
@@ -239,7 +238,7 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     public int getPuntosTotalesEscuderia() {
         Iterator<PilotoInterfaz> it = this.ListaPilotos.iterator(); //Inicializamos el Iterator
         int puntostotales = 0;
-        while (it.hasNext()) {
+        while (it.hasNext() && !this.EscuderiaDescalificada()) {
             PilotoInterfaz buscar = it.next();
             if (!buscar.getDescalificado())
                 puntostotales += buscar.getPuntosTotales();

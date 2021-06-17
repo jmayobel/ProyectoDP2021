@@ -306,10 +306,15 @@ public class Organizacion {
             }
         }
     public void FinalCampeonato() {
-       System.out.println();
+        System.out.println();
+        ArrayList<PilotoInterfaz> PilotoSinDescalificar = new ArrayList<>();
+        ArrayList<PilotoInterfaz> PilotoDescalificar = new ArrayList<>();
+
         for (EscuderiaInterfaz Esc : ListadeEscuderias) {
-            if (Esc.EscuderiaDescalificada()) {
-                System.out.println(Esc.getNombre() + " está descalificada" + " y tiene 0 puntos.");
+            ArrayList<PilotoInterfaz> Aux = Esc.getListaPilotos();
+            for (PilotoInterfaz pil : Aux) {
+                if (pil.getDescalificado()) PilotoDescalificar.add(pil);
+                else PilotoSinDescalificar.add(pil);
             }
         }
         Collections.sort(PilotoDescalificar, Collections.reverseOrder(new ComparadorParrillaCarreraEntrada()));

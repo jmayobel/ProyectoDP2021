@@ -242,7 +242,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
      * @return int Puntos totales del piloto.
      */
     public int getPuntosActuales(Circuito circuito) {
-        int puntos = resultados.get(circuito).getPuntos();
+        int puntos = resultados.get(circuito.getNombreCircuito()).getPuntos();
         return puntos;
     }
 
@@ -273,8 +273,8 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
         Iterator<String> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
         while (it.hasNext()) {
             String key = it.next();
-            Resultados valor = this.resultados.get(key);
-            //System.out.println(key);    //SEGURO QUE ES ASI??
+            Resultados res= resultados.get(key);
+            System.out.println("Carrera: " +"("+ key +")"+  " - Puntos: " + res.getPuntos() + " - Tiempo: " + res.getTiempoResultados());
         }
     }
 
