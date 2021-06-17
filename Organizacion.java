@@ -219,6 +219,33 @@ public class Organizacion {
 
     }
 
+    public boolean TodasEscDesc() {
+        Iterator<EscuderiaInterfaz> it = ListadeEscuderias.iterator();
+        boolean enc = true;
+        while (it.hasNext() && enc) {
+            EscuderiaInterfaz Esc = it.next();
+            enc = Esc.EscuderiaDescalificada();
+        }
+        return enc;
+    }
+
+    public boolean UnicoPiloto () {
+        int cont = 0;
+        boolean enc = false;
+        ArrayList <PilotoInterfaz> pilotos;
+        for(EscuderiaInterfaz esc : ListadeEscuderias){
+            pilotos = esc.getListaPilotos();
+            for(PilotoInterfaz pil : pilotos){
+                if(!pil.getDescalificado()){
+                    cont++;
+                }
+            }
+        }
+        if(cont == 1){
+            enc = true;
+        }
+        return enc;
+    }
     /**
      * Realiza las carreras para cada circuito del campeonato
      */
@@ -229,22 +256,24 @@ public class Organizacion {
         System.out.println("FINALIZADO MOSTRAR CIRCUITOS");
         MostrarEscuderias();
         System.out.println("FINALIZADO MOSTRAR ESCUDERÍAS");
-
-        while (it.hasNext()) {
-            GuardarPilotos();
-            Circuito circuito = it.next();
-            System.out.println("+++++++++++++++++++++++++++ "
-                    + "Los pilotos de: " + circuito.getNombreCircuito() + " son: " + "+++++++++++++++++++++++++++"
-            );
-            OrdenarParrilla(1, PilotosCarrera);
-            PilotosCorren();
-            System.out.println("+++++++++++++++++++++++++++ "
-                    + "Comienza la carrera en: " + circuito.getNombreCircuito() + " (" + cont +" de "+ CircuitoSet.size() + ")" +" +++++++++++++++++++++++++++"
-            );
-            Carrera(circuito);
-            Podio(circuito);
-            DevolverEscuderia();
-            cont++;
+       boolean enc= false;
+        while (it.hasNext() && !enc) {
+            if(!TodasEscDesc() && !UnicoPiloto()) {
+                GuardarPilotos();
+                Circuito circuito = it.next();
+                System.out.println("+++++++++++++++++++++++++++ "
+                        + "Los pilotos de: " + circuito.getNombreCircuito() + " son: " + "+++++++++++++++++++++++++++"
+                );
+                OrdenarParrilla(1, PilotosCarrera);
+                PilotosCorren();
+                System.out.println("+++++++++++++++++++++++++++ "
+                        + "Comienza la carrera en: " + circuito.getNombreCircuito() + " (" + cont + " de " + CircuitoSet.size() + ")" + " +++++++++++++++++++++++++++"
+                );
+                Carrera(circuito);
+                Podio(circuito);
+                DevolverEscuderia();
+                cont++;
+            } else { System.out.println("FINALIZANDO CARRERAS, POR NO HABER PILOTOS PARA COMPETIR"); enc=true; }
         }
         FinalCampeonato();
     }

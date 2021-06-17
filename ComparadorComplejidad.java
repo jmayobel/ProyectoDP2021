@@ -1,3 +1,5 @@
+import java.util.Collections;
+
 /**
  * Comparador de complejidad de circuitos.
  *

@@ -10,6 +10,14 @@ import java.util.TreeSet;
  */
 
 public class DatosCampeonatoFinPrematuro {
+    public DatosCampeonatoFinPrematuro(){
+        System.out.println("*********************************************************************************************************");
+        System.out.println("****ESTA SIMULACIÓN CONCLUYE ANTES DE FINALIZAR EL CAMPEONATO CON UN ÚNICO PILOTO SIN DESCALIFICAR****");
+        System.out.println("*********************************************************************************************************\n");
+
+        initData();
+    }
+
 
     private void initData() {
         //organizador debe ser una instancia única con la siguiente configuración:
@@ -35,15 +43,15 @@ public class DatosCampeonatoFinPrematuro {
         //Gravilla y Mojado
         //añadir circuito cerdena a circuitos de la organización
         CircuitoRally cer = new CircuitoRally("Cerdeña", Complejidad.ALTA, Distancia.CORTA);
-        Gravilla gracer = new Gravilla(cer);
-        Mojado mojcer = new Mojado(gracer);
+        CircuitoRally gracer = new Gravilla(cer);
+        CircuitoRally mojcer = new Mojado(gracer);
         organizacion.setCircuito(mojcer);
 
         //Crear circuito australia con nombre:”Australia" - complejidad:BAJA - distancia:LARGA);
         CircuitoRally aus = new CircuitoRally("Australia", Complejidad.BAJA, Distancia.LARGA);
         //además, acciones necesarias para que australia sea un circuito con:
         //Gravilla
-        Gravilla graaus = new Gravilla(aus);
+        CircuitoRally graaus = new Gravilla(aus);
         //añadir circuito australia a circuitos de la organización
         organizacion.setCircuito(graaus);
 
@@ -51,8 +59,8 @@ public class DatosCampeonatoFinPrematuro {
         CircuitoRally cor = new CircuitoRally("Córcega", Complejidad.MEDIA, Distancia.INTERMEDIA);
         //además, acciones necesarias para que corcega sea un circuito con:
         //Nocturno y Gravilla
-        Nocturno norcor = new Nocturno(cor);
-        Gravilla gracor = new Gravilla(norcor);
+        CircuitoRally norcor = new Nocturno(cor);
+        CircuitoRally gracor = new Gravilla(norcor);
         //añadir circuito corcega a circuitos de la organización        
         organizacion.setCircuito(gracor);
 
@@ -60,9 +68,9 @@ public class DatosCampeonatoFinPrematuro {
         CircuitoRally fin = new CircuitoRally("Finlandia", Complejidad.ALTA, Distancia.CORTA);
         //además, acciones necesarias para que finlandia sea un circuito con:
         //Nocturno, Frío y Mojado
-        Nocturno norfin = new Nocturno(fin);
-        Frio frfin = new Frio(norfin);
-        Mojado mojfin = new Mojado(frfin);
+        CircuitoRally norfin = new Nocturno(fin);
+        CircuitoRally frfin = new Frio(norfin);
+        CircuitoRally mojfin = new Mojado(frfin);
         //añadir circuito finlandia a circuitos de la organización
         organizacion.setCircuito(mojfin);
 
@@ -70,7 +78,7 @@ public class DatosCampeonatoFinPrematuro {
         CircuitoRally ale = new CircuitoRally("Alemania", Complejidad.MEDIA, Distancia.INTERMEDIA);
         //además, acciones necesarias para que alemania sea un circuito con:
         //Mojado
-        Mojado mojale = new Mojado(ale);
+        CircuitoRally mojale = new Mojado(ale);
         //añadir circuito alemania a circuitos de la organización
         organizacion.setCircuito(mojale);
 
@@ -78,7 +86,7 @@ public class DatosCampeonatoFinPrematuro {
         CircuitoRally chi = new CircuitoRally("Chile", Complejidad.ALTA, Distancia.CORTA);
         //además, acciones necesarias para que chile sea un circuito con:
         //Gravilla
-        Gravilla grachi = new Gravilla(chi);
+        CircuitoRally grachi = new Gravilla(chi);
         //añadir circuito chile a circuitos de la organización
         organizacion.setCircuito(grachi);
 
@@ -116,7 +124,7 @@ public class DatosCampeonatoFinPrematuro {
         CocheInterfaz c4 = new CocheRapido("Citröen C4", Velocidad.RAPIDA, Combustible.ESCASO);
         citroen.addListaCoches(c4);
         //añadir a citroen un Coche(nombre:"Citröen C3" - velocidad:RAPIDA - combustible:ESCASO);
-        CocheInterfaz c3 = new CocheRapido("Citröen C3", Velocidad.RAPIDA, Combustible.ESCASO);
+        CocheInterfaz c3 = new Coche("Citröen C3", Velocidad.RAPIDA, Combustible.ESCASO);
         citroen.addListaCoches(c3);
         //añadir a citroen un PilotoExperimentado(nombre:"Loeb" - concentración: NORMAL));
         PilotoInterfaz loeb = new PilotoExperimentado("Loeb", Concentracion.NORMAL);
@@ -147,6 +155,7 @@ public class DatosCampeonatoFinPrematuro {
         seat.addListaPilotos(mcrae);
         //añadir a seat un PilotoNovato(nombre:"Blomquist" - concentración: DESPISTADO));
         PilotoInterfaz blo = new PilotoNovato("Blomquist", Concentracion.DESPISTADO);
+        seat.addListaPilotos(blo);
 
 
         //coches y pilotos de peugeot

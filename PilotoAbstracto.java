@@ -1,6 +1,4 @@
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 ;
 
@@ -17,7 +15,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
     private String nombre;                                  //Nombre completo del Piloto
     private CocheInterfaz coche;                            //Coche con el que correrá (Asignado por la Escudería)
     private Concentracion concentracion;                    //Minutos que aguanta el piloto de carrera antes de abandonar 
-    private HashMap<String, Resultados> resultados;          //Registro con el tiempo y puntos conseguidos en cada carrera
+    private LinkedHashMap<String, Resultados> resultados;          //Registro con el tiempo y puntos conseguidos en cada carrera
     private boolean descalificado;                          //"false" si NO ha sido descalificado, "true" en caso contrario
     private int nAbandonos;                                 //Número de abandonos que el piloto ha tenido durante la competición
 
@@ -33,7 +31,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
         this.nombre = nombre;
        // this.coche = null;
         this.concentracion = concentracion;
-        this.resultados = new HashMap<String, Resultados>(); // la clave será el nombre del circuito
+        this.resultados = new LinkedHashMap<String, Resultados>(); // la clave será el nombre del circuito
         this.descalificado = false;
         this.nAbandonos = 0;
     }
@@ -145,10 +143,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
      *                 Si el tiempo es negativo, indica los minutos que le han faltado para terminarlo.
      */
     public void añadirTiempo(Circuito circuito, double tiempo) {
-        this.resultados.put(circuito.getNombreCircuito(), new Resultados(tiempo)); //??? Cesar
-        //Resultados nuevo = new Resultados();
-        //nuevo.setTiempoResultados(tiempo);
-        //this.resultados.put(circuito.getNombreCircuito(), nuevo);
+        this.resultados.put(circuito.getNombreCircuito(), new Resultados(tiempo));
     }
 
     /**
