@@ -277,10 +277,11 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
 
     public void conducirCoche(Circuito circuito) {
         CocheInterfaz coche = getCoche();
+        double tiempoCarrera = coche.getTiempo(this, circuito);
 
-        if (this.getTiempoConcentracion() < coche.getTiempo(this, circuito)) {
+        if (this.getTiempoConcentracion() < tiempoCarrera) {
 
-            double resultado = getTiempoConcentracion() - coche.getTiempo(this, circuito);
+            double resultado = getTiempoConcentracion() - tiempoCarrera;
             resultado= Math.round((resultado*100d))/100d;
             this.añadirTiempo(circuito, resultado);
             coche.UsarCombustible(resultado);
@@ -289,8 +290,8 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
             abandonar();
         }
         else {
-            if (coche.getCombustibleRestante() < coche.getTiempo(this, circuito)) {
-                double resultado = coche.getValorcombustible() - coche.getTiempo(this, circuito);
+            if (coche.getCombustibleRestante() < tiempoCarrera) {
+                double resultado = coche.getValorcombustible() - tiempoCarrera;
                 resultado= Math.round((resultado*100d))/100d;
 
                 coche.UsarCombustible(resultado);
@@ -302,7 +303,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
                 }
 
             } else {
-                double resultado = coche.getTiempo(this, circuito);
+                double resultado = tiempoCarrera;
                  System.out.println(resultado);
                 resultado = Math.round((resultado*100d))/100d;
 
