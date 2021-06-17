@@ -32,6 +32,7 @@ public abstract class CircuitoRallyExtra extends CircuitoRally
         return Math.round(decoratedCircuitoRally.getValorComplejidad ()*100d)/100d;
     }
 
+
     /**
      * devuelve el valor de la distancia.
      * @return  el valor de la distancia de decoratedCircuitoRally.
