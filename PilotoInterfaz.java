@@ -41,7 +41,7 @@ public interface PilotoInterfaz {
 
     public boolean equals(Object obj);
 
-    public int getTiempoTotal();
+    public double getTiempoUltimoCircuito();
 
     public String mostrarResultados();
 

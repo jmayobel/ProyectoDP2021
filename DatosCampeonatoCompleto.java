@@ -121,7 +121,7 @@ public class DatosCampeonatoCompleto {
         CocheInterfaz c4 = new CocheRapido("Citröen C4", Velocidad.RAPIDA, Combustible.ESCASO);
         citroen.addListaCoches(c4);
         //añadir a citroen un Coche(nombre:"Citröen C3" - velocidad:RAPIDA - combustible:ESCASO);
-        CocheInterfaz c3 = new CocheRapido("Citröen C3", Velocidad.RAPIDA, Combustible.ESCASO);
+        CocheInterfaz c3 = new Coche("Citröen C3", Velocidad.RAPIDA, Combustible.ESCASO);
         citroen.addListaCoches(c3);
         //añadir a citroen un PilotoExperimentado(nombre:"Loeb" - concentración: NORMAL));
         PilotoInterfaz loeb = new PilotoExperimentado("Loeb", Concentracion.NORMAL);
@@ -144,7 +144,7 @@ public class DatosCampeonatoCompleto {
         CocheInterfaz arona = new Coche("Seat Arona", Velocidad.RAPIDA, Combustible.ESCASO);
         seat.addListaCoches(arona);
         //añadir a seat un PilotoExperimentado(nombre:"Ogier" - concentración: NORMAL));
-        PilotoInterfaz ogier = new PilotoExperimentado("Oiger", Concentracion.NORMAL);
+        PilotoInterfaz ogier = new PilotoExperimentado("Ogier", Concentracion.NORMAL);
         seat.addListaPilotos(ogier);
         //añadir a seat un PilotoEstrella(nombre:"McRae" - concentración: CONCENTRADO));
         PilotoInterfaz mcrae = new PilotoEstrella("McRae", Concentracion.CONCENTRADO);

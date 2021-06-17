@@ -19,7 +19,7 @@ public class CocheResistente extends Coche {
     public CocheResistente(String nombre, Velocidad velocidad, Combustible combustible) {
         super(nombre, velocidad, combustible);
         depositoExtra = 100;
-        combustibleExtra = super.getValorcombustible();
+        combustibleRestante = super.getValorcombustible();
     }
 
     /**
@@ -32,13 +32,13 @@ public class CocheResistente extends Coche {
     public void UsarCombustible(double resultado) {
 
         if (resultado > combustibleRestante) {
-            combustibleExtra = combustibleExtra + 100;
+            combustibleRestante = combustibleExtra + 100;
             depositoExtra = 0;
             System.out.println("GASOLINA AÑADIDA");
-            if (resultado>=0) {
-                super.setCombustibleRestante(combustibleExtra - resultado);
+            if (resultado>0) {
+                super.setCombustibleRestante(combustibleRestante - resultado);
             } else {
-                super.setCombustibleRestante(combustibleExtra + resultado);
+                super.setCombustibleRestante(combustibleRestante + resultado);
             }
 
             } else {

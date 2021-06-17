@@ -162,7 +162,7 @@ public class Organizacion {
             int cont=0;
             while (ti.hasNext() && cont<getnPilotos()) {
                    PilotoInterfaz pi= ti.next();
-                 if (!pi.getDescalificado()){
+                 if (!pi.getDescalificado() && pi.getCoche() != null){
                      DevolverPilotos.put(pi,Esc);
                      ti.remove();
                      cont++;
@@ -276,12 +276,12 @@ public class Organizacion {
             //si no lo es, no la ha acabado
             {
                 System.out.println("TIEMPO DEL PILOTO EN EL CIRCUITO: " + piloto.buscarResultado(circuito));
-                System.out.println("TIEMPO DE FINALIZACIÓN: " + coche.getTiempo(piloto, circuito));
+                //System.out.println("TIEMPO DE FINALIZACIÓN: " + coche.getTiempo(piloto, circuito));
                 System.out.println();
 
             } else {
                 System.out.println("TIEMPO RESTANTE: " + (Math.round((piloto.buscarResultado(circuito)) * 100d)) / 100d);
-                System.out.println("TIEMPO DE CARRERA: " + (Math.round((coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito))) * 100d) / 100d);
+                //System.out.println("TIEMPO DE CARRERA: " + (Math.round((coche.getTiempo(piloto, circuito) - piloto.buscarResultado(circuito))) * 100d) / 100d);
                 System.out.println();
 
                 if (piloto.getAbandonos() == this.nAbandonos) {
@@ -319,8 +319,6 @@ public class Organizacion {
         this.OrdenarParrilla(2, PilotosCarrera);   //ORDENA POR TIEMPO
         for (PilotoInterfaz piloto : PilotosCarrera) {
             if (piloto.buscarResultado(circuito) > 0) {
-                //EscuderiaInterfaz esc = DevolverPilotos.get(piloto); //DESCOMENTARLO POR SI DA PROBLEMAS
-                //DevolverPilotos.remove(piloto); //DESCOMENTARLO POR SI DA PROBLEMAS
                 if (podio < 4) {
                     int puntos = 10 - podio * 2;
                     piloto.añadirPuntos(circuito, puntos);
@@ -334,7 +332,6 @@ public class Organizacion {
                     System.out.print("Tiempo: " + piloto.buscarResultado(circuito) + " - ");
                     System.out.println("Puntos: " + 2);
                 }
-                //DevolverPilotos.put(piloto, esc); //DESCOMENTARLO POR SI DA PROBLEMAS
             } else {
                 System.out.print("Ha abandonado " + piloto.getNombre() + " - ");
                 System.out.print("Tiempo: " + piloto.buscarResultado(circuito) + " - ");

@@ -217,7 +217,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
         }
         }
         return cont;
-    }
+    } //CAMBIAR
 
     /**
      * Devuelve el total de puntos que ha conseguido el piloto en toda la competición.
@@ -246,15 +246,16 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
         return puntos;
     }
 
-    public int getTiempoTotal() {
+    public double getTiempoUltimoCircuito() {
         Iterator<String> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
-        int tiempototal = 0;
+        double tiempo = 0;
+        String key = null;
         while (it.hasNext()) {
-            String key = it.next();
-            Resultados valor = this.resultados.get(key);
-            tiempototal += valor.getTiempoResultados();
+            key = it.next();
         }
-        return tiempototal;
+        Resultados valor = this.resultados.get(key);
+        tiempo = valor.getTiempoResultados();
+        return tiempo;
     }
 
 
@@ -290,25 +291,28 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
      */
 
     public void conducirCoche(Circuito circuito) {
+        double tiempousado, resultado;
         CocheInterfaz coche = getCoche();
-        double tiempoCarrera = coche.getTiempo(this, circuito);
+        double tiempoCarrera = Math.round(coche.getTiempo(this, circuito)*100d)/100d;
 
         if (this.getTiempoConcentracion() < tiempoCarrera) {
 
-            double resultado = getTiempoConcentracion() - tiempoCarrera;
-            resultado= Math.round((resultado*100d))/100d;
+            resultado = getTiempoConcentracion() - tiempoCarrera; //EL TIEMPO QUE LE HA FALTADO ANTES DE TERMINAR LA CARRERA
+            resultado = Math.round((resultado*100d))/100d;
+            tiempousado = tiempoCarrera + resultado;
             this.añadirTiempo(circuito, resultado);
-            coche.UsarCombustible(resultado);
+            coche.UsarCombustible(tiempousado);
           //  coche.setCombustibleRestante(coche.getCombustibleRestante() - getTiempoConcentracion()); //FIXME: combustibleActual = combustibleActual - Tiempo de carrera de ese piloto
             System.out.println("MOTIVO DE ABANDONO: PERDIDA DE CONCENTRACIÓN");
             abandonar();
         }
         else {
             if (coche.getCombustibleRestante() < tiempoCarrera) {
-                double resultado = coche.getValorcombustible() - tiempoCarrera;
+                resultado = coche.getValorcombustible() - tiempoCarrera;
                 resultado= Math.round((resultado*100d))/100d;
+                tiempousado = tiempoCarrera + resultado;
 
-                coche.UsarCombustible(resultado);
+                coche.UsarCombustible(tiempousado);
                 if (coche.getCombustibleRestante() > 0) {
                     this.añadirTiempo(circuito, resultado);
                 } else {
@@ -318,7 +322,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
                 }
 
             } else {
-                double resultado = tiempoCarrera;
+                 resultado = tiempoCarrera;
                  System.out.println(resultado);
                 resultado = Math.round((resultado*100d))/100d;
 

@@ -13,9 +13,9 @@ public class ComparadorTiempo extends ComparadorPiloto {
      * @param p2 Piloto a ser comparado
      */
     public int compare(PilotoInterfaz p1, PilotoInterfaz p2) {
-        if (p1.getTiempoTotal() == p2.getTiempoTotal())
+        if (p1.getTiempoUltimoCircuito() == p2.getTiempoUltimoCircuito())
             return (p1.getNombre().compareTo(p2.getNombre()));
-        else if (p1.getTiempoTotal() > p2.getTiempoTotal())
+        else if (p1.getTiempoUltimoCircuito() > p2.getTiempoUltimoCircuito())
             return 1;
         else
             return -1;
