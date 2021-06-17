@@ -218,6 +218,10 @@ public class EscuderiaRally implements EscuderiaInterfaz {
         }
     }
 
+    /**
+     *
+     * @return true si la escudería esta descalificada, false en caso contrario.
+     */
     public boolean EscuderiaDescalificada() {
         int cont = 0;
         boolean desc = true;

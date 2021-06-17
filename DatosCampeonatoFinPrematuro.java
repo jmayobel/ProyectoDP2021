@@ -178,6 +178,16 @@ public class DatosCampeonatoFinPrematuro {
         PilotoInterfaz sordo = new PilotoNovato("Sordo", Concentracion.DESPISTADO);
         peugeot.addListaPilotos(sordo);
 
+        seat.OrdenarListaPilotos();
+        seat.OrdenarListaCoches();
+
+        peugeot.OrdenarListaPilotos();
+        peugeot.OrdenarListaCoches();
+
+        citroen.OrdenarListaPilotos();
+        citroen.OrdenarListaCoches();
+
+
         organizacion.campeonato();
 
     }
