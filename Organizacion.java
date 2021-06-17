@@ -267,8 +267,7 @@ public class Organizacion {
     public void Carrera (Circuito circuito){
 
         for(PilotoInterfaz piloto: PilotosCarrera){
-            //EscuderiaInterfaz esc = DevolverPilotos.get(piloto);//DESCOMENTARLO POR SI DA PROBLEMAS
-            // DevolverPilotos.remove(piloto); //DESCOMENTARLO POR SI DA PROBLEMAS
+
             System.out.println(piloto.toString());
             CocheInterfaz coche = piloto.getCoche(); //¿CAMBIAR?
             piloto.conducirCoche(circuito);
@@ -294,7 +293,7 @@ public class Organizacion {
 
 
             }
-           // DevolverPilotos.put(piloto, esc);
+
         }
     }
     public void FinalCampeonato() {

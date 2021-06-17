@@ -35,8 +35,13 @@ public class CocheResistente extends Coche {
             combustibleExtra = combustibleExtra + 100;
             depositoExtra = 0;
             System.out.println("GASOLINA AÑADIDA");
-            super.setCombustibleRestante(combustibleExtra - resultado);
-        } else {
+            if (resultado>=0) {
+                super.setCombustibleRestante(combustibleExtra - resultado);
+            } else {
+                super.setCombustibleRestante(combustibleExtra + resultado);
+            }
+
+            } else {
             super.UsarCombustible(resultado);
         }
 
