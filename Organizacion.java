@@ -170,11 +170,7 @@ public class Organizacion {
             }
         }
 
-            //Esc.getListaPilotos().clear();
-            // Esc.getListaCoches().clear();
-        }
-
-        PilotosCarrera.addAll(DevolverPilotos.keySet());
+       PilotosCarrera.addAll(DevolverPilotos.keySet());
 
     }
 
