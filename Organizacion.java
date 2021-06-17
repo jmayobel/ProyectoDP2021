@@ -156,20 +156,23 @@ public class Organizacion {
         DevolverPilotos.clear();
         PilotosCarrera.clear();
         while (it.hasNext()) {
-            int pos = 0; int posAux = 0;
+            int pos = 0;
+            int posAux = 0;
             EscuderiaInterfaz Esc = it.next();
             Esc.AsignarCoche(getnPilotos());
 
-            while (pos < getnPilotos()) {
 
-                PilotoInterfaz Piloto = Esc.getPilotosCarrera(posAux);
-                if (!Piloto.getDescalificado()) {
-                    Esc.getListaPilotos().remove(posAux);
-                    //Esc.getListaCoches().remove(posAux);
-                    DevolverPilotos.put(Piloto, Esc);
+            if(!Esc.EscuderiaDescalificada()) {
+                while (pos < getnPilotos()) {
 
-                } else posAux++;
-                pos++;
+                    PilotoInterfaz Piloto = Esc.getPilotosCarrera(posAux);
+                    if (!Piloto.getDescalificado()) {
+                        Esc.getListaPilotos().remove(posAux);
+                        //Esc.getListaCoches().remove(posAux);
+                        DevolverPilotos.put(Piloto, Esc);
+                        pos++;
+                    } else posAux++;
+                }
             }
 
 
@@ -186,7 +189,7 @@ public class Organizacion {
         for (PilotoInterfaz piloto : PilotosCarrera) {
                 EscuderiaInterfaz esc = DevolverPilotos.get(piloto);
                 esc.addListaPilotos(piloto);
-                esc.addListaCoches(piloto.getCoche());
+               // esc.addListaCoches(piloto.getCoche());
         }
 
         for (EscuderiaInterfaz esc : ListadeEscuderias) {
@@ -231,24 +234,35 @@ public class Organizacion {
      */
     public void campeonato() {
         Iterator<Circuito> it = this.CircuitoSet.iterator();
+        int cont = 1;
         MostrarCircuitos();
         System.out.println("FINALIZADO MOSTRAR CIRCUITOS");
         MostrarEscuderias();
         System.out.println("FINALIZADO MOSTRAR ESCUDERÍAS");
 
         while (it.hasNext()) {
-
             GuardarPilotos();
-
             Circuito circuito = it.next();
-            System.out.println("+++++++++++++++++++++++++++"
-                    + "Comienza la carrera en: " + circuito.getNombreCircuito() + " ++++++++++++++++++++++++++"
+            System.out.println("+++++++++++++++++++++++++++ "
+                    + "Los pilotos de: " + circuito.getNombreCircuito() + " son: " + "+++++++++++++++++++++++++++"
+            );
+            PilotosCorren();
+            System.out.println("+++++++++++++++++++++++++++ "
+                    + "Comienza la carrera en: " + circuito.getNombreCircuito() + " (" + cont +" de "+ CircuitoSet.size() + ")" +" +++++++++++++++++++++++++++"
             );
             Carrera(circuito);
             Podio(circuito);
             DevolverEscuderia();
+            cont++;
         }
         FinalCampeonato();
+    }
+
+    private void PilotosCorren() {
+        System.out.println("LOS PILOTOS QUE VAN A CORRER SON: ");
+        for(PilotoInterfaz piloto : PilotosCarrera){
+            System.out.println(piloto.toString());
+        }
     }
 
     /**
@@ -263,11 +277,10 @@ public class Organizacion {
         OrdenarParrilla(1, PilotosCarrera);
 
         for(PilotoInterfaz piloto: PilotosCarrera){
-              EscuderiaInterfaz esc = DevolverPilotos.get(piloto);//DESCOMENTARLO POR SI DA PROBLEMAS
+            EscuderiaInterfaz esc = DevolverPilotos.get(piloto);//DESCOMENTARLO POR SI DA PROBLEMAS
              DevolverPilotos.remove(piloto); //DESCOMENTARLO POR SI DA PROBLEMAS
             System.out.println(piloto.toString());
             CocheInterfaz coche = piloto.getCoche(); //¿CAMBIAR?
-            System.out.println("VELOCIDAD REAL DEL PILOTO: " + coche.getVelocidadReal(piloto, circuito));
             piloto.conducirCoche(circuito);
 
             if (piloto.buscarResultado(circuito) > 0)   //Si el tiempo obtenido es positivo, ha acabado la carrera,
@@ -276,7 +289,6 @@ public class Organizacion {
                 System.out.println("TIEMPO DEL PILOTO EN EL CIRCUITO: " + piloto.buscarResultado(circuito));
                 System.out.println("TIEMPO DE FINALIZACIÓN: " + coche.getTiempo(piloto, circuito));
                 System.out.println();
-
 
             } else {
                 System.out.println("TIEMPO RESTANTE: " + (Math.round((piloto.buscarResultado(circuito)) * 100d)) / 100d);
@@ -315,6 +327,7 @@ public class Organizacion {
      * Ordena la lista de pilotos de PilotosCarrera por tiempo y le asigna los puntos correspondientes a sus posición
      */
     public void Podio(Circuito circuito) {
+        System.out.println("+++++++++++++++++ Clasificación final de la carrera en " + circuito.getNombreCircuito() + "++++++++++++++++++");
         int podio = 0;
         this.OrdenarParrilla(2, PilotosCarrera);   //ORDENA POR TIEMPO
         for (PilotoInterfaz piloto : PilotosCarrera) {
@@ -322,13 +335,25 @@ public class Organizacion {
                 EscuderiaInterfaz esc = DevolverPilotos.get(piloto); //DESCOMENTARLO POR SI DA PROBLEMAS
                 DevolverPilotos.remove(piloto); //DESCOMENTARLO POR SI DA PROBLEMAS
                 if (podio < 4) {
-                    piloto.añadirPuntos(circuito, 10 - podio * 2);
+                    int puntos = 10 - podio * 2;
+                    piloto.añadirPuntos(circuito, puntos);
+                    System.out.print("Posicion " + (podio+1) + ": " + piloto.getNombre() + " - ");
+                    System.out.print("Tiempo: " + piloto.buscarResultado(circuito) + " - ");
+                    System.out.println("Puntos: " + puntos);
                     podio++;
                 } else {
                     piloto.añadirPuntos(circuito, 2);
+                    System.out.print("Posicion " + (podio+1) + ": " + piloto.getNombre() + " - ");
+                    System.out.print("Tiempo: " + piloto.buscarResultado(circuito) + " - ");
+                    System.out.println("Puntos: " + 2);
                 }
                 DevolverPilotos.put(piloto, esc); //DESCOMENTARLO POR SI DA PROBLEMAS
+            } else {
+                System.out.print("Ha abandonado " + piloto.getNombre() + " - ");
+                System.out.print("Tiempo: " + piloto.buscarResultado(circuito) + " - ");
+                System.out.println("Puntos: " + 0);
             }
+
 
 
         }

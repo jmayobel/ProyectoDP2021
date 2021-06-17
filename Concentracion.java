@@ -50,6 +50,6 @@ public enum Concentracion {
     //toString()
     @Override
     public String toString() {
-        return getNombre() + " (Concentración original: " + getTiempo() + ").";
+        return "Concentración: " + getNombre() + " (" +  getTiempo() + ")";
     }
 }

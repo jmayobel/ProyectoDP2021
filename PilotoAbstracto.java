@@ -123,7 +123,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
      */
     public void descalificar() { //También llamado setDescalificado()
 
-        System.out.println(this.getNombre() + "HA SIDO DESCALIFICADO");
+        System.out.println(this.getNombre() + " HA SIDO DESCALIFICADO");
         this.descalificado = true;
     }
 
@@ -279,11 +279,9 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
         CocheInterfaz coche = getCoche();
 
         if (this.getTiempoConcentracion() < coche.getTiempo(this, circuito)) {
-            System.out.println(1);
 
             double resultado = getTiempoConcentracion() - coche.getTiempo(this, circuito);
             resultado= Math.round((resultado*100d))/100d;
-            System.out.println(resultado);
             this.añadirTiempo(circuito, resultado);
             coche.UsarCombustible(resultado);
           //  coche.setCombustibleRestante(coche.getCombustibleRestante() - getTiempoConcentracion()); //FIXME: combustibleActual = combustibleActual - Tiempo de carrera de ese piloto
@@ -292,11 +290,8 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
         }
         else {
             if (coche.getCombustibleRestante() < coche.getTiempo(this, circuito)) {
-                System.out.println(2);
                 double resultado = coche.getValorcombustible() - coche.getTiempo(this, circuito);
                 resultado= Math.round((resultado*100d))/100d;
-
-                System.out.println(resultado);
 
                 coche.UsarCombustible(resultado);
                 if (coche.getCombustibleRestante() > 0) {
@@ -307,12 +302,9 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
                 }
 
             } else {
-                System.out.println(3);
-
                 double resultado = coche.getTiempo(this, circuito);
-                resultado= Math.round((resultado*100d))/100d;
-
-                System.out.println(resultado);
+                 System.out.println(resultado);
+                resultado = Math.round((resultado*100d))/100d;
 
                 this.añadirTiempo(circuito, resultado);
                 coche.UsarCombustible(resultado);
@@ -327,21 +319,19 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
         StringBuilder builder = new StringBuilder();
         builder.append("PILOTO: " + getNombre());
         builder.append(' ');
-        builder.append("Coche: " + getCoche());
-        builder.append(' ');
         builder.append(this.concentracion.toString());  //NO MUY SEGURO DE ESTO
         builder.append(' ');
-        builder.append("RESULTADOS: ");  //NO MUY SEGURO DE ESTO
+        builder.append("Destreza "  + this.getDestreza());
         builder.append(' ');
         builder.append(mostrarResultados());
-        builder.append('\n');
-        builder.append("¿Descalificado?: ");
+        builder.append(" ¿Descalificado?: ");
         if (getDescalificado() == false) {
             builder.append("NO");
         } else {
             builder.append("SÍ");
         }
         builder.append('\n');
+        builder.append(getCoche());
         return builder.toString();
     }
 

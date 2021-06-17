@@ -28,24 +28,28 @@ public class CocheRapido extends Coche {
     public double getNitro() {
         return nitro;
     }
+    public void setNitro(double nitro) { this.nitro = nitro;}
 
     /**
-     * Devuelve la velocidad real de CocheRapido
+     * Devuelve la velocidad real de CocheRapido y Actualiza el nitro
      *
      * @return Devuelve velocidadNitro - Tipo double
      */
     @Override
     public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito) {
-        double nitroRestante = getNitro();
-        double velocidadNitro = super.getVelocidadReal(piloto, circuito);
-        if (nitroRestante >= super.getVelocidadReal(piloto, circuito) * 0.2) {
-            velocidadNitro = super.getVelocidadReal(piloto, circuito) + super.getVelocidadReal(piloto, circuito) * 0.2;
-            nitroRestante = super.getVelocidadReal(piloto, circuito) * 0.2 - nitroRestante;
+        double velocidadNitro;
+        if (this.getNitro() >= super.getVelocidadReal(piloto, circuito) * 0.2) {
+            velocidadNitro = super.getVelocidadReal(piloto, circuito) + (super.getVelocidadReal(piloto, circuito) * 0.2);
+            this.setNitro(this.getNitro() - super.getVelocidadReal(piloto, circuito) * 0.2);
         } else {
-            velocidadNitro = super.getVelocidadReal(piloto, circuito) + nitroRestante;
-            nitroRestante = 0;
+            velocidadNitro = super.getVelocidadReal(piloto, circuito) + this.getNitro();
+            this.setNitro(0);
         }
         return velocidadNitro;
+    }
+    @Override
+    public double getTiempo(PilotoInterfaz piloto, Circuito circuito) {
+        return ((circuito.getValorDistancia()) / this.getVelocidadReal(piloto, circuito)) *60;
     }
 
 }

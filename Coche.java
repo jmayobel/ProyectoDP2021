@@ -117,8 +117,7 @@ public class Coche implements CocheInterfaz {
      * @return Devuelve el tiempo de la carrera
      */
     public double getTiempo(PilotoInterfaz piloto, Circuito circuito) {
-        double tiempo = ((circuito.getValorDistancia()) / getVelocidadReal(piloto, circuito)) *60 ;
-        System.out.println("HOLLAA"+ tiempo);
+        double tiempo = ((circuito.getValorDistancia()) / this.getVelocidadReal(piloto, circuito)) *60 ;
 
         return tiempo;
     }
@@ -172,8 +171,9 @@ public class Coche implements CocheInterfaz {
     public String toString() {
         // put your code here
         return
-                "Nombre del coche: " + getNombreCoche() + " " +
-                        "Combustible: " + getValorcombustible() +
-                        " " + "Velocidad: " + getValorVelocidad();
+                "<Nombre del coche: " + getNombreCoche() + "> " +
+                        "<Tipo: " + this.getClass().getName() + "> " +
+                        "<Combustible: " + getValorcombustible() +
+                        "> " + "<Velocidad: " + getValorVelocidad() + ">";
     }
 }
