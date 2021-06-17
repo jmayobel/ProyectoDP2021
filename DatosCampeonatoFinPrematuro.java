@@ -14,7 +14,7 @@ public class DatosCampeonatoFinPrematuro {
     private void initData() {
         //organizador debe ser una instancia única con la siguiente configuración:
         //LimiteAbandonos=1, LimitePilotos=3, 
-        TreeSet CircuitoSet = new TreeSet<Circuito>(Collections.reverseOrder(new ComparadorComplejidad()));
+        TreeSet<Circuito> CircuitoSet = new TreeSet<Circuito>(Collections.reverseOrder(new ComparadorComplejidad()));
         Organizacion organizacion = Organizacion.getInstance(1, 3, CircuitoSet);
 
         // Circuitos ordenados de forma descendente de acuerdo a su complejidad
@@ -110,63 +110,63 @@ public class DatosCampeonatoFinPrematuro {
         //creamos los pilotos y los coches de cada escudería 
         //coches y pilotos de citroen
         //añadir a citroen un CocheResistente(nombre:"Citröen C5" - velocidad:RAPIDA - combustible:ELEFANTE);
-        CocheResistente coche = new CocheResistente("Citroen C5", Velocidad.RAPIDA, Combustible.ELEFANTE);
+        CocheInterfaz coche = new CocheResistente("Citroen C5", Velocidad.RAPIDA, Combustible.ELEFANTE);
         citroen.addListaCoches(coche);
         //añadir a citroen un CocheRapido(nombre:"Citröen C4" - velocidad:RAPIDA - combustible:ESCASO);
-        CocheRapido c4 = new CocheRapido("Citröen C4", Velocidad.RAPIDA, Combustible.ESCASO);
+        CocheInterfaz c4 = new CocheRapido("Citröen C4", Velocidad.RAPIDA, Combustible.ESCASO);
         citroen.addListaCoches(c4);
         //añadir a citroen un Coche(nombre:"Citröen C3" - velocidad:RAPIDA - combustible:ESCASO);
-        CocheRapido c3 = new CocheRapido("Citröen C3", Velocidad.RAPIDA, Combustible.ESCASO);
+        CocheInterfaz c3 = new CocheRapido("Citröen C3", Velocidad.RAPIDA, Combustible.ESCASO);
         citroen.addListaCoches(c3);
         //añadir a citroen un PilotoExperimentado(nombre:"Loeb" - concentración: NORMAL));
-        PilotoExperimentado loeb = new PilotoExperimentado("Loeb", Concentracion.NORMAL);
+        PilotoInterfaz loeb = new PilotoExperimentado("Loeb", Concentracion.NORMAL);
         citroen.addListaPilotos(loeb);
         //añadir a citroen un PilotoEstrella(nombre:"Makinen" - concentración: ZEN));
-        PilotoEstrella makinen = new PilotoEstrella("Makinen", Concentracion.ZEN);
+        PilotoInterfaz makinen = new PilotoEstrella("Makinen", Concentracion.ZEN);
         citroen.addListaPilotos(makinen);
         //añadir a citroen un PilotoNovato(nombre:"Auriol" - concentración: NORMAL));
-        PilotoNovato auriol = new PilotoNovato("Auriol", Concentracion.NORMAL);
+        PilotoInterfaz auriol = new PilotoNovato("Auriol", Concentracion.NORMAL);
         citroen.addListaPilotos(auriol);
 
 
         //coches y pilotos de seat
         //añadir a seat un CocheResistente(nombre:"Seat Tarraco" - velocidad:TORTUGA - combustible:GENEROSO);
-        CocheResistente tarraco = new CocheResistente("Seat Tarraco", Velocidad.TORTUGA, Combustible.GENEROSO);
+        CocheInterfaz tarraco = new CocheResistente("Seat Tarraco", Velocidad.TORTUGA, Combustible.GENEROSO);
         seat.addListaCoches(tarraco);
         //añadir a seat un CocheRapido(nombre:"Seat Ateca" - velocidad:GUEPARDO - combustible:GENEROSO);
-        CocheRapido ateca = new CocheRapido("Seat Ateca", Velocidad.GUEPARDO, Combustible.GENEROSO);
+        CocheInterfaz ateca = new CocheRapido("Seat Ateca", Velocidad.GUEPARDO, Combustible.GENEROSO);
         seat.addListaCoches(ateca);
         //añadir a seat un Coche(nombre:"Seat Arona" - velocidad:RAPIDA - combustible:ESCASO);
-        Coche arona = new Coche("Seat Arona", Velocidad.RAPIDA, Combustible.ESCASO);
+        CocheInterfaz arona = new Coche("Seat Arona", Velocidad.RAPIDA, Combustible.ESCASO);
         seat.addListaCoches(arona);
         //añadir a seat un PilotoExperimentado(nombre:"Ogier" - concentración: NORMAL));
-        PilotoExperimentado ogier = new PilotoExperimentado("Oiger", Concentracion.NORMAL);
+        PilotoInterfaz ogier = new PilotoExperimentado("Oiger", Concentracion.NORMAL);
         seat.addListaPilotos(ogier);
         //añadir a seat un PilotoEstrella(nombre:"McRae" - concentración: CONCENTRADO));
-        PilotoEstrella mcrae = new PilotoEstrella("McRae", Concentracion.CONCENTRADO);
+        PilotoInterfaz mcrae = new PilotoEstrella("McRae", Concentracion.CONCENTRADO);
         seat.addListaPilotos(mcrae);
         //añadir a seat un PilotoNovato(nombre:"Blomquist" - concentración: DESPISTADO));
-        PilotoNovato blo = new PilotoNovato("Blomquist", Concentracion.DESPISTADO);
+        PilotoInterfaz blo = new PilotoNovato("Blomquist", Concentracion.DESPISTADO);
 
 
         //coches y pilotos de peugeot
         //añadir a peugeot un CocheResistente(nombre:"Peugeot 5008" - velocidad:LENTA - combustible:GENEROSO);
-        CocheResistente cincomilocho = new CocheResistente("Peugeot 5008", Velocidad.LENTA, Combustible.GENEROSO);
+        CocheInterfaz cincomilocho = new CocheResistente("Peugeot 5008", Velocidad.LENTA, Combustible.GENEROSO);
         peugeot.addListaCoches(cincomilocho);
         //añadir a peugeot un CocheRapido(nombre:"Peugeot 3008" - velocidad:GUEPARDO - combustible:NORMAL);
-        CocheRapido tresmilocho = new CocheRapido("Peugeot 3008", Velocidad.GUEPARDO, Combustible.NORMAL);
+        CocheInterfaz tresmilocho = new CocheRapido("Peugeot 3008", Velocidad.GUEPARDO, Combustible.NORMAL);
         peugeot.addListaCoches(tresmilocho);
         //añadir a peugeot un Coche(nombre:"Peugeot 2008" - velocidad:NORMAL - combustible:ESCASO);
-        Coche dosmilocho = new Coche("Peugeot 2008", Velocidad.NORMAL, Combustible.ESCASO);
+        CocheInterfaz dosmilocho = new Coche("Peugeot 2008", Velocidad.NORMAL, Combustible.ESCASO);
         peugeot.addListaCoches(dosmilocho);
         //añadir a peugeot un PilotoExperimentado(nombre:"Kankunnen" - concentración: CONCENTRADO));
-        PilotoExperimentado kakunnen = new PilotoExperimentado("Kankunnen", Concentracion.CONCENTRADO);
+        PilotoInterfaz kakunnen = new PilotoExperimentado("Kankunnen", Concentracion.CONCENTRADO);
         peugeot.addListaPilotos(kakunnen);
         //añadir a peugeot un PilotoEstrella(nombre:"Sainz" - concentración: ZEN ));
-        PilotoEstrella sainz = new PilotoEstrella("Sainz", Concentracion.ZEN);
+        PilotoInterfaz sainz = new PilotoEstrella("Sainz", Concentracion.ZEN);
         peugeot.addListaPilotos(sainz);
         //añadir a peugeot un PilotoNovato(nombre:"Sordo" - concentración: DESPISTADO));
-        PilotoNovato sordo = new PilotoNovato("Sordo", Concentracion.DESPISTADO);
+        PilotoInterfaz sordo = new PilotoNovato("Sordo", Concentracion.DESPISTADO);
         peugeot.addListaPilotos(sordo);
 
         organizacion.campeonato();
