@@ -260,14 +260,13 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
     /**
      * Imprime por pantalla los resultados del piloto en toda la competición.
      */
-    public String mostrarResultados() {
+    public void mostrarResultados() {
         Iterator<String> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
         while (it.hasNext()) {
             String key = it.next();
             Resultados valor = this.resultados.get(key);
             //System.out.println(key);    //SEGURO QUE ES ASI??
         }
-        return ("PUNTOS TOTALES: " + getPuntosTotales());
     }
 
     /**
@@ -295,6 +294,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
             resultado = getTiempoConcentracion() - tiempoCarrera; //EL TIEMPO QUE LE HA FALTADO ANTES DE TERMINAR LA CARRERA
             resultado = Math.round((resultado*100d))/100d;
             tiempousado = tiempoCarrera + resultado;
+            tiempousado = Math.round(tiempousado*100d)/100d;
             this.añadirTiempo(circuito, resultado);
             coche.UsarCombustible(tiempousado);
             System.out.println("!!!!!! MOTIVO DE ABANDONO: " + this.getNombre() + " perdió la concentración a " + -resultado + " minutos de acabar la carrera. !!!!!!");
@@ -306,13 +306,14 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
                 resultado = coche.getValorcombustible() - tiempoCarrera;
                 resultado= Math.round((resultado*100d))/100d;
                 tiempousado = tiempoCarrera + resultado;
-
+                tiempousado = Math.round(tiempousado*100d)/100d;
                 coche.UsarCombustible(tiempousado);
                 if (coche.getCombustibleRestante() > 0) {
                     this.añadirTiempo(circuito, resultado);
                 } else {
                     this.añadirTiempo(circuito, resultado);
-                    System.out.println("MOTIVO DE ABANDONO: FALTA DE COMBUSTIBLE");
+                    System.out.println("!!!!!! MOTIVO DE ABANDONO: El "+ coche.getNombreCoche() +" se quedó sin combustible a falta de "+ -resultado +"  minutos para terminar !!!!!!");
+                    System.out.println("¡¡¡En el momento de quedarse sin combustible llevaba en carrera " + tiempousado + " minutos !!!");
                     abandonar();
                 }
 
@@ -341,7 +342,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
         builder.append(' ');
         builder.append("<Destreza: "  + this.getDestreza()+">");
         builder.append(' ');
-        builder.append("<"+mostrarResultados()+">");
+        builder.append("<PUNTOS TOTALES: "+getPuntosTotales()+">");
         builder.append(' ');
         builder.append("<¿Descalificado?: ");
         if (getDescalificado() == false) {

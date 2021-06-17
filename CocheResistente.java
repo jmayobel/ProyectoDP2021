@@ -6,8 +6,6 @@
  */
 public class CocheResistente extends Coche {
     private double depositoExtra;
-    private double combustibleExtra;
-    private double combustibleRestante;
 
     /**
      * Constructor parametrizado de CocheResistente
@@ -19,31 +17,28 @@ public class CocheResistente extends Coche {
     public CocheResistente(String nombre, Velocidad velocidad, Combustible combustible) {
         super(nombre, velocidad, combustible);
         depositoExtra = 100;
-        combustibleRestante = super.getValorcombustible();
+        super.setCombustibleRestante(super.getValorcombustible());
     }
 
     /**
      * Devuelve el combustible usado por el CocheResistente
      *
-
      * @return combustibleRestante - tipo double
      */
     @Override
     public void UsarCombustible(double resultado) {
 
-        if (resultado > combustibleRestante) {
-            combustibleRestante = combustibleExtra + 100;
+        if (resultado > super.combustibleRestante) {
+            super.combustibleRestante = super.getCombustibleRestante() + 100;
             depositoExtra = 0;
-            System.out.println("GASOLINA AÑADIDA");
-            if (resultado>0) {
-                super.setCombustibleRestante(combustibleRestante - resultado);
-            } else {
-                super.setCombustibleRestante(combustibleRestante + resultado);
+            System.out.println("El "+ this.getNombreCoche() +" tiene que recurrir al depósito de reserva para poder correr");
+            if (resultado > 0) {
+                super.combustibleRestante = (super.getCombustibleRestante() - resultado);
+                super.combustibleRestante = Math.round(combustibleRestante * 100d) / 100d;
+            }
+        } else {
+                super.UsarCombustible(resultado);
             }
 
-            } else {
-            super.UsarCombustible(resultado);
         }
-
     }
-}

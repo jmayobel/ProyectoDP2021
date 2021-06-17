@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
+import java.util.*;
 
 /**
  * La clase EscuderiaRally representa los equipos que competirán en el campeonato.
@@ -248,6 +245,14 @@ public class EscuderiaRally implements EscuderiaInterfaz {
                 puntostotales += buscar.getPuntosTotales();
         }
         return puntostotales;
+    }
+
+    public int getCarrerasTerminadasEsc(){
+        int cont = 0;
+        for(PilotoInterfaz pil : ListaPilotos){
+            cont += pil.getCarrerasTerminadas();
+        }
+        return cont;
     }
 
     /**

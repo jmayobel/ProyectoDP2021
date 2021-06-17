@@ -131,12 +131,11 @@ public class Coche implements CocheInterfaz {
      * @return Combustible - Tipo Double
      */
     public void UsarCombustible(double resultado) {
-        if (resultado>0) {
-            combustibleRestante = (getCombustibleRestante() - resultado);
-            combustibleRestante = Math.round(combustibleRestante*100d)/100d;
+        if (resultado > 0) {
+            this.combustibleRestante = (getCombustibleRestante() - resultado);
+            this.combustibleRestante = Math.round(combustibleRestante * 100d) / 100d;
         }
     }
-
     public double getCombustibleRestante() {
         return combustibleRestante;
 

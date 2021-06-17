@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -310,13 +311,48 @@ public class Organizacion {
             if (Esc.EscuderiaDescalificada()) {
                 System.out.println(Esc.getNombre() + " está descalificada" + " y tiene 0 puntos.");
             }
-            else
-            System.out.println(Esc.getNombre() + " tiene " + Esc.getPuntosTotalesEscuderia() + " puntos.");
-
+        }
+        Collections.sort(PilotoDescalificar, Collections.reverseOrder(new ComparadorParrillaCarreraEntrada()));
+        Collections.sort(PilotoSinDescalificar, Collections.reverseOrder(new ComparadorParrillaCarreraEntrada()));
+        int cont=1;
+        System.out.println("****************************************************");
+        System.out.println("************** CLASIFICACION FINAL DE PILOTOS **************");
+        System.out.println("****************************************************");
+        for (PilotoInterfaz pi:PilotoSinDescalificar) {
+            System.out.println("@@@ Posición "+ "(" + cont + "): " + pi.getNombre() + " - Puntos Totales: " + pi.getPuntosTotales());
+            pi.mostrarResultados();
+            cont++;
+        }
+        System.out.println("****************************************************");
+        System.out.println("************** PILOTOS DESCALIFICADOS **************");
+        System.out.println("****************************************************");
+        for (PilotoInterfaz pi:PilotoDescalificar) {
+            System.out.println("@@@ Piloto Descalificado: " + pi.getNombre() + " - Puntos Totales Anulados: " + pi.getPuntosTotales());
+            pi.mostrarResultados();
+        }
+        Collections.sort(ListadeEscuderias, Collections.reverseOrder(new ComparadorEscuderia()));
+        System.out.println("****************************************************");
+        System.out.println("******** CLASIFICACIÓN FINAL DE ESCUDERÍAS *********");
+        System.out.println("****************************************************");
+        cont = 1;
+        for (EscuderiaInterfaz Esc : ListadeEscuderias) {
+                if(!Esc.EscuderiaDescalificada()){
+                    System.out.println();
+                    System.out.println("@@@ Posición ("+cont+") " + Esc.getNombre() +" con " + Esc.getPuntosTotalesEscuderia() +" puntos @@@");
+                    Esc.MostrarPilotos();
+                    Esc.MostrarCoches();
+                } else {
+                    System.out.println();
+                    System.out.println("@@@ ESCUDERIA DESCALIFICADA: " + Esc.getNombre() +" con " + Esc.getPuntosTotalesEscuderia() +" puntos @@@");
+                    Esc.MostrarPilotos();
+                    Esc.MostrarCoches();
+                }
+                cont++;
 
         }
 
     }
+
 
     /**
      * Ordena la lista de pilotos de PilotosCarrera por tiempo y le asigna los puntos correspondientes a sus posición

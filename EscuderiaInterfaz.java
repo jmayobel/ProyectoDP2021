@@ -40,6 +40,8 @@ public interface EscuderiaInterfaz {
 
     public void MostrarCoches();
 
+    public int getCarrerasTerminadasEsc();
+
     public void MostrarPilotos();
 
     public boolean EscuderiaDescalificada();
