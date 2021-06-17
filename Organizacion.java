@@ -161,13 +161,9 @@ public class Organizacion {
             int posAux = 0;
             EscuderiaInterfaz Esc = it.next();
 
-
-            if(Esc.EscuderiaDescalificada()) {
-
-                desc=true;
-
-            }
-            if (!desc) {
+            if (!Esc.EscuderiaDescalificada()) {
+                System.out.println(Esc.getNombre());
+                System.out.println(Esc.EscuderiaDescalificada());
                 Esc.AsignarCoche(getnPilotos());
 
                 while (pos < getnPilotos()) {
