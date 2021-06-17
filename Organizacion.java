@@ -155,32 +155,20 @@ public class Organizacion {
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
         DevolverPilotos.clear();
         PilotosCarrera.clear();
-        boolean desc=false;
         while (it.hasNext())  {
-            int pos = 0;
             EscuderiaInterfaz Esc = it.next();
-
-            if (!Esc.EscuderiaDescalificada()) {
-                Esc.AsignarCoche(getnPilotos());
-                System.out.println(Esc.getNombre());
-                System.out.println("TAMAÑO LISTA: " + Esc.getListaPilotos().size());
-                int posAux = 0;
-                while (pos < getnPilotos()) {
-                    PilotoInterfaz Piloto = Esc.getPilotosCarrera(posAux);
-                    System.out.println(Piloto.getDescalificado());
-                    System.out.println(posAux);
-                    if (!Piloto.getDescalificado()) {
-                        DevolverPilotos.put(Piloto, Esc);
-                        Esc.getListaPilotos().remove(posAux);
-                        pos++;
-                    } else posAux++;
-                }
-
-              //  for (PilotoInterfaz pilot) {
-                //}
+            Iterator<PilotoInterfaz> ti= Esc.getListaPilotos().iterator();
+            Esc.AsignarCoche(getnPilotos());
+            int cont=0;
+            while (ti.hasNext() && cont<getnPilotos()) {
+                   PilotoInterfaz pi= ti.next();
+                 if (!pi.getDescalificado()){
+                     DevolverPilotos.put(pi,Esc);
+                     ti.remove();
+                     cont++;
+                 }
             }
-
-
+        }
 
             //Esc.getListaPilotos().clear();
             // Esc.getListaCoches().clear();
@@ -195,6 +183,7 @@ public class Organizacion {
                 EscuderiaInterfaz esc = DevolverPilotos.get(piloto);
                 esc.addListaPilotos(piloto);
                 esc.addListaCoches(piloto.getCoche());
+                piloto.setCoche(null);
         }
 
         for (EscuderiaInterfaz esc : ListadeEscuderias) {
