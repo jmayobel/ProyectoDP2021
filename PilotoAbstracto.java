@@ -298,6 +298,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
                 if (coche.getCombustibleRestante() > 0) {
                     this.añadirTiempo(circuito, resultado);
                 } else {
+                    this.añadirTiempo(circuito, resultado);
                     System.out.println("MOTIVO DE ABANDONO: FALTA DE COMBUSTIBLE");
                     abandonar();
                 }
