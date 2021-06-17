@@ -253,9 +253,10 @@ public class EscuderiaRally implements EscuderiaInterfaz {
         //MÉTODO NUEVO
         int i = 0;
         int j = 0;
+        int posAux=0;
         boolean enc;
         while (i < nPilotos) {
-            PilotoInterfaz piloto = ListaPilotos.get(i);
+            PilotoInterfaz piloto = ListaPilotos.get(posAux);
             if (!piloto.getDescalificado()) {
                 enc = false;
                 while (j < ListaCoches.size() && !enc) {
@@ -263,14 +264,18 @@ public class EscuderiaRally implements EscuderiaInterfaz {
                     if (coche.getValorcombustible() > (0)) {
                         piloto.setCoche(coche);
                         enc = true;
-
+                        i++;
+                        this.eliminarCoche(coche);
                     }
                     j++;
                 }
 
             }
+            posAux++;
 
-            i++;
+
+
+
         }
 
 

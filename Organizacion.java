@@ -155,20 +155,26 @@ public class Organizacion {
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
         DevolverPilotos.clear();
         PilotosCarrera.clear();
-        while (it.hasNext()) {
+        boolean desc=false;
+        while (it.hasNext() && !desc)  {
             int pos = 0;
             int posAux = 0;
             EscuderiaInterfaz Esc = it.next();
-            Esc.AsignarCoche(getnPilotos());
 
 
-            if(!Esc.EscuderiaDescalificada()) {
+            if(Esc.EscuderiaDescalificada()) {
+
+                desc=true;
+
+            }
+            if (!desc) {
+                Esc.AsignarCoche(getnPilotos());
+
                 while (pos < getnPilotos()) {
                     PilotoInterfaz Piloto = Esc.getPilotosCarrera(posAux);
                     if (!Piloto.getDescalificado()) {
                         Esc.getListaPilotos().remove(posAux);
                         System.out.println(Piloto.getNombre());
-                        //Esc.getListaCoches().remove(posAux);
                         DevolverPilotos.put(Piloto, Esc);
                         pos++;
                     } else posAux++;
@@ -176,20 +182,20 @@ public class Organizacion {
             }
 
 
+
             //Esc.getListaPilotos().clear();
             // Esc.getListaCoches().clear();
-
-
         }
 
         PilotosCarrera.addAll(DevolverPilotos.keySet());
+
     }
 
     public void DevolverEscuderia() {
         for (PilotoInterfaz piloto : PilotosCarrera) {
                 EscuderiaInterfaz esc = DevolverPilotos.get(piloto);
                 esc.addListaPilotos(piloto);
-               // esc.addListaCoches(piloto.getCoche());
+                esc.addListaCoches(piloto.getCoche());
         }
 
         for (EscuderiaInterfaz esc : ListadeEscuderias) {
@@ -277,8 +283,8 @@ public class Organizacion {
         OrdenarParrilla(1, PilotosCarrera);
 
         for(PilotoInterfaz piloto: PilotosCarrera){
-            EscuderiaInterfaz esc = DevolverPilotos.get(piloto);//DESCOMENTARLO POR SI DA PROBLEMAS
-             DevolverPilotos.remove(piloto); //DESCOMENTARLO POR SI DA PROBLEMAS
+            //EscuderiaInterfaz esc = DevolverPilotos.get(piloto);//DESCOMENTARLO POR SI DA PROBLEMAS
+            // DevolverPilotos.remove(piloto); //DESCOMENTARLO POR SI DA PROBLEMAS
             System.out.println(piloto.toString());
             CocheInterfaz coche = piloto.getCoche(); //¿CAMBIAR?
             piloto.conducirCoche(circuito);
@@ -304,7 +310,7 @@ public class Organizacion {
 
 
             }
-            DevolverPilotos.put(piloto, esc);
+           // DevolverPilotos.put(piloto, esc);
         }
     }
 
@@ -332,8 +338,8 @@ public class Organizacion {
         this.OrdenarParrilla(2, PilotosCarrera);   //ORDENA POR TIEMPO
         for (PilotoInterfaz piloto : PilotosCarrera) {
             if (piloto.buscarResultado(circuito) > 0) {
-                EscuderiaInterfaz esc = DevolverPilotos.get(piloto); //DESCOMENTARLO POR SI DA PROBLEMAS
-                DevolverPilotos.remove(piloto); //DESCOMENTARLO POR SI DA PROBLEMAS
+                //EscuderiaInterfaz esc = DevolverPilotos.get(piloto); //DESCOMENTARLO POR SI DA PROBLEMAS
+                //DevolverPilotos.remove(piloto); //DESCOMENTARLO POR SI DA PROBLEMAS
                 if (podio < 4) {
                     int puntos = 10 - podio * 2;
                     piloto.añadirPuntos(circuito, puntos);
@@ -347,7 +353,7 @@ public class Organizacion {
                     System.out.print("Tiempo: " + piloto.buscarResultado(circuito) + " - ");
                     System.out.println("Puntos: " + 2);
                 }
-                DevolverPilotos.put(piloto, esc); //DESCOMENTARLO POR SI DA PROBLEMAS
+                //DevolverPilotos.put(piloto, esc); //DESCOMENTARLO POR SI DA PROBLEMAS
             } else {
                 System.out.print("Ha abandonado " + piloto.getNombre() + " - ");
                 System.out.print("Tiempo: " + piloto.buscarResultado(circuito) + " - ");

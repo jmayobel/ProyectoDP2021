@@ -358,9 +358,8 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
     public int hashCode() {
         int result = 17;
         result = 7 * result + getNombre().hashCode();
-        result = 13 * result + getCoche().hashCode();
         result = 17 * result + getConcentracion().hashCode();
-        result = 19 * result + getResultados().hashCode();
+
 
         return result;
     }
