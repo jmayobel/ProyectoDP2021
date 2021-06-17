@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 ;
 
@@ -203,6 +204,19 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
      */
     public int getTamañoResultados() {
         return this.resultados.size();
+    }
+
+    @Override
+    public int getCarrerasTerminadas() {
+        int cont = 0;
+        Map<String, Resultados> res = resultados;
+        for (Map.Entry<String, Resultados> entry : res.entrySet())
+        {
+            if(entry.getValue().getTiempoResultados() > 0){
+                cont++;
+        }
+        }
+        return cont;
     }
 
     /**

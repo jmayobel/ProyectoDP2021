@@ -17,9 +17,9 @@ public class ComparadorResultado extends ComparadorPiloto {
 
 
     public int compare(PilotoInterfaz p1, PilotoInterfaz p2) {
-        if (p1.getTamañoResultados() == p2.getTamañoResultados())
+        if (p1. getCarrerasTerminadas() == p2.getCarrerasTerminadas())
             return Collections.reverseOrder(new ComparadorNombrePiloto()).compare(p1, p2);
-        else if (p1.getTamañoResultados() > p2.getTamañoResultados())
+        else if (p1.getCarrerasTerminadas() > p2.getCarrerasTerminadas())
             return 1;
         else
             return -1;

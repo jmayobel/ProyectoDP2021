@@ -35,6 +35,8 @@ public interface PilotoInterfaz {
 
     public int getTamañoResultados();
 
+    public int getCarrerasTerminadas();
+
     public int getPuntosTotales();
 
     public boolean equals(Object obj);
