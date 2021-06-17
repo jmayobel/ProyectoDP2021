@@ -338,7 +338,10 @@ public class Organizacion {
             } else {
                 System.out.print("Ha abandonado " + piloto.getNombre() + " - ");
                 System.out.print("Tiempo: " + piloto.buscarResultado(circuito) + " - ");
-                System.out.println("Puntos: " + 0);
+                System.out.print("Puntos: " + 0);
+                if(piloto.getDescalificado()){
+                    System.out.println(" - "+"ADEMÁS HA SIDO DESCALIFICADO");
+                } else System.out.println();
             }
 
 
