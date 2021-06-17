@@ -258,6 +258,7 @@ public class Organizacion {
             );
             Carrera(circuito);
             Podio(circuito);
+            System.out.println("A");
             DevolverEscuderia();
             cont++;
         }

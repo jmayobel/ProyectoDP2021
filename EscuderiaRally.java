@@ -250,11 +250,15 @@ public class EscuderiaRally implements EscuderiaInterfaz {
      * Asigna los coches con combustible a los pilotos que no estén descalificados de la escudería
      */
     public void AsignarCoche(int nPilotos) {
-        for(PilotoInterfaz piloto : ListaPilotos){
-            if(!piloto.getDescalificado()){
-                CocheInterfaz coche = ListaCoches.get(0);
-                piloto.setCoche(coche);
-                ListaCoches.remove(0);
+        int Aux = 0;
+        for(PilotoInterfaz piloto : ListaPilotos) {
+            if (nPilotos > Aux) {
+                if (!piloto.getDescalificado()) {
+                    CocheInterfaz coche = ListaCoches.get(0);
+                    piloto.setCoche(coche);
+                    ListaCoches.remove(0);
+                    Aux++;
+                }
             }
         }
     }
