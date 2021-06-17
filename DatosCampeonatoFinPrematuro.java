@@ -87,7 +87,7 @@ public class DatosCampeonatoFinPrematuro {
         //ordenaciónPilotos: descendente por Puntos del Piloto, en caso de empate por Destreza, en caso de empate por nombre
         //ordenaciónCoches: descendente por Combustible restante del Coche , en caso de empate por nombre);
         //peugeot se inscribe en campeonato
-        EscuderiaRally peugeot = new EscuderiaRally("Peugeot", Collections.reverseOrder(new ComparadorTotalPuntos()), Collections.reverseOrder(new ComparadorCombustible()));
+        EscuderiaInterfaz peugeot = new EscuderiaRally("Peugeot", Collections.reverseOrder(new ComparadorTotalPuntos()), Collections.reverseOrder(new ComparadorCombustible()));
         organizacion.setEscuderia(peugeot);
 
         //escudería citroen 
@@ -95,7 +95,7 @@ public class DatosCampeonatoFinPrematuro {
         //ordenaciónPilotos: ascendente por Puntos del Piloto, en caso de empate por Destreza, en caso de empate por nombre
         //ordenaciónCoches: ascendente por Combustible restante del Coche , en caso de empate por nombre);
         //citroen se inscribe en campeonato
-        EscuderiaRally citroen = new EscuderiaRally("Citroen", (new ComparadorTotalPuntos()),
+        EscuderiaInterfaz citroen = new EscuderiaRally("Citroen", (new ComparadorTotalPuntos()),
                 (new ComparadorCombustible()));
         organizacion.setEscuderia(citroen);
 
@@ -104,7 +104,7 @@ public class DatosCampeonatoFinPrematuro {
         //ordenaciónPilotos: descendente por Puntos del Piloto, en caso de empate por Destreza, en caso de empate por nombre
         //ordenaciónCoches: descendente por Combustible restante del Coche , en caso de empate por nombre);
         //seat se inscribe en campeonato
-        EscuderiaRally seat = new EscuderiaRally("Seat", Collections.reverseOrder(new ComparadorTotalPuntos()), Collections.reverseOrder(new ComparadorCombustible()));
+        EscuderiaInterfaz seat = new EscuderiaRally("Seat", Collections.reverseOrder(new ComparadorTotalPuntos()), Collections.reverseOrder(new ComparadorCombustible()));
         organizacion.setEscuderia(seat);
 
         //creamos los pilotos y los coches de cada escudería 

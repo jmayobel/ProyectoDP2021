@@ -135,19 +135,19 @@ public class DatosCampeonatoPremioDesierto {
 
         //coches y pilotos de seat
         //añadir a seat un CocheResistente(nombre:"Seat Tarraco" - velocidad:TORTUGA - combustible:GENEROSO);
-        CocheResistente tarraco = new CocheResistente("Seat Tarraco", Velocidad.TORTUGA, Combustible.GENEROSO);
+        CocheInterfaz tarraco = new CocheResistente("Seat Tarraco", Velocidad.TORTUGA, Combustible.GENEROSO);
         seat.addListaCoches(tarraco);
         //añadir a seat un CocheRapido(nombre:"Seat Ateca" - velocidad:GUEPARDO - combustible:GENEROSO);
-        CocheRapido ateca = new CocheRapido("Seat Ateca", Velocidad.GUEPARDO, Combustible.GENEROSO);
+        CocheInterfaz ateca = new CocheRapido("Seat Ateca", Velocidad.GUEPARDO, Combustible.GENEROSO);
         seat.addListaCoches(ateca);
         //añadir a seat un Coche(nombre:"Seat Arona" - velocidad:RAPIDA - combustible:ESCASO);
-        Coche arona = new Coche("Seat Arona", Velocidad.RAPIDA, Combustible.ESCASO);
+        CocheInterfaz arona = new Coche("Seat Arona", Velocidad.RAPIDA, Combustible.ESCASO);
         seat.addListaCoches(arona);
         //añadir a seat un PilotoExperimentado(nombre:"Ogier" - concentración: NORMAL));
-        PilotoExperimentado ogier = new PilotoExperimentado("Oiger", Concentracion.NORMAL);
+        PilotoInterfaz ogier = new PilotoExperimentado("Oiger", Concentracion.NORMAL);
         seat.addListaPilotos(ogier);
         //añadir a seat un PilotoEstrella(nombre:"McRae" - concentración: CONCENTRADO));
-        PilotoEstrella mcrae = new PilotoEstrella("McRae", Concentracion.CONCENTRADO);
+        PilotoInterfaz mcrae = new PilotoEstrella("McRae", Concentracion.CONCENTRADO);
         seat.addListaPilotos(mcrae);
         //añadir a seat un PilotoNovato(nombre:"Blomquist" - concentración: DESPISTADO));
         PilotoInterfaz blomquist = new PilotoNovato("Blomquist", Concentracion.DESPISTADO);
