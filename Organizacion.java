@@ -164,10 +164,10 @@ public class Organizacion {
 
             if(!Esc.EscuderiaDescalificada()) {
                 while (pos < getnPilotos()) {
-
                     PilotoInterfaz Piloto = Esc.getPilotosCarrera(posAux);
                     if (!Piloto.getDescalificado()) {
                         Esc.getListaPilotos().remove(posAux);
+                        System.out.println(Piloto.getNombre());
                         //Esc.getListaCoches().remove(posAux);
                         DevolverPilotos.put(Piloto, Esc);
                         pos++;

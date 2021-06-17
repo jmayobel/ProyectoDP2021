@@ -30,7 +30,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
      */
     public PilotoAbstracto(String nombre, Concentracion concentracion) { //Añadir el coche y el registro
         this.nombre = nombre;
-        this.coche = null;
+       // this.coche = null;
         this.concentracion = concentracion;
         this.resultados = new HashMap<String, Resultados>(); // la clave será el nombre del circuito
         this.descalificado = false;

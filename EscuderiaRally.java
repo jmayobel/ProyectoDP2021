@@ -220,14 +220,11 @@ public class EscuderiaRally implements EscuderiaInterfaz {
 
     public boolean EscuderiaDescalificada() {
         int cont = 0;
-        boolean desc = false;
+        boolean desc = true;
         for (PilotoInterfaz piloto : ListaPilotos) {
-            if (piloto.getDescalificado()) {
-                cont++;
+            if (!piloto.getDescalificado()) {
+                desc = false;
             }
-        }
-        if (cont == ListaPilotos.size()) {
-            desc = true;
         }
         return desc;
     }
