@@ -156,7 +156,7 @@ public class Organizacion {
         DevolverPilotos.clear();
         PilotosCarrera.clear();
         boolean desc=false;
-        while (it.hasNext() && !desc)  {
+        while (it.hasNext())  {
             int pos = 0;
             EscuderiaInterfaz Esc = it.next();
 
@@ -175,6 +175,9 @@ public class Organizacion {
                         pos++;
                     } else posAux++;
                 }
+
+              //  for (PilotoInterfaz pilot) {
+                //}
             }
 
 

@@ -27,63 +27,63 @@ public class DatosCampeonatoCompleto {
 
         //creamos y añadimos los circuitos del campeonato:
         //Crear circuito portugal con nombre:”Portugal" - complejidad:MEDIA - distancia:INTERMEDIA);
-        Circuito por = new CircuitoRally("Portugal", Complejidad.MEDIA, Distancia.INTERMEDIA);
+        CircuitoRally por = new CircuitoRally("Portugal", Complejidad.MEDIA, Distancia.INTERMEDIA);
         //además, acciones necesarias para que portugal sea un circuito con:
         //Gravilla y Nocturno
-        Circuito grapor = new Gravilla(por);
-        Circuito nocpor = new Nocturno(grapor);
+        CircuitoRally grapor = new Gravilla(por);
+        CircuitoRally nocpor = new Nocturno(grapor);
         //añadir circuito portugal a circuitos de la organización
         organizacion.setCircuito(nocpor);
 
         //Crear circuito cerdena con nombre:”Cerdeña" - complejidad:ALTA - distancia:CORTA);
-        Circuito cer = new CircuitoRally("Cerdeña", Complejidad.ALTA, Distancia.CORTA);
+        CircuitoRally cer = new CircuitoRally("Cerdeña", Complejidad.ALTA, Distancia.CORTA);
         //además, acciones necesarias para que cerdena sea un circuito con:
         //Gravilla y Mojado
-        Circuito gracer = new Gravilla(cer);
-        Circuito mojcer = new Mojado(gracer);
+        CircuitoRally gracer = new Gravilla(cer);
+        CircuitoRally mojcer = new Mojado(gracer);
         //añadir circuito cerdena a circuitos de la organización
         organizacion.setCircuito(mojcer);
 
         //Crear circuito australia con nombre:”Australia" - complejidad:BAJA - distancia:LARGA);
-        Circuito aus = new CircuitoRally("Australia", Complejidad.BAJA, Distancia.LARGA);
+        CircuitoRally aus = new CircuitoRally("Australia", Complejidad.BAJA, Distancia.LARGA);
         //además, acciones necesarias para que australia sea un circuito con:
         //Gravilla
-        Circuito graaus = new Gravilla(aus);
+        CircuitoRally graaus = new Gravilla(aus);
         //añadir circuito australia a circuitos de la organización
         organizacion.setCircuito(graaus);
 
         //Crear circuito corcega con nombre:”Córcega" - complejidad:MEDIA - distancia:INTERMEDIA);
-        Circuito cor = new CircuitoRally("Córcega", Complejidad.MEDIA, Distancia.INTERMEDIA);
+        CircuitoRally cor = new CircuitoRally("Córcega", Complejidad.MEDIA, Distancia.INTERMEDIA);
         //además, acciones necesarias para que corcega sea un circuito con:
         //Nocturno y Gravilla
-        Circuito norcor = new Nocturno(cor);
-        Circuito gracor = new Gravilla(norcor);
+        CircuitoRally norcor = new Nocturno(cor);
+        CircuitoRally gracor = new Gravilla(norcor);
         //añadir circuito corcega a circuitos de la organización        
         organizacion.setCircuito(gracor);
 
         //Crear circuito finlandia con nombre:”Finlandia" - complejidad:ALTA - distancia:CORTA);
-        Circuito fin = new CircuitoRally("Finlandia", Complejidad.ALTA, Distancia.CORTA);
+        CircuitoRally fin = new CircuitoRally("Finlandia", Complejidad.ALTA, Distancia.CORTA);
         //además, acciones necesarias para que finlandia sea un circuito con:
         //Nocturno, Frío y Mojado
-        Circuito norfin = new Nocturno(fin);
-        Circuito frfin = new Frio(norfin);
-        Circuito mojfin = new Mojado(frfin);
+        CircuitoRally norfin = new Nocturno(fin);
+        CircuitoRally frfin = new Frio(norfin);
+        CircuitoRally mojfin = new Mojado(frfin);
         //añadir circuito finlandia a circuitos de la organización
         organizacion.setCircuito(mojfin);
 
         //Crear circuito alemania con nombre:”Alemania" - complejidad:MEDIA - distancia:INTERMEDIA);
-        Circuito ale = new CircuitoRally("Alemania", Complejidad.MEDIA, Distancia.INTERMEDIA);
+        CircuitoRally ale = new CircuitoRally("Alemania", Complejidad.MEDIA, Distancia.INTERMEDIA);
         //además, acciones necesarias para que alemania sea un circuito con:
         //Mojado
-        Circuito mojale = new Mojado(ale);
+        CircuitoRally mojale = new Mojado(ale);
         //añadir circuito alemania a circuitos de la organización
         organizacion.setCircuito(mojale);
 
         //Crear circuito chile con nombre:”Chile" - complejidad:ALTA - distancia:CORTA);
-        Circuito chi = new CircuitoRally("Chile", Complejidad.ALTA, Distancia.CORTA);
+        CircuitoRally chi = new CircuitoRally("Chile", Complejidad.ALTA, Distancia.CORTA);
         //además, acciones necesarias para que chile sea un circuito con:
         //Gravilla
-        Circuito grachi = new Gravilla(chi);
+        CircuitoRally grachi = new Gravilla(chi);
         //añadir circuito chile a circuitos de la organización
         organizacion.setCircuito(grachi);
 
