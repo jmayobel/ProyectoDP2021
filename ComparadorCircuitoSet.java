@@ -3,7 +3,7 @@ import java.util.Comparator;
 /**
  * Encapsulacion de comparadores
  *
- * @author Miguel Medina Cantos
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version (a version number or a date)
  */
 public abstract class ComparadorCircuitoSet implements Comparator<Circuito> {

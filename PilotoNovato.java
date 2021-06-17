@@ -5,7 +5,7 @@
  * La clase PilotoNovato calcula la destreza del piloto.
  * >>>>>>> 6026d10d39905b494dc4805ab62cc7d1bfe67ccb
  *
- * @author CESAR VAZQUEZ LAZARO
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version 0.1
  */
 public class PilotoNovato extends PilotoAbstracto {

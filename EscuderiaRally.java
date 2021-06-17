@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * La clase EscuderiaRally representa los equipos que competirán en el campeonato.
  *
- * @author MIGUEL MEDINA Y CÉSAR VÁZQUEZ
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version 0.2
  */
 public class EscuderiaRally implements EscuderiaInterfaz {
@@ -136,62 +136,6 @@ public class EscuderiaRally implements EscuderiaInterfaz {
         this.ListaCoches.add(coche);
     }
 
-    /**
-     * Elimina un piloto de la lista de pilotos
-     *
-     * @param buscado Piloto a eliminar
-     */
-    public void eliminarPiloto(PilotoInterfaz buscado) {
-        Iterator<PilotoInterfaz> it = this.ListaPilotos.iterator(); //Inicializamos el Iterator
-        boolean enc = false;
-        while (it.hasNext() && !enc) {
-            PilotoInterfaz buscar = it.next();
-            if (buscar.equals(buscado)) {
-                enc = true;
-                it.remove();
-            }
-        }
-    }
-
-    /**
-     * Elimina un coche de la lista de coches
-     *
-     * @param buscado Coche a eliminar
-     */
-    public void eliminarCoche(CocheInterfaz buscado) {
-        Iterator<CocheInterfaz> it = this.ListaCoches.iterator(); //Inicializamos el Iterator
-        boolean enc = false;
-        while (it.hasNext() && !enc) {
-            CocheInterfaz buscar = it.next();
-            if (buscar.equals(buscado)) {
-                enc = true;
-                it.remove();
-            }
-        }
-    }
-
-    /**
-     * Vacía la lista de pilotos que irán a la carrera.
-     */
-    public void limpiarPilotosCarrera() {
-        Iterator<PilotoInterfaz> it = this.ListaPilotos.iterator(); //Inicializamos el Iterator
-        while (it.hasNext()) {
-            PilotoInterfaz eliminar = it.next();
-            it.remove();
-        }
-    }
-
-
-    /**
-     * Vacía la lista de coches
-     */
-    public void limpiarListaCoches() {
-        Iterator<CocheInterfaz> it = this.ListaCoches.iterator(); //Inicializamos el Iterator
-        while (it.hasNext()) {
-            CocheInterfaz eliminar = it.next();
-            it.remove();
-        }
-    }
 
     /**
      * Muestra la lista de coches
@@ -295,14 +239,6 @@ public class EscuderiaRally implements EscuderiaInterfaz {
         result = 23 * result + getComparadorCoches().hashCode();
 
         return result;
-    }
-
-    public int TamanoListaPilotos() {
-
-
-        return ListaPilotos.size();
-
-
     }
 
     @Override

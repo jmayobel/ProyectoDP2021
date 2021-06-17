@@ -4,7 +4,7 @@ import java.util.Comparator;
 /**
  * EscuderiaInterfaz declara los métodos que se usarán en la clase EscuderiaRally.
  *
- * @author CÉSAR VÁZQUEZ Y MIGUEL MEDINA
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version 0.2
  */
 public interface EscuderiaInterfaz {
@@ -29,15 +29,6 @@ public interface EscuderiaInterfaz {
 
     public void addListaCoches(CocheInterfaz coche);
 
-    //BORRARLOS DESPUES SI ESO
-    public void eliminarPiloto(PilotoInterfaz buscado);
-
-    public void eliminarCoche(CocheInterfaz buscado);
-
-    public void limpiarPilotosCarrera();
-
-    public void limpiarListaCoches();
-
     public void MostrarCoches();
 
     public int getCarrerasTerminadasEsc();
@@ -58,5 +49,4 @@ public interface EscuderiaInterfaz {
 
     public boolean equals(Object obj);
 
-    public int TamanoListaPilotos();
 }

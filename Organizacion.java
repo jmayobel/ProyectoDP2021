@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * La clase Organizacion se encargará
  *
- * @author (Miguel)
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version (a version number or a date)
  */
 public class Organizacion {

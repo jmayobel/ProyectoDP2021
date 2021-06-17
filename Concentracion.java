@@ -3,7 +3,7 @@
  * que un piloto se mantiene en una carrera
  * hasta que pierde la concentración y abandona esa carrera.
  *
- * @author CESAR VAZQUEZ LAZARO
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version 0.2
  */
 public enum Concentracion {

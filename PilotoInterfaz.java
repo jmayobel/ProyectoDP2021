@@ -8,7 +8,6 @@
 public interface PilotoInterfaz {
     public String getNombre();
 
-    public int getPuntosActuales(Circuito circuito);
     public CocheInterfaz getCoche();
 
     public void setCoche(CocheInterfaz coche);
@@ -44,10 +43,6 @@ public interface PilotoInterfaz {
     public double getTiempoUltimoCircuito();
 
     public void mostrarResultados();
-
-    public void eliminarResultado(Circuito buscado);
-
-    public void limpiarResultados();
 
     public void conducirCoche(Circuito circuito);
 

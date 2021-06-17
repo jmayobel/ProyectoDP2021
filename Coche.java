@@ -1,7 +1,7 @@
 /**
  * Clase Coche, que contiene su nombre, velocidad y combustible.
  *
- * @author Juan Manuel Mayo Beltrán
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version (1.0)
  */
 public class Coche implements CocheInterfaz {

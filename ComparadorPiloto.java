@@ -3,7 +3,7 @@ import java.util.Comparator;
 /**
  * Comparador de Pilotos que permite la ordenación según un orden.
  *
- * @author CESAR VAZQUEZ LAZARO
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version 0.1
  */
 public abstract class ComparadorPiloto implements Comparator<PilotoInterfaz> {

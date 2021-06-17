@@ -1,7 +1,7 @@
 /**
  * Clase padre del patron decorator
  *
- * @author Miguel Medina Cantos
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version (1.0)
  */
 public abstract class CircuitoRallyExtra extends CircuitoRally

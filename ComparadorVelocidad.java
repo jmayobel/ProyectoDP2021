@@ -1,7 +1,7 @@
 /**
  * Comparador de Coches que permite la ordenación según la velocidad del mismo.
  *
- * @author MIGUEL MEDINA Y JUANMA MAYO
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version 0.1
  */
 public class ComparadorVelocidad extends ComparadorCoche {

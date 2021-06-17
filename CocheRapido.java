@@ -1,7 +1,7 @@
 /**
  * CocheRapido contiene un tanque con nitro que permite al coche aumentar su velocidad real.
  *
- * @author Juan Manuel Mayo Beltrán
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version (1.0)
  */
 public class CocheRapido extends Coche {

@@ -3,7 +3,7 @@
  * entre ellas se encuentra el tiempo corrido en carrera, los puntos obtenidos,
  * y el circuito en cuestión donde se ha corrido.
  *
- * @author CESAR VAZQUEZ LAZARO
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version 0.1
  */
 public class Resultados {

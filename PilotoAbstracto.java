@@ -7,7 +7,7 @@ import java.util.*;
  * La diferencia entre cada Piloto viene marcada por la concentración del mismo,
  * característica que marcará el rendimiento del Piloto y el Coche en el Circuito.
  *
- * @author CESAR VAZQUEZ LAZARO
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version 0.5
  */
 public abstract class PilotoAbstracto implements PilotoInterfaz {
@@ -175,23 +175,6 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
     }
 
     /**
-     * Elimina la información del registro dado un circuito en específico.
-     *
-     * @param buscado Circuito del que se desea borrar la información.
-     */
-    public void eliminarResultado(Circuito buscado) {
-        Iterator<String> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
-        boolean enc = false;
-        while (it.hasNext()) {
-            String buscar = it.next();
-            if (buscar.equals(buscado.getNombreCircuito())) {
-                enc = true;
-                it.remove();
-            }
-        }
-    }
-
-    /**
      * Devuelve el tamaño de la lista del registro del piloto.
      *
      * @return int Tamaño del registro.
@@ -236,17 +219,6 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
     }
 
     /**
-     * Devuelve el total de puntos que ha conseguido el piloto en un circuito concreto.
-     *
-     * @param  circuito Circuito del que se quiere obtener los puntos conseguidos.
-     * @return int Puntos totales del piloto.
-     */
-    public int getPuntosActuales(Circuito circuito) {
-        int puntos = resultados.get(circuito.getNombreCircuito()).getPuntos();
-        return puntos;
-    }
-
-    /**
      * Devuelve los puntos obtenidos en la última carrera corrida por el piloto.
      *
      * @return double Tiempo de la última carrera corrida.
@@ -276,13 +248,6 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
             Resultados res= resultados.get(key);
             System.out.println("Carrera: " +"("+ key +")"+  " - Puntos: " + res.getPuntos() + " - Tiempo: " + res.getTiempoResultados());
         }
-    }
-
-    /**
-     * Vacía el registro de resultados.
-     */
-    public void limpiarResultados() {
-        this.resultados.clear();
     }
 
     //Otros métodos

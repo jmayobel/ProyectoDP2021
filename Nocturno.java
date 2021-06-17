@@ -1,7 +1,7 @@
 /**
  * Circuito con extra nocturno.
  *
- * @author Miguel Medina Cantos
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version (1.0)
  */
 public class Nocturno extends CircuitoRallyExtra

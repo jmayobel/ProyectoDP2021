@@ -3,7 +3,7 @@ import java.util.Collections;
 /**
  * Write a description of class ComparadorResultado here.
  *
- * @author Miguel Medina Cantos y Juan Manuel Mayo
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version (a version number or a date)
  */
 public class ComparadorResultado extends ComparadorPiloto {

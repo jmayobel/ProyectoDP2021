@@ -1,7 +1,7 @@
 /**
  * Comparador de Pilotos que permite la ordenación según el nombre del mismo.
  *
- * @author Miguel Medina Cantos
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version 0.0
  */
 public class ComparadorNombrePiloto extends ComparadorPiloto {

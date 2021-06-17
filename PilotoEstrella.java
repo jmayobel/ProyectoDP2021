@@ -1,7 +1,7 @@
 /**
  * La clase PilotoEstrella calcula la destreza del piloto.
  *
- * @author CESAR VAZQUEZ LAZARO
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version 0.1
  */
 public class PilotoEstrella extends PilotoAbstracto {
