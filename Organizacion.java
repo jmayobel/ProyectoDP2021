@@ -158,20 +158,20 @@ public class Organizacion {
         boolean desc=false;
         while (it.hasNext() && !desc)  {
             int pos = 0;
-            int posAux = 0;
             EscuderiaInterfaz Esc = it.next();
 
             if (!Esc.EscuderiaDescalificada()) {
-                System.out.println(Esc.getNombre());
-                System.out.println(Esc.EscuderiaDescalificada());
                 Esc.AsignarCoche(getnPilotos());
-
+                System.out.println(Esc.getNombre());
+                System.out.println("TAMAÑO LISTA: " + Esc.getListaPilotos().size());
+                int posAux = 0;
                 while (pos < getnPilotos()) {
                     PilotoInterfaz Piloto = Esc.getPilotosCarrera(posAux);
+                    System.out.println(Piloto.getDescalificado());
+                    System.out.println(posAux);
                     if (!Piloto.getDescalificado()) {
-                        Esc.getListaPilotos().remove(posAux);
-                        System.out.println(Piloto.getNombre());
                         DevolverPilotos.put(Piloto, Esc);
+                        Esc.getListaPilotos().remove(posAux);
                         pos++;
                     } else posAux++;
                 }
