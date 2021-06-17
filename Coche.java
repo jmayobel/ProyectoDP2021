@@ -1,11 +1,11 @@
 /**
- * Clase Coche, que contiene su nombre,velocidad y combustible.
+ * Clase Coche, que contiene su nombre, velocidad y combustible.
  *
  * @author Juan Manuel Mayo Beltrán
- * @version (a version number or a date)
+ * @version (1.0)
  */
 public class Coche implements CocheInterfaz {
-    // instance variables - replace the example below with your own
+    //Variables de la clase Coche:
     private String nombreCoche;             //Nombre completo del Coche
     private Velocidad velocidad;            //Velocidad (Nombre de la velocidad y tamaño) que posee el coche
     private Combustible combustible;        //Combustible total del coche
@@ -15,9 +15,9 @@ public class Coche implements CocheInterfaz {
     /**
      * Constructor del coche
      *
-     * @param nombre
-     * @param velocidad
-     * @param combustible
+     * @param nombre Nombre del coche
+     * @param velocidad Velocidad en la que el coche puede correr
+     * @param combustible Cantidad de combustible total que el coche almacena
      */
     public Coche(String nombre, Velocidad velocidad, Combustible combustible) {
         this.nombreCoche = nombre;
@@ -27,9 +27,9 @@ public class Coche implements CocheInterfaz {
     }
 
     /**
-     * Set del nombre del coche
+     * Establece el nombre del coche
      *
-     * @param nombre - nombre del coche
+     * @param  nombre - Nombre del coche
      */
     public void setnombreCoche(String nombre) {
         this.nombreCoche = nombre;
@@ -109,7 +109,6 @@ public class Coche implements CocheInterfaz {
         double velocidadReal = Math.round(((getValorVelocidad() * piloto.getDestreza())*100d)/ circuito.getValorComplejidad()) /100d;
         System.out.println("+++Con estas condiciones es capaz de correr a " + velocidadReal + " km/hora +++");
         return velocidadReal;
-
     }
 
     /**
@@ -138,7 +137,6 @@ public class Coche implements CocheInterfaz {
     }
     public double getCombustibleRestante() {
         return combustibleRestante;
-
     }
 
     /**
@@ -162,15 +160,12 @@ public class Coche implements CocheInterfaz {
         CocheInterfaz other = (CocheInterfaz) obj;
 
         return super.equals(other);
-
-
     }
 
-
     /**
-     * devuelve la informacion de la clase.
+     * Muestra por pantalla la información de la clase.
      *
-     * @return un string con la informacion de la clase.
+     * @return String Concatenación con la información de la clase.
      */
     @Override
     public String toString() {

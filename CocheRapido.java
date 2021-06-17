@@ -1,19 +1,20 @@
 /**
- * Write a description of class Coche here.
+ * CocheRapido contiene un tanque con nitro que permite al coche aumentar su velocidad real.
  *
  * @author Juan Manuel Mayo Beltrán
- * @version (a version number or a date)
+ * @version (1.0)
  */
 public class CocheRapido extends Coche {
 
+    //Variables de la clase CocheRapido:
     private double nitro;
 
     /**
-     * Constructor parametrizado para CocheRapido
+     * Constructor parametrizado para CocheRapido.
      *
-     * @param nombre      - tipo String
-     * @param velocidad   - tipo Velocidad
-     * @param combustible - tipo Combustible
+     * @param  nombre Nombre del coche.
+     * @param  velocidad Velocidad que puede alcanzar el coche.
+     * @param  combustible Cantidad de combustible del coche.
      */
     public CocheRapido(String nombre, Velocidad velocidad, Combustible combustible) {
         super(nombre, velocidad, combustible);
@@ -21,9 +22,9 @@ public class CocheRapido extends Coche {
     }
 
     /**
-     * Devuelve el nitro del coche
+     * Devuelve el nitro del coche.
      *
-     * @return Devuelve nitro - Tipo double
+     * @return double nitro Cantidad de nitro disponible.
      */
     public double getNitro() {
         return nitro;
@@ -31,9 +32,11 @@ public class CocheRapido extends Coche {
     public void setNitro(double nitro) { this.nitro = nitro;}
 
     /**
-     * Devuelve la velocidad real de CocheRapido y Actualiza el nitro
+     * Devuelve la velocidad real de CocheRapido y actualiza el nitro.
      *
-     * @return Devuelve velocidadNitro - Tipo double
+     * @param  piloto Piloto que conducirá el coche.
+     * @param  circuito Circuito en el que se usará el nitro.
+     * @return double Velocidad que obtendrá tras usar el nitro.
      */
     @Override
     public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito) {
@@ -51,9 +54,14 @@ public class CocheRapido extends Coche {
         }
         return velocidadNitro;
     }
+
+    /**
+     * Muestra por pantalla la información de la clase.
+     *
+     * @return String Concatenación con la información de la clase.
+     */
     @Override
     public double getTiempo(PilotoInterfaz piloto, Circuito circuito) {
         return ((circuito.getValorDistancia()) / this.getVelocidadReal(piloto, circuito)) *60;
     }
-
 }
