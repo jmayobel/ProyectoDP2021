@@ -95,7 +95,11 @@ public class Organizacion {
         }
         return aux;
     }
-
+    /**
+     * Devuelve el numero pilotos que pueden correr en cada carrera
+     *
+     * @return numero pilotos que pueden correr en cada carrera.
+     */
     public int getnPilotos() {
         return nPilotos;
     }
