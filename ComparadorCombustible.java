@@ -1,8 +1,8 @@
 /**
  * Comparador de Coches que permite la ordenación según el combustible del mismo.
  *
- * @author CESAR VAZQUEZ LAZARO
- * @version 0.1
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
+ * @version (1.0)
  */
 public class ComparadorCombustible extends ComparadorCoche {
     /**

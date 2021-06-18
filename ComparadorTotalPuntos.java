@@ -1,8 +1,8 @@
 /**
  * Comparador de Pilotos que permite la ordenación según el total de puntos del mismo.
  *
- * @author CESAR VAZQUEZ LAZARO
- * @version 0.1
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
+ * @version 1.0
  */
 public class ComparadorTotalPuntos extends ComparadorPiloto {
     /**

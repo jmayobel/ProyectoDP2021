@@ -1,10 +1,8 @@
-;
-
 /**
- * Write a description of class Coche here.
+ * Interfaz de la clase Coche.
  *
- * @author Juan Manuel Mayo Beltrán
- * @version (a version number or a date)
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
+ * @version (1.0)
  */
 public interface CocheInterfaz {
     public void setnombreCoche(String nombre);

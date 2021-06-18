@@ -1,18 +1,21 @@
 /**
- * Write a description of class Coche here.
+ * CocheResistente contiene un tanque con combustible extra
+ * que permite al coche aumentar su combustible en caso de que no sea capaz de alcanzar el final.
  *
- * @author Juan Manuel Mayo Beltrán
- * @version (a version number or a date)
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
+ * @version (1.0)
  */
 public class CocheResistente extends Coche {
-    private double depositoExtra;
+
+    //Variables de la clase CocheResistente:
+    private double depositoExtra;   //Cantidad de combustible extra del coche
 
     /**
-     * Constructor parametrizado de CocheResistente
+     * Constructor parametrizado para CocheResistente.
      *
-     * @param nombre      - tipo String
-     * @param velocidad   - tipo velocidad
-     * @param combustible - tipo Combustible
+     * @param  nombre Nombre del coche.
+     * @param  velocidad Velocidad que puede alcanzar el coche.
+     * @param  combustible Cantidad de combustible del coche.
      */
     public CocheResistente(String nombre, Velocidad velocidad, Combustible combustible) {
         super(nombre, velocidad, combustible);
@@ -21,9 +24,10 @@ public class CocheResistente extends Coche {
     }
 
     /**
-     * Devuelve el combustible usado por el CocheResistente
+     * Devuelve el combustible usado por el CocheResistente.
      *
-     * @return combustibleRestante - tipo double
+     * @param resultado Cantidad de combustible usado..
+     *
      */
     @Override
     public void UsarCombustible(double resultado) {
@@ -39,6 +43,5 @@ public class CocheResistente extends Coche {
         } else {
                 super.UsarCombustible(resultado);
             }
-
         }
     }

@@ -34,9 +34,9 @@ public class CocheRapido extends Coche {
     /**
      * Devuelve la velocidad real de CocheRapido y actualiza el nitro.
      *
-     * @param  piloto Piloto que conducirá el coche.
-     * @param  circuito Circuito en el que se usará el nitro.
-     * @return double Velocidad que obtendrá tras usar el nitro.
+     * @param piloto Piloto que conducirá el coche.
+     * @param circuito Circuito en el que se usará el nitro.
+     * @return velocidad Nitro Velocidad que obtendrá tras usar el nitro.
      */
     @Override
     public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito) {
