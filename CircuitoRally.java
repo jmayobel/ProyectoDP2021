@@ -1,7 +1,7 @@
 /**
- * Clase que gestiona un circuito en el que correran los pilotos.
+ * Clase que gestiona un circuito en el que correran los pilotos
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
  * @version (1.0)
  */
 public class CircuitoRally implements Circuito {
@@ -12,11 +12,11 @@ public class CircuitoRally implements Circuito {
     private Distancia distancia;        //Distancia original del circuito
 
     /**
-     * Constructor parametrizado de la clase CircuitoRally.
+     * Constructor parametrizado de la clase CircuitoRally
      *
-     * @param  nombreCircuito - Nombre del circuito
-     * @param  complejidad - Complejidad del circuito
-     * @param  distancia - Distancia del circuito
+     * @param  nombreCircuito Nombre del circuito
+     * @param  complejidad Complejidad del circuito
+     * @param  distancia Distancia del circuito
      */
     public CircuitoRally(String nombreCircuito, Complejidad complejidad, Distancia distancia) {
         this.nombreCircuito = nombreCircuito;
@@ -25,54 +25,54 @@ public class CircuitoRally implements Circuito {
     }
 
     /**
-     * Devuelve el nombre del circuito.
+     * Devuelve el nombre del circuito
      *
-     * @return String nombreCircuito Nombre del circuito.
+     * @return Nombre del circuito
      */
     public String getNombreCircuito() {
         return nombreCircuito;
     }
 
     /**
-     * Devuelve la complejidad del circuito.
+     * Devuelve la complejidad del circuito
      *
-     * @return Complejidad complejidad Dificultad del circuito.
+     * @return Dificultad del circuito
      */
     public Complejidad getComplejidad() {
         return complejidad;
     }
 
     /**
-     * Devuelve la distancia.
+     * Devuelve la distancia
      *
-     * @return Distancia distancia Distancia del circuito del punto inicial al final.
+     * @return Distancia del circuito del punto inicial al final
      */
     public Distancia getDistancia() {
         return distancia;
     }
 
     /**
-     * Devuelve el valor de la complejidad.
+     * Devuelve el valor de la complejidad
      *
-     * @return double Valor de la complejidad.
+     * @return Valor de la complejidad
      */
     public double getValorComplejidad() {
         return complejidad.getValor();
     }
 
     /**
-     * Devuelve el valor de la distancia.
+     * Devuelve el valor de la distancia
      *
-     * @return double Valor de la distancia.
+     * @return Valor de la distancia
      */
     public double getValorDistancia() {
         return distancia.getValor();
     }
 
     /**
-     * Muestra por pantalla la información de la clase.
+     * Muestra por pantalla la informacion de la clase
      *
-     * @return String Concatenación de la información de la clase.
+     * @return Concatenación de la informacion de la clase
      */
     @Override
     public String toString() {
@@ -82,10 +82,10 @@ public class CircuitoRally implements Circuito {
     }
 
     /**
-     * Devuelve si el objeto pasado por parámetro es el mismo con el que comparamos.
+     * Devuelve si el objeto pasado por parametro es el mismo con el que comparamos
      *
-     * @return boolean "True" si el objeto pasado es el mismo que el que comparamos,
-     *                 "False" en caso contrario.
+     * @return "true" si el objeto pasado es el mismo que el que comparamos,
+     *         "false" en caso contrario
      */
     @Override
     public boolean equals(Object obj) {

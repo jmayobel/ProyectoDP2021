@@ -7,6 +7,14 @@ import java.util.Collections;
  * @version (1.0)
  */
 public class ComparadorComplejidad extends ComparadorCircuitoSet {
+
+    /**
+     * Comparador de Circuitos en función de la complejidad.
+     * En caso de empate, comparará por la distancia.
+     *
+     * @param c1 Circuito a comparar
+     * @param c2 Circuito a ser comparado
+     */
     public int compare(Circuito c1, Circuito c2) {
         if (c1.getValorComplejidad() == c2.getValorComplejidad())
             return  Collections.reverseOrder(new ComparadorDistancia()).compare(c1, c2);

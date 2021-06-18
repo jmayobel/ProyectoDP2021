@@ -22,6 +22,14 @@ public interface PilotoInterfaz {
 
     public abstract double getDestreza();
 
+    public int getTamañoResultados();
+
+    public int getCarrerasTerminadas();
+
+    public int getPuntosTotales();
+
+    public double getTiempoUltimoCircuito();
+
     public void descalificar();
 
     public void abandonar();
@@ -32,19 +40,11 @@ public interface PilotoInterfaz {
 
     public double buscarResultado(Circuito buscado);
 
-    public int getTamañoResultados();
-
-    public int getCarrerasTerminadas();
-
-    public int getPuntosTotales();
-
-    public boolean equals(Object obj);
-
-    public double getTiempoUltimoCircuito();
-
     public void mostrarResultados();
 
     public void conducirCoche(Circuito circuito);
+
+    public boolean equals(Object obj);
 
     public String toString();
 

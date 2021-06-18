@@ -5,6 +5,7 @@
  * @version (1.0)
  */
 public class ComparadorCombustible extends ComparadorCoche {
+
     /**
      * Comparador de Coches en función del combustible.
      * En caso de empate, comparará por el nombre del coche.

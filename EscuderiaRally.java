@@ -71,6 +71,17 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     }
 
     /**
+     * @return numero de carreras terminadas (con tiempo positivo) de todos los pilotos de la escuderia
+     */
+    public int getCarrerasTerminadasEsc(){
+        int cont = 0;
+        for(PilotoInterfaz pil : ListaPilotos){
+            cont += pil.getCarrerasTerminadas();
+        }
+        return cont;
+    }
+
+    /**
      * Devuelve el comparador usado para la lista de pilotos
      *
      * @return compPilotos Comparador de la lista de pilotos
@@ -198,16 +209,7 @@ public class EscuderiaRally implements EscuderiaInterfaz {
         return puntostotales;
     }
 
-    /**
-     * Devuelve el numero de carreras terminadas de todos los pilotos de la escuderia
-     */
-    public int getCarrerasTerminadasEsc(){
-        int cont = 0;
-        for(PilotoInterfaz pil : ListaPilotos){
-            cont += pil.getCarrerasTerminadas();
-        }
-        return cont;
-    }
+
 
     /**
      * Asigna los coches con combustible a los pilotos que no estén descalificados de la escudería

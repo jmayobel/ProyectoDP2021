@@ -117,6 +117,15 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
     public abstract double getDestreza();
 
     /**
+     * Devuelve el tamaño de la lista del registro del piloto.
+     *
+     * @return int Tamaño del registro.
+     */
+    public int getTamañoResultados() {
+        return this.resultados.size();
+    }
+
+    /**
      * Descalifica al piloto, negándole a seguir participando en la competición.
      */
     public void descalificar() { //También llamado setDescalificado()
@@ -174,14 +183,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
         return tiempo;
     }
 
-    /**
-     * Devuelve el tamaño de la lista del registro del piloto.
-     *
-     * @return int Tamaño del registro.
-     */
-    public int getTamañoResultados() {
-        return this.resultados.size();
-    }
+
 
     /**
      * Devuelve la cantidad de carreras que el piloto ha conseguido terminar.
@@ -276,7 +278,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
         }
         else {
             if (coche.getCombustibleRestante() < tiempoCarrera) {
-                resultado = coche.getValorcombustible() - tiempoCarrera;
+                resultado = coche.getCombustibleRestante() - tiempoCarrera;
                 resultado= Math.round((resultado*100d))/100d;
                 tiempousado = tiempoCarrera + resultado;
                 tiempousado = Math.round(tiempousado*100d)/100d;

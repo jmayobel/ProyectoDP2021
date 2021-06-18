@@ -1,5 +1,5 @@
 /**
- * enum Distancia que va a usar Circuitos
+ * ENUM Distancia que va a usar Circuitos
  *
  * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version (1.0)

@@ -1,7 +1,7 @@
 /**
- * CocheRapido contiene un tanque con nitro que permite al coche aumentar su velocidad real.
+ * CocheRapido contiene un tanque con nitro que permite al coche aumentar su velocidad real
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
  * @version (1.0)
  */
 public class CocheRapido extends Coche {
@@ -10,11 +10,11 @@ public class CocheRapido extends Coche {
     private double nitro;
 
     /**
-     * Constructor parametrizado para CocheRapido.
+     * Constructor parametrizado para CocheRapido
      *
-     * @param nombre      Nombre del coche.
-     * @param velocidad   Velocidad que puede alcanzar el coche.
-     * @param combustible Cantidad de combustible del coche.
+     * @param nombre Nombre del coche
+     * @param velocidad Velocidad que puede alcanzar el coche
+     * @param combustible Cantidad de combustible del coche
      */
     public CocheRapido(String nombre, Velocidad velocidad, Combustible combustible) {
         super(nombre, velocidad, combustible);
@@ -22,9 +22,9 @@ public class CocheRapido extends Coche {
     }
 
     /**
-     * Devuelve el nitro del coche.
+     * Devuelve el nitro del coche
      *
-     * @return double nitro Cantidad de nitro disponible.
+     * @return Cantidad de nitro disponible
      */
     public double getNitro() {
         return nitro;
@@ -35,11 +35,11 @@ public class CocheRapido extends Coche {
     }
 
     /**
-     * Devuelve la velocidad real de CocheRapido y actualiza el nitro.
+     * Devuelve la velocidad real de CocheRapido y actualiza el nitro
      *
-     * @param piloto   Piloto que conducirá el coche.
-     * @param circuito Circuito en el que se usará el nitro.
-     * @return velocidad Nitro Velocidad que obtendrá tras usar el nitro.
+     * @param piloto Piloto que conducira el coche
+     * @param circuito Circuito en el que se usara el nitro
+     * @return Velocidad que obtendra tras usar el nitro
      */
     @Override
     public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito) {
@@ -61,9 +61,9 @@ public class CocheRapido extends Coche {
     }
 
     /**
-     * Muestra por pantalla la información de la clase.
+     * Muestra por pantalla la informacion de la clase
      *
-     * @return String Concatenación con la información de la clase.
+     * @return Concatenacion con la informacion de la clase
      */
     @Override
     public String toString() {
