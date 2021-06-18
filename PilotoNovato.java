@@ -1,5 +1,5 @@
 /**
- * La clase PilotoNovato calcula la destreza del piloto.
+ * La clase PilotoNovato calcula la destreza del piloto
  *
  * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version 1.0
@@ -11,14 +11,19 @@ public class PilotoNovato extends PilotoAbstracto {
     /**
      * Constructor parametrizado de la clase PilotoNovato.
      *
-     * @param nombre        Nombre de pila del piloto
-     * @param concentracion Concentración del piloto
+     * @param nombre Nombre de pila del piloto
+     * @param concentracion Concentracion del piloto
      */
     public PilotoNovato(String nombre, Concentracion concentracion) {
         super(nombre, concentracion);
         this.destreza = getDestreza();
     }
 
+    /**
+     * Calcula la destreza del piloto dependiendo del tipo de Piloto
+     *
+     * @return Destreza del piloto
+     */
     @Override
     public double getDestreza() {
         double Destreza = (((getTiempoConcentracion() * 0.97) / 120) - 0.03);

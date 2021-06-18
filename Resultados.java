@@ -1,10 +1,10 @@
 /**
- * La clase Resultados llevará una lista con la información del piloto en cada carrera,
+ * La clase Resultados llevara una lista con la informacion del piloto en cada carrera,
  * entre ellas se encuentra el tiempo corrido en carrera, los puntos obtenidos,
- * y el circuito en cuestión donde se ha corrido.
+ * y el circuito en cuestion donde se ha corrido
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
- * @version 1.0
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
+ * @version (1.0)
  */
 public class Resultados {
 
@@ -13,7 +13,7 @@ public class Resultados {
     private int puntos;         //Puntos ganados en una carrera 
 
     /**
-     * Constructor estándar de la clase Resultados.
+     * Constructor estandar de la clase Resultados
      */
     public Resultados() {
         this.tiempo = 0;
@@ -21,7 +21,7 @@ public class Resultados {
     }
 
     /**
-     * Constructor parametrizado de la clase Resultados.
+     * Constructor parametrizado de la clase Resultados
      *
      * @param tiempo Tiempo en el que el piloto ha terminado la carrera.
      *               Si el tiempo es negativo, indica los minutos que le han faltado para terminarlo
@@ -31,12 +31,11 @@ public class Resultados {
         this.puntos = 0;
     }
 
-    //Métodos get()/ set()
     /**
      * Devuelve el tiempo en el que el piloto ha terminado la carrera. Si el tiempo es negativo,
-     * indica los minutos que le han faltado para terminarlo.
+     * indica los minutos que le han faltado para terminarlo
      *
-     * @return tiempo Tiempo de carrera
+     * @return  Tiempo de carrera
      */
     public double getTiempoResultados() {
         return this.tiempo;

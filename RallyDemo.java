@@ -1,5 +1,5 @@
 /**
- * Clase para realizar la simulación.
+ * Clase para realizar la simulacion.
  * Primero, se cargan los datos de inicio.
  * Después se invoca al método de Organización que gestiona el campeonato.
  *
