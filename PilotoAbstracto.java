@@ -181,8 +181,6 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
         return tiempo;
     }
 
-
-
     /**
      * Devuelve la cantidad de carreras que el piloto ha conseguido terminar.
      *
@@ -234,9 +232,6 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
         tiempo = valor.getTiempoResultados();
         return tiempo;
     }
-
-    //ESTE MODULO NO SIRVE PARA NADA
-    //RECORRE RESULTADOS SOLO SACA LA KEY
 
     /**
      * Imprime por pantalla los resultados del piloto en toda la competición.
@@ -304,7 +299,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
     /**
      * Muestra por pantalla la información de la clase.
      *
-     * @return String Concatenación con la información de la clase.
+     * @return Concatenacion con la informacion de la clase
      */
     @Override
     public String toString() {
@@ -329,7 +324,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
     }
 
     /**
-     * Devuelve si el objeto pasado por parámetro es el mismo con el que comparamos.
+     * Devuelve si el objeto pasado por parametro es el mismo con el que comparamos
      *
      * @return boolean "True" si el objeto pasado es el mismo que el que comparamos,
      *                 "False" en caso contrario.

@@ -5,7 +5,7 @@ all he/she needs to know. The comments should usually include at least:
 ------------------------------------------------------------------------
 
 PROJECT TITLE: Rally Championship
-PURPOSE OF PROJECT: Tener los conocimientos necesarios para utilizar los patrones de Java, junto a sus colecciones y estructuras.
+PURPOSE OF PROJECT: Aprender a utilizar los patrones de Java, junto a sus colecciones y estructuras.
 VERSION or DATE: 1.0
 HOW TO START THIS PROJECT:
 AUTHORS: Juan Manuel Mayo Beltran, César Vázquez Lázaro, Miguel Medina Cantos
