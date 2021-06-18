@@ -16,6 +16,8 @@ public interface EscuderiaInterfaz {
 
     public ArrayList getListaCoches();
 
+    public int getCarrerasTerminadasEsc();
+
     public Comparator<PilotoInterfaz> getComparadorPilotos();
 
     public void setComparadorPilotos(Comparator<PilotoInterfaz> comparador);
@@ -26,12 +28,9 @@ public interface EscuderiaInterfaz {
 
     public void addListaPilotos(PilotoInterfaz piloto);
 
-
     public void addListaCoches(CocheInterfaz coche);
 
     public void MostrarCoches();
-
-    public int getCarrerasTerminadasEsc();
 
     public void MostrarPilotos();
 

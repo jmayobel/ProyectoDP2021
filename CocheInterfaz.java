@@ -15,7 +15,13 @@ public interface CocheInterfaz {
 
     public Velocidad getvelocidad();
 
-    public boolean equals(Object obj);
+    public double getTiempo(PilotoInterfaz piloto, Circuito circuito);
+
+    public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito);
+
+    public double getCombustibleRestante();
+
+    public void setCombustibleRestante(double combustibleU);
 
     public double getValorVelocidad();
 
@@ -25,11 +31,6 @@ public interface CocheInterfaz {
 
     public void UsarCombustible(double resultado);
 
-    public double getTiempo(PilotoInterfaz piloto, Circuito circuito);
+    public boolean equals(Object obj);
 
-    public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito);
-
-    public double getCombustibleRestante();
-
-    public void setCombustibleRestante(double combustibleU);
 }

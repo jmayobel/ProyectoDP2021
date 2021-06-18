@@ -97,6 +97,19 @@ public class Coche implements CocheInterfaz {
         return combustibleRestante;
     }
 
+
+    public double getCombustibleRestante() {
+        return combustibleRestante;
+    }
+
+    /**
+     * Set del combustible disponible
+     *
+     * @param combustibleU - Combustible que le queda al coche
+     */
+    public void setCombustibleRestante(double combustibleU) {
+        this.combustibleRestante = combustibleU;
+    }
     /**
      * Devuelve la velocidad real del coche
      *
@@ -134,18 +147,7 @@ public class Coche implements CocheInterfaz {
             this.combustibleRestante = Math.round(combustibleRestante * 100d) / 100d;
         }
     }
-    public double getCombustibleRestante() {
-        return combustibleRestante;
-    }
 
-    /**
-     * Set del combustible disponible
-     *
-     * @param combustibleU - Combustible que le queda al coche
-     */
-    public void setCombustibleRestante(double combustibleU) {
-        this.combustibleRestante = combustibleU;
-    }
 
     @Override
     public boolean equals(Object obj) {
