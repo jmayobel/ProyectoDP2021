@@ -98,19 +98,20 @@ public class Coche implements CocheInterfaz {
     }
 
     /**
-     * Set del combustible disponible
+     * Establece del combustible disponible
      *
-     * @param combustibleU - Combustible que le queda al coche
+     * @param combustibleU Combustible restante del coche
      */
     public void setCombustibleRestante(double combustibleU) {
         this.combustibleRestante = combustibleU;
     }
+
     /**
-     * Devuelve la velocidad real del coche
+     * Devuelve la velocidad total del coche en un circuito y con un piloto concreto
      *
-     * @param piloto   - Tipo PilotoInterfaz (El piloto de la carrera)
-     * @param circuito - Tipo Circuito (El circuito de la carrera)
-     * @return VelocidadReal - Tipo Double
+     * @param piloto Piloto que lleva ese coche
+     * @param circuito Circuito en el que correra el coche
+     * @return velocidadReal Velocidad total del coche en ese circuito y con ese piloto
      */
     public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito) {
         double velocidadReal = Math.round(((getValorVelocidad() * piloto.getDestreza())*100d)/ circuito.getValorComplejidad()) /100d;
