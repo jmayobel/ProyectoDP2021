@@ -1,14 +1,14 @@
 /**
- * Comparador de Coches que permite la ordenación según el combustible del mismo.
+ * Comparador de Coches que permite la ordenacion segun el combustible del mismo.
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
  * @version (1.0)
  */
 public class ComparadorCombustible extends ComparadorCoche {
 
     /**
-     * Comparador de Coches en función del combustible.
-     * En caso de empate, comparará por el nombre del coche.
+     * Comparador de Coches en funcion del combustible.
+     * En caso de empate, comparara por el nombre del coche.
      *
      * @param c1 Coche a comparar
      * @param c2 Coche a ser comparado

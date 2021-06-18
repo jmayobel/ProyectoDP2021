@@ -2,10 +2,11 @@ import java.util.Collections;
 import java.util.TreeSet;
 
 /**
- * Write a description of class PseudocodigoDatosCampeonatoPremioDesierto here.
+ * Clase que inicializa la simulación con datos con los que
+ * el campeonato termina antes por estar todas las escuderias descalificadas
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author profesores DP
+ * @version 20/21
  */
 public class DatosCampeonatoPremioDesierto {
     public DatosCampeonatoPremioDesierto() {

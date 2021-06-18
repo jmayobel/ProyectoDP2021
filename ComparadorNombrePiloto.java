@@ -1,12 +1,13 @@
 /**
- * Comparador de Pilotos que permite la ordenación según el nombre del mismo.
+ * Comparador de Pilotos que permite la ordenacion segun el nombre del mismo
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
  * @version 0.0
  */
 public class ComparadorNombrePiloto extends ComparadorPiloto {
+
     /**
-     * Comparador de Pilotos en función del nombre.
+     * Comparador de Pilotos en funcion del nombre
      *
      * @param p1 Piloto a comparar
      * @param p2 Piloto a ser comparado

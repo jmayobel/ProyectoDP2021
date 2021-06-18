@@ -1,13 +1,13 @@
 /**
- * Comparador de Coches que permite la ordenación según la velocidad del mismo.
+ * Comparador de Coches que permite la ordenacion segun la velocidad del mismo
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
- * @version 0.1
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
+ * @version (1.0)
  */
 public class ComparadorVelocidad extends ComparadorCoche {
     /**
-     * Comparador de Coches en función de la velocidad.
-     * En caso de empate, comparará por el combustible del coche.
+     * Comparador de Coches en funcion de la velocidad.
+     * En caso de empate, comparara por el combustible del coche
      *
      * @param c1 Coche a comparar
      * @param c2 Coche a ser comparado

@@ -1,13 +1,14 @@
 /**
- * Comparador de Pilotos que permite la ordenación según la concentración del mismo.
+ * Comparador de Pilotos que permite la ordenacion segun la concentracion del mismo
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
- * @version 1.0
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
+ * @version (1.0)
  */
 public class ComparadorConcentracion extends ComparadorPiloto {
+
     /**
-     * Comparador de Pilotos en función de la concentración.
-     * En caso de empate, comparará por la destreza del piloto.
+     * Comparador de Pilotos en funcion de la concentracion.
+     * En caso de empate, comparara por la destreza del piloto
      *
      * @param p1 Piloto a comparar
      * @param p2 Piloto a ser comparado

@@ -1,10 +1,10 @@
 import java.util.*;
 
 /**
- * La clase EscuderiaRally representa los equipos que competirán en el campeonato.
+ * La clase EscuderiaRally representa los equipos que competiran en el campeonato
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
- * @version 0.2
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
+ * @version (1.0)
  */
 public class EscuderiaRally implements EscuderiaInterfaz {
 
@@ -16,11 +16,11 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     private Comparator<CocheInterfaz> compCoches;           //Comparador que ordenará la lista de coches
 
     /**
-     * Constructor parametrizado de la clase EscuderiaRally.
+     * Constructor parametrizado de la clase EscuderiaRally
      *
-     * @param nomEscuderia Nombre de la escudería
-     * @param compPilotos  Comparador que ordenará la lista de pilotos
-     * @param compCoches   Comparador que ordenará la lista de coches
+     * @param nomEscuderia Nombre de la escuderia
+     * @param compPilotos Comparador que ordenara la lista de pilotos
+     * @param compCoches Comparador que ordenara la lista de coches
      */
     public EscuderiaRally(String nomEscuderia, Comparator<PilotoInterfaz> compPilotos, Comparator<CocheInterfaz> compCoches) {
         this.nomEscuderia = nomEscuderia;
@@ -29,15 +29,12 @@ public class EscuderiaRally implements EscuderiaInterfaz {
 
         this.compPilotos = compPilotos;
         this.compCoches = compCoches;
-
-
     }
 
-    //Métodos get()/set()
     /**
-     * Devuelve el nombre de la escudería
+     * Devuelve el nombre de la escuderia
      *
-     * @return nomEscuderia Nombre de la escudería
+     * @return Nombre de la escuderia
      */
     public String getNombre() {
         return this.nomEscuderia;
@@ -55,7 +52,7 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     /**
      * Devuelve la lista de pilotos
      *
-     * @return ListaPilotos Lista de Pilotos
+     * @return Lista de Pilotos de la escuderia
      */
     public ArrayList getListaPilotos() {
         return this.ListaPilotos;
@@ -64,14 +61,16 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     /**
      * Devuelve la lista de coches
      *
-     * @return ListaCoches Lista de Coches
+     * @return Lista de Coches de la escuderia
      */
     public ArrayList getListaCoches() {
         return this.ListaCoches;
     }
 
     /**
-     * @return numero de carreras terminadas (con tiempo positivo) de todos los pilotos de la escuderia
+     * Devuelve el numero de carreras terminadas de la Escuderia
+     *
+     * @return Numero de carreras terminadas (con tiempo positivo) de todos los pilotos de la escuderia
      */
     public int getCarrerasTerminadasEsc(){
         int cont = 0;
@@ -84,7 +83,7 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     /**
      * Devuelve el comparador usado para la lista de pilotos
      *
-     * @return compPilotos Comparador de la lista de pilotos
+     * @return Comparador de la lista de pilotos
      */
     public Comparator<PilotoInterfaz> getComparadorPilotos() {
         return this.compPilotos;

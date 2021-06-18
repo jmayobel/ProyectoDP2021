@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 /**
- * EscuderiaInterfaz declara los métodos que se usarán en la clase EscuderiaRally.
+ * EscuderiaInterfaz declara los metodos que se usaran en la clase EscuderiaRally.
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
- * @version 0.2
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
+ * @version (1.0)
  */
 public interface EscuderiaInterfaz {
     public String getNombre();
@@ -47,5 +47,4 @@ public interface EscuderiaInterfaz {
     public void OrdenarListaCoches ();
 
     public boolean equals(Object obj);
-
 }

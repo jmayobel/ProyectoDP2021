@@ -1,13 +1,13 @@
 /**
- * Comparador de Pilotos que permite la ordenación según el total de puntos del mismo.
+ * Comparador de Pilotos que permite la ordenacion segun el total de puntos del mismo
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
- * @version 1.0
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
+ * @version (1.0)
  */
 public class ComparadorTotalPuntos extends ComparadorPiloto {
     /**
-     * Comparador de Pilotos en función del total de puntos.
-     * En caso de empate, comparará por destreza.
+     * Comparador de Pilotos en funcion del total de puntos.
+     * En caso de empate, comparara por destreza
      *
      * @param p1 Piloto a comparar
      * @param p2 Piloto a ser comparado

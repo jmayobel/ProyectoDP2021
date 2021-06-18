@@ -1,13 +1,13 @@
 /**
- * Enumeration class Concentracion - La clase "Concentración" define el tiempo (en minutos)
- * que un piloto se mantiene en una carrera
- * hasta que pierde la concentración y abandona esa carrera.
+ * ENUM Concentracion que va a usar Piloto.
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
- * @version 0.2
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
+ * @version (1.0)
  */
+
 public enum Concentracion {
-    //Variables del ENUM Concentracion:   
+
+    //Variables de la clase Concentracion:
     DESPISTADO("DESPISTADO", 90.0),
     NORMAL("NORMAL", 100.0),
     CONCENTRADO("CONCENTRADO", 110.0),
@@ -27,10 +27,8 @@ public enum Concentracion {
         this.tiempo = tiempo;
     }
 
-    //Métodos get()
-
     /**
-     * Devuelve el tipo de concentración.
+     * Devuelve el tipo de concentracion
      *
      * @return Tipo de Concentracion (DESPISTADO, NORMAL, CONCENTRADO, ZEN)
      */
@@ -39,7 +37,7 @@ public enum Concentracion {
     }
 
     /**
-     * Devuelve el tiempo de concentración.
+     * Devuelve el tiempo de concentracion
      *
      * @return Tiempo (en minutos) que durará corriendo el piloto antes de abandonar la carrera
      */
@@ -47,7 +45,11 @@ public enum Concentracion {
         return this.tiempo;
     }
 
-    //toString()
+    /**
+     * Muestra por pantalla la informacion de la clase
+     *
+     * @return Concatenacion con la informacion de la clase
+     */
     @Override
     public String toString() {
         return "Concentración: " + getNombre() + " (" +  getTiempo() + ")";

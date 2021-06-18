@@ -1,10 +1,10 @@
 import java.util.Comparator;
 
 /**
- * Comparador de Coches que permite la ordenación según un orden
+ * Comparador de Coches que permite la ordenación segun un orden
  *
  * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
- * @version 1.0
+ * @version (1.0)
  */
 public abstract class ComparadorCoche implements Comparator<CocheInterfaz> {
 

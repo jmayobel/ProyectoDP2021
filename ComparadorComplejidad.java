@@ -1,16 +1,16 @@
 import java.util.Collections;
 
 /**
- * Comparador de complejidad de circuitos.
+ * Comparador de complejidad de circuitos
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
  * @version (1.0)
  */
 public class ComparadorComplejidad extends ComparadorCircuitoSet {
 
     /**
-     * Comparador de Circuitos en función de la complejidad.
-     * En caso de empate, comparará por la distancia.
+     * Comparador de Circuitos en funcion de la complejidad.
+     * En caso de empate, comparara por la distancia
      *
      * @param c1 Circuito a comparar
      * @param c2 Circuito a ser comparado

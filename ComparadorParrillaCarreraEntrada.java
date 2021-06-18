@@ -2,10 +2,9 @@ import java.util.Collections;
 
 public class ComparadorParrillaCarreraEntrada extends ComparadorPiloto {
 
-
     /**
-     * Comparador de Pilotos en función del total de puntos.
-     * En caso de empate, comparará por el nombre del piloto.
+     * Comparador de Pilotos en funcion del total de puntos.
+     * En caso de empate, comparara por el nombre del piloto
      *
      * @param p1 Piloto a comparar
      * @param p2 Piloto a ser comparado

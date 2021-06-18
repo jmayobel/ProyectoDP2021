@@ -1,13 +1,14 @@
 /**
- * Comparador de Pilotos que permite la ordenación según la destreza del mismo.
+ * Comparador de Pilotos que permite la ordenacion segun la destreza del mismo
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
- * @version 0.1
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
+ * @version (1.0)
  */
 public class ComparadorDestreza extends ComparadorPiloto {
+
     /**
-     * Comparador de Pilotos en función de la destreza.
-     * En caso de empate, comparará por el total de puntos del piloto.
+     * Comparador de Pilotos en funcion de la destreza.
+     * En caso de empate, comparara por el total de puntos del piloto
      *
      * @param p1 Piloto a comparar
      * @param p2 Piloto a ser comparado

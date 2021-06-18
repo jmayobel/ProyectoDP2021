@@ -1,13 +1,13 @@
 /**
- * Clase comparadora que compara el tiempo obtenido en el último circuito por dos pilotos distintos.
+ * Clase comparadora que compara el tiempo obtenido en el ultimo circuito por dos pilotos distintos
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
  * @version (1.0)
  */
 public class ComparadorTiempo extends ComparadorPiloto {
     /**
-     * Comparador de Pilotos en función del tiempo.
-     * En caso de empate, comparará por el nombre del piloto.
+     * Comparador de Pilotos en funcion del tiempo.
+     * En caso de empate, comparara por el nombre del piloto
      *
      * @param p1 Piloto a comparar
      * @param p2 Piloto a ser comparado
