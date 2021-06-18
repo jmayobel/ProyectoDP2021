@@ -102,7 +102,7 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     /**
      * Devuelve el comparador usado para la lista de coches
      *
-     * @return compCoches Comparador de la lista de coches
+     * @return Comparador de la lista de coches
      */
     public Comparator<CocheInterfaz> getComparadorCoches() {
         return this.compCoches;
@@ -119,12 +119,10 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     }
 
     /**
-     * Ordenar la lista de coches
+     * Ordena la lista de coches
      */
     public void OrdenarListaCoches () {
-
         Collections.sort(getListaCoches(),getComparadorCoches());
-
     }
 
     /**
@@ -136,7 +134,7 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     }
 
     /**
-     * Añade un piloto a la lista de pilotos
+     * Anade un piloto a la lista de pilotos
      *
      * @param piloto Piloto a insertar
      */
@@ -145,7 +143,7 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     }
 
     /**
-     * Añade un coche a la lista de coches
+     * Anade un coche a la lista de coches
      *
      * @param coche Coche a insertar
      */
@@ -193,9 +191,9 @@ public class EscuderiaRally implements EscuderiaInterfaz {
 
     /**
      * Devuelve la cantidad de puntos que obtiene la escuderia, calculando
-     * el total de puntos de cada piloto y sumandolos.
+     * el total de puntos de cada piloto y sumandolos
      *
-     * @return puntostotales Total de puntos de la escudería
+     * @return Total de puntos de la escudería
      */
     public int getPuntosTotalesEscuderia() {
         Iterator<PilotoInterfaz> it = this.ListaPilotos.iterator(); //Inicializamos el Iterator
@@ -208,12 +206,10 @@ public class EscuderiaRally implements EscuderiaInterfaz {
         return puntostotales;
     }
 
-
-
     /**
      * Asigna los coches con combustible a los pilotos que no estén descalificados de la escudería
      *
-     * @param nPilotos Numero de pilotos que recibirán un coche
+     * @param nPilotos Numero de pilotos que recibiran un coche
      */
     public void AsignarCoche(int nPilotos) {
     Iterator<PilotoInterfaz> it = getListaPilotos().iterator();
@@ -235,9 +231,9 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     }
 
     /**
-     * Muestra por pantalla la información de la clase.
+     * Muestra por pantalla la informacion de la clase
      *
-     * @return String Concatenación con la información de la clase.
+     * @return Concatenacion con la informacion de la clase
      */
     @Override
     public String toString() {
@@ -247,7 +243,7 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     /**
      * Devuelve el codigo hash del objeto
      *
-     * @return int Codigo hashCode del objeto
+     * @return Codigo hashCode del objeto
      */
     @Override
     public int hashCode() {  //No estoy seguro de que sea así
@@ -262,10 +258,10 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     }
 
     /**
-     * Devuelve si el objeto pasado por parámetro es el mismo con el que comparamos.
+     * Devuelve si el objeto pasado por parametro es el mismo con el que comparamos
      *
-     * @return boolean "True" si el objeto pasado es el mismo que el que comparamos,
-     *                 "False" en caso contrario.
+     * @return "true" si el objeto pasado es el mismo que el que comparamos,
+     *                 "false" en caso contrario.
      */
     @Override
     public boolean equals(Object obj) {

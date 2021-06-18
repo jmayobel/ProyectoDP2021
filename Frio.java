@@ -1,14 +1,14 @@
 /**
  * Circuito con extra frio.
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
  * @version (1.0)
  */
 public class Frio extends CircuitoRallyExtra {
 
     /**
      * Constructor parametrizado de la clase Frio.
-     * @param circuitorally Circuito al cual se le va añadir el extra.
+     * @param circuitorally Circuito al cual se le va anadir el extra.
      */
     public Frio (CircuitoRally circuitorally)
     {
@@ -16,9 +16,9 @@ public class Frio extends CircuitoRallyExtra {
     }
 
     /**
-     * Devuelve la complejidad añadida del circuito multiplicada por 1.1
+     * Devuelve la complejidad anadida del circuito multiplicada por 1.1
      *
-     * @return Complejidad añadida del circuito Frio.
+     * @return Complejidad anadida del circuito Frio.
      */
     @Override
     public double getValorComplejidad ()  {
@@ -36,9 +36,9 @@ public class Frio extends CircuitoRallyExtra {
     }
 
     /**
-     * Muestra por pantalla la información de la clase.
+     * Muestra por pantalla la informacion de la clase
      *
-     * @return String Concatenación con la información de la clase.
+     * @return Concatenacion con la informacion de la clase
      */
     @Override
     public String toString() {
