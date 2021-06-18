@@ -53,5 +53,5 @@ public class CocheResistente extends Coche {
     @Override
     public String toString() {
         return super.toString() + " <deposito: " + this.depositoExtra + ">";
-    }
+        }
     }
