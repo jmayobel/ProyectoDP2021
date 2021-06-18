@@ -1,3 +1,9 @@
+/**
+ * ENUM Velocidad Teorica que va a tener Coche
+ *
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
+ * @version (1.0)
+ */
 public enum Velocidad {
     TORTUGA(200.0),
     LENTA(210.0),
