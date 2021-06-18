@@ -27,8 +27,6 @@ public interface CocheInterfaz {
 
     public Combustible getcombustible();
 
-    public double getValorcombustible();
-
     public void UsarCombustible(double resultado);
 
     public boolean equals(Object obj);

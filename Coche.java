@@ -93,11 +93,6 @@ public class Coche implements CocheInterfaz {
      *
      * @return Combustible restante del coche
      */
-    public double getValorcombustible() {
-        return combustibleRestante;
-    }
-
-
     public double getCombustibleRestante() {
         return combustibleRestante;
     }
@@ -175,6 +170,6 @@ public class Coche implements CocheInterfaz {
                         "<Tipo: " + this.getClass().getName() + "> "  +
                           "<Velocidad Teorica: " + getvelocidad().toString() + "(" + getValorVelocidad() + ")" + "> " +
                         "<Combustible Teorico: " + getcombustible().toString() + "(" + getcombustible().getcombustible() + ")" + "> " +
-                        "<Combustible Restante: " + getValorcombustible() + ">";
+                        "<Combustible Restante: " + getCombustibleRestante() + ">";
     }
 }

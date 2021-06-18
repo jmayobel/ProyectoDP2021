@@ -278,7 +278,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
         }
         else {
             if (coche.getCombustibleRestante() < tiempoCarrera) {
-                resultado = coche.getValorcombustible() - tiempoCarrera;
+                resultado = coche.getCombustibleRestante() - tiempoCarrera;
                 resultado= Math.round((resultado*100d))/100d;
                 tiempousado = tiempoCarrera + resultado;
                 tiempousado = Math.round(tiempousado*100d)/100d;

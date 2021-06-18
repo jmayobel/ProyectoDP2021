@@ -20,7 +20,7 @@ public class CocheResistente extends Coche {
     public CocheResistente(String nombre, Velocidad velocidad, Combustible combustible) {
         super(nombre, velocidad, combustible);
         depositoExtra = 100;
-        super.setCombustibleRestante(super.getValorcombustible());
+        super.setCombustibleRestante(super.getCombustibleRestante());
     }
 
     /**
