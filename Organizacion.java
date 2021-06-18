@@ -9,7 +9,6 @@ import java.util.*;
  * @version (1.0)
  */
 public class Organizacion {
-    // instance variables - replace the example below with your own
     private static Organizacion instance = null;
     private final int nAbandonos;
     private final int nPilotos;
@@ -175,7 +174,9 @@ public class Organizacion {
        PilotosCarrera.addAll(DevolverPilotos.keySet());
 
     }
-
+    /**
+     * Devuelve los pilotos que han corrido a la escuderia y los ordena una vez devueltos
+     */
     public void DevolverEscuderia() {
         for (PilotoInterfaz piloto : PilotosCarrera) {
                 EscuderiaInterfaz esc = DevolverPilotos.get(piloto);
@@ -220,7 +221,10 @@ public class Organizacion {
         }
 
     }
-
+    /**
+     * Comprueba si las escuderias estan descalificadas
+     * @return enc Devuelve si todas las escuderias esta descalificadas
+     */
     public boolean TodasEscDesc() {
         Iterator<EscuderiaInterfaz> it = ListadeEscuderias.iterator();
         boolean enc = true;
@@ -230,7 +234,10 @@ public class Organizacion {
         }
         return enc;
     }
-
+    /**
+     * Comprueba que haya un unico piloto no descalificado en todas las escuderias
+     * @return enc Devuelve si hay un unico piloto no descalificado
+     */
     public boolean UnicoPiloto () {
         int cont = 0;
         boolean enc = false;
@@ -289,13 +296,9 @@ public class Organizacion {
 
     /**
      * Realiza la carrera en un circuito dado para todos los pilotos que corren en él.
+     * @param circuito El circuito donde se va a realizar la carrera
      */
-    /**
-     * Realiza la carrera en un circuito dado para todos los pilotos que corren en él.
-     */
-
     public void Carrera (Circuito circuito){
-
         for(PilotoInterfaz piloto: PilotosCarrera){
             CocheInterfaz coche = piloto.getCoche();
             System.out.println(piloto);
@@ -306,6 +309,10 @@ public class Organizacion {
                 }
             }
         }
+
+    /**
+     * Muestra el final del campeonato, mostrando los pilotos y las escuderias ordenados por los puntos obtenidos
+     */
     public void FinalCampeonato() {
         System.out.println();
         ArrayList<PilotoInterfaz> PilotoSinDescalificar = new ArrayList<>();
@@ -362,6 +369,7 @@ public class Organizacion {
 
     /**
      * Ordena la lista de pilotos de PilotosCarrera por tiempo y le asigna los puntos correspondientes a sus posición
+     * @param circuito El circuito donde se ha realizado la carrera
      */
     public void Podio(Circuito circuito) {
         System.out.println("+++++++++++++++++ Clasificación final de la carrera en " + circuito.getNombreCircuito() + "++++++++++++++++++");

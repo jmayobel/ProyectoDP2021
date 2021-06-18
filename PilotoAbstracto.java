@@ -1,7 +1,5 @@
 import java.util.*;
 
-;
-
 /**
  * La clase Piloto representa a aquellos que competirán con un coche en los circuitos de la competición.
  * La diferencia entre cada Piloto viene marcada por la concentración del mismo,
@@ -268,7 +266,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
 
             resultado = getTiempoConcentracion() - tiempoCarrera; //EL TIEMPO QUE LE HA FALTADO ANTES DE TERMINAR LA CARRERA
             resultado = Math.round((resultado*100d))/100d;
-            tiempousado = tiempoCarrera + resultado;
+            tiempousado = tiempoCarrera + resultado; //TIEMPO QUE HA HECHO ANTES DE QUEDAR DESCALIFICADO
             tiempousado = Math.round(tiempousado*100d)/100d;
             this.añadirTiempo(circuito, resultado);
             coche.UsarCombustible(tiempousado);
@@ -278,9 +276,9 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
         }
         else {
             if (coche.getCombustibleRestante() < tiempoCarrera) {
-                resultado = coche.getCombustibleRestante() - tiempoCarrera;
+                resultado = coche.getCombustibleRestante() - tiempoCarrera; //EL TIEMPO QUE LE HA FALTADO ANTES DE TERMINAR LA CARRERA
                 resultado= Math.round((resultado*100d))/100d;
-                tiempousado = tiempoCarrera + resultado;
+                tiempousado = tiempoCarrera + resultado; //TIEMPO QUE HA HECHO ANTES DE QUEDAR DESCALIFICADO
                 tiempousado = Math.round(tiempousado*100d)/100d;
                 coche.UsarCombustible(tiempousado);
                 if (coche.getCombustibleRestante() > 0) {
@@ -293,7 +291,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
                 }
 
             } else {
-                 resultado = tiempoCarrera;
+                 resultado = tiempoCarrera; //EL TIEMPO QUE HA NECESITADO PARA TERMINAR LA CARRERA
                 resultado = Math.round((resultado*100d))/100d;
 
                 this.añadirTiempo(circuito, resultado);
