@@ -7,6 +7,7 @@ import java.util.Comparator;
  * @version (1.0)
  */
 public abstract class ComparadorCircuitoSet implements Comparator<Circuito> {
+
     /**
      * Comparador de Circuitos en función de la complejidad.
      * En caso de empate, comparará por la distancia,
@@ -15,7 +16,6 @@ public abstract class ComparadorCircuitoSet implements Comparator<Circuito> {
      * @param c1 Circuito a comparar
      * @param c2 Circuito a ser comparado
      */
-
     public abstract int compare(Circuito c1, Circuito c2);
 
 

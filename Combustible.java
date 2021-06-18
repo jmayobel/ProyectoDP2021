@@ -10,12 +10,23 @@ public enum Combustible {
     GENEROSO(460.0),
     ELEFANTE(480.0);
 
-    private double combustible;  //Cantidad de combustible disponible
+    //Variables de la clase Combustible:
+    private double combustible;  //Cantidad de combustible inicial
 
+    /**
+     * Constructor parametrizado para Combustible
+     *
+     * @param combustible Cantidad de combustible inicial
+     */
     Combustible(double combustible) {
         this.combustible = combustible;
     }
 
+    /**
+     * Devuelve la cantidad inicial de combustible
+     *
+     * @return combustible Cantidad inicial de combustible
+     */
     public double getcombustible() {
         return this.combustible;
     }

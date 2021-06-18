@@ -7,6 +7,7 @@ import java.util.Comparator;
  * @version 0.1
  */
 public abstract class ComparadorCoche implements Comparator<CocheInterfaz> {
+
     /**
      * Comparador de Coches en función de la velocidad.
      * En caso de empate, comparará por el combustible del coche,

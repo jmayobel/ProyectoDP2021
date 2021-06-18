@@ -28,43 +28,43 @@ public class Coche implements CocheInterfaz {
     /**
      * Establece el nombre del coche
      *
-     * @param  nombre - Nombre del coche
+     * @param nombre Nombre del coche
      */
     public void setnombreCoche(String nombre) {
         this.nombreCoche = nombre;
     }
 
     /**
-     * Set del nombre del coche
+     * Establece la velocidad del coche
      *
-     * @param velocidad - Velocidad del coche
+     * @param velocidad Velocidad del coche
      */
     public void setvelocidad(Velocidad velocidad) {
         this.velocidad = velocidad;
     }
 
     /**
-     * Set del combustible.
+     * Establece el combustible del coche
      *
-     * @param combustible - combustible del coche
+     * @param combustible Combustible del coche
      */
     public void setCombustible(Combustible combustible) {
         this.combustible = combustible;
     }
 
     /**
-     * Obtiene el nombre del coche
+     * Devuelve el nombre del coche
      *
-     * @return nombre - Tipo String
+     * @return nombre Nombre del coche
      */
     public String getNombreCoche() {
         return nombreCoche;
     }
 
     /**
-     * Obtiene el enum de la velocidad del coche
+     * Devuelve el enum de la velocidad del coche
      *
-     * @return velocidad - Tipo Velocidad
+     * @return velocidad ENUM de la velocidad del coche
      */
     public Velocidad getvelocidad() {
         return velocidad;
@@ -73,16 +73,16 @@ public class Coche implements CocheInterfaz {
     /**
      * Devuelve el valor de la velocidad del coche
      *
-     * @return velocidad.getVelocidad() - Tipo double
+     * @return El valor de la velocidad del coche
      */
     public double getValorVelocidad() {
         return velocidad.getVelocidad();
     }
 
     /**
-     * Obtiene el enum del combustible del coche
+     * Devuelve el enum del combustible del coche
      *
-     * @return combustible - Tipo Combustible
+     * @return combustible ENUM del combustible
      */
     public Combustible getcombustible() {
         return combustible;
@@ -91,7 +91,7 @@ public class Coche implements CocheInterfaz {
     /**
      * Devuelve el valor del combustible del coche
      *
-     * @return combustible.getcombustible() - Tipo double    //FIXME:CAMBIAR EL COMENTARIO.
+     * @return Combustible restante del coche
      */
     public double getValorcombustible() {
         return combustibleRestante;
