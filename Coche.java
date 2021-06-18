@@ -1,10 +1,11 @@
 /**
  * Clase Coche, que contiene su nombre, velocidad y combustible.
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
  * @version (1.0)
  */
 public class Coche implements CocheInterfaz {
+
     //Variables de la clase Coche:
     private String nombreCoche;             //Nombre completo del Coche
     private Velocidad velocidad;            //Velocidad (Nombre de la velocidad y tamaño) que posee el coche
@@ -55,7 +56,7 @@ public class Coche implements CocheInterfaz {
     /**
      * Devuelve el nombre del coche
      *
-     * @return nombre Nombre del coche
+     * @return Nombre del coche
      */
     public String getNombreCoche() {
         return nombreCoche;
@@ -64,7 +65,7 @@ public class Coche implements CocheInterfaz {
     /**
      * Devuelve el enum de la velocidad del coche
      *
-     * @return velocidad ENUM de la velocidad del coche
+     * @return ENUM de la velocidad del coche
      */
     public Velocidad getvelocidad() {
         return velocidad;
@@ -82,7 +83,7 @@ public class Coche implements CocheInterfaz {
     /**
      * Devuelve el enum del combustible del coche
      *
-     * @return combustible ENUM del combustible
+     * @return ENUM del combustible
      */
     public Combustible getcombustible() {
         return combustible;
@@ -111,7 +112,7 @@ public class Coche implements CocheInterfaz {
      *
      * @param piloto Piloto que lleva ese coche
      * @param circuito Circuito en el que correra el coche
-     * @return velocidadReal Velocidad total del coche en ese circuito y con ese piloto
+     * @return Velocidad total del coche en ese circuito y con ese piloto
      */
     public double getVelocidadReal(PilotoInterfaz piloto, Circuito circuito) {
         double velocidadReal = Math.round(((getValorVelocidad() * piloto.getDestreza())*100d)/ circuito.getValorComplejidad()) /100d;
@@ -122,9 +123,9 @@ public class Coche implements CocheInterfaz {
     /**
      * Retorna el tiempo que dura la carrera para el piloto en el circuito
      *
-     * @param piloto   - un piloto de la carrera
-     * @param circuito - Un circuito
-     * @return Devuelve el tiempo de la carrera
+     * @param piloto Piloto que corre la carrera
+     * @param circuito Circuito en el que se corre la carrera
+     * @return Devuelve el tiempo recorrido de carrera
      */
     public double getTiempo(PilotoInterfaz piloto, Circuito circuito) {
         double tiempo = ((circuito.getValorDistancia()) / this.getVelocidadReal(piloto, circuito)) *60 ;
@@ -133,9 +134,7 @@ public class Coche implements CocheInterfaz {
     }
 
     /**
-     * Retorna el tiempo que dura la carrera para el piloto en el circuito
-     *
-     * @return Combustible - Tipo Double
+     * Resta mediante el tiempo recorrido en la carrera, el combustible necesario al tanque
      */
     public void UsarCombustible(double resultado) {
         if (resultado > 0) {
@@ -144,7 +143,12 @@ public class Coche implements CocheInterfaz {
         }
     }
 
-
+    /**
+     * Devuelve si el objeto pasado por parámetro es el mismo con el que comparamos.
+     *
+     * @return "true" si el objeto pasado es el mismo que el que comparamos,
+     *         "false" en caso contrario
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -160,9 +164,9 @@ public class Coche implements CocheInterfaz {
     }
 
     /**
-     * Muestra por pantalla la información de la clase.
+     * Muestra por pantalla la informacion de la clase
      *
-     * @return String Concatenación con la información de la clase.
+     * @return Concatenacion con la informacion de la clase
      */
     @Override
     public String toString() {

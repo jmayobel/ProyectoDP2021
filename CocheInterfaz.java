@@ -1,7 +1,7 @@
 /**
- * Interfaz de la clase Coche.
+ * Interfaz de la clase Coche
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
  * @version (1.0)
  */
 public interface CocheInterfaz {

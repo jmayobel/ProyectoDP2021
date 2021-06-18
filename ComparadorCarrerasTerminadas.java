@@ -4,14 +4,14 @@ import java.util.Comparator;
 /**
  * Encapsulacion de comparadores
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
  * @version (1.0)
  */
 public class ComparadorCarrerasTerminadas implements Comparator<EscuderiaInterfaz> {
 
     /**
-     * Comparador de Escuderías en función de las carreras terminadas por sus pilotos.
-     * En caso de empate, comparará por el nombre de la escudería,
+     * Comparador de EscuderiaInterfaz en función de las carreras terminadas por sus pilotos.
+     * En caso de empate, comparara por el nombre de la escuderia,
      *
      * @param e1 Escuderia a comparar
      * @param e2 Escuderia a ser comparada

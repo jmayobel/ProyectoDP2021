@@ -1,7 +1,7 @@
 /**
  * Clase padre del patron decorator
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
  * @version (1.0)
  */
 public abstract class CircuitoRallyExtra extends CircuitoRally
@@ -12,7 +12,7 @@ public abstract class CircuitoRallyExtra extends CircuitoRally
     /**
      * Constructor parametrizado de la clase CircuitoRallyExtra.
      *
-     * @param  circuitorally Circuito al que se añadirá la nueva funcionalidad
+     * @param  circuitorally Circuito al que se añadira la nueva funcionalidad
      */
     public CircuitoRallyExtra (CircuitoRally circuitorally)
     {
@@ -41,9 +41,9 @@ public abstract class CircuitoRallyExtra extends CircuitoRally
     }
 
     /**
-     * Muestra por pantalla la información de la clase.
+     * Muestra por pantalla la informacion de la clase.
      *
-     * @return String Concatenación con la información de la clase.
+     * @return String Concatenacion con la informacion de la clase.
      */
     @Override
     public String toString ()
