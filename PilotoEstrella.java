@@ -1,8 +1,8 @@
 /**
  * La clase PilotoEstrella calcula la destreza del piloto.
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
- * @version 1.0
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
+ * @version (1.0)
  */
 public class PilotoEstrella extends PilotoAbstracto {
 
@@ -13,7 +13,7 @@ public class PilotoEstrella extends PilotoAbstracto {
      * Constructor parametrizado de la clase PilotoEstrella.
      *
      * @param nombre Nombre de pila del piloto
-     * @param concentracion Concentración del piloto
+     * @param concentracion Concentracion del piloto
      */
     public PilotoEstrella(String nombre, Concentracion concentracion) {
         super(nombre, concentracion);
@@ -23,7 +23,7 @@ public class PilotoEstrella extends PilotoAbstracto {
     /**
      * Calcula la destreza del piloto dependiendo del tipo de Piloto
      *
-     * @return Destreza del piloto.
+     * @return Destreza del piloto
      */
     @Override
     public double getDestreza() {

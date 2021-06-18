@@ -1,5 +1,5 @@
 /**
- * Circuito con extra frio.
+ * Circuito con extra frio
  *
  * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
  * @version (1.0)
@@ -8,6 +8,7 @@ public class Frio extends CircuitoRallyExtra {
 
     /**
      * Constructor parametrizado de la clase Frio.
+     *
      * @param circuitorally Circuito al cual se le va anadir el extra.
      */
     public Frio (CircuitoRally circuitorally)
@@ -46,7 +47,5 @@ public class Frio extends CircuitoRallyExtra {
                 "extra: " + getClass().getSimpleName() + " " +
                 " -> nueva complejidad: " + Math.round(getValorComplejidad()*100d)/100d +
                 " "+ " -> nueva distancia: " + Math.round(getValorDistancia ()*100d)/100d;
-
-
     }
 }

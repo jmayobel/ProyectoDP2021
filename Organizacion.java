@@ -2,20 +2,23 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 /**
- * La clase Organizacion se encargará de la gestión del campeonato,
+ * La clase Organizacion se encargara de la gestion del campeonato,
  * tanto de ejcutar las carreras, como de entrega de premios.
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
  * @version (1.0)
  */
 public class Organizacion {
-    private static Organizacion instance = null;
-    private final int nAbandonos;
-    private final int nPilotos;
-    private TreeSet<Circuito> CircuitoSet;
-    private ArrayList<EscuderiaInterfaz> ListadeEscuderias;
-    private ArrayList<PilotoInterfaz> PilotosCarrera;
-    private HashMap<PilotoInterfaz, EscuderiaInterfaz> DevolverPilotos;
+
+    //Variables de la clase Organizacion:
+    private static Organizacion instance = null;                            //Unica instancia de la clase Organización
+    private final int nAbandonos;                                           //Numero de abandonos posibles de los pilotos
+    private final int nPilotos;                                             //Numero maximo de pilotos que se pueden mandar
+                                                                            //a la carrera por escuderia
+    private TreeSet<Circuito> CircuitoSet;                                  //TreeSet que contiene los circuitos que se van a realizar
+    private ArrayList<EscuderiaInterfaz> ListadeEscuderias;                 //ArrayList de las escuderias disponibles
+    private ArrayList<PilotoInterfaz> PilotosCarrera;                       //ArrayList de los pilotos que participan en la carrera
+    private HashMap<PilotoInterfaz, EscuderiaInterfaz> DevolverPilotos;     //HashMap que nos permite devolver los pilotos a sus escuderias
 
 
     /**
@@ -32,12 +35,12 @@ public class Organizacion {
     }
 
     /**
-     * Método del patrón Singleton que permite devolver una instancia del objeto creado.
+     * MEtodo del patrOn Singleton que permite devolver una instancia del objeto creado.
      * Si no hay ninguna instancia, se crea.
      *
-     * @param lAbandonos Límite de abandonos que puede tener un piloto antes de ser eliminado del campeonato
-     * @param lPilotos   Límite de pilotos por Escudería que pueden ser enviados a una carrera
-     * @param circuito   Lista de circuitos en los que se correrá durante el campeonato
+     * @param lAbandonos LImite de abandonos que puede tener un piloto antes de ser eliminado del campeonato
+     * @param lPilotos Limite de pilotos por Escuderia que pueden ser enviados a una carrera
+     * @param circuito Lista de circuitos en los que se correra durante el campeonato
      */
     public synchronized static Organizacion getInstance(int lAbandonos, int lPilotos, TreeSet<Circuito> circuito) {
         if (instance == null) {
@@ -47,38 +50,37 @@ public class Organizacion {
     }
 
     /**
-     * inserta una nueva escuderia en la lista de escuderias.
+     * Inserta una nueva escuderia en la lista de escuderias
      *
-     * @param nuevaEscuderia escuderia a insertar en la lista.
+     * @param nuevaEscuderia Escuderia a insertar en la lista
      */
     public void setEscuderia(EscuderiaInterfaz nuevaEscuderia) {
         ListadeEscuderias.add(nuevaEscuderia);
     }
 
     /**
-     * inserta un nuevo circuito en el set.
+     * Inserta un nuevo circuito en el set
      *
-     * @param nuevoCircuito el nuevo circuito a insertar.
+     * @param nuevoCircuito Circuito a insertar
      */
     public void setCircuito(Circuito nuevoCircuito) {
-
         CircuitoSet.add(nuevoCircuito);
     }
 
     /**
-     * borra un circuito del set.
+     * Borra un circuito del set.
      *
-     * @param circuito -circuito a borrar.
+     * @param circuito Circuito a borrar
      */
     public void deleteCircuito(Circuito circuito) {
         CircuitoSet.remove(circuito);
     }
 
     /**
-     * busca un circuito en CircuitoSet.
+     * Busca y devuelve un circuito en CircuitoSet
      *
-     * @param circuito- circuito a buscar en CircuitoSet.
-     * @return el circuito buscada.
+     * @param circuito Circuito a buscar
+     * @return Circuito buscado
      */
     public Circuito buscarCircuito(Circuito circuito) {
         Iterator<Circuito> it = this.CircuitoSet.iterator(); //Inicializamos el Iterator
@@ -95,20 +97,21 @@ public class Organizacion {
         }
         return aux;
     }
+
     /**
      * Devuelve el numero pilotos que pueden correr en cada carrera
      *
-     * @return numero pilotos que pueden correr en cada carrera.
+     * @return Numero pilotos que pueden correr en cada carrera
      */
     public int getnPilotos() {
         return nPilotos;
     }
 
     /**
-     * busca una escuderia en la lista de escuderias.
+     * Busca una escuderia en la lista de escuderias
      *
-     * @param escuderia- escuderia a buscar en la lista.
-     * @return la escuderia buscada.
+     * @param escuderia Escuderia a buscar
+     * @return Escuderia buscada
      */
     public EscuderiaInterfaz buscarEscuderia(EscuderiaInterfaz escuderia) {
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator(); //Inicializamos el Iterator
@@ -121,12 +124,11 @@ public class Organizacion {
                 aux = buscar;
             }
         }
-
         return aux;
     }
 
     /**
-     * deja vacio CircuitoSet.
+     * Vacia CircuitoSet
      */
     public void DejarVacioTreeSetCircuitos() {
         Iterator<Circuito> it = this.CircuitoSet.iterator(); //Inicializamos el Iterator
@@ -134,13 +136,11 @@ public class Organizacion {
         while (it.hasNext()) {
             Circuito buscar = it.next();
             it.remove();
-
         }
-
     }
 
     /**
-     * muestra las escuderias de la lista de escuderias.
+     * Muestra las escuderias de la lista de escuderias
      */
     public void MostrarEscuderias() {
         Iterator<EscuderiaInterfaz> it = this.ListadeEscuderias.iterator();
@@ -176,8 +176,8 @@ public class Organizacion {
         }
 
        PilotosCarrera.addAll(DevolverPilotos.keySet());
-
     }
+
     /**
      * Devuelve los pilotos que han corrido a la escuderia y los ordena una vez devueltos
      */
@@ -193,14 +193,11 @@ public class Organizacion {
 
             esc.OrdenarListaPilotos();
             esc.OrdenarListaCoches();
-
         }
-
     }
 
-
     /**
-     * muestra los circuitos del TreeSet de circuitos.
+     * Muestra los circuitos del TreeSet de circuitos
      */
     public void MostrarCircuitos() {
         Iterator<Circuito> it = this.CircuitoSet.iterator();
@@ -217,17 +214,16 @@ public class Organizacion {
 
         if (tipo == 1) {
             Collections.sort(pilotos, new ComparadorParrillaCarreraEntrada());
-
-
         }
         if (tipo == 2) {
             Collections.sort(pilotos, new ComparadorTiempo());
         }
-
     }
+
     /**
      * Comprueba si las escuderias estan descalificadas
-     * @return enc Devuelve si todas las escuderias esta descalificadas
+     *
+     * @return Devuelve si todas las escuderias esta descalificadas
      */
     public boolean TodasEscDesc() {
         Iterator<EscuderiaInterfaz> it = ListadeEscuderias.iterator();
@@ -238,9 +234,11 @@ public class Organizacion {
         }
         return enc;
     }
+
     /**
      * Comprueba que haya un unico piloto no descalificado en todas las escuderias
-     * @return enc Devuelve si hay un unico piloto no descalificado
+     *
+     * @return Devuelve si hay un unico piloto no descalificado
      */
     public boolean UnicoPiloto () {
         int cont = 0;
@@ -259,6 +257,7 @@ public class Organizacion {
         }
         return enc;
     }
+
     /**
      * Realiza las carreras para cada circuito del campeonato
      */
@@ -291,6 +290,9 @@ public class Organizacion {
         FinalCampeonato();
     }
 
+    /**
+     * Muestra la lista de los pilotos que correran la carrera actual
+     */
     private void PilotosCorren() {
         System.out.println("LOS PILOTOS QUE VAN A CORRER SON: ");
         for(PilotoInterfaz piloto : PilotosCarrera){
@@ -299,8 +301,8 @@ public class Organizacion {
     }
 
     /**
-     * Realiza la carrera en un circuito dado para todos los pilotos que corren en él.
-     * @param circuito El circuito donde se va a realizar la carrera
+     * Realiza la carrera en un circuito dado para todos los pilotos que corren en el
+     * @param circuito Circuito donde se va a realizar la carrera
      */
     public void Carrera (Circuito circuito){
         for(PilotoInterfaz piloto: PilotosCarrera){
@@ -365,15 +367,13 @@ public class Organizacion {
                     Esc.MostrarCoches();
                 }
                 cont++;
-
         }
-
     }
 
-
     /**
-     * Ordena la lista de pilotos de PilotosCarrera por tiempo y le asigna los puntos correspondientes a sus posición
-     * @param circuito El circuito donde se ha realizado la carrera
+     * Ordena la lista de pilotos de PilotosCarrera por tiempo y le asigna los puntos correspondientes a sus posicion
+     *
+     * @param circuito Circuito donde se ha realizado la carrera
      */
     public void Podio(Circuito circuito) {
         System.out.println("+++++++++++++++++ Clasificación final de la carrera en " + circuito.getNombreCircuito() + "++++++++++++++++++");
@@ -402,12 +402,6 @@ public class Organizacion {
                     System.out.println(" - "+"ADEMÁS HA SIDO DESCALIFICADO");
                 } else System.out.println();
             }
-
-
-
         }
-
-
     }
 }
-

@@ -1,29 +1,30 @@
 import java.util.*;
 
 /**
- * La clase Piloto representa a aquellos que competirán con un coche en los circuitos de la competición.
- * La diferencia entre cada Piloto viene marcada por la concentración del mismo,
- * característica que marcará el rendimiento del Piloto y el Coche en el Circuito.
+ * La clase Piloto representa a aquellos que competiran con un coche en los circuitos de la competicion.
+ * La diferencia entre cada Piloto viene marcada por la concentracion del mismo,
+ * caracteristica que marcara el rendimiento del Piloto y el Coche en el Circuito
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
- * @version 1.0
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
+ * @version (1.0)
  */
 public abstract class PilotoAbstracto implements PilotoInterfaz {
-    //Variables de la clase Piloto:    
+
+    //Variables de la clase Piloto:
     private String nombre;                                  //Nombre completo del Piloto
-    private CocheInterfaz coche;                            //Coche con el que correrá (Asignado por la Escudería)
+    private CocheInterfaz coche;                            //Coche con el que correrá (Asignado por la Escuderia)
     private Concentracion concentracion;                    //Minutos que aguanta el piloto de carrera antes de abandonar 
     private LinkedHashMap<String, Resultados> resultados;   //Registro con el tiempo y puntos conseguidos en cada carrera
     private boolean descalificado;                          //"false" si NO ha sido descalificado, "true" en caso contrario
-    private int nAbandonos;                                 //Número de abandonos que el piloto ha tenido durante la competición
+    private int nAbandonos;                                 //Numero de abandonos que el piloto ha tenido durante la competicion
 
     /**
      * Constructor parametrizado de la clase Piloto.
      *
-     * @param nombre        Nombre de pila del piloto.
+     * @param nombre Nombre de pila del piloto.
      * @param concentracion Tipo de Concentración (DESPISTADO, NORMAL, CONCENTRADO, ZEN) del piloto.
-     *                      Será el tiempo en minutos que el piloto mantiene la concentración
-     *                      antes de abandonar la carrera.
+     *                      Sera el tiempo en minutos que el piloto mantiene la concentracion
+     *                      antes de abandonar la carrera
      */
     public PilotoAbstracto(String nombre, Concentracion concentracion) { //Añadir el coche y el registro
         this.nombre = nombre;
@@ -34,129 +35,125 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
         this.nAbandonos = 0;
     }
 
-    //Métodos get()/set()
     /**
-     * Devuelve el nombre del piloto.
+     * Devuelve el nombre del piloto
      *
-     * @return Nombre del piloto.
+     * @return Nombre del piloto
      */
     public String getNombre() {
         return this.nombre;
     }
 
     /**
-     * Devuelve el coche que conducirá el piloto.
+     * Devuelve el coche que conducira el piloto
      *
-     * @return Coche que conduce el piloto.
+     * @return Coche que conduce el piloto
      */
     public CocheInterfaz getCoche() {
         return this.coche;
     }
 
     /**
-     * Establece el coche con el que correrá el piloto.
+     * Establece el coche con el que correra el piloto
      *
-     * @param coche El coche que usará el piloto.
+     * @param coche Coche que usara el piloto
      */
     public void setCoche(CocheInterfaz coche) {
         this.coche = coche;
     }
 
     /**
-     * Devuelve el Tipo de Concentración.
+     * Devuelve el Tipo de Concentracion
      *
-     * @return ENUM Concentracion(String nombre, double tiempo).
+     * @return ENUM Concentracion(String nombre, double tiempo)
      */
     public Concentracion getConcentracion() {
         return this.concentracion;
     }
 
     /**
-     * Devuelve el tiempo de concentración del piloto.
+     * Devuelve el tiempo de concentracion del piloto
      *
-     * @return Tiempo de concentración (en minutos) que aguantará el piloto antes de abandonar la carrera.
+     * @return Tiempo de concentracion (en minutos) que aguantara el piloto antes de abandonar la carrera
      */
     public double getTiempoConcentracion() {     //USAD ESTE SI LO QUE NECESITAIS ES EL NUMERO
         return this.concentracion.getTiempo();
     }
 
     /**
-     * Devuelve el registro completo con los resultados del piloto en cada carrera.
+     * Devuelve el registro completo con los resultados del piloto en cada carrera
      *
-     * @return Lista con los resultados de cada carrera.
+     * @return Lista con los resultados de cada carrera
      */
     public HashMap<String, Resultados> getResultados() {
         return this.resultados;
     }
 
     /**
-     * Devuelve si el piloto ha sido descalificado de la competición.
+     * Devuelve si el piloto ha sido descalificado de la competicion
      *
-     * @return boolean "true" en caso de que el piloto esté descalificado, "false" en caso contrario.
+     * @return "true" en caso de que el piloto este descalificado, "false" en caso contrario
      */
     public boolean getDescalificado() {
         return this.descalificado;
     }
 
     /**
-     * Devuelve la cantidad de veces que el piloto ha abandonado la carrera.
+     * Devuelve la cantidad de veces que el piloto ha abandonado la carrera
      *
-     * @return Número de veces que el piloto ha abandonado.
+     * @return Numero de veces que el piloto ha abandonado
      */
     public int getAbandonos() {
         return this.nAbandonos;
     }
 
     /**
-     * Método que usan los hijos para calcular la destreza del piloto dependiendo del tipo de Piloto.
+     * Metodo que usan los hijos para calcular la destreza del piloto dependiendo del tipo de Piloto
      *
-     * @return Destreza del piloto.
+     * @return Destreza del piloto
      */
     public abstract double getDestreza();
 
     /**
-     * Devuelve el tamaño de la lista del registro del piloto.
+     * Devuelve el tamano de la lista del registro del piloto
      *
-     * @return int Tamaño del registro.
+     * @return Tamano del registro
      */
     public int getTamañoResultados() {
         return this.resultados.size();
     }
 
     /**
-     * Descalifica al piloto, negándole a seguir participando en la competición.
+     * Descalifica al piloto, negandole a seguir participando en la competición
      */
     public void descalificar() { //También llamado setDescalificado()
-
         System.out.println(this.getNombre() + " HA SIDO DESCALIFICADO");
         this.descalificado = true;
     }
 
     /**
-     * Añade un abandono al piloto en cuestión.
+     * Anade un abandono al piloto en cuestion
      */
     public void abandonar() {
         this.nAbandonos++;
     }
 
-    //Métodos HashMap
-
     /**
-     * Añade nueva información al registro de resultados.
+     * Anade nueva informacion al registro de resultados
      *
      * @param circuito Circuito en el que el piloto ha corrido.
-     * @param tiempo   Tiempo en el que el piloto ha terminado la carrera.
-     *                 Si el tiempo es negativo, indica los minutos que le han faltado para terminarlo.
+     * @param tiempo Tiempo en el que el piloto ha terminado la carrera
+     *               Si el tiempo es negativo, indica los minutos que le han faltado para terminarlo
      */
     public void añadirTiempo(Circuito circuito, double tiempo) {
         this.resultados.put(circuito.getNombreCircuito(), new Resultados(tiempo));
     }
 
     /**
-     * Añade los puntos dados dado un circuito concreto.
+     * Anade los puntos dados dado un circuito concreto
      *
-     * @param circuito Circuito en el que el piloto ha corrido.
-     * @param puntos Puntos que el piloto ha ganado en esa carrera.
+     * @param circuito Circuito en el que el piloto ha corrido
+     * @param puntos Puntos que el piloto ha ganado en esa carrera
      */
     public void añadirPuntos(Circuito circuito, int puntos) {
 
@@ -165,13 +162,12 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
         resultados.remove(circuito.getNombreCircuito());
         resultado.setPuntos(puntosAct);
         resultados.put(circuito.getNombreCircuito(), resultado);
-
     }
 
     /**
-     * Busca el tiempo que se hizo dado un circuito en específico.
+     * Busca el tiempo que se hizo dado un circuito en especifico
      *
-     * @param buscado Circuito del que se desea obtener el tiempo.
+     * @param buscado Circuito del que se desea obtener el tiempo
      */
     public double buscarResultado(Circuito buscado) { //getTiempoResultado()
         double tiempo = 0;
@@ -182,9 +178,9 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
     }
 
     /**
-     * Devuelve la cantidad de carreras que el piloto ha conseguido terminar.
+     * Devuelve la cantidad de carreras que el piloto ha conseguido terminar
      *
-     * @return int Numero de carreras terminadas.
+     * @return Numero de carreras terminadas
      */
     @Override
     public int getCarrerasTerminadas() {
@@ -200,9 +196,9 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
     }
 
     /**
-     * Devuelve el total de puntos que ha conseguido el piloto en toda la competición.
+     * Devuelve el total de puntos que ha conseguido el piloto en toda la competicion
      *
-     * @return int Puntos totales del piloto.
+     * @return Puntos totales del piloto
      */
     public int getPuntosTotales() {
         Iterator<String> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
@@ -212,14 +208,13 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
             Resultados valor = this.resultados.get(key);
             puntostotales += valor.getPuntos();
         }
-
         return puntostotales;
     }
 
     /**
-     * Devuelve los puntos obtenidos en la última carrera corrida por el piloto.
+     * Devuelve los puntos obtenidos en la ultima carrera corrida por el piloto
      *
-     * @return double Tiempo de la última carrera corrida.
+     * @return Tiempo de la ultima carrera corrida
      */
     public double getTiempoUltimoCircuito() {
         Iterator<String> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
@@ -234,7 +229,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
     }
 
     /**
-     * Imprime por pantalla los resultados del piloto en toda la competición.
+     * Imprime por pantalla los resultados del piloto en toda la competicion
      */
     public void mostrarResultados() {
         Iterator<String> it = this.resultados.keySet().iterator(); //Inicializamos el Iterator
@@ -245,13 +240,11 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
         }
     }
 
-    //Otros métodos
     /**
-     * Desarrollo de la carrera, en él se calculará si el piloto consigue acabarla o no.
+     * Desarrollo de la carrera, en el se calculara si el piloto consigue acabarla o no
      *
-     * @param  circuito Circuito en el que se correrá la carrera.
+     * @param circuito Circuito en el que se correra la carrera
      */
-
     public void conducirCoche(Circuito circuito) {
         double tiempousado, resultado;
         CocheInterfaz coche = getCoche();
@@ -297,7 +290,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
     }
 
     /**
-     * Muestra por pantalla la información de la clase.
+     * Muestra por pantalla la informacion de la clase
      *
      * @return Concatenacion con la informacion de la clase
      */
@@ -326,8 +319,8 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
     /**
      * Devuelve si el objeto pasado por parametro es el mismo con el que comparamos
      *
-     * @return boolean "True" si el objeto pasado es el mismo que el que comparamos,
-     *                 "False" en caso contrario.
+     * @return "true" si el objeto pasado es el mismo que el que comparamos,
+     *         "false" en caso contrario
      */
     @Override
     public boolean equals(Object obj) {
@@ -346,7 +339,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
     /**
      * Devuelve el codigo hash del objeto
      *
-     * @return int Codigo hashCode del objeto
+     * @return Codigo hashCode del objeto
      */
     @Override
     public int hashCode() {

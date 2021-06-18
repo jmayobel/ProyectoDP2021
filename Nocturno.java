@@ -1,16 +1,15 @@
 /**
- * Circuito con extra nocturno.
+ * Circuito con extra nocturno
  *
- * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
+ * @author Juan Manuel Mayo Beltran, Cesar Vazquez Lazaro, Miguel Medina Cantos
  * @version (1.0)
  */
-public class Nocturno extends CircuitoRallyExtra
-{
+public class Nocturno extends CircuitoRallyExtra{
 
     /**
-     * Constructor parametrizado de la clase Nocturno.
-     * @param circuitorally,el circuito al cual se le va añadir el extra.
+     * Constructor parametrizado de la clase Nocturno
      *
+     * @param circuitorally Circuito al cual se le va anadir el extra
      */
     public Nocturno(CircuitoRally circuitorally)
     {
@@ -18,8 +17,9 @@ public class Nocturno extends CircuitoRallyExtra
     }
 
     /**
-     * devuelve la complejidad añadida del circuito multiplicada por 1.2 .
-     * @return la complejidad añadida del circuito Nocturno.
+     * Devuelve la complejidad anadida del circuito multiplicada por 1.2
+     *
+     * @return Complejidad anadida del circuito Nocturno
      */
     @Override
     public double getValorComplejidad ()  {
@@ -27,8 +27,9 @@ public class Nocturno extends CircuitoRallyExtra
     }
 
     /**
-     * devuelve la distancia reducida del circuito multiplicada por 0.8 .
-     * @return  la distancia reducida del circuito Nocturno.
+     * Devuelve la distancia reducida del circuito multiplicada por 0.8
+     *
+     * @return Distancia reducida del circuito Nocturno
      */
     @Override
     public double getValorDistancia ()  {
@@ -36,8 +37,9 @@ public class Nocturno extends CircuitoRallyExtra
     }
 
     /**
-     * Muestra por pantalla la informacion de una clase..
-     * @return  un string con la informacion de la clase.
+     * Muestra por pantalla la informacion de la clase
+     *
+     * @return Concatenacion con la informacion de la clase
      */
     @Override
     public String toString() {
@@ -45,8 +47,5 @@ public class Nocturno extends CircuitoRallyExtra
                 "extra: " + getClass().getSimpleName() + " " +
                 " -> nueva complejidad: " + Math.round(getValorComplejidad()*100d)/100d +
                 " "+ " -> nueva distancia: " + Math.round(getValorDistancia ()*100d)/100d;
-
-
     }
-
 }
