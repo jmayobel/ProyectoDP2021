@@ -292,7 +292,6 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
 
             } else {
                  resultado = tiempoCarrera;
-                 System.out.println(resultado);
                 resultado = Math.round((resultado*100d))/100d;
 
                 this.añadirTiempo(circuito, resultado);

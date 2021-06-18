@@ -168,7 +168,6 @@ public class Coche implements CocheInterfaz {
      */
     @Override
     public String toString() {
-        // put your code here
         return
                 "<Nombre del coche: " + getNombreCoche() + "> " +
                         "<Tipo: " + this.getClass().getName() + "> "  +

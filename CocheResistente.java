@@ -44,4 +44,14 @@ public class CocheResistente extends Coche {
                 super.UsarCombustible(resultado);
             }
         }
+
+    /**
+     * Muestra por pantalla la información de la clase.
+     *
+     * @return String Concatenación con la información de la clase.
+     */
+    @Override
+    public String toString() {
+        return super.toString() + " <deposito: " + this.depositoExtra + ">";
+    }
     }
