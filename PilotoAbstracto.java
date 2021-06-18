@@ -314,7 +314,7 @@ public abstract class PilotoAbstracto implements PilotoInterfaz {
         builder.append(' ');
         builder.append("<Tipo: " + this.getClass().getName() + ">");
         builder.append(' ');
-        builder.append("<"+this.concentracion.toString()+">");  //NO MUY SEGURO DE ESTO
+        builder.append("<"+this.concentracion.toString()+">");
         builder.append(' ');
         builder.append("<Destreza: "  + this.getDestreza()+">");
         builder.append(' ');

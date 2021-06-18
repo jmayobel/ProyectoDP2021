@@ -47,11 +47,11 @@ public class CocheRapido extends Coche {
             double NitroUsado = Math.round(velocidadNormal * 0.2*100d)/100d;
             this.setNitro(this.getNitro() - velocidadNormal * 0.2);
             System.out.println("+++ El " +this.getNombreCoche()+  " usa " + NitroUsado + " de nitro para alcanzar " + velocidadNitro +" y el nitro restante es "+ this.getNitro()+ " +++");
-        } else {
+        } else if(this.getNitro() > 0) {
             velocidadNitro = Math.round(velocidadNormal + this.getNitro())*100d/100d;
             System.out.println("+++ El " +this.getNombreCoche()+  " usa " + this.getNitro() + " de nitro para alcanzar " + velocidadNitro +" y agota el nitro. +++");
             this.setNitro(0);
-        }
+        } else {velocidadNitro = velocidadNormal;}
         return velocidadNitro;
     }
 

@@ -171,8 +171,9 @@ public class Coche implements CocheInterfaz {
         // put your code here
         return
                 "<Nombre del coche: " + getNombreCoche() + "> " +
-                        "<Tipo: " + this.getClass().getName() + "> " +
-                        "<Combustible: " + getValorcombustible() +
-                        "> " + "<Velocidad: " + getValorVelocidad() + ">";
+                        "<Tipo: " + this.getClass().getName() + "> "  +
+                          "<Velocidad Teorica: " + getvelocidad().toString() + "(" + getValorVelocidad() + ")" + "> " +
+                        "<Combustible Teorico: " + getcombustible().toString() + "(" + getcombustible().getcombustible() + ")" + "> " +
+                        "<Combustible Restante: " + getValorcombustible() + ">";
     }
 }
