@@ -99,7 +99,7 @@ public class DatosCampeonatoFinPrematuro {
         organizacion.setEscuderia(peugeot);
 
         //escudería citroen 
-        //Crear escuderia citroen con nombre:"Citroen"		
+        //Crear escuderia citroen con nombre:"Citroen"        
         //ordenaciónPilotos: ascendente por Puntos del Piloto, en caso de empate por Destreza, en caso de empate por nombre
         //ordenaciónCoches: ascendente por Combustible restante del Coche , en caso de empate por nombre);
         //citroen se inscribe en campeonato
