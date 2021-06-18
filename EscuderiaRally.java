@@ -7,10 +7,11 @@ import java.util.*;
  * @version 0.2
  */
 public class EscuderiaRally implements EscuderiaInterfaz {
+
     //Variables de la clase EscuderiaRally:
     private String nomEscuderia;                            //Nombre de la escudería
-    private ArrayList<PilotoInterfaz> ListaPilotos;        //Lista de los pilotos de la escudería
-    private ArrayList<CocheInterfaz> ListaCoches;          //Lista de los coches de la escudería
+    private ArrayList<PilotoInterfaz> ListaPilotos;         //Lista de los pilotos de la escudería
+    private ArrayList<CocheInterfaz> ListaCoches;           //Lista de los coches de la escudería
     private Comparator<PilotoInterfaz> compPilotos;         //Comparador que ordenará la lista de pilotos
     private Comparator<CocheInterfaz> compCoches;           //Comparador que ordenará la lista de coches
 
@@ -33,18 +34,17 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     }
 
     //Métodos get()/set()
-
     /**
      * Devuelve el nombre de la escudería
      *
-     * @return Nombre de la escudería
+     * @return nomEscuderia Nombre de la escudería
      */
     public String getNombre() {
         return this.nomEscuderia;
     }
 
     /**
-     * Devuelve la lista de pilotos preparados para la carrera.
+     * Devuelve la lista de pilotos preparados para la carrera
      *
      * @return Lista de Pilotos que están listos para correr la carrera
      */
@@ -55,7 +55,7 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     /**
      * Devuelve la lista de pilotos
      *
-     * @return Lista de Pilotos
+     * @return ListaPilotos Lista de Pilotos
      */
     public ArrayList getListaPilotos() {
         return this.ListaPilotos;
@@ -64,7 +64,7 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     /**
      * Devuelve la lista de coches
      *
-     * @return Lista de Coches
+     * @return ListaCoches Lista de Coches
      */
     public ArrayList getListaCoches() {
         return this.ListaCoches;
@@ -73,7 +73,7 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     /**
      * Devuelve el comparador usado para la lista de pilotos
      *
-     * @return Comparador de la lista de pilotos
+     * @return compPilotos Comparador de la lista de pilotos
      */
     public Comparator<PilotoInterfaz> getComparadorPilotos() {
         return this.compPilotos;
@@ -92,7 +92,7 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     /**
      * Devuelve el comparador usado para la lista de coches
      *
-     * @return Comparador de la lista de coches
+     * @return compCoches Comparador de la lista de coches
      */
     public Comparator<CocheInterfaz> getComparadorCoches() {
         return this.compCoches;
@@ -107,12 +107,19 @@ public class EscuderiaRally implements EscuderiaInterfaz {
         this.compCoches = comparador;
         Collections.sort(getListaCoches(), compCoches);
     }
+
+    /**
+     * Ordenar la lista de coches
+     */
     public void OrdenarListaCoches () {
 
         Collections.sort(getListaCoches(),getComparadorCoches());
 
     }
 
+    /**
+     * Ordena la lista de pilotos
+     */
     public void OrdenarListaPilotos() {
         Collections.sort(getListaPilotos(), getComparadorPilotos());
 
@@ -160,8 +167,9 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     }
 
     /**
+     * Comprueba que la escuderia este descalificada
      *
-     * @return true si la escudería esta descalificada, false en caso contrario.
+     * @return "true" si la escuderia esta descalificada, "false" en caso contrario
      */
     public boolean EscuderiaDescalificada() {
         boolean desc = true;
@@ -174,10 +182,10 @@ public class EscuderiaRally implements EscuderiaInterfaz {
     }
 
     /**
-     * Devuelve la cantidad de puntos que obtiene la escudería, calculando
-     * el total de puntos de cada piloto y sumándolos.
+     * Devuelve la cantidad de puntos que obtiene la escuderia, calculando
+     * el total de puntos de cada piloto y sumandolos.
      *
-     * @return Total de puntos de la escudería
+     * @return puntostotales Total de puntos de la escudería
      */
     public int getPuntosTotalesEscuderia() {
         Iterator<PilotoInterfaz> it = this.ListaPilotos.iterator(); //Inicializamos el Iterator
@@ -190,6 +198,9 @@ public class EscuderiaRally implements EscuderiaInterfaz {
         return puntostotales;
     }
 
+    /**
+     * Devuelve el numero de carreras terminadas de todos los pilotos de la escuderia
+     */
     public int getCarrerasTerminadasEsc(){
         int cont = 0;
         for(PilotoInterfaz pil : ListaPilotos){
@@ -200,6 +211,8 @@ public class EscuderiaRally implements EscuderiaInterfaz {
 
     /**
      * Asigna los coches con combustible a los pilotos que no estén descalificados de la escudería
+     *
+     * @param nPilotos Numero de pilotos que recibirán un coche
      */
     public void AsignarCoche(int nPilotos) {
     Iterator<PilotoInterfaz> it = getListaPilotos().iterator();
@@ -220,15 +233,21 @@ public class EscuderiaRally implements EscuderiaInterfaz {
         } }
     }
 
-    //equals()
-
-    //toString()
+    /**
+     * Muestra por pantalla la información de la clase.
+     *
+     * @return String Concatenación con la información de la clase.
+     */
     @Override
     public String toString() {
         return "%%%%%%%%%% " + getNombre() + " %%%%%%%%%%";
     }
 
-    //hashCode()
+    /**
+     * Devuelve el codigo hash del objeto
+     *
+     * @return int Codigo hashCode del objeto
+     */
     @Override
     public int hashCode() {  //No estoy seguro de que sea así
         int result = 17;
@@ -241,6 +260,12 @@ public class EscuderiaRally implements EscuderiaInterfaz {
         return result;
     }
 
+    /**
+     * Devuelve si el objeto pasado por parámetro es el mismo con el que comparamos.
+     *
+     * @return boolean "True" si el objeto pasado es el mismo que el que comparamos,
+     *                 "False" en caso contrario.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -253,7 +278,5 @@ public class EscuderiaRally implements EscuderiaInterfaz {
         EscuderiaInterfaz other = (EscuderiaInterfaz) obj;
 
         return super.equals(other);
-
-
     }
 }

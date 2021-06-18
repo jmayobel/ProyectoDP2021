@@ -4,7 +4,7 @@ import java.util.Comparator;
  * Encapsulacion de comparadores
  *
  * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
- * @version (a version number or a date)
+ * @version (1.0)
  */
 public abstract class ComparadorCircuitoSet implements Comparator<Circuito> {
     /**

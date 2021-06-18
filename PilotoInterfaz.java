@@ -1,8 +1,8 @@
 /**
  * PilotoInterfaz declara los métodos que se usarán en la clase PilotoAbstracto
  *
- * @author CESAR VAZQUEZ LAZARO
- * @version 0.2
+ * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
+ * @version 1.0
  */
 
 public interface PilotoInterfaz {

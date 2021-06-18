@@ -2,10 +2,11 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 /**
- * La clase Organizacion se encargará
+ * La clase Organizacion se encargará de la gestión del campeonato,
+ * tanto de ejcutar las carreras, como de entrega de premios.
  *
  * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
- * @version (a version number or a date)
+ * @version (1.0)
  */
 public class Organizacion {
     // instance variables - replace the example below with your own

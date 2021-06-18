@@ -8,7 +8,7 @@ import java.util.*;
  * característica que marcará el rendimiento del Piloto y el Coche en el Circuito.
  *
  * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
- * @version 0.5
+ * @version 1.0
  */
 public abstract class PilotoAbstracto implements PilotoInterfaz {
     //Variables de la clase Piloto:    

@@ -1,7 +1,7 @@
 
 /**
- *
  * Circuito con extra mojado.
+ *
  * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
  * @version (1.0)
  */

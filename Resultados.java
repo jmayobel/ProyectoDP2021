@@ -4,14 +4,13 @@
  * y el circuito en cuestión donde se ha corrido.
  *
  * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
- * @version 0.1
+ * @version 1.0
  */
 public class Resultados {
+
     //Variables de la clase Resultados:
     private double tiempo;      //Tiempo que se ha mantenido el piloto en una carrera
     private int puntos;         //Puntos ganados en una carrera 
-
-    //Constructores
 
     /**
      * Constructor estándar de la clase Resultados.
@@ -33,12 +32,11 @@ public class Resultados {
     }
 
     //Métodos get()/ set()
-
     /**
      * Devuelve el tiempo en el que el piloto ha terminado la carrera. Si el tiempo es negativo,
      * indica los minutos que le han faltado para terminarlo.
      *
-     * @return Tiempo de carrera
+     * @return tiempo Tiempo de carrera
      */
     public double getTiempoResultados() {
         return this.tiempo;
@@ -57,7 +55,7 @@ public class Resultados {
     /**
      * Devuelve los puntos ganados en la carrera.
      *
-     * @return Puntos obtenidos
+     * @return puntos Puntos obtenidos
      */
     public int getPuntos() {
         return this.puntos;
@@ -72,7 +70,11 @@ public class Resultados {
         this.puntos = puntos;
     }
 
-    //Método toString()
+    /**
+     * Muestra por pantalla la información de la clase.
+     *
+     * @return String Concatenación con la información de la clase.
+     */
     @Override
     public String toString() {
         return getClass().getSimpleName() +

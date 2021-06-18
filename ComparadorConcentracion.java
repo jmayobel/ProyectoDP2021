@@ -2,7 +2,7 @@
  * Comparador de Pilotos que permite la ordenación según la concentración del mismo.
  *
  * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
- * @version 0.1
+ * @version 1.0
  */
 public class ComparadorConcentracion extends ComparadorPiloto {
     /**

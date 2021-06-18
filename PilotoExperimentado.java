@@ -2,16 +2,17 @@
  * La clase PilotoExperimentado calcula la destreza del piloto.
  *
  * @author Juan Manuel Mayo Beltran, César Vázquez Lazaro, Miguel Medina Cantos
- * @version 0.1
+ * @version 1.0
  */
 public class PilotoExperimentado extends PilotoAbstracto {
+
     //Variables de la clase PilotoExperimentado:
     private double destreza;
 
     /**
      * Constructor parametrizado de la clase PilotoExperimentado.
      *
-     * @param nombre        Nombre de pila del piloto
+     * @param nombre Nombre de pila del piloto
      * @param concentracion Concentración del piloto
      */
     public PilotoExperimentado(String nombre, Concentracion concentracion) {
@@ -19,6 +20,11 @@ public class PilotoExperimentado extends PilotoAbstracto {
         this.destreza = getDestreza();
     }
 
+    /**
+     * Calcula la destreza del piloto dependiendo del tipo de Piloto
+     *
+     * @return Destreza del piloto.
+     */
     @Override
     public double getDestreza() {
         double Destreza = ((getTiempoConcentracion() + 3) / 130 * 1.03);
